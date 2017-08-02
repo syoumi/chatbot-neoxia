@@ -1,6 +1,5 @@
 /**
- *
- *
+ * All the logic for sending Bulk text messages
  */
 
 const async = require('async');
@@ -11,6 +10,9 @@ const {sendTypingOn} = require('./sendTypingOnOff');
 const {sendTextMessage} = require('./sendTextMessage');
 const {syncCallSendAPI} = require('./sendViaFaceBookAPI');
 
+/**
+ * Immediatly sends list of text messages to recipient
+ */
 var sendBulkTextMessages = (recipientID, messages) => {
   async.eachSeries(messages, (message, callback) => {
     var messageData = {
@@ -31,6 +33,10 @@ var sendBulkTextMessages = (recipientID, messages) => {
   });
 };
 
+/**
+ * Sends list of text messages to recipient one by one
+ * this function will make a random delai before sending each text message
+ */
 var sendBulkTextMessagesWithDelai = (recipientID, messages) => {
   async.eachSeries(messages, (message, callback) => {
     // Assuming thet the bot will be typing 3 characters per second

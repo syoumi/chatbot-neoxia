@@ -1,6 +1,6 @@
 /**
- *
- *
+ * Getting last 3 accounts from salesforce database
+ * using JSForce authentification
  */
 
  const {doLogin} = require('./login');
@@ -8,6 +8,9 @@
  const {sendBulkTextMessagesWithDelai} = require('./../../send/fbApi/sendBulkTextMessages');
  const {sendBulkTextMessages} = require('./../../send/fbApi/sendBulkTextMessages');
 
+ /**
+  * Get last 3 accounts in Salesforce database
+  */
  var getLastAccounts = (senderID) => {
    doLogin((link) => {
      var records = [];
