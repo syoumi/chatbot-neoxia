@@ -3,7 +3,10 @@
  *
  */
 
+const {handleApiAiAction} = require('./handleApiAiAction');
+const {handleMessage} = require('./handleMessage');
 
+ const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 
 //Response API AI
 var handleApiAiResponse = (senderID, response) => {
