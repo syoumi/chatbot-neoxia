@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Neoxia",
@@ -15,5 +16,8 @@
     "jsforce": "^1.8.0",
     "request": "^2.81.0",
     "require": "^2.4.20"
+  },
+  "engines": {
+    "node": "6.11.1"
   }
 }
