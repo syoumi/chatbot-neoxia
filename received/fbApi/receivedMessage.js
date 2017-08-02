@@ -12,7 +12,7 @@ const {sendTypingOff} = require('./../../send/fbApi/sendTypingOnOff');
 // const {sendPictureMessage} = require('./../../send/fbApi/sendPictureMessage');
 const {sendBulkTextMessages} = require('./../../send/fbApi/sendBulkTextMessages');
 
-const {getUserInfos} = require('./../../utils/getUserInfos');
+// const {getUserInfos} = require('./../../utils/getUserInfos');
 const {getWaiting} = require('./../../utils/waiting');
 
 // const {getAllAccounts} = require('./../../data/salesforce/getAllAccounts');
