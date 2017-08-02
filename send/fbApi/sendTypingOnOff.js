@@ -1,6 +1,6 @@
 /**
- *
- *
+ * This file is responsible for notifying the user that the bot
+ * is typing ON / OFF, or has seen the message
  */
 
 const {callSendAPI} = require('./sendViaFaceBookAPI');

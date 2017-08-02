@@ -1,11 +1,13 @@
 /**
- *
- *
+ * In this file, we put all the logic for sending HTTP request to FB API
  */
 
  const request = require('request');
  const {FB_PAGE_TOKEN} = require('./../../include/config');
 
+ /**
+  * Create a JSON object and send it to Facebook via HTTP request
+  */
  var callSendAPI = (messageData) => {
    // We are using request package to send HTTP request to FB API
    request({
@@ -35,6 +37,10 @@
    });
  };
 
+ /**
+  * Create a JSON object and send it to Facebook via HTTP request
+  * This function accepts a callback as a parameter in order that async module make the operation synchronous
+  */
  var syncCallSendAPI = (messageData, callback) => {
    request({
      uri: 'https://graph.facebook.com/v2.6/me/messages',

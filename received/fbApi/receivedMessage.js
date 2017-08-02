@@ -1,6 +1,6 @@
 /**
- *
- *
+ * In this file, we put all the logic to execute whenever an event
+ * of type message is sent to the backend app
  */
 
 // const {sendGenericMessage} = require('./../../send/fbApi/sendGenericMessage');
@@ -20,7 +20,7 @@ const {setNotWaiting} = require('./../../utils/waiting');
 const {getLastAccounts} = require('./../../data/salesforce/getLastAccounts');
 
 /**
- *
+ * Message event handler
  */
 var receivedMessage = (event) => {
   // Extracting event informations

@@ -1,10 +1,13 @@
 /**
- *
- *
+ * In this file, we put all the logic to execute whenever an event
+ * of type PostBack is sent to the backend app
  */
 
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 
+/**
+ * Postback event handler
+ */
 var receivedPostBack = (event) => {
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
