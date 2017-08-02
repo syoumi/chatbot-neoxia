@@ -8,6 +8,8 @@ const {handleMessage} = require('./handleMessage');
 
  const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 
+const {sendTypingOff} = require('./../../send/fbApi/sendTypingOnOff');
+
 //Response API AI
 var handleApiAiResponse = (senderID, response) => {
 
