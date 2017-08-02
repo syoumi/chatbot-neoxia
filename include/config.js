@@ -7,7 +7,7 @@ const FB_PAGE_TOKEN = 'EAACPEJjwnWwBAHDV7IdGEHu7H6VVogZAvFzZAqQijNNquerdp07tJtGa
 const VERIFY_TOKEN = 'SIMPLE_VERIFY_TOKEN';
 const SF_LOGIN = 'chatbot@neoxia.ma';
 const SF_PASSWORD = '25072017fkmop3JAAuAHoMAjWdjOmITJwswB';
-const API_AI_CLIENT_ACCESS_TOKEN = 'ee41bacb813eca20bf766e7eb7364922';
+const API_AI_CLIENT_ACCESS_TOKEN = '47370c9dd09c4ef9bf8dfa664aa86e39';
 const FB_SECRET = '##';
 // Maximum time to wait before re-prompt user for answer
 const WAITING_BEFORE_PROMPT = 5000;
