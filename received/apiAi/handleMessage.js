@@ -33,7 +33,7 @@ var handleMessage = (message, senderID) => {
   				}
   				replies.push(reply);
   			}
-  			sendQuickReply(senderID, message.title, replies);
+  			sendQuickReplies(senderID, message.title, replies);
   			break;
   		case 3: //image
   			sendImageMessage(senderID, message.imageUrl);
