@@ -9,16 +9,11 @@ const {sendGenericMessage} = require('./../../send/fbApi/sendGenericMessage');
 const {sendImageMessage} = require('./../../send/fbApi/sendImageMessage');
 const {sendQuickReplies} = require('./../../send/fbApi/sendQuickReplies');
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
+const {sendCustomPayload} = require('./../../send/fbApi/sendCustomPayload');
 //const {sendCardMessage}= require('./../../send/fbApi/sendCardMessage');
 
-const {sendTypingOn} = require('./../../send/fbApi/sendTypingOnOff');
-const {sendTypingOff} = require('./../../send/fbApi/sendTypingOnOff');
 
-
-const {callSendAPI} = require('./../../send/fbApi/sendViaFaceBookAPI');
-
-
-  var handleMessage = (message, senderID) => {
+var handleMessage = (message, senderID) => {
 
   	switch (message.type) {
   		case 0: //text
@@ -46,16 +41,7 @@ const {callSendAPI} = require('./../../send/fbApi/sendViaFaceBookAPI');
   		//Still have problem here
   		case 4:
   			// custom payload
-  			var messageData = {
-  				recipient: {
-  					id: senderID
-  				},
-  				message: message.payload.facebook
-
-  			};
-
-  			callSendAPI(messageData);
-
+  			sendCustomPayload(senderID, message);
   			break;
   	}
   }
