@@ -3,12 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Neoxia",
-  "license": "ISC",
   "dependencies": {
     "async": "^2.5.0",
     "body-parser": "^1.17.2",
@@ -16,7 +10,19 @@
     "jsforce": "^1.8.0",
     "request": "^2.81.0"
   },
-  "engines": {
-    "node": "6.11.1"
-  }
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syoumi/chatbot-neoxia.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/syoumi/chatbot-neoxia/issues"
+  },
+  "homepage": "https://github.com/syoumi/chatbot-neoxia#readme"
 }
