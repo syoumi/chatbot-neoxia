@@ -3,7 +3,7 @@
  *
  */
 
-const {sendTextMessage} = require('./../../send/sendTextMessage');
+const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 
 var receivedPostBack = (event) => {
   var senderID = event.sender.id;
