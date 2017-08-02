@@ -7,7 +7,7 @@ const {callSendAPI} = require('./../../send/fbApi/sendViaFaceBookAPI');
 
 
 
-var sendCustomPayload = (senderID, message){
+var sendCustomPayload = (senderID, message) => {
   var messageData = {
     recipient: {
       id: senderID
