@@ -1,0 +1,78 @@
+/**
+ * Chatbot for facebook messenger
+ * Created by : Neoxia
+ * Version 1.0 beta - August 2017
+ */
+
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const {PORT} = require('./include/config');
+const {VERIFY_TOKEN} = require('./include/config');
+
+const {receivedMessage} = require('./received/fbApi/receivedMessage');
+const {receivedPostBack} = require('./received/fbApi/receivedPostBack');
+const {receivedSeen} = require('./received/fbApi/receivedSeen');
+
+var app = express();
+
+// Adding some middlewares to fix some bugs
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
+
+// GET /webhook : Facebook first verification
+app.get('/webhook', (req, res) => {
+
+  if (req.query['hub.mode'] === 'subscribe' && req.query['hub.verify_token'] === VERIFY_TOKEN) {
+      console.log("Validating webhook");
+      res.status(200).send(req.query['hub.challenge']);
+
+    } else {
+
+      console.error("Failed validation webhook. Make sure the validation tokens match.");
+      res.sendStatus(403);
+    }
+});
+
+// POST /webhook : Receive all FB incoming requests
+app.post('/webhook', (req, res) => {
+  var data = req.body;
+
+  // object proprety MUST BE 'page'
+  if (data.object === 'page') {
+
+    data.entry.forEach((oneEntry) => {
+      var pageID = oneEntry.id;
+      var timeOfEvent = oneEntry.time;
+
+      oneEntry.messaging.forEach((event) => {
+
+        if (event.message) {
+
+          receivedMessage(event);
+        } else if (event.postback) {
+
+          receivedPostBack(event);
+        } else if (event.read) {
+
+          receivedSeen(event);
+        } else {
+
+          console.log("Webhook received unknown event : ");
+        }
+      });
+    });
+
+    // We have to send satatus 200 OK as fast as we can
+    // to avoid facebook alert
+    res.sendStatus(200);
+  }
+});
+
+// Let the server listening to incoming connections
+app.listen(PORT, () => {
+  console.log(`Listening to incoming connections on port ${PORT} ...`);
+});
