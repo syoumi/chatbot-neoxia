@@ -11,6 +11,7 @@ const API_AI_CLIENT_ACCESS_TOKEN = '##';
 const FB_SECRET = '##';
 // Maximum time to wait before re-prompt user for answer
 const WAITING_BEFORE_PROMPT = 5000;
+const CUSTOM_CONFIG = 'HAHAHHA';
 
 module.exports = {
   PORT,
@@ -20,5 +21,6 @@ module.exports = {
   SF_PASSWORD,
   API_AI_CLIENT_ACCESS_TOKEN,
   FB_SECRET,
-  WAITING_BEFORE_PROMPT
+  WAITING_BEFORE_PROMPT,
+  CUSTOM_CONFIG
 }
