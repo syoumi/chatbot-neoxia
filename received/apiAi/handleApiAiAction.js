@@ -25,6 +25,11 @@ var handleApiAiAction= (senderID, action, responseText, contexts, parameters) =>
       sendTextMessage(senderID, 'You said c');
     break;
 
+    case 'testSF':
+
+      getLastAccounts(senderID);
+      break;
+
 		default:
 			//unhandled action, just send back the text
 			sendTextMessage(senderID, responseText);
