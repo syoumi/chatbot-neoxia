@@ -12,12 +12,6 @@
  const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
  //const {sendCardMessage}= require('./../../send/fbApi/sendCardMessage');
 
- const {sendTypingOn} = require('./../../send/fbApi/sendTypingOnOff');
- const {sendTypingOff} = require('./../../send/fbApi/sendTypingOnOff');
-
-
- const {callSendAPI} = require('./../../send/fbApi/sendViaFaceBookAPI');
-
 
 //By action
 var handleApiAiAction= (senderID, action, responseText, contexts, parameters) => {
@@ -26,6 +20,10 @@ var handleApiAiAction= (senderID, action, responseText, contexts, parameters) =>
 		case "catalogue-appart-achat":
 			//sendCatalogueAppartVente(senderID, responseText);
 		break;
+
+    case "say-c":
+      sendTextMessage(senderID, 'You said c');
+    break;
 
 		default:
 			//unhandled action, just send back the text
