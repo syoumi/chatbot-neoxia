@@ -14,8 +14,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "jsforce": "^1.8.0",
-    "request": "^2.81.0",
-    "require": "^2.4.20"
+    "request": "^2.81.0"
   },
   "engines": {
     "node": "6.11.1"
