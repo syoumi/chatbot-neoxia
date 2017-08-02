@@ -4,7 +4,7 @@
  */
 
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
-const {sendToApiAi} = require('./../apiAi/fonctions');
+const {sendToApiAi} = require('./../apiAi/sendViaApiAi');
 
 const {getWaiting} = require('./../../utils/waiting');
 const {setNotWaiting} = require('./../../utils/waiting');

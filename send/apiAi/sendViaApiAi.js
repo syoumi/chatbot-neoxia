@@ -13,7 +13,7 @@ const uuid= require('uuid');
 
 const {API_AI_CLIENT_ACCESS_TOKEN} = require('./../../include/config');
 
-const {handleApiAiResponse} = require('./../../received/apiAi/fonctions');
+const {handleApiAiResponse} = require('./../../received/apiAi/handleApiAiResponse');
 
 
 var sessionIds = new Map();
@@ -29,23 +29,23 @@ const apiAiService = apiai(API_AI_CLIENT_ACCESS_TOKEN, {
 
 //Make a Request to API AI
 //Send to Api.AI ID of sender (session ID) and text query.
-var sendToApiAi = (sender, text) => {
+var sendToApiAi = (senderID, text) => {
 
 	//Add sender to sessionIds if doesn't exist
-	if (!sessionIds.has(sender)) {
+	if (!sessionIds.has(senderID)) {
 		//uuid.v1: Generate a v1 (timestamp-based) ID.
-		sessionIds.set(sender, uuid.v1());
+		sessionIds.set(senderID, uuid.v1());
 	}
 
     //Request
 	let apiaiRequest = apiAiService.textRequest(text, {
-        sessionId: sessionIds.get(sender)
+        sessionId: sessionIds.get(senderID)
 	});
 
 	//Wait for response, once it's received ---> handle it
 	apiaiRequest.on('response', (response) => {
 		if (response.result) {
-			handleApiAiResponse(sender, response);
+			handleApiAiResponse(senderID, response);
 		}
 	});
 

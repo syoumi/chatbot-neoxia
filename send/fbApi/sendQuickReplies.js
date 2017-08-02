@@ -3,13 +3,13 @@
   *
   */
 
-  
+
 const {callSendAPI} = require('./sendViaFaceBookAPI');
 
 const {sendTypingOn} = require('./sendTypingOnOff');
 
 
-var sendQuickReply= (recipientId, text, replies, metadata) => {
+var sendQuickReplies= (recipientId, text, replies, metadata) => {
 
 	var messageData = {
 		recipient: {
@@ -28,5 +28,5 @@ var sendQuickReply= (recipientId, text, replies, metadata) => {
 
 
 module.exports = {
-  sendQuickReply
+  sendQuickReplies
 };
