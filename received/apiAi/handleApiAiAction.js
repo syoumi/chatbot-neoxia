@@ -12,6 +12,8 @@
  const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
  //const {sendCardMessage}= require('./../../send/fbApi/sendCardMessage');
 
+const {getLastAccounts} = require('./../../data/salesforce/getLastAccounts');
+
 
 //By action
 var handleApiAiAction= (senderID, action, responseText, contexts, parameters) => {
@@ -25,8 +27,7 @@ var handleApiAiAction= (senderID, action, responseText, contexts, parameters) =>
       sendTextMessage(senderID, 'You said c');
     break;
 
-    case 'testSF':
-
+    case 'test-sf':
       getLastAccounts(senderID);
       break;
 
