@@ -3,21 +3,13 @@
  * of type message is sent to the backend app
  */
 
-// const {sendGenericMessage} = require('./../../send/fbApi/sendGenericMessage');
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
-const {sendTextMessageWithDelai} = require('./../../send/fbApi/sendTextMessage');
-// const {sendQuickReplies} = require('./../../send/fbApi/sendQuickReplies');
-const {sendTypingOn} = require('./../../send/fbApi/sendTypingOnOff');
-const {sendTypingOff} = require('./../../send/fbApi/sendTypingOnOff');
-// const {sendPictureMessage} = require('./../../send/fbApi/sendPictureMessage');
-const {sendBulkTextMessages} = require('./../../send/fbApi/sendBulkTextMessages');
+const {sendToApiAi} = require('./../apiAi/fonctions');
 
-// const {getUserInfos} = require('./../../utils/getUserInfos');
 const {getWaiting} = require('./../../utils/waiting');
 const {setNotWaiting} = require('./../../utils/waiting');
 
-// const {getAllAccounts} = require('./../../data/salesforce/getAllAccounts');
-const {getLastAccounts} = require('./../../data/salesforce/getLastAccounts');
+
 
 /**
  * Message event handler
@@ -50,70 +42,11 @@ var receivedMessage = (event) => {
   // attachments object
   var messageAttachments = message.attachments;
 
+
   if (messageText) {
+     sendToApiAi(senderID, messageText);
 
-    switch (messageText) {
-    //  case 'generic':
-     //
-    //    sendGenericMessage(senderID);
-    //    break;
-     //
-    //  case 'QCM':
-     //
-    //    var choices = [
-    //      {
-    //        content_type: 'text',
-    //        title: 'Nice',
-    //        payload: 'NICE_CUSTOM_POSTBACK'
-    //      },
-    //      {
-    //        content_type: 'text',
-    //        title: 'Not bad',
-    //        payload: 'NOT_BAD_CUSTOM_POSTBACK'
-    //      },
-    //      {
-    //        content_type: 'text',
-    //        title: 'Not nice',
-    //        payload: 'NOT_NICE_CUSTOM_POSTBACK'
-    //      }
-    //    ];
-     //
-    //    sendQuickReplies(senderID, choices);
-     //
-    //    break;
-     //
-    //  case 'Tu me connais?':
-     //
-    //    sendTextMessage(senderID, 'Je pense que oui ...');
-     //
-    //    setTimeout(function () {
-    //      sendTypingOn(senderID);
-    //    }, 1000);
-     //
-    //    setTimeout(function () {
-    //      getUserInfos(senderID, (fname, lname, ppicture, locale) => {
-    //        sendTextMessage(senderID, `Vous êtes ${fname} ${lname}`);
-    //        sendPictureMessage(senderID, ppicture);
-    //      });
-    //    }, 3000);
-     //
-    //    break;
-     //
-    //  case 'login':
-    //    getAllAccounts(senderID);
-    //    break;
-
-     case 'last accounts':
-       getLastAccounts(senderID);
-       break;
-
-     default:
-
-       sendTextMessageWithDelai(senderID, messageText);
-       break;
-   }
   } else if (messageAttachments) {
-
    sendTextMessage(senderID, 'Pièce jointe bien reçue <3 ^_^ !');
   }
 

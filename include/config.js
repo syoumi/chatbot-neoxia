@@ -8,10 +8,10 @@ const PORT = process.env.PORT || 9191;
 const FB_PAGE_TOKEN = 'EAACPEJjwnWwBAHDV7IdGEHu7H6VVogZAvFzZAqQijNNquerdp07tJtGa91TMMFlwDJF7CA0RPy3VUOZC2elYHQGMIRnQRRAqHJ5bitmtpcnchLe7md5ZBW15TSpZB0vXYrkfV2ctpR7vAyGtyrsa2UUNnRtSaIGfOA4Vjv3PwN7xS3oSMZBRoS';
 // Facebook authentification verify token
 const VERIFY_TOKEN = 'SIMPLE_VERIFY_TOKEN';
-// Salesforce login (Ex. test@example.com)
-const SF_LOGIN = 'example@mail.com';
+// Salesforce login (Ex. test@example.com
+const SF_LOGIN = 'chatbot@neoxia.ma';
 // Salesforce password + security token
-const SF_PASSWORD = '************';
+const SF_PASSWORD = '25072017fkmop3JAAuAHoMAjWdjOmITJwswB';
 // API.ai client access token
 const API_AI_CLIENT_ACCESS_TOKEN = 'ee41bacb813eca20bf766e7eb7364922';
 // Facebook app secret code
