@@ -5,7 +5,6 @@
 
 const {callSendAPI} = require('./../../send/fbApi/sendViaFaceBookAPI');
 
-const {sendTypingOn} = require('./../../send/fbApi/sendTypingOnOff');
 
 
 var sendCustomPayload = (senderID, message){
