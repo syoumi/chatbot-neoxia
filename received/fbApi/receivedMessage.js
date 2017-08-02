@@ -14,6 +14,7 @@ const {sendBulkTextMessages} = require('./../../send/fbApi/sendBulkTextMessages'
 
 // const {getUserInfos} = require('./../../utils/getUserInfos');
 const {getWaiting} = require('./../../utils/waiting');
+const {setNotWaiting} = require('./../../utils/waiting');
 
 // const {getAllAccounts} = require('./../../data/salesforce/getAllAccounts');
 const {getLastAccounts} = require('./../../data/salesforce/getLastAccounts');
