@@ -1,17 +1,18 @@
 /**
- *
- *
+ * In this file, we put all the logic to execute whenever an event
+ * of type message is sent to the backend app
  */
 
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 const {sendToApiAi} = require('./../apiAi/fonctions');
 
 const {getWaiting} = require('./../../utils/waiting');
+const {setNotWaiting} = require('./../../utils/waiting');
 
 
 
 /**
- *
+ * Message event handler
  */
 var receivedMessage = (event) => {
   // Extracting event informations

@@ -1,11 +1,14 @@
 /**
- *
- *
+ * When the user sees any message sent by the application
+ * the function in this file is called
  */
 
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 const {getWaiting} = require('./../../utils/waiting');
 
+/**
+ * Read event handler
+ */
 var receivedSeen = (event) => {
   var senderID = event.sender.id;
   // The timestamp is the time of the event reception
