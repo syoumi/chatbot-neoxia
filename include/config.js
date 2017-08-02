@@ -13,7 +13,7 @@ const SF_LOGIN = 'chatbot@neoxia.ma';
 // Salesforce password + security token
 const SF_PASSWORD = '25072017fkmop3JAAuAHoMAjWdjOmITJwswB';
 // API.ai client access token
-const API_AI_CLIENT_ACCESS_TOKEN = 'ee41bacb813eca20bf766e7eb7364922';
+const API_AI_CLIENT_ACCESS_TOKEN = '47370c9dd09c4ef9bf8dfa664aa86e39';
 // Facebook app secret code
 const FB_SECRET = '##';
 // Maximum time to wait before re-prompt user for answer
