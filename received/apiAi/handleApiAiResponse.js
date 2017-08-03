@@ -25,36 +25,8 @@ var handleApiAiResponse = (senderID, response) => {
 	//If there's messages
 	if ((messages) && (messages.length == 1 && messages[0].type != 0 || messages.length > 1)) {
 
-		/*let timeoutInterval = 1100;
-		let previousType ;
-		let cardTypes = [];
-		let timeout = 0;*/
-
-
 		for (var i = 0; i < messages.length; i++) {
-
-			/*if ( previousType == 1 && (messages[i].type != 1 || i == messages.length - 1)) {
-
-				timeout = (i - 1) * timeoutInterval;
-				setTimeout(handleCardMessages.bind(null, cardTypes, senderID), timeout);
-				cardTypes = [];
-				timeout = i * timeoutInterval;
-				setTimeout(sendCardMessage.bind(null, messages[i], senderID), timeout);
-			} else if ( messages[i].type == 1 && i == messages.length - 1) {
-				cardTypes.push(messages[i]);
-                		timeout = (i - 1) * timeoutInterval;
-                		setTimeout(sendCardMessage.bind(null, cardTypes, senderID), timeout);
-                		cardTypes = [];
-			} else if ( messages[i].type == 1 ) {
-				cardTypes.push(messages[i]);
-			} else {*/
-				/*timeout = i * timeoutInterval;
-				setTimeout(handleMessage.bind(null, messages[i], senderID), timeout);*/
 				handleMessage(messages[i], senderID);
-			//}
-
-			//previousType = messages[i].type;
-
 		}
 	}
 
@@ -84,11 +56,6 @@ var handleApiAiResponse = (senderID, response) => {
 		sendTextMessage(senderID, responseText);
 	}
 }
-
-
-
-
-
 
 module.exports={
   handleApiAiResponse
