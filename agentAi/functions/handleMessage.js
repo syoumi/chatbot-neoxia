@@ -6,8 +6,8 @@ const {findExactMatch} = require('./findExactMatch');
 const {findMatchContext} = require('./findMatchContext');
 const {getAnswer} = require('./getAnswer');
 
-var jsonData = fs.readFileSync('./ai/resources/data.json');
-var ignorable = fs.readFileSync('./ai/resources/ignorable.json');
+var jsonData = fs.readFileSync('./agentAi/resources/data.json');
+var ignorable = fs.readFileSync('./agentAi/resources/ignorable.json');
 
 var data = JSON.parse(jsonData).data;
 

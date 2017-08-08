@@ -4,7 +4,7 @@ const {checkEquality} = require('./checkEquality');
 const {removePunctuation} = require('./removePunctuation');
 const {isIgnorable} = require('./ignoreWords');
 
-var jsonData = fs.readFileSync('./ai/resources/data.json');
+var jsonData = fs.readFileSync('./agentAi/resources/data.json');
 
 var data = JSON.parse(jsonData).data;
 

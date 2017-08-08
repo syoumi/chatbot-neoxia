@@ -29,7 +29,7 @@ var checkEquality = (s1, s2) => {
 };
 
 var areSynonyms = (s1, s2) => {
-  var dico = fs.readFileSync('./ai/resources/synonyms.json');
+  var dico = fs.readFileSync('./agentAi/resources/synonyms.json');
   var dicoObj = JSON.parse(dico);
   var data = dicoObj.data;
   var synonyms = false;
