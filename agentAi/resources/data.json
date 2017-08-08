@@ -884,9 +884,10 @@
 
     },
     {
-      "action": "achat-action",
+      "action": "operation-action",
       "keywords": [
-        "acheter"
+        "acheter",
+        "louer"
       ],
       "answers": [
         "D'accord. Voulez-vous fixer la fourchette des prix?"
@@ -895,61 +896,47 @@
         {
           "id": 36,
           "input": "type-logement-action",
-          "output": "achat-action"
+          "output": "operation-action"
         },
         "parameters":["?"]
     },
 
     {
-      "action": "location-action",
-      "keywords": [
-        "louer"
-      ],
-      "answers": [
-        "D'accord. Voulez-vous fixer la fourchette des prix?"
-      ],
-      "context":
-        {
-          "id": 37,
-          "input": "type-logement-action",
-          "output": "location-action"
-        },
-        "parameters":["?"]
-    },
-
-    {
-      "action": "fourchette-action",
-      "keywords": [
-        "xx"
-      ],
-      "answers": [
-        "Bien entendu. Souhaitez-vous préciser le nombre de chambres?"
-      ],
-      "context":
-        {
-          "id": 38,
-          "input": "achat-action",
-          "output": "fourchette-action"
-        },
-        "parameters":["?"]
-    },
-
-    {
-      "action": "min-fourchette-action",
+      "action": "accept-fourchette-action",
       "keywords": [
         "oui",
         "d accord",
         "pourquoi pas",
         "prq pas",
-        "ok"
+        "ok",
+        "si",
+        "fixer fourchette"
       ],
       "answers": [
-        "Quel est le prix minimum?"
+        "D'accord. Veuillez spéficier le prix minimum (en DH), s'il vous plaît."
       ],
       "context":
         {
-          "id": 39,
-          "input": "type-logement-action",
+          "id": 37,
+          "input": "operation-action",
+          "output": "accept-fourchette-action"
+        },
+        "parameters":[]
+    },
+
+    {
+      "action": "min-fourchette-action",
+      "keywords": [
+        "{!min_prix!} DH",
+        "{!min_prix!}"
+      ],
+      "answers": [
+        "Veuillez spéficier le prix maximum (en DH), s'il vous plaît."
+      ],
+      "context":
+        {
+          "id": 38,
+          "input": "operation-action",
           "output": "min-fourchette-action"
         },
         "parameters":["?"]
@@ -958,38 +945,42 @@
     {
       "action": "max-fourchette-action",
       "keywords": [
-        "$$$$DH"
+        "{!max_prix!} DH",
+        "{!max_prix!}"
       ],
       "answers": [
-        "Quel est le prix maximum?"
+        "C'est noté. Souhaitez-vous spécifier le nombre de chambres?"
       ],
       "context":
         {
-          "id": 40,
-          "input": "min-fourchette-action",
-          "output": "max-fourchette-action"
+          "id": 39,
+          "input": "operation-action",
+          "output": "fourchette-action"
         },
         "parameters":["?"]
     },
+
     {
       "action": "refuse-fourchette-action",
       "keywords": [
         "non",
+        "non merci",
         "pas maintenant"
       ],
       "answers": [
-        "Comme vous voulez. "
+        "C'est noté. Souhaitez-vous spécifier le nombre de chambres?"
       ],
       "context":
         {
-          "id": 41,
-          "input": "achat-action",
-          "output": "refuse-fourchette-action"
+          "id": 40,
+          "input": "operation-action",
+          "output": "fourchette-action"
         },
         "parameters":[]
     },
+
     {
-      "action": "accepte-nbr-chambres-action",
+      "action": "accept-nbr-chambres-action",
       "keywords": [
         "oui",
         "d accord",
@@ -1003,8 +994,162 @@
       "context":
         {
           "id": 42,
-          "input": "",
+          "input": "fourchette-action",
           "output": "accepte-nbr-chambres-action"
+        },
+        "parameters":[]
+    },
+
+    {
+      "action": "def-nbr-chambres-action",
+      "keywords": [
+        "{!nbr_chambres!} chambres",
+        "{!nbr_chambres!}"
+      ],
+      "answers": [
+        "C'est noté. Voulez-vous choisir une ville? "
+      ],
+      "context":
+        {
+          "id": 43,
+          "input": "accept-nbr-chambres-action",
+          "output": "nbr-chambres-action"
+        },
+        "parameters":["?"]
+    },
+
+    {
+      "action": "refuse-nbr-chambres-action",
+      "keywords": [
+        "non",
+        "non merci",
+        "pas maintenant"
+      ],
+      "answers": [
+        "C'est noté. Voulez-vous choisir une ville? "
+      ],
+      "context":
+        {
+          "id": 43,
+          "input": "fourchette-action",
+          "output": "nbr-chambres-action"
+        },
+        "parameters":[]
+    },
+
+    {
+      "action": "accept-ville-action",
+      "keywords": [
+        "oui",
+        "pourquoi pas",
+        "prq pas",
+        "ok",
+        "si"
+      ],
+      "answers": [
+        "Laquelle?",
+        "Quelle ville?"
+      ],
+      "context":
+        {
+          "id": 44,
+          "input": "nbr-chambres-action",
+          "output": "accept-ville-action"
+        },
+        "parameters":[]
+    },
+
+    {
+      "action": "nom-ville-action",
+      "keywords": [
+        "{!nom_ville!}"
+      ],
+      "answers": [
+        "D'accord. Peut-être voulez-vous choisir, également, un quartier?"
+      ],
+      "context":
+        {
+          "id": 45,
+          "input": "accept-ville-action",
+          "output": "ville-action"
+        },
+        "parameters":["?"]
+    },
+
+    {
+      "action": "refuse-ville-action",
+      "keywords": [
+        "non",
+        "non merci",
+        "pas maintenant"
+      ],
+      "answers": [
+        "Comme vous voulez. Peut-être voulez-vous choisir un quartier?"
+      ],
+      "context":
+        {
+          "id": 46,
+          "input": "nbr-chambres-action",
+          "output": "ville-action"
+        },
+        "parameters":[]
+    },
+
+    {
+      "action": "accept-quartier-action",
+      "keywords": [
+        "oui",
+        "pourquoi pas",
+        "prq quoi",
+        "si",
+        "ok"
+      ],
+      "answers": [
+        "Lequel?",
+        "Quel quartier?",
+        "Donnez, s'il vous plaît, le nom du quartier."
+      ],
+      "context":
+        {
+          "id": 47,
+          "input": "ville-action",
+          "output": "accept-quartier-action"
+        },
+        "parameters":[]
+    },
+
+    {
+      "action": "nom-quartier-action",
+      "keywords": [
+        "{!nom_quartier!}"
+      ],
+      "answers": [
+        "C'est noté."
+      ],
+      "context":
+        {
+          "id": 48,
+          "input": "accept-quartier-action",
+          "output": "quartier-action"
+        },
+        "parameters":["?"]
+    },
+
+    {
+      "action": "refuse-quartier-action",
+      "keywords": [
+        "non",
+        "non merci",
+        "pas maintenant"
+      ],
+      "answers": [
+        "Comme vous voulez."
+      ],
+      "context":
+        {
+          "id": 49,
+          "input": "ville-action",
+          "output": "quartier-action"
         },
         "parameters":[]
     },
@@ -1024,7 +1169,7 @@
       ],
       "context":
         {
-          "id": 43,
+          "id": 50,
           "input": "",
           "output": "catalogue-action"
         },
