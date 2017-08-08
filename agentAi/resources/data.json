@@ -954,7 +954,7 @@
       "context":
         {
           "id": 39,
-          "input": "operation-action",
+          "input": "min-fourchette-action",
           "output": "fourchette-action"
         },
         "parameters":["?"]
@@ -1026,7 +1026,7 @@
         "pas maintenant"
       ],
       "answers": [
-        "C'est noté. Voulez-vous choisir une ville? "
+        "Comme vous voulez. Voulez-vous choisir une ville? "
       ],
       "context":
         {
@@ -1084,13 +1084,13 @@
         "pas maintenant"
       ],
       "answers": [
-        "Comme vous voulez. Peut-être voulez-vous choisir un quartier?"
+        "D'accord."
       ],
       "context":
         {
           "id": 46,
           "input": "nbr-chambres-action",
-          "output": "ville-action"
+          "output": "quartier-action"
         },
         "parameters":[]
     },
