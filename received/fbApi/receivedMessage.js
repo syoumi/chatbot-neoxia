@@ -51,7 +51,8 @@ var receivedMessage = (event) => {
       senderID: senderID,
       text : messageText
     }
-    receiveMessage(request);
+    var answer = receiveMessage(request);
+    sendTextMessage(answer.recipientID, answer.answer);
 
   } else if (messageAttachments) {
    sendTextMessage(senderID, 'Pièce jointe bien reçue <3 ^_^ !');
