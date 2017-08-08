@@ -15,24 +15,24 @@ var handleAiAction= (senderID, answer) => {
   var context = answer.context;
   var params = answer.parameters;
 
-  console.log('Action reçue:', action);
+  console.log(`************* ACTION RECUE: ${action} ****************`);
 	switch (action) {
-
 
     /*
      * Scénario 1 : consulter catalogue d'un logement pour achat ou location avec ou sans critères
      */
 
-
-    //Catalogue ---> Demander quel type logement
+    //Catalogue ---> Demander type logement
 		case "catalogue-action":
       var replies = ["Appartement", "Maison", "Villa", "Studio"];
       sendQuickReplies(senderID, text, replies);
 		  break;
+    //Type logement ---> Demander opération
     case "type-logement-action":
       var replies = ["Acheter", "Louer"];
       sendQuickReplies(senderID, text, replies);
   		break;
+    //Opération, fixer fourchette, refuser fourchette, fixer nbr chambres, refuser nbr chambres, fixer nom-ville
     case "operation-action", "max-fourchette-action", "refuse-fourchette-action", "def-nbr-chambres-action", "refuse-nbr-chambres-action", "nom-ville-action":
       var replies = ["Oui", "Non"];
       sendQuickReplies(senderID, text, replies);

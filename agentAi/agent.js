@@ -62,7 +62,7 @@ var receiveMessage = (request) => {
 
 var sendAnswer = (recipientID, answer) => {
   var toSend = {
-    recipientID,
+    recipientID : recipientID,
     action: answer.action,
     answer: answer.answer,
     parameters: answer.parameters

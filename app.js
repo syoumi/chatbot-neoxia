@@ -51,16 +51,15 @@ app.post('/webhook', (req, res) => {
       oneEntry.messaging.forEach((event) => {
 
         if (event.message) {
-
           receivedMessage(event);
+
         } else if (event.postback) {
-
           receivedPostBack(event);
+
         } else if (event.read) {
-
           receivedSeen(event);
+          
         } else {
-
           console.log("Webhook received unknown event : ");
         }
       });
