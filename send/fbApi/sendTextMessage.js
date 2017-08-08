@@ -28,8 +28,8 @@ var sendTextMessage = (reciepientID, textMessage) => {
    setWaiting();
   }
 
-  // We send data object via facebook API
-  callSendAPI(messageData);
+  sendTypingOn(reciepientID);
+  setTimeout(() => {callSendAPI(messageData);}, 3000);
 };
 
 /**
