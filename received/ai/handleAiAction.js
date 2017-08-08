@@ -34,7 +34,7 @@ var handleAiAction= (senderID, answer) => {
 
 		default:
 			//unhandled action, just send back the text
-			sendTextMessage(senderID, responseText);
+			sendTextMessage(senderID, text);
 	}
 }
 
