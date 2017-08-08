@@ -1155,6 +1155,23 @@
     },
 
     {
+      "action": "envoyer-catalogue-action",
+      "keywords": [
+        "envoyer catalogue"
+      ],
+      "answers": [
+        "D'accord."
+      ],
+      "context":
+        {
+          "id": 50,
+          "input": "quartier-action",
+          "output": ""
+        },
+        "parameters":[]
+    },
+
+    {
       "action": "invitation-catalogue-action",
       "keywords": [
         "oui",
@@ -1169,7 +1186,7 @@
       ],
       "context":
         {
-          "id": 50,
+          "id": 51,
           "input": "",
           "output": "catalogue-action"
         },
