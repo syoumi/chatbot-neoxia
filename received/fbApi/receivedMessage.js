@@ -9,7 +9,7 @@ const {sendToApiAi} = require('./../../send/apiAi/sendViaApiAi');
 const {getWaiting} = require('./../../utils/waiting');
 const {setNotWaiting} = require('./../../utils/waiting');
 
-const {receiveMessage} = require('./../../ai/agent.js');
+const {receiveMessage} = require('./../../ai/agent');
 
 
 
