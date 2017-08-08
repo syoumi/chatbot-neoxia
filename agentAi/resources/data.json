@@ -1019,13 +1019,14 @@
         "ok"
       ],
       "answers": [
-        ""
+        "Quel type de logement voulez-vous consulter?",
+        "Veuillez préciser, s'il vous plaît, le type de logement que vous souhaitez consulter."
       ],
       "context":
         {
           "id": 43,
           "input": "",
-          "output": ""
+          "output": "catalogue-action"
         },
         "parameters":[]
     },
