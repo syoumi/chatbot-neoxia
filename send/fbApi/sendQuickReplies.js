@@ -34,7 +34,7 @@ var sendQuickReplies= (recipientId, text, data, metadata) => {
 	};
 
     sendTypingOn(recipientId);
-    setTimeout(() => {callSendAPI(messageData);}, 5000);
+    setTimeout(() => {callSendAPI(messageData);}, 3000);
 }
 
 
