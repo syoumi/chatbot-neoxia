@@ -936,7 +936,7 @@
       "context":
         {
           "id": 38,
-          "input": "operation-action",
+          "input": "accept-fourchette-action",
           "output": "min-fourchette-action"
         },
         "parameters":["?"]
