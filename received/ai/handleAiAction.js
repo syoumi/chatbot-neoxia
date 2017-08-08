@@ -22,8 +22,8 @@ var handleAiAction= (senderID, answer) => {
      * Scénario 1 : consulter catalogue d'un logement pour achat ou location avec ou sans critères
      */
 
-     console.log(`Action reçue: ${action}`);
-     
+     console.log('Action reçue:', action);
+
     //Catalogue ---> Demander quel type logement
 		case "catalogue-action":
       var replies = ["Appartement", "Maison", "Villa", "Studio"];
