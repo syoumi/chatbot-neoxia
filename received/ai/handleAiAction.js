@@ -57,7 +57,7 @@ var handleAiAction= (senderID, answer) => {
       sendTextMessage(senderID, text);
       var type = params[0];
       var op = params[1];
-      console.log(type + "; " + op);
+      console.log("TYYYYYYYPE: " + type + "; OP: " + op);
       break;
 
 
