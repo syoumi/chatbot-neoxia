@@ -13,6 +13,8 @@ const {VERIFY_TOKEN} = require('./include/config');
 const {receivedMessage} = require('./received/fbApi/receivedMessage');
 const {receivedPostBack} = require('./received/fbApi/receivedPostBack');
 const {receivedSeen} = require('./received/fbApi/receivedSeen');
+const {receivedDelivery} = require('./received/fbApi/receivedDelivery');
+
 
 var app = express();
 
@@ -58,6 +60,9 @@ app.post('/webhook', (req, res) => {
 
         } else if (event.read) {
           receivedSeen(event);
+
+        } else if (event.delivery) {
+					receivedDelivery(event);
 
         } else {
           console.log("Webhook received unknown event : ", event);

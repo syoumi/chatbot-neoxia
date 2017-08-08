@@ -62,7 +62,7 @@ var receiveMessage = (request) => {
 
 var sendAnswer = (recipientID, answer) => {
   var toSend = {
-    recipientID : recipientID,
+    recipientID,
     action: answer.action,
     answer: answer.answer,
     parameters: answer.parameters
@@ -73,50 +73,3 @@ var sendAnswer = (recipientID, answer) => {
 module.exports = {
   receiveMessage
 }
-
-// // answer example
-// var answer = {
-//   recipientID: 123456,
-//   action: 'actionName',
-//   answer: 'one answer',
-//   parameters: []
-// };
-//
-// // message example
-// var message = {
-// senderID: 7851846,
-//   text: "catalogue"
-// };
-
-// var response = receiveMessage(message);
-// console.log(`Bot says: ${response.answer}`);
-//
-// if(response.parameters) console.log(`Parameters: ${response.parameters}`);
-//
-// var message = {
-//   senderID: 7851846,
-//   text: "appartement"
-// };
-//
-// var response = receiveMessage(message);
-// console.log(`Bot says: ${response.answer}`);
-// if(response.parameters) console.log(`Parameters: ${response.parameters}`);
-//
-// var message = {
-//   senderID: 7851846,
-//   text: "acheter"
-// };
-//
-// var response = receiveMessage(message);
-// console.log(`Bot says: ${response.answer}`);
-// if(response.parameters) console.log(`Parameters: ${response.parameters}`);
-//
-//
-// var message = {
-//   senderID: 7851846,
-//   text: "non"
-// };
-//
-// var response = receiveMessage(message);
-// console.log(`Bot says: ${response.answer}`);
-// if(response.parameters) console.log(`Parameters: ${response.parameters}`);
