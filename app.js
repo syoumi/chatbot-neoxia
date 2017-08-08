@@ -58,9 +58,9 @@ app.post('/webhook', (req, res) => {
 
         } else if (event.read) {
           receivedSeen(event);
-          
+
         } else {
-          console.log("Webhook received unknown event : ");
+          console.log("Webhook received unknown event : ", event);
         }
       });
     });
