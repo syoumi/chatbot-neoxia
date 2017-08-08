@@ -15,6 +15,7 @@ var handleAiAction= (senderID, answer) => {
   var context = answer.context;
   var params = answer.parameters;
 
+  console.log('Action reçue:', action);
 	switch (action) {
 
 
@@ -22,7 +23,6 @@ var handleAiAction= (senderID, answer) => {
      * Scénario 1 : consulter catalogue d'un logement pour achat ou location avec ou sans critères
      */
 
-     console.log('Action reçue:', action);
 
     //Catalogue ---> Demander quel type logement
 		case "catalogue-action":
