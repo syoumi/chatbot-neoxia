@@ -22,6 +22,8 @@ var sendQuickReplies= (recipientId, text, data, metadata) => {
 		replies.push(reply);
 	}
 
+
+
 	var messageData = {
 		recipient: {
 			id: recipientId
@@ -32,6 +34,9 @@ var sendQuickReplies= (recipientId, text, data, metadata) => {
 			quick_replies: replies
 		}
 	};
+
+	console.log('METADATAAAAA: ', metadata);
+	console.log('MESSAGEDATAAAAA: ', messagedata);
 
     sendTypingOn(recipientId);
     setTimeout(() => {callSendAPI(messageData);}, 3000);
