@@ -52,7 +52,9 @@ var receivedMessage = (event) => {
       senderID: senderID,
       text : messageText
     }
+    console.log('REQUEST SENT TO AI: ', request);
     var answer = receiveMessage(request);
+    console.log('ANSWER GOT FROM AI: ', answer);
     sendToAi(answer);
 
   } else if (messageAttachments) {
