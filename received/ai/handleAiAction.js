@@ -24,31 +24,14 @@ var handleAiAction= (senderID, answer) => {
 
     //Catalogue ---> Demander quel type logement
 		case "catalogue-action":
-			//sendCatalogueAppartVente(senderID, text);
       var replies = ["Appartement", "Maison", "Villa", "Studio"];
       sendQuickReplies(senderID, text, replies);
 		  break;
-    //Type logement ---> Demander quelle opération
     case "type-logement-action":
       var replies = ["Acheter", "Louer"];
       sendQuickReplies(senderID, text, replies);
   		break;
-    //Opération ---> Demander fixer fourchette
-    case "operation-action":
-      //sendCatalogueAppartVente(senderID, text);
-      var replies = ["Oui", "Non"];
-      sendQuickReplies(senderID, text, replies);
-      break;
-    //Accepte fourchette ---> Demander prix min
-    case "accept-fourchette-action":
-      sendTextMessage(senderID, text);
-      break;
-    //Prix min ---> Demander prix max
-    case "min-fourchette-action":
-      sendTextMessage(senderID, text);
-      break;
-    //Prix max/Refuser fourchette ---> Demander spéficier nbr chambres
-    case "max-fourchette-action", "refuse-fourchette-action":
+    case "operation-action", "max-fourchette-action", "refuse-fourchette-action", "def-nbr-chambres-action", "refuse-nbr-chambres-action", "nom-ville-action":
       var replies = ["Oui", "Non"];
       sendQuickReplies(senderID, text, replies);
       break;
