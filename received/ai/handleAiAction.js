@@ -19,7 +19,7 @@ var handleAiAction= (senderID, answer) => {
 
 		case "catalogue-action":
 			//sendCatalogueAppartVente(senderID, text);
-      let replies = ["Appartement", "Maison", "Villa", "Studio"];
+      var replies = ["Appartement", "Maison", "Villa", "Studio"];
       sendQuickReplies(senderID, text, replies);
 		  break;
 
