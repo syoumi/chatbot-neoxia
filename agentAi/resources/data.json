@@ -15,14 +15,14 @@
         "lu"
       ],
       "answers": [
-        "Salut à vous !",
-        "Salutations !"
+        "Salut à vous ! Voulez-vous consulter notre catalogue?",
+        "Salutations ! Voulez-vous consulter notre catalogue?"
       ],
       "context":
         {
           "id": 0,
           "input": "",
-          "output": "salutations-action"
+          "output": "invitation-catalogue-action"
         },
         "parameters":[]
 
@@ -44,7 +44,7 @@
       "context":
         {
           "id": 1,
-          "input": "salutations-action",
+          "input": "",
           "output": "salamalec-action"
         },
         "parameters":[]
