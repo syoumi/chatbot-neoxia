@@ -52,6 +52,13 @@ var handleAiAction= (senderID, answer) => {
       var replies = ["Oui", "Non"];
       sendQuickReplies(senderID, text, replies);
       break;
+    //Fin scénario
+    case "envoyer-catalogue-action":
+      sendTextMessage(senderID, text);
+      var type = params[0];
+      var op = params[1];
+      console.log(type + "; " + op);
+      break;
 
 
 
