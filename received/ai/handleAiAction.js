@@ -53,7 +53,9 @@ var handleAiAction= (senderID, answer) => {
       sendQuickReplies(senderID, text, replies);
       break;
     //Fin scénario
-    case "envoyer-catalogue-action":
+    case "refuse-ville-action":
+    case "refuse-quartier-action":
+    case "nom-quartier-action":
       sendTextMessage(senderID, text);
       var type = params[0];
       var op = params[1];

@@ -1131,7 +1131,7 @@
         {
           "id": 48,
           "input": "accept-quartier-action",
-          "output": "quartier-action"
+          "output": ""
         },
         "parameters":["?"]
     },
@@ -1150,23 +1150,6 @@
         {
           "id": 49,
           "input": "ville-action",
-          "output": "quartier-action"
-        },
-        "parameters":[]
-    },
-
-    {
-      "action": "envoyer-catalogue-action",
-      "keywords": [
-        "envoyer catalogue"
-      ],
-      "answers": [
-        "D'accord."
-      ],
-      "context":
-        {
-          "id": 50,
-          "input": "quartier-action",
           "output": ""
         },
         "parameters":[]
@@ -1187,7 +1170,7 @@
       ],
       "context":
         {
-          "id": 51,
+          "id": 50,
           "input": "",
           "output": "catalogue-action"
         },
