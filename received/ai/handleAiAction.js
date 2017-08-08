@@ -21,16 +21,7 @@ var handleAiAction= (senderID, answer) => {
 			//sendCatalogueAppartVente(senderID, text);
       let replies = ["Appartement", "Maison", "Villa", "Studio"];
       sendQuickReplies(senderID, text, replies);
-
-		break;
-
-    case "say-c":
-      sendTextMessage(senderID, 'You said c');
-    break;
-
-    case 'test-sf':
-      getLastAccounts(senderID);
-      break;
+		  break;
 
 		default:
 			//unhandled action, just send back the text
