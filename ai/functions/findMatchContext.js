@@ -10,8 +10,8 @@ const {isIgnorable} = require('./ignoreWords');
 const {MIN_STEP_TWO_PERCENT} = require('./../include/config');
 const {MIN_STEP_THREE_PERCENT} = require('./../include/config');
 
-var jsonData = fs.readFileSync('./resources/data.json');
-var ignorable = fs.readFileSync('./resources/ignorable.json');
+var jsonData = fs.readFileSync('./ai/resources/data.json');
+var ignorable = fs.readFileSync('./ai/resources/ignorable.json');
 
 var data = JSON.parse(jsonData).data;
 

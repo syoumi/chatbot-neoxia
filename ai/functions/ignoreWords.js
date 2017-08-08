@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-var ignorable = fs.readFileSync('./resources/ignorable.json');
+var ignorable = fs.readFileSync('./ai/resources/ignorable.json');
 
 var ignorableWords = JSON.parse(ignorable).words;
 
