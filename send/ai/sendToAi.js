@@ -1,5 +1,5 @@
 
-const {handleApiAiResponse} = require('./../../received/ai/handleAiResponse');
+const {handleAiResponse} = require('./../../received/ai/handleAiResponse');
 
 
 var sendToAi = (answer) => {
