@@ -9,6 +9,8 @@ const {sendToApiAi} = require('./../../send/apiAi/sendViaApiAi');
 const {getWaiting} = require('./../../utils/waiting');
 const {setNotWaiting} = require('./../../utils/waiting');
 
+const {receiveMessage} = require('./../../ai/agent.js');
+
 
 
 /**
@@ -44,7 +46,12 @@ var receivedMessage = (event) => {
 
 
   if (messageText) {
-     sendToApiAi(senderID, messageText);
+    // sendToApiAi(senderID, messageText);
+    var request = {
+      senderID: senderID,
+      text : messageText
+    }
+    receiveMessage(request);
 
   } else if (messageAttachments) {
    sendTextMessage(senderID, 'Pièce jointe bien reçue <3 ^_^ !');
