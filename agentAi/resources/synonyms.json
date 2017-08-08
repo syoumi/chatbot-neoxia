@@ -35,6 +35,15 @@
     },
 
     {
+        "name": "souhaite",
+        "synonyms": [
+          "souhaite",
+          "espère",
+          "veux"
+        ]
+    },
+
+    {
       "name": "logement",
       "synonyms": [
         "logement",

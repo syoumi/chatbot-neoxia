@@ -19,7 +19,7 @@ var handleAiAction= (senderID, answer) => {
 
 
     //Scénario 1 : consulter catalogue d'un logement pour achat ou location avec ou sans critères
-		case "catalogue-action" , "invitation-catalogue-action":
+		case "catalogue-action":
 			//sendCatalogueAppartVente(senderID, text);
       var replies = ["Appartement", "Maison", "Villa", "Studio"];
       sendQuickReplies(senderID, text, replies);
