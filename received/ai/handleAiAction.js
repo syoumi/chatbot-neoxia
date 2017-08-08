@@ -15,7 +15,7 @@ var handleAiAction= (senderID, answer) => {
   var context = answer.context;
   var params = answer.parameters;
 
-  console.log(`************* ANSWER: ${answer} ****************`);
+  console.log('************* ANSWER:', answer);
 	switch (action) {
 
     /*
