@@ -18,9 +18,19 @@ var handleAiAction= (senderID, answer) => {
   console.log('************* ANSWER:', answer);
 	switch (action) {
 
-    /*
-     * Scénario 1 : consulter catalogue d'un logement pour achat ou location avec ou sans critères
-     */
+    /**
+      * Démarrage
+      */
+
+    case "start-action":
+    case "salutations-action":
+      var replies = ["Consulter catalogue", "Voir nouveautés", "Poser une question", "Autre"];
+      sendQuickReplies(senderID, text, replies);
+      break;
+
+    /**
+      * Scénario 1 : consulter catalogue d'un logement pour achat ou location avec ou sans critères
+      */
 
     //Catalogue ---> Demander type logement
 		case "catalogue-action":
