@@ -82,6 +82,34 @@
     },
 
     {
+      "action": "reponse-salamalec-action",
+      "keywords": [
+        "bien merci",
+        "bien",
+        "cv",
+        "ça va",
+        "super",
+        "cool",
+        "pas mal",
+        "malade",
+        "triste",
+        "fatigué",
+        "aussi"
+      ],
+      "answers": [
+        "Bien. Souhaitez-vous consulter notre catalogue?"
+      ],
+      "context":
+        {
+          "id": 3,
+          "input": "salamalec-action",
+          "output": "invitation-catalogue-action"
+        },
+        "parameters":[]
+
+    },
+
+    {
       "action": "no-action",
       "keywords": [
         "non",
@@ -97,7 +125,7 @@
       ],
       "context":
         {
-          "id": 3,
+          "id": 4,
           "input": "",
           "output": ""
         },
@@ -124,7 +152,7 @@
       ],
       "context":
         {
-          "id": 4,
+          "id": 5,
           "input": "",
           "output": ""
         },
@@ -149,7 +177,7 @@
       ],
       "context":
         {
-          "id": 5,
+          "id": 6,
           "input": "",
           "output": ""
         },
@@ -177,7 +205,7 @@
       ],
       "context":
         {
-          "id": 6,
+          "id": 7,
           "input": "",
           "output": ""
         },
@@ -203,7 +231,7 @@
       ],
       "context":
         {
-          "id": 7,
+          "id": 8,
           "input": "",
           "output": ""
         },
@@ -233,7 +261,7 @@
       ],
       "context":
         {
-          "id": 8,
+          "id": 9,
           "input": "",
           "output": ""
         },
@@ -258,7 +286,7 @@
       ],
       "context":
         {
-          "id": 8,
+          "id": 10,
           "input": "",
           "output": ""
         },
@@ -283,7 +311,7 @@
       ],
       "context":
         {
-          "id": 9,
+          "id": 11,
           "input": "",
           "output": ""
         },
@@ -308,7 +336,7 @@
       ],
       "context":
         {
-          "id": 10,
+          "id": 12,
           "input": "",
           "output": ""
         },
@@ -328,7 +356,7 @@
       ],
       "context":
         {
-          "id": 11,
+          "id": 13,
           "input": "",
           "output": ""
         },
@@ -349,7 +377,7 @@
       ],
       "context":
         {
-          "id": 12,
+          "id": 14,
           "input": "",
           "output": ""
         },
@@ -373,7 +401,7 @@
       ],
       "context":
         {
-          "id": 13,
+          "id": 15,
           "input": "",
           "output": ""
         },
@@ -396,7 +424,7 @@
       ],
       "context":
         {
-          "id": 14,
+          "id": 16,
           "input": "",
           "output": ""
         },
@@ -416,62 +444,6 @@
       "answers": [
         "Oui.",
         "Répétez votre question, s'il vous plaît."
-      ],
-      "context":
-        {
-          "id": 15,
-          "input": "",
-          "output": ""
-        },
-      "parameters":[]
-
-    },
-
-    {
-      "action": "talk-to-me-action",
-      "keywords": [
-        "parle",
-        "parle avec moi",
-        "on pourrait se parler",
-        "je voudrais vous parler",
-        "pourrions-nous nous parler"
-      ],
-      "answers": [
-        "Avec plaisir. De quoi souhaitez-vous parler ?",
-        "J'ai toujours beaucoup de plaisir à parler avec vous. De quoi souhaitez-vous discuter ?",
-        "Quel est le sujet que vous souhaitez aborder ?"
-      ],
-      "context":
-        {
-          "id": 16,
-          "input": "",
-          "output": ""
-        },
-      "parameters":[]
-
-    },
-
-    {
-      "action": "thanks-action",
-      "keywords": [
-        "merci",
-        "merci beaucoup",
-        "je vous remercie",
-        "thanks",
-        "thank you",
-        "thx",
-        "grand merci",
-        "je suis reconnaissant",
-        "remerciement",
-        "merci bien"
-      ],
-      "answers": [
-        "À votre service.",
-        "Je vous en prie.",
-        "Mais de rien.",
-        "C'est un plaisir.",
-        "C'est toujours un plaisir de vous rendre service.",
-        "Aucun problème, je suis là pour ça."
       ],
       "context":
         {
@@ -503,6 +475,62 @@
           "input": "",
           "output": ""
         },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "thanks-action",
+      "keywords": [
+        "merci",
+        "merci beaucoup",
+        "je vous remercie",
+        "thanks",
+        "thank you",
+        "thx",
+        "grand merci",
+        "je suis reconnaissant",
+        "remerciement",
+        "merci bien"
+      ],
+      "answers": [
+        "À votre service.",
+        "Je vous en prie.",
+        "Mais de rien.",
+        "C'est un plaisir.",
+        "C'est toujours un plaisir de vous rendre service.",
+        "Aucun problème, je suis là pour ça."
+      ],
+      "context":
+        {
+          "id": 19,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "talk-to-me-action",
+      "keywords": [
+        "parle",
+        "parle avec moi",
+        "on pourrait se parler",
+        "je voudrais vous parler",
+        "pourrions-nous nous parler"
+      ],
+      "answers": [
+        "Avec plaisir. De quoi souhaitez-vous parler ?",
+        "J'ai toujours beaucoup de plaisir à parler avec vous. De quoi souhaitez-vous discuter ?",
+        "Quel est le sujet que vous souhaitez aborder ?"
+      ],
+      "context":
+        {
+          "id": 20,
+          "input": "",
+          "output": ""
+        },
         "parameters":{
           "name": ""
         }
@@ -524,7 +552,7 @@
       ],
       "context":
         {
-          "id": 19,
+          "id": 21,
           "input": "",
           "output": ""
         },
@@ -545,7 +573,7 @@
       ],
       "context":
         {
-          "id": 20,
+          "id": 22,
           "input": "",
           "output": ""
         },
@@ -565,7 +593,7 @@
       ],
       "context":
         {
-          "id": 21,
+          "id": 23,
           "input": "",
           "output": ""
         },
@@ -589,7 +617,7 @@
       ],
       "context":
         {
-          "id": 22,
+          "id": 24,
           "input": "",
           "output": ""
         },
@@ -614,7 +642,7 @@
       ],
       "context":
         {
-          "id": 23,
+          "id": 25,
           "input": "",
           "output": ""
         },
@@ -638,7 +666,7 @@
       ],
       "context":
         {
-          "id": 24,
+          "id": 26,
           "input": "",
           "output": ""
         },
@@ -662,7 +690,7 @@
       ],
       "context":
         {
-          "id": 25,
+          "id": 27,
           "input": "",
           "output": ""
         },
@@ -682,7 +710,7 @@
       ],
       "context":
         {
-          "id": 26,
+          "id": 28,
           "input": "",
           "output": ""
         },
@@ -714,7 +742,7 @@
       ],
       "context":
         {
-          "id": 27,
+          "id": 29,
           "input": "",
           "output": ""
         },
@@ -739,7 +767,7 @@
       ],
       "context":
         {
-          "id": 28,
+          "id": 30,
           "input": "",
           "output": ""
         },
@@ -759,7 +787,7 @@
       ],
       "context":
         {
-          "id": 29,
+          "id": 31,
           "input": "",
           "output": ""
         },
@@ -780,7 +808,7 @@
       ],
       "context":
         {
-          "id": 30,
+          "id": 32,
           "input": "",
           "output": ""
         },
@@ -803,7 +831,7 @@
       ],
       "context":
         {
-          "id": 31,
+          "id": 33,
           "input": "",
           "output": ""
         },
@@ -826,7 +854,7 @@
       ],
       "context":
         {
-          "id": 32,
+          "id": 34,
           "input": "",
           "output": "catalogue-action"
         },
@@ -848,7 +876,7 @@
       ],
       "context":
         {
-          "id": 33,
+          "id": 35,
           "input": "catalogue-action",
           "output": "type-logement-action"
         },
@@ -865,7 +893,7 @@
       ],
       "context":
         {
-          "id": 34,
+          "id": 36,
           "input": "type-logement-action",
           "output": "achat-action"
         },
@@ -882,7 +910,7 @@
       ],
       "context":
         {
-          "id": 35,
+          "id": 37,
           "input": "type-logement-action",
           "output": "location-action"
         },
@@ -899,7 +927,7 @@
       ],
       "context":
         {
-          "id": 36,
+          "id": 38,
           "input": "achat-action",
           "output": "fourchette-action"
         },
@@ -920,7 +948,7 @@
       ],
       "context":
         {
-          "id": 37,
+          "id": 39,
           "input": "type-logement-action",
           "output": "min-fourchette-action"
         },
@@ -937,7 +965,7 @@
       ],
       "context":
         {
-          "id": 38,
+          "id": 40,
           "input": "min-fourchette-action",
           "output": "max-fourchette-action"
         },
@@ -954,7 +982,7 @@
       ],
       "context":
         {
-          "id": 39,
+          "id": 41,
           "input": "achat-action",
           "output": "refuse-fourchette-action"
         },
@@ -974,12 +1002,34 @@
       ],
       "context":
         {
-          "id": 40,
+          "id": 42,
           "input": "",
           "output": "accepte-nbr-chambres-action"
         },
         "parameters":[]
     },
+
+    {
+      "action": "invitation-catalogue-action",
+      "keywords": [
+        "oui",
+        "d accord",
+        "pourquoi pas",
+        "prq pas",
+        "ok"
+      ],
+      "answers": [
+        ""
+      ],
+      "context":
+        {
+          "id": 43,
+          "input": "",
+          "output": ""
+        },
+        "parameters":[]
+    },
+
     {
       "action": "prix-action",
       "keywords": [

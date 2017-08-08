@@ -17,11 +17,19 @@ var handleAiAction= (senderID, answer) => {
 
 	switch (action) {
 
+
+    //Scénario 1 : consulter catalogue d'un logement pour achat ou location avec ou sans critères
 		case "catalogue-action":
 			//sendCatalogueAppartVente(senderID, text);
       var replies = ["Appartement", "Maison", "Villa", "Studio"];
       sendQuickReplies(senderID, text, replies);
 		  break;
+    case "type-logement-action":
+  		//sendCatalogueAppartVente(senderID, text);
+      var replies = ["Acheter", "Louer"];
+      sendQuickReplies(senderID, text, replies);
+  		break;
+    
 
 		default:
 			//unhandled action, just send back the text
