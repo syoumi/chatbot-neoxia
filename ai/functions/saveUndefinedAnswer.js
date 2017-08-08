@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-var unsaved = fs.readFileSync('./resources/unsaved.json');
+var unsaved = fs.readFileSync('./ai/resources/unsaved.json');
 
 var messages= JSON.parse(unsaved);
 
@@ -16,7 +16,7 @@ var saveUndefinedAnswer= (message)=> {
  }
  if(index == -1){
    messages.push(message);
-   fs.writeFile('./resources/unsaved.json', JSON.stringify(messages), 'utf8');
+   fs.writeFile('./ai/resources/unsaved.json', JSON.stringify(messages), 'utf8');
  }
 
 }
