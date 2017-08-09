@@ -23,7 +23,10 @@ var getAnswer = (entry) => {
 };
 
 var getEntry = (actionName) => {
-  var toReturn = data.find((item) => item.action = actionName);
+  var toReturn = data.find((item) => {
+    if (item.action == actionName) return true;
+    return false;
+  });
   console.log('RETURNIIIIING ' , toReturn);
   return toReturn;
 };
