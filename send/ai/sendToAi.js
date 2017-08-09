@@ -12,6 +12,9 @@ var sendToAi = (senderID, messageText) => {
 
 	var answer = receiveMessage(request);
 	handleAiResponse(answer.recipientID, answer);
+
+	console.log('Request is ' , request);
+	console.log('Answer is ' , answer);
 }
 
 
