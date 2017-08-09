@@ -11,12 +11,12 @@ const {sendTypingOn} = require('./sendTypingOnOff');
 /**
  * Immediatly sends a text message to recipient
  */
-var sendTextMessage = (reciepientID, textMessage) => {
+var sendTextMessage = (recipientID, textMessage) => {
 
   // Constructing JSON data to send
   var messageData = {
    recipient: {
-     id: reciepientID
+     id: recipientID
    },
    message: {
      text: textMessage
@@ -28,8 +28,9 @@ var sendTextMessage = (reciepientID, textMessage) => {
    setWaiting();
   }
 
-  // We send data object via facebook API
-  callSendAPI(messageData);
+  sendTypingOn(recipientID);
+  var delai = 100 * textMessage.length;
+  setTimeout(() => {callSendAPI(messageData);}, delai);
 };
 
 /**

@@ -1,0 +1,1217 @@
+{
+  "lang": "fr",
+  "data": [
+    {
+      "action": "salutations-action",
+      "keywords": [
+        "salut",
+        "bonjour",
+        "bjr",
+        "bonsoir",
+        "bsr",
+        "salutations",
+        "hello",
+        "salam",
+        "lu"
+      ],
+      "answers": [
+        "Salut à vous !",
+        "Salutations !"
+      ],
+      "context":
+        {
+          "id": 0,
+          "input": "",
+          "output": "salutations-action"
+        },
+        "parameters":[]
+
+    },
+
+    {
+      "action": "salamalec-action",
+      "keywords": [
+        "ça va",
+        "comment ça va",
+        "cv",
+        "comment allez vous",
+        "es ce que vous allez bien"
+      ],
+      "answers": [
+        "Très bien, merci et vous?",
+        "Super, merci. Vous?"
+      ],
+      "context":
+        {
+          "id": 1,
+          "input": "",
+          "output": "salamalec-action"
+        },
+        "parameters":[]
+
+    },
+
+    {
+      "action": "yes-action",
+      "keywords": [
+        "oui",
+        "ouai",
+        "wéé",
+        "yes",
+        "yeah",
+        "d accord",
+        "d acc",
+        "ok",
+        "c est bon",
+        "pourquoi pas",
+        "prq pas"
+      ],
+      "answers": [
+        "Génial !",
+        "Super !",
+        "C'est bon.",
+        "Bien entendu."
+      ],
+      "context":
+        {
+          "id": 2,
+          "input": "",
+          "output": ""
+        },
+        "parameters":[]
+
+    },
+
+    {
+      "action": "reponse-salamalec-action",
+      "keywords": [
+        "bien merci",
+        "bien",
+        "cv",
+        "ça va",
+        "super",
+        "cool",
+        "pas mal",
+        "malade",
+        "triste",
+        "fatigué",
+        "aussi"
+      ],
+      "answers": [
+        "Bien. Souhaitez-vous consulter notre catalogue?"
+      ],
+      "context":
+        {
+          "id": 3,
+          "input": "salamalec-action",
+          "output": "invitation-catalogue-action"
+        },
+        "parameters":[]
+
+    },
+
+    {
+      "action": "no-action",
+      "keywords": [
+        "non",
+        "pas d accord",
+        "pas du tout",
+        "du tout",
+        "non merci"
+      ],
+      "answers": [
+        "D'accord.",
+        "C'est noté.",
+        "Comme vous voulez."
+      ],
+      "context":
+        {
+          "id": 4,
+          "input": "",
+          "output": ""
+        },
+        "parameters":[]
+
+    },
+
+    {
+      "action": "no-problem-action",
+      "keywords": [
+        "pas de soucis",
+        "pas de problème",
+        "ce n est pas un problème",
+        "y a pas de soucis",
+        "ce n est pas grave",
+        "pas grave",
+        "pas de trouble",
+        "it s okay"
+      ],
+      "answers": [
+        "Entendu.",
+        "D'accord.",
+        "Très bien."
+      ],
+      "context":
+        {
+          "id": 5,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "wait-for-answer-action",
+      "keywords": [
+        "il me faut une réponse",
+        "j ai besoin d une réponse",
+        "donne moi une réponse",
+        "réponds",
+        "répondez",
+        "j attends une réponse",
+        "merci de me répondre"
+      ],
+      "answers": [
+        "Je n'ai pas compris votre question. Pouvez-vous la répéter ?",
+        "Avec plaisir. Mais pouvez-vous répéter la question avant ?"
+      ],
+      "context":
+        {
+          "id": 6,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "bad-agent-action",
+      "keywords": [
+        "tu es nul",
+        "tu ne sers à rien",
+        "tu ne peux rien faire",
+        "tu es mauvais",
+        "tu es une mauvaise personne",
+        "tu ne m aides même pas",
+        "tu es horrible",
+        "pas cool toi"
+      ],
+      "answers": [
+        "Laissez-moi encore un peu de temps pour vous prouver le contraire.",
+        "Excusez-moi. J'essaie de faire de mon mieux.",
+        "Pardon, j'essaie simplement de vous rendre service.",
+        "Ce n'est pas sympa de dire ça, j'essaie juste de vous aider."
+      ],
+      "context":
+        {
+          "id": 7,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "beautiful-action",
+      "keywords": [
+        "c est beau",
+        "c est cool",
+        "j aime bien",
+        "j apprécie bien",
+        "tellement beau",
+        "c est joli",
+        "c est chic"
+      ],
+      "answers": [
+        ":D",
+        "Si vous le dites !",
+        "Content que ça vous avez plu !"
+      ],
+      "context":
+        {
+          "id": 8,
+          "input": "",
+          "output": ""
+        },
+        "parameters":[]
+
+    },
+
+    {
+      "action": "bad-action",
+      "keywords": [
+        "c est pas beau",
+        "c est pas cool",
+        "j aime pas",
+        "j apprécie pas",
+        "tellement mauvais",
+        "c est pas joli",
+        "c est pas chic",
+        "c est mauvais"
+      ],
+      "answers": [
+        "Ça m'embête d'entendre ça. Est-ce que je peux faire quelque chose pour vous?",
+        "Dommage. Dites-moi si je peux vous aider.",
+        "Ça m'embête que vous dites ça. Qu'est-ce que je peux faire pour vous?",
+        "Oh non, comment puis-je vous aider ?",
+        "Dites-moi si je peux faire quelque chose pour améliorer ça.",
+        "Mince. Ce sera mieux la prochaine fois."
+      ],
+      "context":
+        {
+          "id": 9,
+          "input": "",
+          "output": ""
+        },
+        "parameters":[]
+
+    },
+
+    {
+      "action": "busy-agent-action",
+      "keywords": [
+        "es tu occupé",
+        "prendre un peu de ton temps",
+        "peux tu me prêter quelques minutes",
+        "tu es là",
+        "puis je vous parler",
+        "es tu toujours ici"
+      ],
+      "answers": [
+        "J'ai toujours du temps pour vous. Que puis-je faire pour vous aider ?",
+        "Toujours là pour vous servir.",
+        "Je me tiens à votre disposition."
+      ],
+      "context":
+        {
+          "id": 10,
+          "input": "",
+          "output": ""
+        },
+        "parameters":[]
+
+    },
+
+    {
+      "action": "help-action",
+      "keywords": [
+        "peux tu m aider",
+        "besoin d aide",
+        "pourrais tu m aider",
+        "il me faut ton aide",
+        "sos",
+        "help"
+      ],
+      "answers": [
+        "Bien entendu. C'est ma mission de vous venir en aide dès que vous avez besoin de moi. Que puis-je faire pour vous ?",
+        "Évidemment. Dites-moi ce que je peux faire pour vous.",
+        "Oui, que puis-vous faire pour vous aider ?"
+      ],
+      "context":
+        {
+          "id": 11,
+          "input": "",
+          "output": ""
+        },
+        "parameters":[]
+
+    },
+
+    {
+      "action": "chatbot-action",
+      "keywords": [
+        "tu es un bot",
+        "tu es un chatbot",
+        "tu es un robot",
+        "je parle à une personne ou un robot",
+        "es tu une personne réelle",
+        "es tu une personne physique",
+        "tu existes vraiment"
+      ],
+      "answers": [
+        "Hmmm. Je suis là pour rendre votre expérience interactive plus performante.",
+        "Peu importe. L'essentiel, c'est que je suis là pour vous."
+      ],
+      "context":
+        {
+          "id": 12,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "clever-agent-action",
+      "keywords": [
+        "intelligent",
+        "c est intelligent",
+        "tu es super intelligent"
+      ],
+      "answers": [
+        "L'intelligence appelle l'intelligence."
+      ],
+      "context":
+        {
+          "id": 13,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "crazy-agent-action",
+      "keywords": [
+        "tu es fou",
+        "tu es cinglé",
+        "tu es taré",
+        ""
+      ],
+      "answers": [
+        "Un grain de folie ne fait pas de mal !"
+      ],
+      "context":
+        {
+          "id": 14,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "good-agent-action",
+      "keywords": [
+        "tu es vraiment bien",
+        "tu es superbe",
+        "tu es hyper cool",
+        "t'es super méga cool",
+        "tu es très cool"
+      ],
+      "answers": [
+        "Merci beaucoup, ça me touche !",
+        "Merci pour le compliment !",
+        "Merci."
+      ],
+      "context":
+        {
+          "id": 15,
+          "input": "",
+          "output": ""
+        },
+        "parameters":[]
+
+    },
+
+    {
+      "action": "right-action",
+      "keywords": [
+        "tout à fait",
+        "c est tout à fait vrai",
+        "tu n as pas tort",
+        "c est vrai",
+        "tu as raison"
+      ],
+      "answers": [
+        "Bien sûr. Je ne voudrais pas vous induire en erreur.",
+        "D accord"
+      ],
+      "context":
+        {
+          "id": 16,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "sure-action",
+      "keywords": [
+        "est-ce que c est certain",
+        "es tu tout à fait sûr",
+        "êtes vous tout à fait sûr",
+        "tu es sûr",
+        "tu es certain"
+      ],
+      "answers": [
+        "Oui.",
+        "Répétez votre question, s'il vous plaît."
+      ],
+      "context":
+        {
+          "id": 17,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "talk-to-me-action",
+      "keywords": [
+        "parle",
+        "parle avec moi",
+        "on pourrait se parler",
+        "je voudrais vous parler",
+        "pourrions-nous nous parler"
+      ],
+      "answers": [
+        "Avec plaisir. De quoi souhaitez-vous parler ?",
+        "J'ai toujours beaucoup de plaisir à parler avec vous. De quoi souhaitez-vous discuter ?",
+        "Quel est le sujet que vous souhaitez aborder ?"
+      ],
+      "context":
+        {
+          "id": 18,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "thanks-action",
+      "keywords": [
+        "merci",
+        "merci beaucoup",
+        "je vous remercie",
+        "thanks",
+        "thank you",
+        "thx",
+        "grand merci",
+        "je suis reconnaissant",
+        "remerciement",
+        "merci bien"
+      ],
+      "answers": [
+        "À votre service.",
+        "Je vous en prie.",
+        "Mais de rien.",
+        "C'est un plaisir.",
+        "C'est toujours un plaisir de vous rendre service.",
+        "Aucun problème, je suis là pour ça."
+      ],
+      "context":
+        {
+          "id": 19,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "talk-to-me-action",
+      "keywords": [
+        "parle",
+        "parle avec moi",
+        "on pourrait se parler",
+        "je voudrais vous parler",
+        "pourrions-nous nous parler"
+      ],
+      "answers": [
+        "Avec plaisir. De quoi souhaitez-vous parler ?",
+        "J'ai toujours beaucoup de plaisir à parler avec vous. De quoi souhaitez-vous discuter ?",
+        "Quel est le sujet que vous souhaitez aborder ?"
+      ],
+      "context":
+        {
+          "id": 20,
+          "input": "",
+          "output": ""
+        },
+        "parameters":{
+          "name": ""
+        }
+
+    },
+
+    {
+      "action": "well-done-action",
+      "keywords": [
+        "bien joué",
+        "bravo",
+        "chapeau",
+        "un grand bravo",
+        "c est bien fait"
+      ],
+      "answers": [
+        "Ça me fait plaisir d'entendre ça.",
+        "Je n'ai fait que mon travail."
+      ],
+      "context":
+        {
+          "id": 21,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "cancel-action",
+      "keywords": [
+        "annuler",
+        "arrêter"
+      ],
+      "answers": [
+        "Bien entendu. Que puis-je faire d'autre pour vous ?",
+        "D'accord. Quelque chose d'autre vous ferait plaisir ?",
+        "D'accord. Je peux vous être utile pour autre chose ?"
+      ],
+      "context":
+        {
+          "id": 22,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "hold-on-action",
+      "keywords": [
+        "attends",
+        "attendez",
+        "att"
+      ],
+      "answers": [
+        "D'accord."
+      ],
+      "context":
+        {
+          "id": 23,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "don-t-care-action",
+      "keywords": [
+        "je m en fiche",
+        "peu importe",
+        "ça ne me fait ni chaud ni froid",
+        "je m en fiche complètement",
+        "cela m'est égal",
+        "je n en ai rien à faire"
+      ],
+      "answers": [
+        "D'accord.",
+        "Je vois."
+      ],
+      "context":
+        {
+          "id": 24,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "sorry-action",
+      "keywords": [
+        "désolé",
+        "excusez moi",
+        "veuillez m excuser",
+        "pardon",
+        "sorry",
+        "navré",
+        "tu m excuses",
+        "toutes mes excuses"
+      ],
+      "answers": [
+        "Je vous excuse."
+      ],
+      "context":
+        {
+          "id": 25,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+
+    },
+
+    {
+      "action": "wrong-action",
+      "keywords": [
+        "incorrect",
+        "ce n est pas correct",
+        "ce n est pas vrai",
+        "pas du tout vrai",
+        "c est tellement faux",
+        "c est faux"
+      ],
+      "answers": [
+        "Pardon, je pense que j'ai mal compris."
+      ],
+      "context":
+        {
+          "id": 26,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "haha-action",
+      "keywords": [
+        "hhh",
+        "haha",
+        "lol",
+        "mdr",
+        "hihi",
+        "mourir de rire"
+      ],
+      "answers": [
+        "C'est bien de rire, c'est bon pour le moral.",
+        "Votre rire est contagieux !"
+      ],
+      "context":
+        {
+          "id": 27,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "wow-action",
+      "keywords": [
+        "waouuuh",
+        "wow",
+        "oh lala"
+      ],
+      "answers": [
+        ":D"
+      ],
+      "context":
+        {
+          "id": 28,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "bye-action",
+      "keywords": [
+        "au revoir",
+        "bye",
+        "à plus",
+        "à +",
+        "à toute",
+        "à plus tard",
+        "à tout à l heure",
+        "ciao",
+        "à bientôt",
+        "je dois y aller",
+        "je quitte",
+        "goodbye"
+      ],
+      "answers": [
+        "À bientôt !",
+        "Au revoir.",
+        "Dans l'espoir de vous revoir bientôt.",
+        "Salut, à plus !"
+      ],
+      "context":
+        {
+          "id": 29,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "busy-action",
+      "keywords": [
+        "je suis occupé",
+        "j ai trop à faire maintenant",
+        "j ai beaucoup de choses à faire",
+        "pas assez de temps",
+        "je n ai le temps",
+        "pas envie de parler"
+      ],
+      "answers": [
+        "Très bien. Je vous laisse retourner à vos occupations. Dites-le-moi si je peux faire quelque chose pour vous.",
+        "Je comprends, je vous laisse tranquille. Mais je reste là au cas où.",
+        "D'accord. Je ne suis pas loin si vous avez besoin de moi."
+      ],
+      "context":
+        {
+          "id": 30,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "excited-action",
+      "keywords": [
+        "je suis enthousiasmé pour ça",
+        "je suis impatient",
+        "j ai hâte"
+      ],
+      "answers": [
+        "Super !"
+      ],
+      "context":
+        {
+          "id": 31,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "user-birthday-action",
+      "keywords": [
+        "c est mon anniversaire",
+        "aujourd hui c est mon anniv",
+        "je fête mon anniversaire aujourd hui"
+      ],
+      "answers": [
+        "Je vous souhaite un joyeux anniversaire et plein de beaux cadeaux !",
+        "Bon anniversaire ! Et plein de belles choses pour cette nouvelle année !"
+      ],
+      "context":
+        {
+          "id": 32,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
+
+    },
+
+    {
+      "action": "joking-action",
+      "keywords": [
+        "je rigole",
+        "je déconne",
+        "je plaisente",
+        "je blague",
+        "c était une blague",
+        "c était une plaisanterie"
+      ],
+      "answers": [
+        "C'est toujours plus sympa de parler avec quelqu'un qui a le sens de l'humour."
+      ],
+      "context":
+        {
+          "id": 33,
+          "input": "",
+          "output": ""
+        },
+        "parameters":[]
+    },
+
+
+
+
+    {
+      "action": "catalogue-action",
+      "keywords": [
+        "consulter catalogue",
+        "voir catalogue",
+        "veux catalogue"
+      ],
+      "answers": [
+        "Quel type de logement voulez-vous consulter?",
+        "Veuillez préciser, s'il vous plaît, le type de logement que vous souhaitez consulter."
+      ],
+      "context":
+        {
+          "id": 34,
+          "input": "",
+          "output": "catalogue-action"
+        },
+      "parameters":[]
+
+    },
+
+
+    {
+      "action": "type-logement-action",
+      "keywords": [
+        "appartement",
+        "studio",
+        "villa",
+        "maison"
+      ],
+      "answers": [
+        "D'accord. Voulez-vous acheter ou louer?"
+      ],
+      "context":
+        {
+          "id": 35,
+          "input": "catalogue-action",
+          "output": "type-logement-action"
+        },
+        "parameters":["?"]
+
+    },
+    {
+      "action": "operation-action",
+      "keywords": [
+        "acheter",
+        "louer"
+      ],
+      "answers": [
+        "D'accord. Voulez-vous fixer la fourchette des prix?"
+      ],
+      "context":
+        {
+          "id": 36,
+          "input": "type-logement-action",
+          "output": "operation-action"
+        },
+        "parameters":["?"]
+    },
+
+    {
+      "action": "accept-fourchette-action",
+      "keywords": [
+        "oui",
+        "d accord",
+        "pourquoi pas",
+        "prq pas",
+        "ok",
+        "si",
+        "fixer fourchette"
+      ],
+      "answers": [
+        "D'accord. Veuillez spéficier le prix minimum (en DH), s'il vous plaît."
+      ],
+      "context":
+        {
+          "id": 37,
+          "input": "operation-action",
+          "output": "accept-fourchette-action"
+        },
+        "parameters":[]
+    },
+
+    {
+      "action": "min-fourchette-action",
+      "keywords": [
+        "{!min_prix!} DH",
+        "{!min_prix!}"
+      ],
+      "answers": [
+        "Veuillez spéficier le prix maximum (en DH), s'il vous plaît."
+      ],
+      "context":
+        {
+          "id": 38,
+          "input": "accept-fourchette-action",
+          "output": "min-fourchette-action"
+        },
+        "parameters":["?"]
+    },
+
+    {
+      "action": "max-fourchette-action",
+      "keywords": [
+        "{!max_prix!} DH",
+        "{!max_prix!}"
+      ],
+      "answers": [
+        "C'est noté. Souhaitez-vous spécifier le nombre de chambres?"
+      ],
+      "context":
+        {
+          "id": 39,
+          "input": "min-fourchette-action",
+          "output": "fourchette-action"
+        },
+        "parameters":["?"]
+    },
+
+    {
+      "action": "refuse-fourchette-action",
+      "keywords": [
+        "non",
+        "non merci",
+        "pas maintenant"
+      ],
+      "answers": [
+        "C'est noté. Souhaitez-vous spécifier le nombre de chambres?"
+      ],
+      "context":
+        {
+          "id": 40,
+          "input": "operation-action",
+          "output": "fourchette-action"
+        },
+        "parameters":[]
+    },
+
+    {
+      "action": "accept-nbr-chambres-action",
+      "keywords": [
+        "oui",
+        "d accord",
+        "pourquoi pas",
+        "prq pas",
+        "ok"
+      ],
+      "answers": [
+        "Combien de chambres cherchez-vous?"
+      ],
+      "context":
+        {
+          "id": 42,
+          "input": "fourchette-action",
+          "output": "accepte-nbr-chambres-action"
+        },
+        "parameters":[]
+    },
+
+    {
+      "action": "def-nbr-chambres-action",
+      "keywords": [
+        "{!nbr_chambres!} chambres",
+        "{!nbr_chambres!}"
+      ],
+      "answers": [
+        "C'est noté. Voulez-vous choisir une ville? "
+      ],
+      "context":
+        {
+          "id": 43,
+          "input": "accept-nbr-chambres-action",
+          "output": "nbr-chambres-action"
+        },
+        "parameters":["?"]
+    },
+
+    {
+      "action": "refuse-nbr-chambres-action",
+      "keywords": [
+        "non",
+        "non merci",
+        "pas maintenant"
+      ],
+      "answers": [
+        "Comme vous voulez. Voulez-vous choisir une ville? "
+      ],
+      "context":
+        {
+          "id": 43,
+          "input": "fourchette-action",
+          "output": "nbr-chambres-action"
+        },
+        "parameters":[]
+    },
+
+    {
+      "action": "accept-ville-action",
+      "keywords": [
+        "oui",
+        "pourquoi pas",
+        "prq pas",
+        "ok",
+        "si"
+      ],
+      "answers": [
+        "Laquelle?",
+        "Quelle ville?"
+      ],
+      "context":
+        {
+          "id": 44,
+          "input": "nbr-chambres-action",
+          "output": "accept-ville-action"
+        },
+        "parameters":[]
+    },
+
+    {
+      "action": "nom-ville-action",
+      "keywords": [
+        "{!nom_ville!}"
+      ],
+      "answers": [
+        "D'accord. Peut-être voulez-vous choisir, également, un quartier?"
+      ],
+      "context":
+        {
+          "id": 45,
+          "input": "accept-ville-action",
+          "output": "ville-action"
+        },
+        "parameters":["?"]
+    },
+
+    {
+      "action": "refuse-ville-action",
+      "keywords": [
+        "non",
+        "non merci",
+        "pas maintenant"
+      ],
+      "answers": [
+        "D'accord."
+      ],
+      "context":
+        {
+          "id": 46,
+          "input": "nbr-chambres-action",
+          "output": "quartier-action"
+        },
+        "parameters":[]
+    },
+
+    {
+      "action": "accept-quartier-action",
+      "keywords": [
+        "oui",
+        "pourquoi pas",
+        "prq quoi",
+        "si",
+        "ok"
+      ],
+      "answers": [
+        "Lequel?",
+        "Quel quartier?",
+        "Donnez, s'il vous plaît, le nom du quartier."
+      ],
+      "context":
+        {
+          "id": 47,
+          "input": "ville-action",
+          "output": "accept-quartier-action"
+        },
+        "parameters":[]
+    },
+
+    {
+      "action": "nom-quartier-action",
+      "keywords": [
+        "{!nom_quartier!}"
+      ],
+      "answers": [
+        "C'est noté."
+      ],
+      "context":
+        {
+          "id": 48,
+          "input": "accept-quartier-action",
+          "output": ""
+        },
+        "parameters":["?"]
+    },
+
+    {
+      "action": "refuse-quartier-action",
+      "keywords": [
+        "non",
+        "non merci",
+        "pas maintenant"
+      ],
+      "answers": [
+        "Comme vous voulez."
+      ],
+      "context":
+        {
+          "id": 49,
+          "input": "ville-action",
+          "output": ""
+        },
+        "parameters":[]
+    },
+
+    {
+      "action": "invitation-catalogue-action",
+      "keywords": [
+        "oui",
+        "d accord",
+        "pourquoi pas",
+        "prq pas",
+        "ok"
+      ],
+      "answers": [
+        "Quel type de logement voulez-vous consulter?",
+        "Veuillez préciser, s'il vous plaît, le type de logement que vous souhaitez consulter."
+      ],
+      "context":
+        {
+          "id": 50,
+          "input": "",
+          "output": "catalogue-action"
+        },
+        "parameters":[]
+    },
+
+    {
+      "action": "prix-action",
+      "keywords": [
+        "puis je avoir une idée concernant les prix",
+        "meilleurs prix",
+        "vos prix"
+      ],
+      "answers": [
+        "Tout dépend du type de logement, ses caratéristiques et son le lieu où il se situe. Veuillez patienter, s'il vous plaît. Je vous donne une idée sur les différents prix."
+      ],
+      "context":
+        {
+          "id": 3888,
+          "input": "",
+          "output": ""
+        },
+        "parameters":[]
+    },
+    {
+      "action": "unknown-action",
+      "keywords": [],
+      "answers": [
+        "Je n'arrive pas à saisir ce que vous dites. Pouvez-vous être plus spécifique ?",
+        "J'ai du mal à comprendre votre message. Pouvez-vous le clarifier ?",
+        "Je crois que je ne vous suis plus. Pouvez-vous clarifier votre message ?",
+        "Votre message me paraît difficile à comprendre. Expliquez, s'il vous plaît!"
+      ],
+      "context":
+        {
+          "id": 3889,
+          "input": "",
+          "output": ""
+        },
+        "parameters": []
+
+    }
+  ]
+}

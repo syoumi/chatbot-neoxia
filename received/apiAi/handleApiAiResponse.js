@@ -6,7 +6,7 @@
 const {handleApiAiAction} = require('./handleApiAiAction');
 const {handleMessage} = require('./handleMessage');
 
- const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
+const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 const {sendTypingOff} = require('./../../send/fbApi/sendTypingOnOff');
 
 //Response API AI

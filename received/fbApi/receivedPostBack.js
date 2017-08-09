@@ -22,7 +22,12 @@ var receivedPostBack = (event) => {
   console.log(`| timeOfPostBack ${timeOfPostBack}`);
   console.log('#################END PRI##############');
 
-  sendTextMessage(senderID, `Postback ${payload} reçu :D`);
+  //by payload
+  switch(payload){
+    default:
+        sendTextMessage(senderID, `Postback ${payload} reçu :D`);
+  }
+  
 };
 
 module.exports = {
