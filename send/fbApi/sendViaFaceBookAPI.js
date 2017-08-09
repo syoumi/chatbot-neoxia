@@ -53,6 +53,8 @@
 
      // We call callback to give the green light for the next asynchronous operation
      callback();
+     
+     console.log("***********APPEL: syncCallSendAPI********");
 
      console.log('Response recieved');
      if (!error && response.statusCode === 200) {
@@ -60,15 +62,18 @@
        var recipientID = body.recipient_id;
        var messageID = body.message_id;
 
-       console.log(`#### Message sent informations ####`);
-       console.log(`| recipientID ${recipientID}`);
-       console.log(`| messageID ${messageID}`);
-       console.log(`################END MSI############`);
+
+
+
+      //  console.log(`#### Message sent informations ####`);
+      //  console.log(`| recipientID ${recipientID}`);
+      //  console.log(`| messageID ${messageID}`);
+      //  console.log(`################END MSI############`);
      } else {
 
-       console.error(`#### Message sent errors ####`);
-       console.error(error);
-       console.error(`################END MSE######`);
+      //  console.error(`#### Message sent errors ####`);
+      //  console.error(error);
+      //  console.error(`################END MSE######`);
      }
 
 
