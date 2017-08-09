@@ -840,8 +840,6 @@
     },
 
 
-
-
     {
       "action": "catalogue-action",
       "keywords": [
@@ -880,7 +878,7 @@
           "input": "catalogue-action",
           "output": "type-logement-action"
         },
-        "parameters":["?"]
+        "parameters":["string"]
 
     },
 
@@ -899,7 +897,7 @@
           "input": "type-logement-action",
           "output": "operation-action"
         },
-        "parameters":["?"]
+        "parameters":["string"]
     },
 
     {
@@ -940,7 +938,7 @@
           "input": "accept-fourchette-action",
           "output": "min-fourchette-action"
         },
-        "parameters":["?"]
+        "parameters":["currency"]
     },
 
     {
@@ -958,7 +956,7 @@
           "input": "min-fourchette-action",
           "output": "fourchette-action"
         },
-        "parameters":["?"]
+        "parameters":["currency"]
     },
 
     {
@@ -1016,7 +1014,7 @@
           "input": "accept-nbr-chambres-action",
           "output": "nbr-chambres-action"
         },
-        "parameters":["?"]
+        "parameters":["number"]
     },
 
     {
@@ -1074,7 +1072,7 @@
           "input": "accept-ville-action",
           "output": "ville-action"
         },
-        "parameters":["?"]
+        "parameters":["string"]
     },
 
     {
@@ -1133,7 +1131,7 @@
           "input": "accept-quartier-action",
           "output": ""
         },
-        "parameters":["?"]
+        "parameters":["string"]
     },
 
     {
@@ -1195,6 +1193,41 @@
         },
         "parameters":[]
     },
+
+    {
+      "action": "prospect-action",
+      "keywords": [
+        "prospect"
+      ],
+      "answers": [
+        "D'accord. Nous avons besoin de quelques informations. Quel est votre nom? "
+      ],
+      "context":
+        {
+          "id": 3889,
+          "input": "",
+          "output": "prospect-action"
+        },
+        "parameters": []
+    },
+
+    {
+      "action": "nom-prospect-action",
+      "keywords": [
+        "prospect"
+      ],
+      "answers": [
+        "D'accord. Nous avons besoin de quelques informations. Quel est votre nom? "
+      ],
+      "context":
+        {
+          "id": 4889,
+          "input": "prospect-action",
+          "output": "nom-prospect-action"
+        },
+        "parameters": ["string"]
+    },
+
     {
       "action": "unknown-action",
       "keywords": [],
@@ -1216,7 +1249,7 @@
       "action": "out-of-context",
       "keywords": [],
       "answers": [
-        "السﻻم عليكم أخي العزيز"
+        "  تفعيل اللغة العربية  "
       ],
       "context":
         {

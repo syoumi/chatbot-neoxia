@@ -8,6 +8,7 @@ const {handleMessage} = require('./functions/handleMessage');
 const {handleContextMessage} = require('./functions/handleMessage');
 const {getEntry} = require('./functions/handleAnswer');
 const {getAnswer} = require('./functions/handleAnswer');
+const {verifyParam} = require('./functions/handleParams');
 
 var receiveMessage = (request) => {
   console.log(`Received message from ${request.senderID}, content ${request.text}`);
@@ -52,12 +53,17 @@ var receiveMessage = (request) => {
 
   //if answer got an output
   if(answer.context.output){
-    var params = '';
-    if(answer.parameters[answer.parameters.length-1] === '?'){
-      params = request.text;
-      console.log(`Params to push: ${params}`);
+    var param =undefined;
+    // if(answer.parameters[answer.parameters.length-1] === '?'){
+    //   param = request.text;
+    //   console.log(`Params to push: ${param}`);
+    // }
+    var type = answer.parameters[answer.parameters.length-1] ;
+    if(type != ''){
+      param = handleParams(type, request.text);
+      console.log(`Params to push: ${param}`);
     }
-    setContext(request.senderID, answer.context, params);
+    setContext(request.senderID, answer.context, param);
   }
 
   //Update answer's parameters
