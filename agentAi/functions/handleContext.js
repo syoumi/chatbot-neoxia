@@ -20,7 +20,7 @@ var getContext = (senderID) => {
 
 
 //Set the actual context of user
-var setContext = (senderID, context, params) => {
+var setContext = (senderID, context, params, next) => {
 
   //if user already exists, update context and parameters
   if(userExists(senderID)){
@@ -37,7 +37,7 @@ var setContext = (senderID, context, params) => {
       user.parameters.push(param);
     }
 
-    user.currentParameter = params.name;
+    user.currentParameter = next;
 
 
     setUser(senderID, user.context, user.parameters);
@@ -54,7 +54,7 @@ var setContext = (senderID, context, params) => {
       }
       parameters.push(param);
     }
-    current = params.name;
+    current = next;
 
     setUser(senderID, context, parameters, current);
   }

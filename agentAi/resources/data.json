@@ -926,8 +926,9 @@
           "output": "catalogue-action"
         },
       "parameters":{
-        "name": "logement",
-        "type" : "any"
+        "name": "",
+        "type" : "",
+        "next": "logement"
       }
 
     },
@@ -951,8 +952,9 @@
           "output": "type-logement-action"
         },
         "parameters":{
-          "name": "operation",
-          "type" : "any"
+          "name": "logement",
+          "type" : "any",
+          "next": "operation"
         }
     },
 
@@ -973,8 +975,9 @@
           "output": "operation-action"
         },
         "parameters":{
-          "name": "",
-          "type" : ""
+          "name": "operation",
+          "type" : "any",
+          "next": ""
         }
     },
 
@@ -999,8 +1002,9 @@
           "output": "accept-fourchette-action"
         },
         "parameters":{
-          "name": "minPrice",
-          "type" : "currency"
+          "name": "",
+          "type" : "",
+          "next": "minPrice"
         }
     },
 
@@ -1019,8 +1023,9 @@
           "output": "min-fourchette-action"
         },
         "parameters":{
-          "name": "maxPrice",
-          "type" : "currency"
+          "name": "minPrice",
+          "type" : "currency",
+          "next" : "maxPrice"
         }
     },
 
@@ -1039,8 +1044,9 @@
           "output": "fourchette-action"
         },
         "parameters":{
-          "name": "",
-          "type" : ""
+          "name": "maxPrice",
+          "type" : "currency",
+          "next" : ""
         }
     },
 
@@ -1284,7 +1290,7 @@
         {
           "id": 50,
           "input": "",
-          "output": "catalogue-action"
+          "output": "-action"
         },
         "parameters":{
           "name": "",

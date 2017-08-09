@@ -71,7 +71,7 @@ var receiveMessage = (request) => {
       }
     }
 
-    setContext(request.senderID, answer.context, answer.parameters[answer.parameters.length-1]);
+    setContext(request.senderID, answer.context, answer.parameters[answer.parameters.length-1], answer.next);
   }
 
   //Update answer's parameters

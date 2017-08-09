@@ -19,6 +19,7 @@ var getAnswer = (entry) => {
         "value" : ''
       }
     ],
+    next : entry.parameters.next,
     answer: entry.answers[index]
   };
 };
