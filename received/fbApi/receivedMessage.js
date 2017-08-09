@@ -46,7 +46,7 @@ var receivedMessage = (event) => {
 
   if (messageText) {
     // sendToApiAi(senderID, messageText);
-    sendToAi(messageText);
+    sendToAi(senderID, messageText);
 
   } else if (messageAttachments) {
    sendTextMessage(senderID, 'Pièce jointe bien reçue <3 ^_^ !');
