@@ -23,7 +23,9 @@ var getAnswer = (entry) => {
 };
 
 var getEntry = (actionName) => {
-  return data.find((item) => item.action = actionName);
+  var toReturn = data.find((item) => item.action = actionName);
+  console.log('RETURNIIIIING ' , toReturn);
+  return toReturn;
 };
 
 module.exports= {
