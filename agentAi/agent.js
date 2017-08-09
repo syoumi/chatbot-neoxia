@@ -9,18 +9,28 @@ const {handleContextMessage} = require('./functions/handleMessage');
 const {getEntry} = require('./functions/handleAnswer');
 const {getAnswer} = require('./functions/handleAnswer');
 const {verifyParam} = require('./functions/handleParams');
+const {getCurrentParameter} = require('./functions/handleContext');
+
 
 var receiveMessage = (request) => {
   console.log(`Received message from ${request.senderID}, content ${request.text}`);
   var answer = undefined;
-
+  var originalText = request.text;
   //Check if there's a context for that user
   var context = getContext(request.senderID);
 
   if(context){
-      console.log('HandleContextMessage');
-      //Looking for an answer with answer.context.id
-      answer = handleContextMessage(request, context);
+    console.log('HandleContextMessage');
+
+    var current = getCurrentParameter(request.senderID);
+    if(current != ''){
+        request.text = "#" + request.text + "#";
+
+        console.log('MUST LOOK FOR CURRENT PARAM: ', request.text);
+    }
+
+    //Looking for an answer with answer.context.id
+    answer = handleContextMessage(request, context);
   }
 
   if(!answer){
@@ -45,7 +55,6 @@ var receiveMessage = (request) => {
           if (answer.context.input) {
             //if user's out of context
             answer = getAnswer(getEntry('out-of-context'));
-            console.log('ANSWEEEEEEEEEEEEER : ' , answer.action);
           }
         }
     }
@@ -53,17 +62,17 @@ var receiveMessage = (request) => {
 
   //if answer got an output
   if(answer.context.output){
-    var param =undefined;
-    // if(answer.parameters[answer.parameters.length-1] === '?'){
-    //   param = request.text;
-    //   console.log(`Params to push: ${param}`);
-    // }
-    var type = answer.parameters[answer.parameters.length-1] ;
-    if(type != ''){
-      param = handleParams(type, request.text);
-      console.log(`Params to push: ${param}`);
+
+    if(answer.parameters.name !=''){
+      var param = handleParams(answer.parameters.type, originalText);
+      if(param) {
+        answer.parameters.value = param;
+        console.log('Param to push: ', param);
+      }
+
     }
-    setContext(request.senderID, answer.context, param);
+
+    setContext(request.senderID, answer.context, answer.parameters);
   }
 
   //Update answer's parameters

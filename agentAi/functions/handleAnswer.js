@@ -11,13 +11,12 @@ var getAnswer = (entry) => {
   var index = parseInt(Math.random() * entry.answers.length);
   return {
     action: entry.action,
-    context:
-    {
-      "id": entry.context.id,
-      "input": entry.context.input,
-      "output": entry.context.output
+    context: entry.context,
+    parameters: {
+      "name" : entry.parameters.name,
+      "type" : entry.paramaters.type,
+      "value" : ''
     },
-    parameters: entry.parameters,
     answer: entry.answers[index]
   };
 };

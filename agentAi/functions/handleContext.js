@@ -20,25 +20,26 @@ var getContext = (senderID) => {
 
 
 //Set the actual context of user
-var setContext = (senderID, context, param) => {
+var setContext = (senderID, context, params) => {
 
   //if user already exists, update context and parameters
   if(userExists(senderID)){
     var user = getUser(senderID);
     user.context.input = user.context.output;
     user.context.output = context.output;
-    if (param)
-      user.parameters.push(param);
+    user.parameters[params.name] = params.value;
+    user.currentParameter = params.name;
+
     setUser(senderID, user.context, user.parameters);
   }
 
   //if user doesn't exists, add new user
   else {
     var parameters = [];
-    if (param)
-      parameters.push(param);
+    parameters[params.name] = params.value;
+    current = params.name;
 
-    setUser(senderID, context, parameters);
+    setUser(senderID, context, parameters, current);
   }
 }
 
@@ -57,8 +58,17 @@ var getParameters = (senderID) => {
   return params;
 }
 
+//Get user.next params
+var getCurrentParameter = (senderID) => {
+  var current = '';
+  if(userExists(senderID)){
+    var user = getUser(senderID);
+   current = user.currentParameter;
+  }
+  return current;
+}
 
 
 module.exports= {
-  getContext, setContext, cleanContext, getParameters
+  getContext, setContext, cleanContext, getParameters, getCurrentParameter
 }
