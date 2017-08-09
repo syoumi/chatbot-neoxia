@@ -29,8 +29,8 @@ var sendTextMessage = (recipientID, textMessage) => {
   }
 
   sendTypingOn(recipientID);
-  var delai = 100 * textMessage.length;
-  setTimeout(() => {callSendAPI(messageData);}, delai);
+
+  callSendAPI(messageData);
 };
 
 /**

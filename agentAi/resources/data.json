@@ -22,7 +22,7 @@
         {
           "id": 0,
           "input": "",
-          "output": "salutations-action"
+          "output": ""
         },
         "parameters":[]
 
@@ -1211,7 +1211,20 @@
           "output": ""
         },
         "parameters": []
-
+    },
+    {
+      "action": "out-of-context",
+      "keywords": [],
+      "answers": [
+        "السﻻم عليكم أخي العزيز"
+      ],
+      "context":
+        {
+          "id": 3890,
+          "input": "",
+          "output": ""
+        },
+        "parameters": []
     }
   ]
 }

@@ -3,14 +3,13 @@
  *
  */
 
- const {sendButtonMessage} = require('./../../send/fbApi/sendButtonMessage');
+const {sendButtonMessage} = require('./../../send/fbApi/sendButtonMessage');
 
- const {sendFileMessage} = require('./../../send/fbApi/sendFileMessage');
- const {sendGenericMessage} = require('./../../send/fbApi/sendGenericMessage');
- const {sendImageMessage} = require('./../../send/fbApi/sendImageMessage');
- const {sendQuickReplies} = require('./../../send/fbApi/sendQuickReplies');
- const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
- //const {sendCardMessage}= require('./../../send/fbApi/sendCardMessage');
+const {sendFileMessage} = require('./../../send/fbApi/sendFileMessage');
+const {sendGenericMessage} = require('./../../send/fbApi/sendGenericMessage');
+const {sendImageMessage} = require('./../../send/fbApi/sendImageMessage');
+const {sendQuickReplies} = require('./../../send/fbApi/sendQuickReplies');
+const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 
 const {getLastAccounts} = require('./../../data/salesforce/getLastAccounts');
 
@@ -32,7 +31,7 @@ var handleApiAiAction= (senderID, action, responseText, contexts, parameters) =>
       break;
 
 		default:
-			//unhandled action, just send back the text
+			// Unhandled action, just send back the text
 			sendTextMessage(senderID, responseText);
 	}
 }

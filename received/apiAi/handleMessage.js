@@ -10,7 +10,6 @@ const {sendImageMessage} = require('./../../send/fbApi/sendImageMessage');
 const {sendQuickReplies} = require('./../../send/fbApi/sendQuickReplies');
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 const {sendCustomPayload} = require('./../../send/fbApi/sendCustomPayload');
-//const {sendCardMessage}= require('./../../send/fbApi/sendCardMessage');
 
 
 var handleMessage = (message, senderID) => {
@@ -45,7 +44,6 @@ var handleMessage = (message, senderID) => {
   			break;
   	}
   }
-
 
   module.exports={
        handleMessage
