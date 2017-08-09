@@ -24,15 +24,14 @@
        var messageID = body.message_id;
 
        console.log(`#### Message sent informations ####`);
-       console.log(`| recipientID ${recipientID}`);
-       console.log(`| messageID ${messageID}`);
-       console.log(`################END MSI############`);
+      //  console.log(`| recipientID ${recipientID}`);
+      //  console.log(`| messageID ${messageID}`);
+      //  console.log(`################END MSI############`);
      } else {
 
        console.error(`#### Message sent errors ####`);
-       console.error(error);
-       console.error(body);
-       console.error(`################END MSE######`);
+      //  console.error(error);
+      //  console.error(`################END MSE######`);
      }
 
    });
