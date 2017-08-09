@@ -28,10 +28,7 @@ var setContext = (senderID, context, params) => {
     user.context.input = user.context.output;
     user.context.output = context.output;
 
-    if(params.name == ''){
-      user.parameters['none'] = params.value;
-    }
-    else {
+    if(params.name != ''){
       user.parameters[params.name] = params.value;
     }
 
@@ -44,10 +41,7 @@ var setContext = (senderID, context, params) => {
   //if user doesn't exists, add new user
   else {
     var parameters = [];
-    if(params.name == ''){
-      parameters['none'] = params.value;
-    }
-    else{
+    if(params.name != ''){
       parameters[params.name] = params.value;
     }
     current = params.name;
