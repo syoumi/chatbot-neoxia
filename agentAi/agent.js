@@ -44,6 +44,7 @@ var receiveMessage = (request) => {
           if (answer.context.input) {
             //if user's out of context
             answer = getAnswer(getEntry('out-of-context'));
+            console.log('ANSWEEEEEEEEEEEEER : ' , answer.action);
           }
         }
     }
