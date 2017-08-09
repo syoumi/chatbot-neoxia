@@ -31,6 +31,7 @@
 
        console.error(`#### Message sent errors ####`);
        console.error(error);
+       console.error(body);
        console.error(`################END MSE######`);
      }
 

@@ -5,9 +5,12 @@
 
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 const {sendToApiAi} = require('./../../send/apiAi/sendViaApiAi');
+const {sendToAi} = require('./../../send/ai/sendToAi');
 
 const {getWaiting} = require('./../../utils/waiting');
 const {setNotWaiting} = require('./../../utils/waiting');
+
+const {receiveMessage} = require('./../../agentAi/agent');
 
 
 
@@ -44,7 +47,17 @@ var receivedMessage = (event) => {
 
 
   if (messageText) {
-     sendToApiAi(senderID, messageText);
+    // sendToApiAi(senderID, messageText);
+    var request = {
+      senderID: senderID,
+      text : messageText
+    }
+
+    var answer = receiveMessage(request);
+    sendToAi(answer);
+
+    console.log('REQUEST SENT TO AI: ', request);
+    console.log('ANSWER GOT FROM AI: ', answer);
 
   } else if (messageAttachments) {
    sendTextMessage(senderID, 'Pièce jointe bien reçue <3 ^_^ !');
