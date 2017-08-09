@@ -64,7 +64,7 @@ var receiveMessage = (request) => {
   if(answer.context.output){
 
     if(answer.parameters.name !=''){
-      var param = handleParams(answer.parameters.type, originalText);
+      var param = verifyParam(answer.parameters.type, originalText);
       if(param) {
         answer.parameters.value = param;
         console.log('Param to push: ', param);
