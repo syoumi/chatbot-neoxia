@@ -64,14 +64,14 @@ var receiveMessage = (request) => {
   if(answer.context.output){
 
     if( (context) && (current !='') ){
-      var param = verifyParam(answer.parameters.type, originalText);
+      var param = verifyParam(answer.parameters[answer.parameters.length-1].type, originalText);
       if(param) {
-        answer.parameters.value = param;
+        answer.parameters[answer.parameters.length-1].value = param;
         console.log('Param to push: ', param);
       }
     }
 
-    setContext(request.senderID, answer.context, answer.parameters);
+    setContext(request.senderID, answer.context, answer.parameters[answer.parameters.length-1]);
   }
 
   //Update answer's parameters

@@ -29,7 +29,12 @@ var setContext = (senderID, context, params) => {
     user.context.output = context.output;
 
     if(params.name != ''){
-      user.parameters[params.name] = params.value;
+      var param = {
+        name: params.name,
+        type: params.type,
+        value: params.value
+      }
+      user.parameters.push(param);
     }
 
     user.currentParameter = params.name;
@@ -42,7 +47,12 @@ var setContext = (senderID, context, params) => {
   else {
     var parameters = [];
     if(params.name != ''){
-      parameters[params.name] = params.value;
+      var param = {
+        name: params.name,
+        type: params.type,
+        value: params.value
+      }
+      parameters.push(param);
     }
     current = params.name;
 
@@ -57,11 +67,7 @@ var cleanContext = (senderID) => {
 
 //Get all user's parameters
 var getParameters = (senderID) => {
-  var params = {
-    name: '',
-    type: '',
-    value: ''
-  };
+  var params = [];
   if(userExists(senderID)){
     var user = getUser(senderID);
     params = user.parameters;

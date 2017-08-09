@@ -12,11 +12,13 @@ var getAnswer = (entry) => {
   return {
     action: entry.action,
     context: entry.context,
-    parameters: {
-      "name" : entry.parameters.name,
-      "type" : entry.parameters.type,
-      "value" : ''
-    },
+    parameters: [
+      {
+        "name" : entry.parameters.name,
+        "type" : entry.parameters.type,
+        "value" : ''
+      }
+    ],
     answer: entry.answers[index]
   };
 };
