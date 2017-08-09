@@ -71,6 +71,8 @@ var receiveMessage = (request) => {
       }
     }
 
+    console.log('NEEEXT: ', answer.next);
+    
     setContext(request.senderID, answer.context, answer.parameters[answer.parameters.length-1], answer.next);
   }
 
