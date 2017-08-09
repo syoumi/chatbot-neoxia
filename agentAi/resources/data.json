@@ -863,7 +863,6 @@
 
     },
 
-
     {
       "action": "type-logement-action",
       "keywords": [
@@ -884,6 +883,7 @@
         "parameters":["?"]
 
     },
+
     {
       "action": "operation-action",
       "keywords": [
