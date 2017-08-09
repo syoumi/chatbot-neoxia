@@ -14,7 +14,7 @@ var getAnswer = (entry) => {
     context: entry.context,
     parameters: {
       "name" : entry.parameters.name,
-      "type" : entry.paramaters.type,
+      "type" : entry.parameters.type,
       "value" : ''
     },
     answer: entry.answers[index]
