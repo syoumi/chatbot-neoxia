@@ -6,8 +6,8 @@ const {getParameters} = require('./functions/handleContext');
 const {saveUndefinedAnswer} = require('./functions/saveUndefinedAnswer');
 const {handleMessage} = require('./functions/handleMessage');
 const {handleContextMessage} = require('./functions/handleMessage');
-
-const {MIN_PERCENT} = require('./include/config');
+const {getEntry} = require('./functions/handleAnswer');
+const {getAnswer} = require('./functions/handleAnswer');
 
 var receiveMessage = (request) => {
   console.log(`Received message from ${request.senderID}, content ${request.text}`);
@@ -38,6 +38,12 @@ var receiveMessage = (request) => {
           if(context.output != answer.context.input){
             //if user's out of context
             cleanContext(request.senderID);
+            answer = getAnswer(getEntry('out-of-context'));
+          }
+        } else {
+          if (answer.context.input) {
+            //if user's out of context
+            answer = getAnswer(getEntry('out-of-context'));
           }
         }
     }
