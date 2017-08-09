@@ -23,7 +23,7 @@ var receiveMessage = (request) => {
     console.log('HandleContextMessage');
 
     var current = getCurrentParameter(request.senderID);
-    if(current != ''){
+    if(current){
         request.text = "#" + current + "#";
 
         console.log('MUST LOOK FOR CURRENT PARAM: ', request.text);
@@ -63,7 +63,7 @@ var receiveMessage = (request) => {
   //if answer got an output
   if(answer.context.output){
 
-    if( (context) && (current !='') ){
+    if( (context) && (current) ){
       var param = verifyParam(answer.parameters[answer.parameters.length-1].type, originalText);
       if(param) {
         answer.parameters[answer.parameters.length-1].value = param;
@@ -72,7 +72,7 @@ var receiveMessage = (request) => {
     }
 
     console.log('NEEEXT: ', answer.next);
-    
+
     setContext(request.senderID, answer.context, answer.parameters[answer.parameters.length-1], answer.next);
   }
 

@@ -77,10 +77,10 @@ var getParameters = (senderID) => {
 
 //Get user.next params
 var getCurrentParameter = (senderID) => {
-  var current = '';
+  var current = undefined;
   if(userExists(senderID)){
     var user = getUser(senderID);
-   current = user.currentParameter;
+    current = user.currentParameter;
   }
   return current;
 }
