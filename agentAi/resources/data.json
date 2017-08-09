@@ -938,7 +938,8 @@
         "appartement",
         "studio",
         "villa",
-        "maison"
+        "maison",
+        "#logement#"
       ],
       "answers": [
         "D'accord. Voulez-vous acheter ou louer?"
@@ -959,7 +960,8 @@
       "action": "operation-action",
       "keywords": [
         "acheter",
-        "louer"
+        "louer",
+        "#operation#"
       ],
       "answers": [
         "D'accord. Voulez-vous fixer la fourchette des prix?"
