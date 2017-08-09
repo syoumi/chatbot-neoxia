@@ -24,7 +24,7 @@ var receiveMessage = (request) => {
 
     var current = getCurrentParameter(request.senderID);
     if(current != ''){
-        request.text = "#" + request.text + "#";
+        request.text = "#" + current + "#";
 
         console.log('MUST LOOK FOR CURRENT PARAM: ', request.text);
     }
