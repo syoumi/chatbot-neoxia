@@ -35,9 +35,6 @@ var sendQuickReplies= (recipientId, text, data, metadata) => {
 		}
 	};
 
-	console.log('METADATAAAAA: ', metadata);
-	console.log('MESSAGEDATAAAAA: ', messageData);
-
     sendTypingOn(recipientId);
     setTimeout(() => {callSendAPI(messageData);}, 3000);
 }

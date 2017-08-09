@@ -52,10 +52,12 @@ var receivedMessage = (event) => {
       senderID: senderID,
       text : messageText
     }
-    console.log('REQUEST SENT TO AI: ', request);
+
     var answer = receiveMessage(request);
-    console.log('ANSWER GOT FROM AI: ', answer);
     sendToAi(answer);
+
+    console.log('REQUEST SENT TO AI: ', request);
+    console.log('ANSWER GOT FROM AI: ', answer);
 
   } else if (messageAttachments) {
    sendTextMessage(senderID, 'Pièce jointe bien reçue <3 ^_^ !');
