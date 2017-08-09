@@ -4,10 +4,10 @@ var verifyParam = (type, text) => {
 
   switch(type){
     case 'number':
-      param = 'return number';
+      param = text;
       break;
     case 'currency':
-      param = 'return currency';
+      param = text;
       break;
     case 'phone-number':
       param = 'return phone-number';
@@ -16,7 +16,7 @@ var verifyParam = (type, text) => {
       param = 'return email';
       break;
     default :
-      param = 'return any';
+      param = text;
   }
 
   return param;
