@@ -63,7 +63,11 @@ var cleanContext = (senderID) => {
 
 //Get all user's parameters
 var getParameters = (senderID) => {
-  var params= [];
+  var params = {
+    name: '',
+    type: '',
+    value: ''
+  };
   if(userExists(senderID)){
     var user = getUser(senderID);
     params = user.parameters;
