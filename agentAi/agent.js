@@ -69,9 +69,8 @@ var receiveMessage = (request) => {
         answer.parameters.value = param;
         console.log('Param to push: ', param);
       }
-
     }
-
+    
     setContext(request.senderID, answer.context, answer.parameters);
   }
 

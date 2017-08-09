@@ -27,8 +27,16 @@ var setContext = (senderID, context, params) => {
     var user = getUser(senderID);
     user.context.input = user.context.output;
     user.context.output = context.output;
-    user.parameters[params.name] = params.value;
+
+    if(params.name == ''){
+      user.parameters['none'] = params.value;
+    }
+    else {
+      user.parameters[params.name] = params.value;
+    }
+
     user.currentParameter = params.name;
+
 
     setUser(senderID, user.context, user.parameters);
   }
@@ -36,7 +44,12 @@ var setContext = (senderID, context, params) => {
   //if user doesn't exists, add new user
   else {
     var parameters = [];
-    parameters[params.name] = params.value;
+    if(params.name == ''){
+      parameters['none'] = params.value;
+    }
+    else{
+      parameters[params.name] = params.value;
+    }
     current = params.name;
 
     setUser(senderID, context, parameters, current);
