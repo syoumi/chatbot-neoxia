@@ -1,26 +1,16 @@
 
-const {getContext} = require('./functions/handleContext');
-const {setContext} = require('./functions/handleContext');
-const {cleanContext} = require('./functions/handleContext');
+
 const {getParameters} = require('./functions/handleContext');
 const {saveUndefinedAnswer} = require('./functions/saveUndefinedAnswer');
 const {handleMessage} = require('./functions/handleMessage');
-const {handleContextMessage} = require('./functions/handleMessage');
 const {getEntry} = require('./functions/handleAnswer');
 const {getAnswer} = require('./functions/handleAnswer');
+const {verifyParam} = require('./functions/handleParams');
+
 
 var receiveMessage = (request) => {
   console.log(`Received message from ${request.senderID}, content ${request.text}`);
   var answer = undefined;
-
-  //Check if there's a context for that user
-  var context = getContext(request.senderID);
-
-  if(context){
-      console.log('HandleContextMessage');
-      //Looking for an answer with answer.context.id
-      answer = handleContextMessage(request, context);
-  }
 
   if(!answer){
       console.log('HandleMessage');
@@ -34,31 +24,10 @@ var receiveMessage = (request) => {
       } else {
         // console.log(`Answer: ${answer.answer}`);
 
-        if(context){
-          if(context.output != answer.context.input){
-            //if user's out of context
-            cleanContext(request.senderID);
-            answer = getAnswer(getEntry('out-of-context'));
-          }
-        } else {
-          if (answer.context.input) {
-            //if user's out of context
-            answer = getAnswer(getEntry('out-of-context'));
-            console.log('ANSWEEEEEEEEEEEEER : ' , answer.action);
-          }
-        }
+
     }
   }
 
-  //if answer got an output
-  if(answer.context.output){
-    var params = '';
-    if(answer.parameters[answer.parameters.length-1] === '?'){
-      params = request.text;
-      console.log(`Params to push: ${params}`);
-    }
-    setContext(request.senderID, answer.context, params);
-  }
 
   //Update answer's parameters
   answer.parameters = getParameters(request.senderID);
