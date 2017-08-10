@@ -5,30 +5,30 @@ const {setUser} = require('./handleUser');
 const {removeUser} = require('./handleUser');
 
 //Get the actual context of user
-var getContext = (senderID) => {
-  var context= undefined;
+var getPreviousAction = (senderID) => {
+  var previousAction= undefined;
 
   if(userExists(senderID)){
     var user = getUser(senderID);
     if(user){
-      context= user.context;
+      previousAction= user.previousAction;
     }
   }
 
-  return context;
+  return previousAction;
 }
 
 
 //Set the actual context of user
-var setContext = (senderID, context, params, next) => {
+var setPreviousAction = (senderID, action, params) => {
 
   //if user already exists, update context and parameters
   if(userExists(senderID)){
     var user = getUser(senderID);
-    user.context.input = user.context.output;
-    user.context.output = context.output;
 
-    if(params.name != ''){
+    user.previousAction = action;
+
+    if(params.value != ''){
       var param = {
         name: params.name,
         type: params.type,
@@ -37,16 +37,13 @@ var setContext = (senderID, context, params, next) => {
       user.parameters.push(param);
     }
 
-    user.currentParameter = next;
-
-
-    setUser(senderID, user.context, user.parameters);
+    setUser(senderID, user.previousAction, user.parameters);
   }
 
   //if user doesn't exists, add new user
   else {
     var parameters = [];
-    if(params.name != ''){
+    if(params.value != ''){
       var param = {
         name: params.name,
         type: params.type,
@@ -54,9 +51,8 @@ var setContext = (senderID, context, params, next) => {
       }
       parameters.push(param);
     }
-    current = next;
 
-    setUser(senderID, context, parameters, current);
+    setUser(senderID, action, parameters);
   }
 }
 
@@ -75,17 +71,8 @@ var getParameters = (senderID) => {
   return params;
 }
 
-//Get user.next params
-var getCurrentParameter = (senderID) => {
-  var current = undefined;
-  if(userExists(senderID)){
-    var user = getUser(senderID);
-    current = user.currentParameter;
-  }
-  return current;
-}
 
 
 module.exports= {
-  getContext, setContext, cleanContext, getParameters, getCurrentParameter
+  getPreviousAction, setPreviousAction, cleanContext, getParameters
 }
