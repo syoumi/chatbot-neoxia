@@ -10,16 +10,9 @@ var getAnswer = (entry) => {
   // generating random index
   var index = parseInt(Math.random() * entry.answers.length);
   return {
-    action: entry.action,
-    context: entry.context,
+    action: entry.action
     parameters: [
-      {
-        "name" : entry.parameters.name,
-        "type" : entry.parameters.type,
-        "value" : ''
-      }
     ],
-    next : entry.parameters.next,
     answer: entry.answers[index]
   };
 };
