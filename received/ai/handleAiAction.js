@@ -29,15 +29,15 @@ var handleAiAction= (senderID, answer) => {
       break;
 
     //Type logement ---> Demander opération
-    case "search-villa-action":
+    case "search-appartement-action":
       var replies = ["Acheter", "Louer"];
       sendQuickReplies(senderID, text, replies);
   		break;
 
 
     //Opération, fixer fourchette, refuser fourchette, fixer nbr chambres, refuser nbr chambres, fixer nom-ville
-    case "achat-villa-action":
-    case "location-villa-action":
+    case "achat-appartement-action":
+    case "location-appartement-action":
     case "max-fourchette-action":
     case "refuse-fourchette-action":
     case "def-nbr-chambres-action":

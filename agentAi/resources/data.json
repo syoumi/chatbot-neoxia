@@ -50,10 +50,10 @@
 
 
    {
-      "action": "search-villa-action",
+      "action": "search-appartement-action",
       "keywords": [
-        "je cherche une villa",
-        "villa"
+        "je cherche un appartement",
+        "appartement"
       ],
       "answers": [
         "D'accord. Cherchez-vous à acheter ou à louer?"
@@ -62,14 +62,14 @@
         {
           "id": 1,
           "input": "prix-action",
-          "output": "search-villa-action"
+          "output": "search-appartement-action"
         },
         "parameters":[]
 
     },
 
    {
-      "action": "achat-villa-action",
+      "action": "achat-appartement-action",
       "keywords": [
         "acheter",
         "je souhaite acheter",
@@ -81,7 +81,7 @@
       "context":
         {
           "id": 1,
-          "input": "search-villa-action",
+          "input": "search-appartement-action",
           "output":"fourchette-action"
         },
         "parameters":[]
@@ -89,7 +89,7 @@
     },
 
     {
-      "action": "location-villa-action",
+      "action": "location-appartement-action",
       "keywords": [
         "louer",
         "je souhaite louer",
@@ -101,7 +101,7 @@
       "context":
         {
           "id": 1,
-          "input": "search-villa-action",
+          "input": "search-appartement-action",
           "output": "fourchette-action"
         },
         "parameters":[]
