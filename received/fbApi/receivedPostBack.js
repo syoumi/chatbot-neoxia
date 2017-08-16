@@ -29,7 +29,7 @@ var receivedPostBack = (event) => {
       var buttons = [
         {
           "type":"phone_number",
-          "title":"Call Representative",
+          "title":"Appeler",
           "payload":"+15105551234"
        }
      ];
