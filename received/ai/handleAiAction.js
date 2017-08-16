@@ -22,7 +22,7 @@ var handleAiAction= (senderID, answer) => {
       */
 
     case "start-action":
-    case "salutations-action":
+    case "prix-action":
       var options= ['Garçonnière', 'Appartement', 'Maison', 'Villa'];
      sendQuickReplies(senderID, responseText, options);
       break;
