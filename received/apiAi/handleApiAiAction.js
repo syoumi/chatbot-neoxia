@@ -17,13 +17,9 @@ const {getLastAccounts} = require('./../../data/salesforce/getLastAccounts');
 //By action
 var handleApiAiAction= (senderID, action, responseText, contexts, parameters) => {
 	switch (action) {
-
-		case "catalogue-appart-achat":
-			//sendCatalogueAppartVente(senderID, responseText);
-		break;
-
-    case "say-c":
-      sendTextMessage(senderID, 'You said c');
+    case "prix-action":
+		 var options= ['Garçonnière', 'Appartement', 'Maison', 'Villa'];
+      sendQuickReplies(senderID, responseText, options);
     break;
 
     case 'test-sf':

@@ -7,17 +7,16 @@ var userExists = (senderID)=> {
 
 
 //Insert or update user
-var setUser = (senderID, action, params) => {
+var setUser = (senderID, context, params) => {
   var data = {
-    previousAction: action,
-    parameters: params,
+    context: context,
+    parameters: params
   }
   users.set(senderID, data);
 }
 
 //Get user
 var getUser = (senderID) => {
-  console.log("USER: ", users.get(senderID));
   return users.get(senderID);
 }
 

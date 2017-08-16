@@ -12,74 +12,356 @@
         "salutations",
         "hello",
         "salam",
-        "lu",
-        "coucou",
-        "cc"
+        "lu"
       ],
       "answers": [
-        "Salut à vous !",
-        "Salutations !"
+        "Salut à vous :D !\nComment puis-je vous aider?",
+        "Salutations :D !\nComment puis-je vous aider?"
       ],
-      "nextActions": [
+      "context":
+        {
+          "id": 0,
+          "input": "",
+          "output": "salutations-action"
+        },
+        "parameters":[]
 
-      ],
-      "previousActions" : [
-
-      ]
     },
 
     {
-      "action": "yes-action",
+      "action": "prix-action",
+      "keywords": [
+        "vos prix",
+        "idée sur les prix",
+        "puis je voir une idée sur vos prix"
+      ],
+      "answers": [
+        "Vous êtes intéressé par quel type d'immobilier?"
+      ],
+      "context":
+        {
+          "id": 0,
+          "input": "",
+          "output": ""
+        },
+        "parameters":[]
+
+    },
+
+
+   {
+      "action": "search-villa-action",
+      "keywords": [
+        "je cherche une villa",
+        "villa"
+      ],
+      "answers": [
+        "D'accord. Cherchez-vous à acheter ou à louer?"
+      ],
+      "context":
+        {
+          "id": 1,
+          "input": "",
+          "output": "search-villa-action"
+        },
+        "parameters":[]
+
+    },
+
+   {
+      "action": "achat-villa-action",
+      "keywords": [
+        "acheter",
+        "je souhaite acheter",
+        "je veux acheter"
+      ],
+      "answers": [
+        "Voulez-vous fixer la fourchette des prix ?"
+      ],
+      "context":
+        {
+          "id": 1,
+          "input": "search-villa-action",
+          "output":"fourchette-action"
+        },
+        "parameters":[]
+
+    },
+
+    {
+      "action": "location-villa-action",
+      "keywords": [
+        "louer",
+        "je souhaite louer",
+        "je veux acheter"
+      ],
+      "answers": [
+        "Voulez-vous fixer la fourchette des prix ?"
+      ],
+      "context":
+        {
+          "id": 1,
+          "input": "search-villa-action",
+          "output": "fourchette-action"
+        },
+        "parameters":[]
+
+    },
+
+    {
+      "action": "accept-fourchette-action",
       "keywords": [
         "oui",
-        "ouai",
-        "wéé",
-        "yes",
-        "yeah",
         "d accord",
-        "d acc",
-        "ok",
-        "c est bon",
         "pourquoi pas",
-        "prq pas"
+        "prq pas",
+        "ok",
+        "si",
+        "fixer fourchette"
       ],
       "answers": [
-        "Génial !",
-        "Super !",
-        "C'est bon.",
-        "Bien entendu."
+        "Veuillez spéficier le prix minimum (en DH), s'il vous plaît."
       ],
-      "nextActions": [
-
-      ],
-      "previousActions" : [
-
-      ]
+      "context":
+        {
+          "id": 37,
+          "input": "fourchette-action",
+          "output": "accept-fourchette-action"
+        },
+        "parameters":[]
     },
 
     {
-      "action": "no-action",
+      "action": "min-fourchette-action",
+      "keywords": [
+        "{!min_prix!} DH",
+        "{!min_prix!}"
+      ],
+      "answers": [
+        "Veuillez spéficier le prix maximum (en DH), s'il vous plaît."
+      ],
+      "context":
+        {
+          "id": 38,
+          "input": "accept-fourchette-action",
+          "output": "min-fourchette-action"
+        },
+        "parameters":["?"]
+    },
+
+    {
+      "action": "max-fourchette-action",
+      "keywords": [
+        "{!max_prix!} DH",
+        "{!max_prix!}"
+      ],
+      "answers": [
+        "C'est noté. Souhaitez-vous déterminer le nombre de chambres?"
+      ],
+      "context":
+        {
+          "id": 39,
+          "input": "min-fourchette-action",
+          "output": "fourchette-fin-action"
+        },
+        "parameters":["?"]
+    },
+
+    {
+      "action": "refuse-fourchette-action",
       "keywords": [
         "non",
-        "pas d accord",
-        "pas du tout",
-        "du tout",
-        "non merci"
+        "non merci",
+        "pas maintenant"
       ],
       "answers": [
-        "D'accord.",
-        "C'est noté.",
-        "Comme vous voulez."
+        "C'est noté. Souhaitez-vous déterminer le nombre de chambres?"
       ],
-      "nextActions": [
-
-      ],
-      "previousActions" : [
-
-      ]
+      "context":
+        {
+          "id": 40,
+          "input": "fourchette-action",
+          "output": "fourchette-fin-action"
+        },
+        "parameters":[]
     },
 
     {
+      "action": "accept-nbr-chambres-action",
+      "keywords": [
+        "oui",
+        "d accord",
+        "pourquoi pas",
+        "prq pas",
+        "ok"
+      ],
+      "answers": [
+        "Combien de chambres voulez-vous?"
+      ],
+      "context":
+        {
+          "id": 42,
+          "input": "fourchette-fin-action",
+          "output": "accepte-nbr-chambres-action"
+        },
+        "parameters":[]
+    },
+
+    {
+      "action": "def-nbr-chambres-action",
+      "keywords": [
+        "{!nbr_chambres!} chambres",
+        "{!nbr_chambres!}"
+      ],
+      "answers": [
+        "C'est noté. Voulez-vous choisir une ville? "
+      ],
+      "context":
+        {
+          "id": 43,
+          "input": "accept-nbr-chambres-action",
+          "output": "nbr-chambres-action"
+        },
+        "parameters":["?"]
+    },
+
+    {
+      "action": "refuse-nbr-chambres-action",
+      "keywords": [
+        "non",
+        "non merci",
+        "pas maintenant"
+      ],
+      "answers": [
+        "Comme vous voulez. Voulez-vous choisir une ville? "
+      ],
+      "context":
+        {
+          "id": 43,
+          "input": "fourchette-fin-action",
+          "output": "nbr-chambres-action"
+        },
+        "parameters":[]
+    },
+
+    {
+      "action": "accept-ville-action",
+      "keywords": [
+        "oui",
+        "pourquoi pas",
+        "prq pas",
+        "ok",
+        "si"
+      ],
+      "answers": [
+        "Laquelle?",
+        "Quelle ville?"
+      ],
+      "context":
+        {
+          "id": 44,
+          "input": "nbr-chambres-action",
+          "output": "accept-ville-action"
+        },
+        "parameters":[]
+    },
+
+    {
+      "action": "nom-ville-action",
+      "keywords": [
+        "{!nom_ville!}"
+      ],
+      "answers": [
+        "D'accord. Peut-être voulez-vous choisir, également, un quartier?"
+      ],
+      "context":
+        {
+          "id": 45,
+          "input": "accept-ville-action",
+          "output": "ville-action"
+        },
+        "parameters":["?"]
+    },
+
+    {
+      "action": "refuse-ville-action",
+      "keywords": [
+        "non",
+        "non merci",
+        "pas maintenant"
+      ],
+      "answers": [
+        "D'accord.\nVeuillez patientez, s'il vous plaît. Je vous envoie le catalogue dans quelques instants"
+      ],
+      "context":
+        {
+          "id": 46,
+          "input": "nbr-chambres-action",
+          "output": "quartier-action"
+        },
+        "parameters":[]
+    },
+
+    {
+      "action": "accept-quartier-action",
+      "keywords": [
+        "oui",
+        "pourquoi pas",
+        "prq quoi",
+        "si",
+        "ok"
+      ],
+      "answers": [
+        "Lequel?",
+        "Quel quartier?",
+        "Donnez, s'il vous plaît, le nom du quartier."
+      ],
+      "context":
+        {
+          "id": 47,
+          "input": "ville-action",
+          "output": "accept-quartier-action"
+        },
+        "parameters":[]
+    },
+
+    {
+      "action": "nom-quartier-action",
+      "keywords": [
+        "{!nom_quartier!}"
+      ],
+      "answers": [
+        "C'est noté."
+      ],
+      "context":
+        {
+          "id": 48,
+          "input": "accept-quartier-action",
+          "output": ""
+        },
+        "parameters":["?"]
+    },
+
+    {
+      "action": "refuse-quartier-action",
+      "keywords": [
+        "non",
+        "non merci",
+        "pas maintenant"
+      ],
+      "answers": [
+        "Comme vous voulez."
+      ],
+      "context":
+        {
+          "id": 49,
+          "input": "ville-action",
+          "output": ""
+        },
+        "parameters":[]
+    },
+
+     {
       "action": "thanks-action",
       "keywords": [
         "merci",
@@ -101,356 +383,18 @@
         "C'est toujours un plaisir de vous rendre service.",
         "Aucun problème, je suis là pour ça."
       ],
-      "nextActions": [
+      "context":
+        {
+          "id": 19,
+          "input": "",
+          "output": ""
+        },
+      "parameters":[]
 
-      ],
-      "previousActions" : [
-
-      ]
     },
 
-    {
-      "action": "catalogue-action",
-      "keywords": [
-        "consulter catalogue",
-        "voir catalogue",
-        "veux catalogue"
-      ],
-      "answers": [
-        "Quel type de logement voulez-vous consulter?",
-        "Veuillez préciser, s'il vous plaît, le type de logement que vous souhaitez consulter."
-      ],
-      "nextActions": [
-        "type-logement-action"
-      ],
-      "previousActions" : [
 
-      ]
-    },
 
-    {
-      "action": "type-logement-action",
-      "keywords": [
-        "appartement",
-        "studio",
-        "villa",
-        "maison",
-        "#logement#"
-      ],
-      "answers": [
-        "D'accord. Voulez-vous acheter ou louer?"
-      ],
-      "nextActions": [
-        "operation-action"
-      ],
-      "previousActions" : [
-        "catalogue-action"
-      ]
-    },
-
-    {
-      "action": "operation-action",
-      "keywords": [
-        "acheter",
-        "louer",
-        "#operation#"
-      ],
-      "answers": [
-        "D'accord. Voulez-vous fixer la fourchette des prix?"
-      ],
-      "nextActions": [
-        "accept-fourchette-action",
-        "refuse-fourchette-action"
-      ],
-      "previousActions" : [
-        "operation-action"
-      ]
-    },
-
-    {
-      "action": "accept-fourchette-action",
-      "keywords": [
-        "oui",
-        "d accord",
-        "pourquoi pas",
-        "prq pas",
-        "ok",
-        "si",
-        "fixer fourchette"
-      ],
-      "answers": [
-        "D'accord. Veuillez spéficier le prix minimum (en DH), s'il vous plaît."
-      ],
-      "nextActions": [
-        "min-fourchette-action"
-      ],
-      "previousActions" : [
-        "operation-action"
-      ]
-    },
-
-    {
-      "action": "min-fourchette-action",
-      "keywords": [
-        "#minPrice#"
-      ],
-      "answers": [
-        "Veuillez spéficier le prix maximum (en DH), s'il vous plaît."
-      ],
-      "nextActions": [
-        "max-fourchette-action"
-      ],
-      "previousActions" : [
-        "accept-fourchette-action"
-      ]
-    },
-
-    {
-      "action": "max-fourchette-action",
-      "keywords": [
-        "#maxPrice#"
-      ],
-      "answers": [
-        "C'est noté. Souhaitez-vous spécifier le nombre de chambres?"
-      ],
-      "nextActions": [
-        "accept-nbr-chambres-action", "refuse-nbr-chambres-action"
-      ],
-      "previousActions" : [
-        "min-fourchette-action"
-      ]
-    },
-
-    {
-      "action": "refuse-fourchette-action",
-      "keywords": [
-        "non",
-        "non merci",
-        "pas maintenant"
-      ],
-      "answers": [
-        "C'est noté. Souhaitez-vous spécifier le nombre de chambres?"
-      ],
-      "nextActions": [
-        "accept-nbr-chambres-action", "refuse-nbr-chambres-action"
-      ],
-      "previousActions" : [
-        "operation-action"
-      ]
-    },
-
-    {
-      "action": "accept-nbr-chambres-action",
-      "keywords": [
-        "oui",
-        "d accord",
-        "pourquoi pas",
-        "prq pas",
-        "ok"
-      ],
-      "answers": [
-        "Combien de chambres cherchez-vous?"
-      ],
-      "nextActions": [
-        "def-nbr-chambres-action"
-      ],
-      "previousActions" : [
-        "max-fourchette-action",
-        "refuse-fourchette-action"
-      ]
-    },
-
-    {
-      "action": "def-nbr-chambres-action",
-      "keywords": [
-        "#nbrRooms#"
-      ],
-      "answers": [
-        "C'est noté. Voulez-vous choisir une ville? "
-      ],
-      "nextActions": [
-        "accept-ville-action",
-        "refuse-ville-action"
-      ],
-      "previousActions" : [
-        "accepte-nbr-chambres-action"
-      ]
-    },
-
-    {
-      "action": "refuse-nbr-chambres-action",
-      "keywords": [
-        "non",
-        "non merci",
-        "pas maintenant"
-      ],
-      "answers": [
-        "Comme vous voulez. Voulez-vous choisir une ville? "
-      ],
-      "nextActions": [
-        "accept-ville-action",
-        "refuse-ville-action"
-      ],
-      "previousActions" : [
-        "refuse-fourchette-action",
-        "max-fourchette-action"
-      ]
-    },
-
-    {
-      "action": "accept-ville-action",
-      "keywords": [
-        "oui",
-        "pourquoi pas",
-        "prq pas",
-        "ok",
-        "si"
-      ],
-      "answers": [
-        "Laquelle?",
-        "Quelle ville?"
-      ],
-      "nextActions": [
-        "nom-ville-action"
-      ],
-      "previousActions" : [
-        "accept-ville-action",
-        "refuse-nbr-chambres-action"
-      ]
-    },
-
-    {
-      "action": "nom-ville-action",
-      "keywords": [
-        "#city#"
-      ],
-      "answers": [
-        "D'accord. Peut-être voulez-vous choisir, également, un quartier?"
-      ],
-      "nextActions": [
-        "accept-quartier-action",
-        "refuse-quartier-action"
-      ],
-      "previousActions" : [
-        "accept-ville-action"
-      ]
-    },
-
-    {
-      "action": "refuse-ville-action",
-      "keywords": [
-        "non",
-        "non merci",
-        "pas maintenant"
-      ],
-      "answers": [
-        "D'accord. Confirmez-vous vos choix?"
-      ],
-      "nextActions": [
-        "confirmer-catalogue-action",
-        "no-action"
-      ],
-      "previousActions" : [
-        "def-nbr-chambres-action",
-        "refuse-nbr-chambres-action"
-      ]
-    },
-
-    {
-      "action": "accept-quartier-action",
-      "keywords": [
-        "oui",
-        "pourquoi pas",
-        "prq quoi",
-        "si",
-        "ok"
-      ],
-      "answers": [
-        "Lequel?",
-        "Quel quartier?",
-        "Donnez, s'il vous plaît, le nom du quartier."
-      ],
-      "nextActions": [
-        "nom-quartier-action"
-      ],
-      "previousActions" : [
-        "nom-ville-action"
-      ]
-    },
-
-    {
-      "action": "nom-quartier-action",
-      "keywords": [
-        "#neighborhood#"
-      ],
-      "answers": [
-        "C'est noté."
-      ],
-      "nextActions": [
-
-      ],
-      "previousActions" : [
-        "accept-quartier-action"
-      ]
-    },
-
-    {
-      "action": "refuse-quartier-action",
-      "keywords": [
-        "non",
-        "non merci",
-        "pas maintenant"
-      ],
-      "answers": [
-        "Comme vous voulez. Confirmez-vous vos choix?"
-      ],
-      "nextActions": [
-        "confirmer-catalogue-action",
-        "no-action"
-      ],
-      "previousActions" : [
-        "nom-ville-action"
-      ]
-    },
-
-    {
-      "action": "confirmer-catalogue-action",
-      "keywords": [
-        "oui",
-        "oui merci",
-        "d accord",
-        "ok",
-        "je confirme",
-        "confirmer"
-      ],
-      "answers": [
-        "D'accord."
-      ],
-      "nextActions": [
-
-      ],
-      "previousActions" : [
-         "refuse-quartier-action", "refuse-ville-action"
-      ]
-    }
-
-    {
-      "action": "prix-action",
-      "keywords": [
-        "puis je avoir une idée concernant les prix",
-        "meilleurs prix",
-        "vos prix"
-      ],
-      "answers": [
-        "Tout dépend du type de logement, ses caratéristiques et son le lieu où il se situe. Veuillez patienter, s'il vous plaît. Je vous donne une idée sur les différents prix."
-      ],
-      "nextActions": [
-
-      ],
-      "previousActions" : [
-
-      ]
-    },
 
     {
       "action": "unknown-action",
@@ -461,26 +405,27 @@
         "Je crois que je ne vous suis plus. Pouvez-vous clarifier votre message ?",
         "Votre message me paraît difficile à comprendre. Expliquez, s'il vous plaît!"
       ],
-      "nextActions": [
-
-      ],
-      "previousActions" : [
-
-      ]
+      "context":
+        {
+          "id": 3889,
+          "input": "",
+          "output": ""
+        },
+        "parameters": []
     },
     {
       "action": "out-of-context",
       "keywords": [],
       "answers": [
-        "  تفعيل اللغة العربية  "
+        "السﻻم عليكم أخي العزيز"
       ],
-      "nextActions": [
-
-      ],
-      "previousActions" : [
-
-      ]
+      "context":
+        {
+          "id": 3890,
+          "input": "",
+          "output": ""
+        },
+        "parameters": []
     }
-
   ]
 }
