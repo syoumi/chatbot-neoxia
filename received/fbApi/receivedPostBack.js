@@ -4,6 +4,7 @@
  */
 
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
+const {sendButtonMessage} = require('./../../send/fbApi/sendButtonMessage');
 
 /**
  * Postback event handler
