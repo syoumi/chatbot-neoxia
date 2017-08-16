@@ -49,6 +49,8 @@ var selectAppart= (sender, responseText, op)=> {
 							var photo= record.Photo__c;
 							var link= record.Link__c;
 
+							sendTextMessage(sender, title);
+
 							var element= {
 										title: title,
 										subtitle: price,
