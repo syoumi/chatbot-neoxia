@@ -79,5 +79,5 @@ var selectAppart= (sender, responseText, op)=> {
 
 
 module.exports = {
-  sendCatalogueAppartVente, sendCatalogueAppartLocation, selectAppart
+  sendCatalogueAppartementVente, sendCatalogueAppartementLocation, selectAppart
 }
