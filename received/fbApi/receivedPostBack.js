@@ -24,6 +24,17 @@ var receivedPostBack = (event) => {
 
   //by payload
   switch(payload){
+    case "CONTACT_PAYLOAD":
+      var buttons = [
+        {
+          "type":"phone_number",
+          "title":"Call Representative",
+          "payload":"+15105551234"
+       }
+     ];
+      sendButtonMessage(senderID, 'Vous pouvez contacter Monsieur XXXX pour plus de renseignements.', buttons);
+      break;
+
     default:
         sendTextMessage(senderID, `Postback ${payload} reçu :D`);
   }
