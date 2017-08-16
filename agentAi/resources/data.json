@@ -61,7 +61,7 @@
       "context":
         {
           "id": 1,
-          "input": "",
+          "input": "prix-action",
           "output": "search-villa-action"
         },
         "parameters":[]
