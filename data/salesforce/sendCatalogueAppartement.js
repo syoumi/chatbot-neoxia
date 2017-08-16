@@ -32,7 +32,7 @@ var selectAppart= (sender, responseText, op)=> {
 			conn.query('SELECT Type__c, Name, Price__c, Photo__c, Link__c FROM Appartement__c', (err, res) => {
 				if (err) { return console.error(err); }
 
-					sendTextMessage(sender, 'D\'accord. Je vous envoie le catalogue des appartements à vendre dans quelques instants.');
+					sendTextMessage(sender, responseText);
 
 					var elements=[];
 					for (var i=0; i<res.records.length; i++) {
