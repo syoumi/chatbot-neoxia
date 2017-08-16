@@ -22,10 +22,6 @@ var handleApiAiAction= (senderID, action, responseText, contexts, parameters) =>
       sendQuickReplies(senderID, responseText, options);
     break;
 
-    case 'test-sf':
-      getLastAccounts(senderID);
-      break;
-
 		default:
 			// Unhandled action, just send back the text
 			sendTextMessage(senderID, responseText);

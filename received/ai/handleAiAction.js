@@ -23,8 +23,8 @@ var handleAiAction= (senderID, answer) => {
 
     case "start-action":
     case "salutations-action":
-      var replies = ["Consulter catalogue", "Voir nouveautés", "Poser une question", "Autre"];
-      sendQuickReplies(senderID, text, replies);
+      var options= ['Garçonnière', 'Appartement', 'Maison', 'Villa'];
+     sendQuickReplies(senderID, responseText, options);
       break;
 
     /**
