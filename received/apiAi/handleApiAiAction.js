@@ -16,16 +16,8 @@ const {getLastAccounts} = require('./../../data/salesforce/getLastAccounts');
 
 //By action
 var handleApiAiAction= (senderID, action, responseText, contexts, parameters) => {
-	switch (action) {
-    case "prix-action":
-		 var options= ['Garçonnière', 'Appartement', 'Maison', 'Villa'];
-      sendQuickReplies(senderID, responseText, options);
-    break;
+	
 
-		default:
-			// Unhandled action, just send back the text
-			sendTextMessage(senderID, responseText);
-	}
 }
 
 
