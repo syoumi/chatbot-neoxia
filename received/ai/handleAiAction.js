@@ -7,6 +7,8 @@ const {sendImageMessage} = require('./../../send/fbApi/sendImageMessage');
 const {sendQuickReplies} = require('./../../send/fbApi/sendQuickReplies');
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 
+const {sendCatalogueAppartementVente} = require('./../../data/salesforce/sendCatalogueAppartement');
+
 
 //By action
 var handleAiAction= (senderID, answer) => {
@@ -48,10 +50,8 @@ var handleAiAction= (senderID, answer) => {
     case "refuse-ville-action":
     case "refuse-quartier-action":
     case "nom-quartier-action":
-      sendTextMessage(senderID, text);
-      var type = params[0];
-      var op = params[1];
-      console.log("TYYYYYYYPE: " + type + "; OP: " + op);
+      //sendTextMessage(senderID, text);
+      sendCatalogueAppartementVente(senderID, text);
       break;
 
 
