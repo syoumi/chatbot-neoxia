@@ -26,22 +26,16 @@ var handleAiAction= (senderID, answer) => {
      sendQuickReplies(senderID, text, options);
       break;
 
-    /**
-      * Scénario 1 : consulter catalogue d'un logement pour achat ou location avec ou sans critères
-      */
-
-    //Catalogue ---> Demander type logement
-		case "catalogue-action":
-      var replies = ["Appartement", "Maison", "Villa", "Studio"];
-      sendQuickReplies(senderID, text, replies);
-		  break;
     //Type logement ---> Demander opération
-    case "type-logement-action":
+    case "search-villa-action":
       var replies = ["Acheter", "Louer"];
       sendQuickReplies(senderID, text, replies);
   		break;
+
+
     //Opération, fixer fourchette, refuser fourchette, fixer nbr chambres, refuser nbr chambres, fixer nom-ville
-    case "operation-action":
+    case "achat-villa-action":
+    case "location-villa-action":
     case "max-fourchette-action":
     case "refuse-fourchette-action":
     case "def-nbr-chambres-action":
