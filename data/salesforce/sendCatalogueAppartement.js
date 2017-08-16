@@ -2,13 +2,13 @@
 var jsforce = require('jsforce');
 var conn = new jsforce.Connection();
 
-const {sendAudioMessage} = require('./../../send/sendAudioMessage');
-const {sendButtonMessage} = require('./../../send/sendButtonMessage');
-const {sendFileMessage} = require('./../../send/sendFileMessage');
-const {sendGenericMessage} = require('./../../send/sendGenericMessage');
-const {sendImageMessage} = require('./../../send/sendImageMessage');
-const {sendQuickReply} = require('./../../send/sendQuickReply');
-const {sendTextMessage} = require('./../../send/sendTextMessage');
+const {sendAudioMessage} = require('./../../send/fbApi/sendAudioMessage');
+const {sendButtonMessage} = require('./../../send/fbApi/sendButtonMessage');
+const {sendFileMessage} = require('./../../send/fbApi/sendFileMessage');
+const {sendGenericMessage} = require('./../../send/fbApi/sendGenericMessage');
+const {sendImageMessage} = require('./../../send/fbApi/sendImageMessage');
+const {sendQuickReply} = require('./../../send/fbApi/sendQuickReply');
+const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 
 
 //Louer un appartement
@@ -31,7 +31,7 @@ var selectAppart= (sender, responseText, op)=> {
 			//Select from Salesforce
 			conn.query('SELECT Type__c, Name, Price__c, Photo__c, Link__c FROM Appartement__c', (err, res) => {
 				if (err) { return console.error(err); }
-					 
+
 					sendTextMessage(sender, 'D\'accord. Je vous envoie le catalogue des appartements à vendre dans quelques instants.');
 
 					var elements=[];
@@ -40,7 +40,7 @@ var selectAppart= (sender, responseText, op)=> {
 						//console.log("Name: " + record.Name);
 
 						var type=record.Type__c;
-						
+
 						//SELL or RENT
 						if(type=== op){
 
@@ -53,7 +53,7 @@ var selectAppart= (sender, responseText, op)=> {
 										title: title,
 										subtitle: price,
 										image_url: photo,
-										
+
 										buttons: [{
 											type: "web_url",
 											url: link,
@@ -61,8 +61,8 @@ var selectAppart= (sender, responseText, op)=> {
 											}, {
 											type: "postback",
 											title: "Contacter",
-											payload: "CONTACT_PAYLOAD", 
-										}]	
+											payload: "CONTACT_PAYLOAD",
+										}]
 									};
 							elements.push(element);
 						}
@@ -70,8 +70,8 @@ var selectAppart= (sender, responseText, op)=> {
 
 
 					sendGenericMessage(sender, elements);
-							
-					
+
+
 				});
 			});
 }
