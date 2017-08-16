@@ -2,7 +2,7 @@
 var jsforce = require('jsforce');
 var conn = new jsforce.Connection();
 
-const {sendAudioMessage} = require('./../../send/fbApi/sendAudioMessage');
+
 const {sendButtonMessage} = require('./../../send/fbApi/sendButtonMessage');
 const {sendFileMessage} = require('./../../send/fbApi/sendFileMessage');
 const {sendGenericMessage} = require('./../../send/fbApi/sendGenericMessage');
