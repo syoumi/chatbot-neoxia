@@ -41,7 +41,7 @@
       "context":
         {
           "id": 0,
-          "input": "",
+          "input": "salutations-action",
           "output": ""
         },
         "parameters":[]
@@ -417,7 +417,7 @@
       "action": "out-of-context",
       "keywords": [],
       "answers": [
-        "السﻻم عليكم أخي العزيز"
+        "Désolé. Je ne vous comprend pas."
       ],
       "context":
         {

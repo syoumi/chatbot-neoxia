@@ -21,7 +21,6 @@ var handleAiAction= (senderID, answer) => {
       * Démarrage
       */
 
-    case "start-action":
     case "prix-action":
       var options= ['Garçonnière', 'Appartement', 'Maison', 'Villa'];
      sendQuickReplies(senderID, responseText, options);
