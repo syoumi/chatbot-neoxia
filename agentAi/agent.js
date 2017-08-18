@@ -1,68 +1,50 @@
+//TODO ./functions/findExactMatch integrating parameters
 
-const {getContext} = require('./functions/handleContext');
-const {setContext} = require('./functions/handleContext');
-const {cleanContext} = require('./functions/handleContext');
-const {getParameters} = require('./functions/handleContext');
-const {saveUndefinedAnswer} = require('./functions/saveUndefinedAnswer');
-const {handleMessage} = require('./functions/handleMessage');
-const {handleContextMessage} = require('./functions/handleMessage');
-const {getEntry} = require('./functions/handleAnswer');
-const {getAnswer} = require('./functions/handleAnswer');
+const {saveUndefinedAnswer} = require('./functions/message/saveUndefinedAnswer');
+const {handleMessage} = require('./functions/message/handleMessage');
+const {findSpecificMatch} = require('./functions/match/findSpecificMatch');
+const {lookForSpecificActions} = require('./functions/action/lookForSpecificActions');
+const {setUser} = require('./functions/user/handleUser');
+const {getUser} = require('./functions/user/handleUser');
+const {getAnswer} = require('./functions/answer/handleAnswer');
 
 var receiveMessage = (request) => {
+
   console.log(`Received message from ${request.senderID}, content ${request.text}`);
   var answer = undefined;
-
-  //Check if there's a context for that user
-  var context = getContext(request.senderID);
-
-  if(context){
-      console.log('HandleContextMessage');
-      //Looking for an answer with answer.context.id
-      answer = handleContextMessage(request, context);
+  var specificActions = lookForSpecificActions(request.senderID);
+  if (specificActions && specificActions.length != 0) {
+    var result = findSpecificMatch(request, specificActions);
+    answer = (result.entry) ? getAnswer(result) : undefined;
   }
 
-  if(!answer){
-      console.log('HandleMessage');
-
-      //Looking for an answer
-      answer = handleMessage(request);
-
-      // if this is unknown message, save the message in json file
-      if(answer.action === 'unknown-action') {
-        saveUndefinedAnswer(request.text);
-      } else {
-        // console.log(`Answer: ${answer.answer}`);
-
-        if(context){
-          if(context.output != answer.context.input){
-            //if user's out of context
-            cleanContext(request.senderID);
-            answer = getAnswer(getEntry('out-of-context'));
-          }
-        } else {
-          if (answer.context.input) {
-            //if user's out of context
-            answer = getAnswer(getEntry('out-of-context'));
-            console.log('ANSWEEEEEEEEEEEEER : ' , answer.action);
-          }
-        }
+  if (!answer) {
+    // Looking for a std answer
+    answer = handleMessage(request);
+    if (answer.answer) {
+      // add user to the map or update it
+      //TODO function push parameters
     }
   }
 
-  //if answer got an output
-  if(answer.context.output){
-    var params = '';
-    if(answer.parameters[answer.parameters.length-1] === '?'){
-      params = request.text;
-      console.log(`Params to push: ${params}`);
+
+
+  // if this is unknown message, save the message in json file
+  if(answer.action === 'unknown-action') {
+    saveUndefinedAnswer(request.text);
+  } else {
+    //console.log(`SET USER; Answer: ${answer.answer}`);
+    setUser(request.senderID, answer.action, answer.parameters);
+    
+    if(user){
+      answer.parameters = user.parameters;
     }
-    setContext(request.senderID, answer.context, params);
   }
 
-  //Update answer's parameters
-  answer.parameters = getParameters(request.senderID);
 
+  // Update answer's parameters
+  // answer.parameters = getParameters(request.senderID);
+  console.log('User object ' , getUser(request.senderID));
   var response = sendAnswer(request.senderID, answer);
   return response;
 };
@@ -77,6 +59,60 @@ var sendAnswer = (recipientID, answer) => {
   return toSend;
 }
 
-module.exports = {
-  receiveMessage
-}
+// var msg = {
+//   senderID: 123,
+//   text: "je veux acheter un appartement"
+// };
+//
+// console.log("BOT SAYS: ", receiveMessage(msg).answer);
+
+// var msg = {
+//   senderID: 123,
+//   text: 'Voici mon email: mita.oumaima@gmail.com'
+// };
+//
+// console.log("BOT SAYS: ", receiveMessage(msg).answer);
+//
+// var msg = {
+//   senderID: 123,
+//   text: 'mon numéro de téléphone est 0661896654'
+// };
+//
+// console.log("BOT SAYS: ", receiveMessage(msg).answer);
+//
+// var msg = {
+//   senderID: 123,
+//   text: 'Salut'
+// };
+//
+// console.log("BOT SAYS: ", receiveMessage(msg).answer);
+//
+// var msg = {
+//   senderID: 123,
+//   text: 'Voici mon email: chatbot.neoxia@gmail.com'
+// };
+//
+// console.log("BOT SAYS: ", receiveMessage(msg).answer);
+
+
+
+// var msg = {
+//   senderID: 123,
+//   text: 'consulter catalogue'
+// };
+//
+// console.log("BOT SAYS: ", receiveMessage(msg).answer);
+//
+// var msg = {
+//   senderID: 123,
+//   text: 'rien'
+// };
+//
+// console.log("BOT SAYS: ", receiveMessage(msg).answer);
+//
+// var msg = {
+//   senderID: 123,
+//   text: 'appartement'
+// };
+//
+// console.log("BOT SAYS: ", receiveMessage(msg).answer);

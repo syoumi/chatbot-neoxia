@@ -35,15 +35,6 @@
     },
 
     {
-        "name": "souhaite",
-        "synonyms": [
-          "souhaite",
-          "espère",
-          "veux"
-        ]
-    },
-
-    {
       "name": "logement",
       "synonyms": [
         "logement",
@@ -202,6 +193,30 @@
           "nouveauté",
           "nouveau",
           "neuf"
+        ]
+    },
+
+    {
+        "name": "casablanca",
+        "synonyms": [
+          "casablanca",
+          "casa"
+        ]
+    },
+
+    {
+        "name": "marrakech",
+        "synonyms": [
+          "marrakech",
+          "kech"
+        ]
+    },
+
+    {
+        "name": "safi",
+        "synonyms": [
+          "safi",
+          "asfi"
         ]
     }
 
