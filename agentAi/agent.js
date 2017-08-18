@@ -36,8 +36,8 @@ var receiveMessage = (request) => {
     //console.log(`SET USER; Answer: ${answer.answer}`);
     setUser(request.senderID, answer.action, answer.parameters);
 
-    if(getUser(senderID)){
-      answer.parameters = getUser(senderID).parameters;
+    if(getUser(request.senderID)){
+      answer.parameters = getUser(request.senderID).parameters;
     }
   }
 
