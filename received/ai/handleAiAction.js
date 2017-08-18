@@ -51,6 +51,7 @@ var handleAiAction= (senderID, answer) => {
     case "refuse-quartier-action":
     case "nom-quartier-action":
       sendTextMessage(senderID, text);
+      sendTextMessage(senderID, 'Params?');
       if(params){
         sendTextMessage(senderID, "Vous avez choisi: " + params);
       }
