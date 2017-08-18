@@ -50,8 +50,11 @@ var handleAiAction= (senderID, answer) => {
     case "refuse-ville-action":
     case "refuse-quartier-action":
     case "nom-quartier-action":
-      //sendTextMessage(senderID, text);
-      sendCatalogueAppartementVente(senderID, text);
+      sendTextMessage(senderID, text);
+      if(params){
+        sendTextMessage(senderID, "Vous avez choisi: " + params);
+      }
+      //sendCatalogueAppartementVente(senderID, text);
       break;
 
 
