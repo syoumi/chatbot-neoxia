@@ -4,7 +4,6 @@
  */
 
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
-const {sendToApiAi} = require('./../../send/apiAi/sendViaApiAi');
 const {sendToAi} = require('./../../send/ai/sendToAi');
 
 const {getWaiting} = require('./../../utils/waiting');
@@ -27,10 +26,10 @@ var receivedMessage = (event) => {
   var message = event.message;
 
   console.log(`### Message event informations ###`);
-  console.log(`| senderID : ${senderID}`);
-  console.log(`| recipientID ${recipientID}`);
-  console.log(`| timeOfMessage ${timeOfMessage}`);
-  console.log(`################end MEI ################`);
+  // console.log(`| senderID : ${senderID}`);
+  // console.log(`| recipientID ${recipientID}`);
+  // console.log(`| timeOfMessage ${timeOfMessage}`);
+  // console.log(`################end MEI ################`);
 
   // The bot is no longer waiting for answer
   setNotWaiting();

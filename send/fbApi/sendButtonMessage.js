@@ -6,7 +6,7 @@ const {callSendAPI} = require('./sendViaFaceBookAPI');
 
 
 var sendButtonMessage= (recipientId, text, buttons) => {
-  
+
 	var messageData = {
 		recipient: {
 			id: recipientId
@@ -25,6 +25,9 @@ var sendButtonMessage= (recipientId, text, buttons) => {
 
 	setTimeout(() => {callSendAPI(messageData);}, 3000);
 }
+
+
+
 
 
 

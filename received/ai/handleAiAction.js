@@ -7,6 +7,8 @@ const {sendImageMessage} = require('./../../send/fbApi/sendImageMessage');
 const {sendQuickReplies} = require('./../../send/fbApi/sendQuickReplies');
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 
+const {sendCatalogueAppartementVente} = require('./../../data/salesforce/sendCatalogueAppartement');
+
 
 //By action
 var handleAiAction= (senderID, answer) => {
@@ -21,28 +23,21 @@ var handleAiAction= (senderID, answer) => {
       * Démarrage
       */
 
-    case "start-action":
-    case "salutations-action":
-      var replies = ["Consulter catalogue", "Voir nouveautés", "Poser une question", "Autre"];
-      sendQuickReplies(senderID, text, replies);
+    case "prix-action":
+      var options= ['Garçonnière', 'Appartement', 'Maison', 'Villa'];
+     sendQuickReplies(senderID, text, options);
       break;
 
-    /**
-      * Scénario 1 : consulter catalogue d'un logement pour achat ou location avec ou sans critères
-      */
-
-    //Catalogue ---> Demander type logement
-		case "catalogue-action":
-      var replies = ["Appartement", "Maison", "Villa", "Studio"];
-      sendQuickReplies(senderID, text, replies);
-		  break;
     //Type logement ---> Demander opération
-    case "type-logement-action":
+    case "search-appartement-action":
       var replies = ["Acheter", "Louer"];
       sendQuickReplies(senderID, text, replies);
   		break;
+
+
     //Opération, fixer fourchette, refuser fourchette, fixer nbr chambres, refuser nbr chambres, fixer nom-ville
-    case "operation-action":
+    case "achat-appartement-action":
+    case "location-appartement-action":
     case "max-fourchette-action":
     case "refuse-fourchette-action":
     case "def-nbr-chambres-action":
@@ -56,9 +51,11 @@ var handleAiAction= (senderID, answer) => {
     case "refuse-quartier-action":
     case "nom-quartier-action":
       sendTextMessage(senderID, text);
-      var type = params[0];
-      var op = params[1];
-      console.log("TYYYYYYYPE: " + type + "; OP: " + op);
+      sendTextMessage(senderID, 'Params?');
+      if(params){
+        sendTextMessage(senderID, "Vous avez choisi: " + params);
+      }
+      //sendCatalogueAppartementVente(senderID, text);
       break;
 
 
