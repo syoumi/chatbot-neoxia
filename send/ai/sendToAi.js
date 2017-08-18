@@ -15,7 +15,7 @@ var sendToAi = (senderID, messageText) => {
 	console.log('Request is ' , request);
 	console.log('Answer is ' , answer);
 
-	
+
 	handleAiResponse(answer.recipientID, answer);
 
 
