@@ -22,7 +22,7 @@ var handleAiAction= (senderID, answer) => {
     /**
       * Démarrage
       */
-
+    case "catalogue-action":
     case "prix-action":
       var options= ['Garçonnière', 'Appartement', 'Maison', 'Villa'];
      sendQuickReplies(senderID, text, options);
@@ -57,6 +57,14 @@ var handleAiAction= (senderID, answer) => {
       }
       //sendCatalogueAppartementVente(senderID, text);
       break;
+     //just a test
+    case "operation-operation-action":
+    sendTextMessage(senderID, text);
+    sendTextMessage(senderID, 'Params?');
+    if(params){
+      sendTextMessage(senderID, "Vous avez choisi: " + params);
+    }
+     break;
 
 
 
