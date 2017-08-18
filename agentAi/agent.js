@@ -59,6 +59,10 @@ var sendAnswer = (recipientID, answer) => {
   return toSend;
 }
 
+module.exports = {
+  receiveMessage
+}
+
 // var msg = {
 //   senderID: 123,
 //   text: "je veux acheter un appartement"
