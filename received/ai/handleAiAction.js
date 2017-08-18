@@ -62,7 +62,7 @@ var handleAiAction= (senderID, answer) => {
     sendTextMessage(senderID, text);
     sendTextMessage(senderID, 'Params?');
     if(params){
-      sendTextMessage(senderID, "Vous avez choisi: " + params);
+      sendTextMessage(senderID, "Vous avez choisi: " + JSON.parse(params));
     }
      break;
 
