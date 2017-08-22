@@ -98,24 +98,90 @@
     },
 
     {
-      "action": "catalogue-action",
-      "keywords": [
+     "action": "goodbye-action",
+     "keywords": [
+       "au revoir",
+       "bye",
+       "à plus",
+       "à toute",
+       "à plus tard",
+       "à tout à l heure",
+       "ciao",
+       "à bientôt",
+       "je dois y aller",
+       "je quitte",
+       "goodbye"
+     ],
+     "answers": [
+       "À bientôt !",
+       "Au revoir.",
+       "Dans l'espoir de vous revoir bientôt.",
+       "Salut, à plus !"
+     ],
+     "nextActions": [],
+     "previousActions" : [],
+     "hasParam" : "0"
+   },
+
+   {
+    "action": "salamalec-action",
+    "keywords": [
+      "ça va",
+      "sa va",
+      "cv",
+      "comment vas tu",
+      "comment allez vous",
+      "est ce que vous allez bien"
+    ],
+    "answers": [
+      "Très bien, merci et vous?",
+      "Super, merci. Vous?"
+    ],
+    "nextActions": ["salamalec-answer-action"],
+    "previousActions" : [],
+    "hasParam" : "0"
+  },
+
+  {
+   "action": "salamalec-answer-action",
+   "keywords": [
+     "bien merci",
+     "très bien",
+     "cv",
+     "ça va",
+     "aussi",
+     "de même",
+     "également",
+     "cv hmd"
+   ],
+   "answers": [
+     "Bien.\nComment puis-je vous aider ?"
+   ],
+   "nextActions": [],
+   "previousActions" : ["salamalec-action"],
+   "hasParam" : "0"
+  },
+
+  {
+    "action": "catalogue-action",
+    "keywords": [
         "consulter catalogue",
         "voir catalogue",
         "veux catalogue"
-      ],
-      "answers": [
+    ],
+    "answers": [
         "Quel type de logement voulez-vous consulter?",
         "Veuillez préciser, s'il vous plaît, le type de logement que vous souhaitez consulter."
       ],
       "nextActions": [
         "type-logement-action"
       ],
-      "previousActions" : []
+      "previousActions" : [],
+      "hasParam": "0"
     },
 
     {
-      "action": "type-logement-action",
+      "action": "type-building-action",
       "keywords": [
         "#logement|building#"
       ],
@@ -135,13 +201,13 @@
       "answers": [
         "D'accord. Voulez-vous fixer la fourchette des prix?"
       ],
-      "nextActions": ["accept-fourchette-action", "refuse-fourchette-action"],
-      "previousActions" : ["operation-action"],
+      "nextActions": ["accept-fixing-price-action", "refuse-fixing-price-action"],
+      "previousActions" : ["type-building-action"],
       "hasParam": "1"
     },
 
     {
-      "action": "accept-fourchette-action",
+      "action": "accept-fixing-price-action",
       "keywords": [
         "oui",
         "d accord",
@@ -154,13 +220,13 @@
       "answers": [
         "D'accord. Veuillez spéficier le prix minimum (en DH), s'il vous plaît."
       ],
-      "nextActions": ["min-fourchette-action"],
-      "previousActions" : ["operation-action"],
+      "nextActions": ["min-price-action"],
+      "previousActions" : ["operation-action", "search-operation-building-action"],
       "hasParam": "0"
     },
 
     {
-      "action": "min-fourchette-action",
+      "action": "min-price-action",
       "keywords": [
         "#minPrice|currency#",
         "#minPrice|currency# dh"
@@ -168,13 +234,13 @@
       "answers": [
         "Veuillez spéficier le prix maximum (en DH), s'il vous plaît."
       ],
-      "nextActions": ["max-fourchette-action"],
-      "previousActions" : ["accept-fourchette-action"],
+      "nextActions": ["max-price-action"],
+      "previousActions" : ["accept-fixing-price-action"],
       "hasParam": "1"
     },
 
     {
-      "action": "max-fourchette-action",
+      "action": "max-price-action",
       "keywords": [
         "#maxPrice|currency#",
         "Le prix max est #maxPrice|currency#",
@@ -183,13 +249,13 @@
       "answers": [
         "C'est noté. Souhaitez-vous spécifier le nombre de chambres?"
       ],
-      "nextActions": ["accept-nbr-chambres-action", "refuse-nbr-chambres-action"],
-      "previousActions" : ["min-fourchette-action"],
+      "nextActions": ["accept-nbr-rooms-action", "refuse-nbr-rooms-action"],
+      "previousActions" : ["min-price-action"],
       "hasParam": "1"
     },
 
     {
-      "action": "refuse-fourchette-action",
+      "action": "refuse-fixing-price-action",
       "keywords": [
         "non",
         "non merci",
@@ -198,13 +264,13 @@
       "answers": [
         "C'est noté. Souhaitez-vous spécifier le nombre de chambres?"
       ],
-      "nextActions": ["accept-nbr-chambres-action", "refuse-nbr-chambres-action"],
+      "nextActions": ["accept-nbr-rooms-action", "refuse-nbr-rooms-action"],
       "previousActions" : ["operation-action"],
       "hasParam": "0"
     },
 
     {
-      "action": "accept-nbr-chambres-action",
+      "action": "accept-nbr-rooms-action",
       "keywords": [
         "oui",
         "d accord",
@@ -215,26 +281,26 @@
       "answers": [
         "Combien de chambres cherchez-vous?"
       ],
-      "nextActions": ["def-nbr-chambres-action"],
-      "previousActions" : ["max-fourchette-action", "refuse-fourchette-action"],
+      "nextActions": ["fixing-nbr-nbr-rooms-action"],
+      "previousActions" : ["max-price-action", "refuse-fixing-price-action"],
       "hasParam": "0"
     },
 
     {
-      "action": "def-nbr-chambres-action",
+      "action": "fixing-nbr-rooms-action",
       "keywords": [
         "#nbrRooms|number#"
       ],
       "answers": [
         "C'est noté. Voulez-vous choisir une ville? "
       ],
-      "nextActions": ["accept-ville-action", "refuse-ville-action"],
-      "previousActions" : ["accepte-nbr-chambres-action"],
+      "nextActions": ["accept-city-action", "refuse-city-action"],
+      "previousActions" : ["accepte-nbr-rooms-action"],
       "hasParam": "1"
     },
 
     {
-      "action": "refuse-nbr-chambres-action",
+      "action": "refuse-nbr-rooms-action",
       "keywords": [
         "non",
         "non merci",
@@ -243,13 +309,13 @@
       "answers": [
         "Comme vous voulez. Voulez-vous choisir une ville? "
       ],
-      "nextActions": ["accept-ville-action", "refuse-ville-action"],
-      "previousActions" : ["refuse-fourchette-action", "max-fourchette-action"],
+      "nextActions": ["accept-city-action", "refuse-city-action"],
+      "previousActions" : ["refuse-fixing-price-action", "max-price-action"],
       "hasParam": "0"
     },
 
     {
-      "action": "accept-ville-action",
+      "action": "accept-city-action",
       "keywords": [
         "oui",
         "pourquoi pas",
@@ -261,41 +327,41 @@
         "Laquelle?",
         "Quelle ville?"
       ],
-      "nextActions": ["nom-ville-action"],
-      "previousActions" : ["accept-ville-action", "refuse-nbr-chambres-action"],
+      "nextActions": ["fixing-city-action"],
+      "previousActions" : ["accept-city-action", "refuse-nbr-rooms-action"],
       "hasParam": "0"
     },
 
     {
-      "action": "nom-ville-action",
+      "action": "fixing-city-action",
       "keywords": [
         "#ville|city#"
       ],
       "answers": [
         "D'accord. Peut-être voulez-vous choisir, également, un quartier?"
       ],
-      "nextActions": ["accept-quartier-action", "refuse-quartier-action"],
-      "previousActions" : ["accept-ville-action"],
+      "nextActions": ["accept-neighborhood-action", "refuse-neighborhood-action"],
+      "previousActions" : ["accept-city-action"],
       "hasParam": "1"
     },
 
     {
-      "action": "refuse-ville-action",
+      "action": "refuse-city-action",
       "keywords": [
         "non",
         "non merci",
         "pas maintenant"
       ],
       "answers": [
-        "D'accord. Confirmez-vous vos choix?"
+        "D'accord.\nVeuillez patienter s'il vous plaît. Je vous envoie le catalogue dans quelques instants."
       ],
-      "nextActions": ["confirmer-catalogue-action", "no-action"],
-      "previousActions" : ["def-nbr-chambres-action", "refuse-nbr-chambres-action"],
+      "nextActions": [],
+      "previousActions" : ["fixing-nbr-rooms-action", "refuse-nbr-rooms-action"],
       "hasParam": "0"
     },
 
     {
-      "action": "accept-quartier-action",
+      "action": "accept-neighborhood-action",
       "keywords": [
         "oui",
         "pourquoi pas",
@@ -308,13 +374,13 @@
         "Quel quartier?",
         "Donnez, s'il vous plaît, le nom du quartier."
       ],
-      "nextActions": ["nom-quartier-action"],
-      "previousActions" : ["nom-ville-action"],
+      "nextActions": ["fixing-neighborhood-action"],
+      "previousActions" : ["fixing-city-action"],
       "hasParam": "0"
     },
 
     {
-      "action": "nom-quartier-action",
+      "action": "fixing-neighborhood-action",
       "keywords": [
         "#quartier|neighborhood#"
       ],
@@ -322,54 +388,66 @@
         "C'est noté."
       ],
       "nextActions": [],
-      "previousActions" : ["accept-quartier-action"],
+      "previousActions" : ["accept-neighborhood-action"],
       "hasParam": "1"
     },
 
     {
-      "action": "refuse-quartier-action",
+      "action": "refuse-neighborhood-action",
       "keywords": [
         "non",
         "non merci",
         "pas maintenant"
       ],
       "answers": [
-        "Comme vous voulez. Confirmez-vous vos choix?"
-      ],
-      "nextActions": ["confirmer-catalogue-action","no-action"],
-      "previousActions" : ["nom-ville-action"],
-      "hasParam": "0"
-    },
-
-    {
-      "action": "confirmer-catalogue-action",
-      "keywords": [
-        "oui",
-        "oui merci",
-        "d accord",
-        "ok",
-        "je confirme",
-        "confirmer"
-      ],
-      "answers": [
-        "D'accord."
+        "Comme vous voulez.\nVeuillez patienter s'il vous plaît. Je vous envoie le catalogue dans quelques instants."
       ],
       "nextActions": [],
-      "previousActions" : ["refuse-quartier-action", "refuse-ville-action"],
+      "previousActions" : ["fixing-city-action"],
       "hasParam": "0"
     },
 
+
     {
-      "action": "prix-action",
+      "action": "price-action",
       "keywords": [
         "puis je avoir une idée concernant les prix",
         "meilleurs prix",
         "vos prix"
       ],
       "answers": [
-        "Tout dépend du type de logement, ses caratéristiques et son le lieu où il se situe. Veuillez patienter, s'il vous plaît. Je vous donne une idée sur les différents prix."
+        "Par quel logement êtes-vous intéressé ?"
       ],
       "nextActions": [],
+      "previousActions" : ["type-building-action"],
+      "hasParam": "0"
+    },
+
+    {
+      "action": "price-action",
+      "keywords": [
+        "puis je avoir une idée concernant les prix",
+        "meilleurs prix",
+        "vos prix"
+      ],
+      "answers": [
+        "Par quel logement êtes-vous intéressé ?"
+      ],
+      "nextActions": [],
+      "previousActions" : ["type-building-action"],
+      "hasParam": "0"
+    },
+
+    {
+      "action": "search-operation-building-action",
+      "keywords": [
+        "je cherche #logement|building# à #operation|operation",
+        "je veux #operation|operation# #logement|building#"
+      ],
+      "answers": [
+        "Avec plaisir. Voulez-vous fixer la fourchette des prix ?"
+      ],
+      "nextActions": ["accept-fixing-price-action"],
       "previousActions" : [],
       "hasParam": "0"
     },
@@ -386,67 +464,7 @@
       "nextActions": [],
       "previousActions" : [],
       "hasParam": "0"
-    },
-
-    {
-      "action": "email-action",
-      "keywords": [
-        "Mon email est #userEmail|email#",
-        "#userEmail|email# est mon email",
-        "Voici mon email #userEmail|email#",
-        "#userEmail|email#"
-      ],
-      "answers": [
-        "J'ai bien reçu votre email. Votre numéro de téléphone svp."
-      ],
-      "nextActions": ["phone-number-action"],
-      "previousActions" : [],
-      "hasParam": "1"
-    },
-    {
-      "action": "phone-number-action",
-      "keywords": [
-        "mon numéro de téléphone est #userPhoneNumber|phone#",
-        "#userPhoneNumber|phone# est mon numéro de téléphone",
-        "Voici mon numéro de téléphone #userPhoneNumber|phone#",
-        "#userPhoneNumber|phone#"
-      ],
-      "answers": [
-        "J'ai bien reçu votre numéro de téléphone."
-      ],
-      "nextActions": [],
-      "previousActions" : ["email-action"],
-      "hasParam": "1"
-    },
-
-    {
-      "action": "city-action",
-      "keywords": [
-        "je souhaite visiter #ville|city#"
-      ],
-      "answers": [
-        "D'accord."
-      ],
-      "nextActions": [],
-      "previousActions" : [],
-      "hasParam": "1"
-    },
-
-    {
-      "action": "operation-operation-action",
-      "keywords": [
-        "je veux #operation|operation# #logement|building#"
-      ],
-      "answers": [
-        "D'accord. C'est noté !"
-      ],
-      "nextActions": [],
-      "previousActions" : [],
-      "hasParam": "1"
     }
-
-
-
 
   ]
 }
