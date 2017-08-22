@@ -418,8 +418,8 @@
       "answers": [
         "Par quel type de logement êtes-vous intéressé ?"
       ],
-      "nextActions": [],
-      "previousActions" : ["type-building-action"],
+      "nextActions": ["type-building-action"],
+      "previousActions" : [],
       "hasParam": "0"
     },
 
@@ -428,6 +428,21 @@
       "keywords": [
         "je cherche #building|building# à #operation|operation",
         "je veux #operation|operation# #building|building#"
+      ],
+      "answers": [
+        "Avec plaisir. Voulez-vous fixer la fourchette des prix ?"
+      ],
+      "nextActions": ["accept-fixing-price-action", "refuse-fixing-price-action"],
+      "previousActions" : [],
+      "hasParam": "1"
+    },
+
+    {
+      "action": "search-operation-building-city-action",
+      "keywords": [
+        "je cherche #building|building# à #operation|operation à #city|city",
+        "je veux #operation|operation# #building|building# à #city|city",
+        "quelles sont vos propositions pour #building|building# à #operation|operation à #city|city"
       ],
       "answers": [
         "Avec plaisir. Voulez-vous fixer la fourchette des prix ?"
