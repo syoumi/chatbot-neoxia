@@ -65,7 +65,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
         }
 
         if(elements.length>0){
-          sendTextMessageWithDelai(senderID, text);
+          sendTextMessage(senderID, text);
           sendGenericMessage(senderID, elements);
         }
         else{
