@@ -22,7 +22,7 @@ var sendCatalogue = (senderID, building, operation, minPrice, maxPrice, nbrRooms
     }
     if(nbrRooms){
       //'"+res+"'"
-      query += " AND  +  nbrRooms__c = "+ nbrRooms ;
+      query += " AND nbrRooms__c = " + nbrRooms ;
     }
     if(city){
       query += ` AND city = ${city}`;
