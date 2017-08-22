@@ -447,7 +447,7 @@
       "answers": [
         "Avec plaisir. Voulez-vous fixer la fourchette des prix ?"
       ],
-      "nextActions": ["accept-fixing-price-action"],
+      "nextActions": ["accept-fixing-price-action", "refuse-fixing-price-action"],
       "previousActions" : [],
       "hasParam": "0"
     },
