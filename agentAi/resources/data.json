@@ -181,7 +181,7 @@
     {
       "action": "type-building-action",
       "keywords": [
-        "#logement|building#"
+        "#building|building#"
       ],
       "answers": [
         "D'accord. Voulez-vous acheter ou louer?"
@@ -425,8 +425,8 @@
     {
       "action": "search-operation-building-action",
       "keywords": [
-        "je cherche #logement|building# à #operation|operation",
-        "je veux #operation|operation# #logement|building#"
+        "je cherche #building|building# à #operation|operation",
+        "je veux #operation|operation# #building|building#"
       ],
       "answers": [
         "Avec plaisir. Voulez-vous fixer la fourchette des prix ?"

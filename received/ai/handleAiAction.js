@@ -7,7 +7,7 @@ const {sendImageMessage} = require('./../../send/fbApi/sendImageMessage');
 const {sendQuickReplies} = require('./../../send/fbApi/sendQuickReplies');
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 
-const {sendCatalogueAppartementVente} = require('./../../data/salesforce/sendCatalogueAppartement');
+const {handleParameters} = require('./handleAiParameters');
 
 
 //By action
@@ -50,13 +50,13 @@ var handleAiAction= (senderID, answer) => {
     case "refuse-neighborhood-action":
     case "fixing-neighborhood-action":
       sendTextMessage(senderID, text);
-      sendTextMessage(senderID, 'Params?');
       if(params){
        //just a test
-        params.forEach((param)=> {
-          var tt = "Name: " + param.name + ";Type: " + param.type + "; Value: " + param.value;
-          sendTextMessage(senderID, tt);
-        });
+        // params.forEach((param)=> {
+        //   var tt = "Name: " + param.name + ";Type: " + param.type + "; Value: " + param.value;
+        //   sendTextMessage(senderID, tt);
+        // });
+        handleParameters(senderID, params, "send catalogue");
       }
       //sendCatalogueAppartementVente(senderID, text);
       break;
