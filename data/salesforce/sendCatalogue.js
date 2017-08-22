@@ -68,7 +68,7 @@ var sendCatalogue = (senderID, building, operation, minPrice, maxPrice, nbrRooms
             sendGenericMessage(senderID, elements);
         }
         else{
-          sendTextMessage(senderID, 'Je suis désolé. Je n\'ai pas trouvé ce que vous voulez.');
+          sendTextMessageWithDelai(senderID, 'Je suis désolé. Je n\'ai pas trouvé ce que vous voulez.');
         }
 
       });
