@@ -23,54 +23,42 @@ var handleAiAction= (senderID, answer) => {
       * Démarrage
       */
     case "catalogue-action":
-    case "prix-action":
+    case "price-action":
       var options= ['Garçonnière', 'Appartement', 'Maison', 'Villa'];
      sendQuickReplies(senderID, text, options);
       break;
 
     //Type logement ---> Demander opération
-    case "search-appartement-action":
+    case "type-building-action":
       var replies = ["Acheter", "Louer"];
       sendQuickReplies(senderID, text, replies);
   		break;
 
 
     //Opération, fixer fourchette, refuser fourchette, fixer nbr chambres, refuser nbr chambres, fixer nom-ville
-    case "achat-appartement-action":
-    case "location-appartement-action":
-    case "max-fourchette-action":
-    case "refuse-fourchette-action":
-    case "def-nbr-chambres-action":
-    case "refuse-nbr-chambres-action":
-    case "nom-ville-action":
+    case "max-price-action":
+    case "refuse-fixing-price-action":
+    case "fixing-nbr-rooms-action":
+    case "refuse-nbr-rooms-action":
+    case "fixing-city-action":
       var replies = ["Oui", "Non"];
       sendQuickReplies(senderID, text, replies);
       break;
     //Fin scénario
-    case "refuse-ville-action":
-    case "refuse-quartier-action":
-    case "nom-quartier-action":
+    case "refuse-city-action":
+    case "refuse-neighborhood-action":
+    case "fixing-neighborhood-action":
       sendTextMessage(senderID, text);
       sendTextMessage(senderID, 'Params?');
       if(params){
-        sendTextMessage(senderID, "Vous avez choisi: " + params);
+       //just a test
+        params.forEach((param)=> {
+          var tt = "Name: " + param.name + ";Type: " + param.type + "; Value: " + param.value;
+          sendTextMessage(senderID, tt);
+        });
       }
       //sendCatalogueAppartementVente(senderID, text);
       break;
-     //just a test
-    case "operation-operation-action":
-    sendTextMessage(senderID, text);
-    sendTextMessage(senderID, 'Params?');
-    if(params){
-      sendTextMessage(senderID, "Vous avez choisi: ");
-      params.forEach((param)=> {
-        var tt = "Name: " + param.name + ";Type: " + param.type + "; Value: " + param.value;
-        sendTextMessage(senderID, tt);
-      });
-    }
-     break;
-
-
 
 		default:
 			//unhandled action, just send back the text
