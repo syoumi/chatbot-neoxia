@@ -449,7 +449,7 @@
       ],
       "nextActions": ["accept-fixing-price-action", "refuse-fixing-price-action"],
       "previousActions" : [],
-      "hasParam": "0"
+      "hasParam": "1"
     },
 
     {
