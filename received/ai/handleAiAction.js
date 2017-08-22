@@ -50,9 +50,8 @@ var handleAiAction= (senderID, answer) => {
       sendQuickReplies(senderID, text, replies);
       break;
     //Fin scénario
-    case "refuse-city-action":
-    case "refuse-neighborhood-action":
-    case "fixing-neighborhood-action":
+    case "refuse-nbr-rooms-action":
+    case "fixing-nbr-rooms-action":
       //sendTextMessageWithDelai(senderID, text);
       if(params){
         handleParameters(senderID, text, params, "send catalogue");
