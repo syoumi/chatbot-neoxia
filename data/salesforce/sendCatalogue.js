@@ -20,17 +20,17 @@ var sendCatalogue = (senderID, building, operation, minPrice, maxPrice, nbrRooms
 
     var query = "SELECT Id, Name, price__c, photo__c, link__c FROM "+ building +" WHERE type__c = '"+ operation +"'";
     if(minPrice && maxPrice) {
-      query += " AND price__c BETWEEN " + minPrice + " AND " + maxPrice;
+      query += " AND price__c >=" + minPrice + " AND price__c <= " + maxPrice;
     }
     if(nbrRooms){
       //'"+res+"'"
       query += " AND nbrRooms__c = " + nbrRooms ;
     }
     if(city){
-      query += ` AND city = ${city}`;
+      query +="  AND city__c = '" + city + "'";
     }
     if(neighborhood){
-      query += ` AND neighborhood = ${neighborhood}`;
+      query += " AND neighborhood = '" + neighborhood + "'";
     }
 
     conn.query(query, (err, res) => {
