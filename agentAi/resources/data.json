@@ -162,7 +162,8 @@
     {
       "action": "min-fourchette-action",
       "keywords": [
-        "#minPrice|currency#"
+        "#minPrice|currency#",
+        "#minPrice|currency# dh"
       ],
       "answers": [
         "Veuillez spéficier le prix maximum (en DH), s'il vous plaît."
@@ -176,7 +177,8 @@
       "action": "max-fourchette-action",
       "keywords": [
         "#maxPrice|currency#",
-        "Le prix max est #maxPrice|currency#"
+        "Le prix max est #maxPrice|currency#",
+        "#maxPrice|currency# dh"
       ],
       "answers": [
         "C'est noté. Souhaitez-vous spécifier le nombre de chambres?"
