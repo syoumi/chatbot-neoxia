@@ -18,7 +18,7 @@ var sendCatalogue = (senderID, building, operation, minPrice, maxPrice, nbrRooms
 
     var query = `SELECT Id, Name FROM ${building} WHERE type__c = ${operation}`;
     if(minPrice && maxPrice) {
-      query += ` AND price__c>${minPrice} AND price__c<${maxPrice}`;
+      query += ` AND price__c BETWEEN ${minPrice} AND ${maxPrice}`;
     }
     if(nbrRooms){
       query += ` AND nbrRooms__c = ${nbrRooms}`;
