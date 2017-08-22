@@ -16,6 +16,8 @@ const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 var sendCatalogue = (senderID, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood) => {
   doLogin((conn) => {
     building += "__c";
+    building[0].toUpperCase();
+    
     var query = "SELECT Id, Name FROM "+ building +" WHERE type__c = '"+ operation +"'";
     if(minPrice && maxPrice) {
       query += " AND price__c BETWEEN " + minPrice + " AND " + maxPrice;
