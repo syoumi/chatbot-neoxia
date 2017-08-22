@@ -173,9 +173,7 @@
         "Quel type de logement voulez-vous consulter?",
         "Veuillez préciser, s'il vous plaît, le type de logement que vous souhaitez consulter."
       ],
-      "nextActions": [
-        "type-logement-action"
-      ],
+      "nextActions": ["type-building-action"],
       "previousActions" : [],
       "hasParam": "0"
     },
