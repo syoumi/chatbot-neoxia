@@ -411,11 +411,12 @@
       "action": "price-action",
       "keywords": [
         "puis je avoir une idée concernant les prix",
+        "pouvez vous me donner une idée sur vos prix",
         "meilleurs prix",
         "vos prix"
       ],
       "answers": [
-        "Par quel logement êtes-vous intéressé ?"
+        "Par quel type de logement êtes-vous intéressé ?"
       ],
       "nextActions": [],
       "previousActions" : ["type-building-action"],
