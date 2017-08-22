@@ -42,8 +42,6 @@ var handleAiAction= (senderID, answer) => {
     case "max-price-action":
     case "operation-action":
     case "refuse-fixing-price-action":
-    case "fixing-nbr-rooms-action":
-    case "refuse-nbr-rooms-action":
     case "fixing-city-action":
     case "refuse-city-action":
     case "search-operation-building-action":
