@@ -18,16 +18,15 @@ var getPercent= (text, keywords, hasParam)=> {
       var keyword = keywords[i];
 
       while (keyword.indexOf('#') != keyword.lastIndexOf('#') && keyword.indexOf('#') != -1) {
-        console.log('THERE S PARAMETER HERE');
         var fstSharp = keyword.indexOf('#');
         var scdSharp = keyword.indexOf('#', fstSharp + 1);
         var paramKeyword = keyword.substr(fstSharp, scdSharp - fstSharp + 1);
         var param = extractParameters(text, paramKeyword);
         if (param.value) {
-            console.log('THERE S VALUE HERE');
           params.push(param);
           text = text.replace(param.value, '');
           keyword = keyword.replace(paramKeyword, '');
+          counter++;
         } else {
           return {percent: 0, params: undefined};
         }
@@ -52,8 +51,8 @@ var getPercent= (text, keywords, hasParam)=> {
     });
   });
 
-  var wordsPercent = counter * 100 / words.length ;
-  var keywordsPercent = counter * 100 / keywords.length ;
+  var wordsPercent = counter * 100 / words.length + params.length;
+  var keywordsPercent = counter * 100 / keywords.length + params.length;
 
 
   var result = {
