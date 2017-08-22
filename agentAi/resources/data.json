@@ -281,7 +281,7 @@
       "answers": [
         "Combien de chambres cherchez-vous?"
       ],
-      "nextActions": ["fixing-nbr-nbr-rooms-action"],
+      "nextActions": ["fixing-nbr-rooms-action"],
       "previousActions" : ["max-price-action", "refuse-fixing-price-action"],
       "hasParam": "0"
     },
@@ -289,7 +289,8 @@
     {
       "action": "fixing-nbr-rooms-action",
       "keywords": [
-        "#nbrRooms|number#"
+        "#nbrRooms|number#",
+        "#nbrRooms|number# chambres"
       ],
       "answers": [
         "C'est noté. Voulez-vous choisir une ville? "
@@ -407,21 +408,6 @@
       "hasParam": "0"
     },
 
-
-    {
-      "action": "price-action",
-      "keywords": [
-        "puis je avoir une idée concernant les prix",
-        "meilleurs prix",
-        "vos prix"
-      ],
-      "answers": [
-        "Par quel logement êtes-vous intéressé ?"
-      ],
-      "nextActions": [],
-      "previousActions" : ["type-building-action"],
-      "hasParam": "0"
-    },
 
     {
       "action": "price-action",
