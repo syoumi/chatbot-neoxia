@@ -352,7 +352,7 @@
         "pas maintenant"
       ],
       "answers": [
-        "D'accord.Voulez-vous fixer la fourchette des prix ?"
+        "D'accord. Voulez-vous fixer la fourchette des prix ?"
       ],
       "nextActions": ["accept-fixing-price-action", "refuse-fixing-price-action"],
       "previousActions" : ["operation-action"],
