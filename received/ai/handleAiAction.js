@@ -59,7 +59,7 @@ var handleAiAction= (senderID, answer) => {
 
 		default:
 			//unhandled action, just send back the text
-			sendTextMessageWithDelai(senderID, text);
+			sendTextMessage(senderID, text);
 
 	}
 }
