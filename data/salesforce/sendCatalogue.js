@@ -72,7 +72,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
           var messages = [];
           messages[0] = text;
           messages[1] = 'Je suis désolé. Je n\'ai pas trouvé ce que vous voulez.';
-          sendBulkTextMessages(senderID, messages);
+          sendBulkTextMessagesWithDelai(senderID, messages);
         }
 
       });
