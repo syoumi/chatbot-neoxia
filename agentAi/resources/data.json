@@ -453,6 +453,19 @@
       "hasParam": "1"
     },
 
+    {
+      "action": "test-action",
+      "keywords": [
+        "mon num #num|phone#"
+      ],
+      "answers": [
+        "Numéro de téléphone bien reçu."
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "0"
+    }
+
 
     {
       "action": "unknown-action",
