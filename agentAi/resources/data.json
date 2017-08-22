@@ -327,7 +327,7 @@
         "Quelle ville?"
       ],
       "nextActions": ["fixing-city-action"],
-      "previousActions" : ["type-building-action"],
+      "previousActions" : ["operation-action"],
       "hasParam": "0"
     },
 
@@ -355,7 +355,7 @@
         "D'accord.Voulez-vous fixer la fourchette des prix ?"
       ],
       "nextActions": ["accept-fixing-price-action", "refuse-fixing-price-action"],
-      "previousActions" : ["fixing-nbr-rooms-action", "refuse-nbr-rooms-action"],
+      "previousActions" : ["operation-action"],
       "hasParam": "0"
     },
 
