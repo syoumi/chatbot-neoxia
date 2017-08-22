@@ -1,7 +1,7 @@
 const {sendCatalogue} = require('./../../data/salesforce/sendCatalogue');
 
 
-var handleParameters = (senderID, params, action) => {
+var handleParameters = (senderID, text, params, action) => {
   switch(action){
 
     case 'send catalogue':
@@ -48,8 +48,8 @@ var handleParameters = (senderID, params, action) => {
 
 
     //sendCatalogue
-    sendCatalogue(senderID, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood);
-    
+    sendCatalogue(senderID, text, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood);
+
 
       break;
   }

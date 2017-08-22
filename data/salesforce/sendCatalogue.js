@@ -13,7 +13,7 @@ const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 
 
 
-var sendCatalogue = (senderID, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood) => {
+var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood) => {
   doLogin((conn) => {
     building += "__c";
     building[0].toUpperCase();
@@ -65,10 +65,14 @@ var sendCatalogue = (senderID, building, operation, minPrice, maxPrice, nbrRooms
         }
 
         if(elements.length>0){
-            sendGenericMessage(senderID, elements);
+          sendTextMessageWithDelai(senderID, text);
+          sendGenericMessage(senderID, elements);
         }
         else{
-          sendTextMessageWithDelai(senderID, 'Je suis désolé. Je n\'ai pas trouvé ce que vous voulez.');
+          var messages = [];
+          messages[0] = text;
+          messages[1] = 'Je suis désolé. Je n\'ai pas trouvé ce que vous voulez.';
+          sendBulkTextMessages(senderID, messages);
         }
 
       });

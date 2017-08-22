@@ -53,9 +53,9 @@ var handleAiAction= (senderID, answer) => {
     case "refuse-city-action":
     case "refuse-neighborhood-action":
     case "fixing-neighborhood-action":
-      sendTextMessageWithDelai(senderID, text);
+      //sendTextMessageWithDelai(senderID, text);
       if(params){
-        handleParameters(senderID, params, "send catalogue");
+        handleParameters(senderID, text, params, "send catalogue");
       }
       break;
 
