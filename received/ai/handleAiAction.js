@@ -45,6 +45,7 @@ var handleAiAction= (senderID, answer) => {
     case "fixing-nbr-rooms-action":
     case "refuse-nbr-rooms-action":
     case "fixing-city-action":
+    case "refuse-city-action":
     case "search-operation-building-action":
       var replies = ["Oui", "Non"];
       sendQuickReplies(senderID, text, replies);
