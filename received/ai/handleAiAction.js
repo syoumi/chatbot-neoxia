@@ -37,6 +37,7 @@ var handleAiAction= (senderID, answer) => {
 
     //Opération, fixer fourchette, refuser fourchette, fixer nbr chambres, refuser nbr chambres, fixer nom-ville
     case "max-price-action":
+    case "operation-action":
     case "refuse-fixing-price-action":
     case "fixing-nbr-rooms-action":
     case "refuse-nbr-rooms-action":

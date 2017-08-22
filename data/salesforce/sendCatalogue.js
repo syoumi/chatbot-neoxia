@@ -43,7 +43,7 @@ var sendCatalogue = (senderID, building, operation, minPrice, maxPrice, nbrRooms
           var link= record.Link__c;
 
           var element= {
-            title: title,
+              title: title,
               subtitle: price,
               image_url: photo,
 
@@ -59,10 +59,11 @@ var sendCatalogue = (senderID, building, operation, minPrice, maxPrice, nbrRooms
              };
 
             elements.push(element);
+            sendTextMessage(senderID, title);
         }
 
 
-        sendGenericMessage(sender, elements);
+        sendGenericMessage(senderID, elements);
       });
     });
 };
