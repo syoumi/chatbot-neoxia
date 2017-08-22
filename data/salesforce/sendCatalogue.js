@@ -18,7 +18,7 @@ var sendCatalogue = (senderID, building, operation, minPrice, maxPrice, nbrRooms
     building += "__c";
     building[0].toUpperCase();
 
-    var query = "SELECT Id, Name FROM "+ building +" WHERE type__c = '"+ operation +"'";
+    var query = "SELECT Id, Name, price__c, photo__c, link__c FROM "+ building +" WHERE type__c = '"+ operation +"'";
     if(minPrice && maxPrice) {
       query += " AND price__c BETWEEN " + minPrice + " AND " + maxPrice;
     }
@@ -44,9 +44,6 @@ var sendCatalogue = (senderID, building, operation, minPrice, maxPrice, nbrRooms
           var price= record.Price__c;
           var photo= record.Photo__c;
           var link= record.Link__c;
-
-          console.log('Price= ', price);
-          console.log('Photo=', photo);
 
           var element= {
               title: title,
