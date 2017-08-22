@@ -45,6 +45,9 @@ var sendCatalogue = (senderID, building, operation, minPrice, maxPrice, nbrRooms
           var photo= record.Photo__c;
           var link= record.Link__c;
 
+          console.log('Price= ', price);
+          console.log('Photo=', photo);
+
           var element= {
               title: title,
               subtitle: price,
@@ -65,7 +68,7 @@ var sendCatalogue = (senderID, building, operation, minPrice, maxPrice, nbrRooms
             sendTextMessage(senderID, title);
         }
 
-        console.log('Trying to send generic message');
+
         sendGenericMessage(senderID, elements);
       });
     });

@@ -24,9 +24,10 @@ var sendGenericMessage= (recipientId, elements)=> {
           }
         }
       };
-
+      elements.foreach((element)=> {
+        console.log("ELEMENT: ", element.title);
+      });
       sendTypingOn(recipientId);
-      console.log('sending data');
       setTimeout(() => {callSendAPI(messageData);}, 1000);
 
 };
