@@ -427,7 +427,8 @@
       "action": "search-operation-building-action",
       "keywords": [
         "je cherche #building|building# à #operation|operation",
-        "je veux #operation|operation# #building|building#"
+        "je veux #operation|operation# #building|building#",
+        "je souhaite #building|building# à #operation|operation"
       ],
       "answers": [
         "Avec plaisir. Voulez-vous fixer la fourchette des prix ?"
@@ -451,6 +452,7 @@
       "previousActions" : [],
       "hasParam": "1"
     },
+
 
     {
       "action": "unknown-action",
