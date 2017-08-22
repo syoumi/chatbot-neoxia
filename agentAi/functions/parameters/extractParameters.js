@@ -4,6 +4,9 @@ const {extractCity} = require('./city');
 const {extractNeighborhood} = require('./neighborhood');
 const {extractOperation} = require('./operation');
 const {extractBuilding} = require('./building');
+const {extractCurrency} = require('./currency');
+const {extractNumber} =  require('./number');
+
 
 
 var extractParameters = (messageText, keywordParam) => {
@@ -33,6 +36,12 @@ var extractParameters = (messageText, keywordParam) => {
       break;
     case 'building':
       param.value = extractBuilding(messageText);
+      break;
+    case 'currency':
+      param.value = extractCurrency(messageText);
+      break;
+    case 'number':
+      param.value = extractNumber(messageText);
       break;
     default:
       //TODO
