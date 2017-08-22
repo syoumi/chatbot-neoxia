@@ -197,9 +197,9 @@
         "#operation|operation#"
       ],
       "answers": [
-        "D'accord. Voulez-vous fixer la fourchette des prix?"
+        "D'accord. Voulez-vous choisir une ville ?"
       ],
-      "nextActions": ["accept-fixing-price-action", "refuse-fixing-price-action"],
+      "nextActions": ["accept-city-action", "refuse-city-action"],
       "previousActions" : ["type-building-action"],
       "hasParam": "1"
     },
@@ -219,7 +219,7 @@
         "D'accord. Veuillez spéficier le prix minimum (en DH), s'il vous plaît."
       ],
       "nextActions": ["min-price-action"],
-      "previousActions" : ["operation-action", "search-operation-building-action"],
+      "previousActions" : ["fixing-neighborhood-action", "refuse-neighborhood-action", "refuse-city-action", "search-operation-building-action"],
       "hasParam": "0"
     },
 
@@ -263,7 +263,7 @@
         "C'est noté. Souhaitez-vous spécifier le nombre de chambres?"
       ],
       "nextActions": ["accept-nbr-rooms-action", "refuse-nbr-rooms-action"],
-      "previousActions" : ["operation-action"],
+      "previousActions" : ["fixing-neighborhood-action", "refuse-neighborhood-action", "refuse-city-action"],
       "hasParam": "0"
     },
 
@@ -291,10 +291,10 @@
         "#nbrRooms|number# chambres"
       ],
       "answers": [
-        "C'est noté. Voulez-vous choisir une ville? "
+        "C'est noté.\nVeuillez patienter s'il vous plaît. Je vous envoie le catalogue dans quelques instants."
       ],
-      "nextActions": ["accept-city-action", "refuse-city-action"],
-      "previousActions" : ["accepte-nbr-rooms-action"],
+      "nextActions": [],
+      "previousActions" : ["accept-nbr-rooms-action"],
       "hasParam": "1"
     },
 
@@ -306,9 +306,9 @@
         "pas maintenant"
       ],
       "answers": [
-        "Comme vous voulez. Voulez-vous choisir une ville? "
+        "Comme vous voulez.\nVeuillez patienter s'il vous plaît. Je vous envoie le catalogue dans quelques instants."
       ],
-      "nextActions": ["accept-city-action", "refuse-city-action"],
+      "nextActions": [],
       "previousActions" : ["refuse-fixing-price-action", "max-price-action"],
       "hasParam": "0"
     },
@@ -327,7 +327,7 @@
         "Quelle ville?"
       ],
       "nextActions": ["fixing-city-action"],
-      "previousActions" : ["accept-city-action", "refuse-nbr-rooms-action"],
+      "previousActions" : ["type-building-action"],
       "hasParam": "0"
     },
 
@@ -352,9 +352,9 @@
         "pas maintenant"
       ],
       "answers": [
-        "D'accord.\nVeuillez patienter s'il vous plaît. Je vous envoie le catalogue dans quelques instants."
+        "D'accord.Voulez-vous fixer la fourchette des prix ?"
       ],
-      "nextActions": [],
+      "nextActions": ["accept-fixing-price-action", "refuse-fixing-price-action"],
       "previousActions" : ["fixing-nbr-rooms-action", "refuse-nbr-rooms-action"],
       "hasParam": "0"
     },
@@ -384,9 +384,9 @@
         "#quartier|neighborhood#"
       ],
       "answers": [
-        "C'est noté."
+        "C'est noté. Voulez-vous fixer la fourchette des prix ?"
       ],
-      "nextActions": [],
+      "nextActions": ["accept-fixing-price-action", "refuse-fixing-price-action"],
       "previousActions" : ["accept-neighborhood-action"],
       "hasParam": "1"
     },
@@ -399,9 +399,9 @@
         "pas maintenant"
       ],
       "answers": [
-        "Comme vous voulez.\nVeuillez patienter s'il vous plaît. Je vous envoie le catalogue dans quelques instants."
+        "Comme vous voulez.Voulez-vous fixer la fourchette des prix ?"
       ],
-      "nextActions": [],
+      "nextActions": ["accept-fixing-price-action", "refuse-fixing-price-action"],
       "previousActions" : ["fixing-city-action"],
       "hasParam": "0"
     },
