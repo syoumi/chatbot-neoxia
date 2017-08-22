@@ -46,8 +46,13 @@ var handleParameters = (senderID, params, action) => {
         maxPrice= tmp;
       }
 
-      //sendCatalogue
-      sendCatalogue(senderID, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood);
+      if(elements.length!=0){
+        //sendCatalogue
+        sendCatalogue(senderID, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood);
+      }else {
+        sendTextMessage(senderID, 'Je suis désolé. Je n\'ai pas trouvé ce que vous voulez.');
+      }
+
       break;
   }
 }

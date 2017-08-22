@@ -62,7 +62,6 @@ var sendCatalogue = (senderID, building, operation, minPrice, maxPrice, nbrRooms
              };
 
             elements.push(element);
-            sendTextMessage(senderID, title);
         }
 
 
