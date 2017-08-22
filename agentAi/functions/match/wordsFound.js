@@ -22,6 +22,7 @@ var wordsFound = (text, keyword, hasParam) => {
         params.push(param);
         text = text.replace(param.value, '');
         keyword = keyword.replace(paramKeyword, '');
+        counter++;
       } else {
         return {percent: 0, params: undefined};
       }
@@ -42,8 +43,8 @@ var wordsFound = (text, keyword, hasParam) => {
       }
     });
   });
-  var wordsPercent = counter * 100 / words.length ;
-  var textPercent = counter * 100 / keywordArray.length ;
+  var wordsPercent = counter * 100 / words.length + params.length ;
+  var textPercent = counter * 100 / keywordArray.length + params.length ;
   // returning average of two percents and params
   var result = {
     percent : ( wordsPercent + textPercent ) / 2,
