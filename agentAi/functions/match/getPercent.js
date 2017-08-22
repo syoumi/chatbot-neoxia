@@ -23,6 +23,7 @@ var getPercent= (text, keywords, hasParam)=> {
         var paramKeyword = keyword.substr(fstSharp, scdSharp - fstSharp + 1);
         var param = extractParameters(text, paramKeyword);
         if (param.value) {
+          params.push(param);
           text = text.replace(param.value, '');
           keyword = keyword.replace(paramKeyword, '');
           counter++;
