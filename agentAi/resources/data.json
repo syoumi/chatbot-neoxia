@@ -17,8 +17,8 @@
         "cc"
       ],
       "answers": [
-        "Salut à vous !",
-        "Salutations !"
+        "Salut à vous !\nComment puis-je vous aider ?",
+        "Salutations !\nComment puis-je vous aider ?"
       ],
       "nextActions": [],
       "previousActions" : [],
@@ -111,9 +111,7 @@
       "nextActions": [
         "type-logement-action"
       ],
-      "previousActions" : [
-
-      ]
+      "previousActions" : []
     },
 
     {
