@@ -334,7 +334,7 @@
     {
       "action": "fixing-city-action",
       "keywords": [
-        "#ville|city#"
+        "#city|city#"
       ],
       "answers": [
         "D'accord. Peut-être voulez-vous choisir, également, un quartier?"
