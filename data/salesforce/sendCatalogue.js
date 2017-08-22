@@ -21,7 +21,7 @@ var sendCatalogue = (senderID, building, operation, minPrice, maxPrice, nbrRooms
       query += " AND price__c BETWEEN " + minPrice + " AND " + maxPrice;
     }
     if(nbrRooms){
-      query += " AND  +  nbrRooms__c = " + nbrRooms;
+      query += " AND  +  nbrRooms__c = ='+nbrRooms+'";
     }
     if(city){
       query += ` AND city = ${city}`;
