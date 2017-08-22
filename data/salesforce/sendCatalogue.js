@@ -64,8 +64,13 @@ var sendCatalogue = (senderID, building, operation, minPrice, maxPrice, nbrRooms
             elements.push(element);
         }
 
+        if(elements.length>0){
+            sendGenericMessage(senderID, elements);
+        }
+        else{
+          sendTextMessage(senderID, 'Je suis désolé. Je n\'ai pas trouvé ce que vous voulez.');
+        }
 
-        sendGenericMessage(senderID, elements);
       });
     });
 };
