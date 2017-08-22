@@ -59,12 +59,12 @@ var sendCatalogue = (senderID, building, operation, minPrice, maxPrice, nbrRooms
              };
 
             elements.push(element);
-          }
         }
 
 
         sendGenericMessage(sender, elements);
       });
+    }
 };
 
 module.exports = {
