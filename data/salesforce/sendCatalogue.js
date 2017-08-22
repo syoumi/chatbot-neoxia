@@ -65,6 +65,7 @@ var sendCatalogue = (senderID, building, operation, minPrice, maxPrice, nbrRooms
             sendTextMessage(senderID, title);
         }
 
+        console.log('Trying to send generic message');
         sendGenericMessage(senderID, elements);
       });
     });
