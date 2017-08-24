@@ -167,7 +167,12 @@
     "keywords": [
         "consulter catalogue",
         "voir catalogue",
-        "veux catalogue"
+        "veux catalogue",
+        "quelles sont vos propositions",
+        "je cherche un logement",
+        "qu est ce que vous proposez",
+        "quels sont vos biens",
+        "qu est ce que vous vendez"
     ],
     "answers": [
         "Quel type de logement voulez-vous consulter?",
@@ -176,6 +181,198 @@
       "nextActions": ["type-building-action"],
       "previousActions" : [],
       "hasParam": "0"
+    },
+
+    {
+      "action": "catalogue-city-action",
+      "keywords": [
+          "quelles sont vos propositions à #city|city#",
+          "quels sont vos biens à #city|city#",
+          "je cherche un logement à #city|city#"
+      ],
+      "answers": [
+          "Quel type de logement voulez-vous consulter ?",
+          "Par quel type de logement êtes-vous intéressé ?"
+      ],
+      "nextActions": ["type-building-v2-action"],
+      "previousActions" : [],
+      "hasParam": "1"
+    },
+
+    {
+      "action": "catalogue-building-action",
+      "keywords": [
+          "quelles sont vos propositions de #lbuilding|building#",
+          "est-ce vous avez des #building|building#",
+          "je cherche un #building|building#"
+      ],
+      "answers": [
+          "Voulez-vous acheter ou louer ?"
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "1"
+    },
+
+    {
+      "action": "catalogue-neighborhood-action",
+      "keywords": [
+          "je cherche un logement à #neighborhood|neighborhood#",
+          "est-ce vous avez un logement à #building|building#",
+          "quelles sont vos propositions à #neighborhood|neighborhood#"
+      ],
+      "answers": [
+          "Quel type de logement voulez-vous consulter ?",
+          "Par quel type de logement êtes-vous intéressé ?"
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "1"
+    },
+
+    {
+      "action": "catalogue-building-operation-action",
+      "keywords": [
+          "je veux #operation|operation# un #building|building#",
+          "je souhaite #operation|operation# un #building|building#",
+          "je cherche #building|building# à #operation|operation#",
+          "est-ce que vous #operation|operation# des #building|building#"
+      ],
+      "answers": [
+          "Avec plaisir.\nVoulez-vous choisir une ville ?"
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "1"
+    },
+
+    {
+      "action": "catalogue-building-operation-city-action",
+      "keywords": [
+          "je souhaite #operation|operation# un #building|building# à #city|city#",
+          "je cherche un #building|building# à #city|city# à #operation|operation#",
+          "je cherche #building|building# à #operation|operation#",
+          "est ce que vous #operation|operation# des #building|building# à #city|city#"
+      ],
+      "answers": [
+          "Souhaitez-vous choisir un quartier ?"
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "1"
+    },
+
+    {
+      "action": "catalogue-building-operation-neighborhood-action",
+      "keywords": [
+          "je souhaite #operation|operation# un #building|building# à #neighborhood|neighborhood#",
+          "je cherche un #building|building# à #neighborhood|neighborhood# à #operation|operation#",
+          "est ce que vous #operation|operation# des #building|building# à #neighborhood|neighborhood#"
+      ],
+      "answers": [
+          "Voulez-vous spécifier la fourchette des prix ?"
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "1"
+    },
+
+    {
+      "action": "catalogue-building-operation-city-neighborhood-action",
+      "keywords": [
+          "je souhaite #operation|operation# un #building|building# à #city|city# à #neighborhood|neighborhood#",
+          "est ce que vous #operation|operation# des #building|building# à #city|city# à #neighborhood|neighborhood#",
+          "je cherche un #building|building# à #city|city# à #neighborhood|neighborhood# à #operation|operation#"
+      ],
+      "answers": [
+          "Voulez-vous spécifier la fourchette des prix ?"
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "1"
+    },
+
+    {
+      "action": "catalogue-building-city-neighborhood-action",
+      "keywords": [
+          "je cherche un #building|building# à #city|city# à #neighborhood|neighborhood#"
+      ],
+      "answers": [
+          "Par quel de logement êtes-vous intéressé ?",
+          "Quel type de logement souhaitez-vous consulter ?"
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "1"
+    },
+
+    {
+      "action": "catalogue-city-neighborhood-action",
+      "keywords": [
+          "je cherche un logement à #city|city# à #neighborhood|neighborhood#"
+      ],
+      "answers": [
+          "Par quel de logement êtes-vous intéressé ?",
+          "Quel type de logement souhaitez-vous consulter ?"
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "1"
+    },
+
+    {
+      "action": "catalogue-city-neighborhood-action",
+      "keywords": [
+          "je cherche un logement à #city|city# à #neighborhood|neighborhood#"
+      ],
+      "answers": [
+          "Par quel de logement êtes-vous intéressé ?",
+          "Quel type de logement souhaitez-vous consulter ?"
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "1"
+    },
+
+    {
+      "action": "catalogue-sell-building-action",
+      "keywords": [
+          "est ce que vous vendez un #building|building#",
+          "je cherche #building|building# à vendre",
+          "est-ce que vous avez des #building|building# à vendre"
+      ],
+      "answers": [
+          "Souhaitez-vous choisir une ville ?"
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "1"
+    },
+
+    {
+      "action": "catalogue-sell-building-city-action",
+      "keywords": [
+          "est ce que vous vendez un #building|building# à #city|city#"
+      ],
+      "answers": [
+          "Souhaitez-vous choisir un quartier ?"
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "1"
+    },
+
+    {
+      "action": "catalogue-sell-building-neighborhood-action",
+      "keywords": [
+          "est ce que vous vendez un #building|building# à #neighborhood|neighborhood#"
+      ],
+      "answers": [
+          "Souhaitez-vous spécifier une fourchette des prix ?"
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "1"
     },
 
     {
@@ -188,6 +385,19 @@
       ],
       "nextActions": ["operation-action"],
       "previousActions" : ["catalogue-action"],
+      "hasParam": "1"
+    },
+
+    {
+      "action": "type-building-v2-action",
+      "keywords": [
+          "#building|building"
+      ],
+      "answers": [
+          "Voulez-vous choisir un quartier ?"
+      ],
+      "nextActions": ["accept-neighborhood-action", "refuse-neighborhood-action"],
+      "previousActions" : ["catalogue-city-action"],
       "hasParam": "1"
     },
 
