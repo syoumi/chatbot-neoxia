@@ -590,7 +590,7 @@
     {
       "action": "fixing-neighborhood-action",
       "keywords": [
-        "#quartier|neighborhood#"
+        "#neighborhood|neighborhood#"
       ],
       "answers": [
         "C'est noté. Voulez-vous fixer la fourchette des prix ?"
