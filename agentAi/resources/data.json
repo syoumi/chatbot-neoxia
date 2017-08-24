@@ -391,10 +391,10 @@
     {
       "action": "type-building-v2-action",
       "keywords": [
-          "#building|building"
+        "#building|building#"
       ],
       "answers": [
-          "Voulez-vous choisir un quartier ?"
+        "D'accord.\nVoulez-vous choisir un quartier ?"
       ],
       "nextActions": ["accept-neighborhood-action", "refuse-neighborhood-action"],
       "previousActions" : ["catalogue-city-action"],

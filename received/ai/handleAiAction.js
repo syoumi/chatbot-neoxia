@@ -27,6 +27,7 @@ var handleAiAction= (senderID, answer) => {
       */
     case "catalogue-action":
     case "price-action":
+    case "catalogue-city-action":
       var options= ['Garçonnière', 'Appartement', 'Maison', 'Villa'];
      sendQuickReplies(senderID, text, options);
       break;
