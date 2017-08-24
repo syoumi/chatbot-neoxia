@@ -29,6 +29,7 @@ var handleAiAction= (senderID, answer) => {
     case "price-action":
     case "catalogue-city-action":
     case "catalogue-neighborhood-action":
+    case "catalogue-city-neighborhood-action":
       var options= ['Garçonnière', 'Appartement', 'Maison', 'Villa'];
      sendQuickReplies(senderID, text, options);
       break;
@@ -56,9 +57,11 @@ var handleAiAction= (senderID, answer) => {
     case "catalogue-building-operation-neighborhood-action":
     case "catalogue-building-operation-city-neighborhood-action":
     case "operation-v2-action":
+    case "catalogue-sell-building-action":
       var replies = ["Oui", "Non"];
       sendQuickReplies(senderID, text, replies);
       break;
+
 
 
     //Fin scénario

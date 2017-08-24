@@ -314,21 +314,7 @@
           "Par quel de logement êtes-vous intéressé ?",
           "Quel type de logement souhaitez-vous consulter ?"
       ],
-      "nextActions": [],
-      "previousActions" : [],
-      "hasParam": "1"
-    },
-
-    {
-      "action": "catalogue-city-neighborhood-action",
-      "keywords": [
-          "je cherche un logement à #city|city# à #neighborhood|neighborhood#"
-      ],
-      "answers": [
-          "Par quel de logement êtes-vous intéressé ?",
-          "Quel type de logement souhaitez-vous consulter ?"
-      ],
-      "nextActions": [],
+      "nextActions": ["type-building-v3-action"],
       "previousActions" : [],
       "hasParam": "1"
     },
@@ -343,7 +329,7 @@
       "answers": [
           "Souhaitez-vous choisir une ville ?"
       ],
-      "nextActions": [],
+      "nextActions": ["accept-city-action", "refuse-city-action"],
       "previousActions" : [],
       "hasParam": "1"
     },
@@ -550,7 +536,7 @@
         "Quelle ville?"
       ],
       "nextActions": ["fixing-city-action"],
-      "previousActions" : ["operation-action", "catalogue-building-operation-action"],
+      "previousActions" : ["operation-action", "catalogue-building-operation-action", "catalogue-sell-building-action"],
       "hasParam": "0"
     },
 
@@ -578,7 +564,7 @@
         "D'accord. Voulez-vous fixer la fourchette des prix ?"
       ],
       "nextActions": ["accept-fixing-price-action", "refuse-fixing-price-action"],
-      "previousActions" : ["operation-action", "catalogue-building-operation-action"],
+      "previousActions" : ["operation-action", "catalogue-building-operation-action", "catalogue-sell-building-action"],
       "hasParam": "0"
     },
 
