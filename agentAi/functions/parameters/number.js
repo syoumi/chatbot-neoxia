@@ -26,6 +26,7 @@ var extractNumber = (text) => {
       }
     }
   }
+  //TODO add number with letters ('un', 'une', 'deux'....);
   return foundNumber ? maxNumber : undefined;
 };
 

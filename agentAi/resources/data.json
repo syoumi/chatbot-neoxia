@@ -497,7 +497,8 @@
       "action": "fixing-nbr-rooms-action",
       "keywords": [
         "#nbrRooms|number#",
-        "#nbrRooms|number# chambres"
+        "#nbrRooms|number# chambres",
+        "#nbrRooms|number# pièces"
       ],
       "answers": [
         "C'est noté.\nVeuillez patienter s'il vous plaît. Je vous envoie le catalogue dans quelques instants."
