@@ -48,6 +48,7 @@ var handleAiAction= (senderID, answer) => {
     case "refuse-fixing-price-action":
     case "fixing-city-action":
     case "refuse-city-action":
+    case "refuse-neighborhood-action":
     case "search-operation-building-action":
     case "type-building-v2-action":
     case "catalogue-building-operation-action":
