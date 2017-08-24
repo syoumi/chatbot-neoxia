@@ -428,7 +428,7 @@
         "D'accord. Veuillez spéficier le prix minimum (en DH), s'il vous plaît."
       ],
       "nextActions": ["min-price-action"],
-      "previousActions" : ["fixing-neighborhood-action", "refuse-neighborhood-action", "refuse-city-action", "search-operation-building-action", "catalogue-building-operation-neighborhood-action", "catalogue-building-operation-city-neighborhood-action", "operation-v2-action"],
+      "previousActions" : ["fixing-neighborhood-action", "refuse-neighborhood-action", "refuse-city-action", "catalogue-building-operation-neighborhood-action", "catalogue-building-operation-city-neighborhood-action", "operation-v2-action"],
       "hasParam": "0"
     },
 
@@ -630,36 +630,6 @@
       "nextActions": ["type-building-action"],
       "previousActions" : [],
       "hasParam": "0"
-    },
-
-    {
-      "action": "search-operation-building-action",
-      "keywords": [
-        "je cherche #building|building# à #operation|operation",
-        "je veux #operation|operation# #building|building#",
-        "je souhaite #building|building# à #operation|operation"
-      ],
-      "answers": [
-        "Avec plaisir. Voulez-vous fixer la fourchette des prix ?"
-      ],
-      "nextActions": ["accept-fixing-price-action", "refuse-fixing-price-action"],
-      "previousActions" : [],
-      "hasParam": "1"
-    },
-
-    {
-      "action": "search-operation-building-city-action",
-      "keywords": [
-        "je cherche #building|building# à #operation|operation à #city|city",
-        "je veux #operation|operation# #building|building# à #city|city",
-        "quelles sont vos propositions pour #building|building# à #operation|operation à #city|city"
-      ],
-      "answers": [
-        "Avec plaisir. Voulez-vous fixer la fourchette des prix ?"
-      ],
-      "nextActions": ["accept-fixing-price-action", "refuse-fixing-price-action"],
-      "previousActions" : [],
-      "hasParam": "1"
     },
 
     {
