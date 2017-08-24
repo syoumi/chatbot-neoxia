@@ -28,12 +28,15 @@ var handleAiAction= (senderID, answer) => {
     case "catalogue-action":
     case "price-action":
     case "catalogue-city-action":
+    case "catalogue-neighborhood-action":
       var options= ['Garçonnière', 'Appartement', 'Maison', 'Villa'];
      sendQuickReplies(senderID, text, options);
       break;
 
     //Type logement ---> Demander opération
     case "type-building-action":
+    case "catalogue-building-action":
+    case "catalogue-building-city-neighborhood-action":
       var replies = ["Acheter", "Louer"];
       sendQuickReplies(senderID, text, replies);
   		break;
@@ -46,9 +49,17 @@ var handleAiAction= (senderID, answer) => {
     case "fixing-city-action":
     case "refuse-city-action":
     case "search-operation-building-action":
+    case "type-building-v2-action":
+    case "catalogue-building-operation-action":
+    case "catalogue-building-operation-city-action":
+    case "catalogue-building-operation-neighborhood-action":
+    case "catalogue-building-operation-city-neighborhood-action":
+    case "operation-v2-action":
       var replies = ["Oui", "Non"];
       sendQuickReplies(senderID, text, replies);
       break;
+
+
     //Fin scénario
     case "refuse-nbr-rooms-action":
     case "fixing-nbr-rooms-action":
