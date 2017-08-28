@@ -48,24 +48,32 @@ var handleAiAction= (senderID, answer) => {
     case "operation-action":
     case "refuse-fixing-price-action":
     case "fixing-city-action":
-    case "refuse-city-action":
     case "refuse-neighborhood-action":
     case "type-building-v2-action":
-    case "catalogue-building-operation-action":
-    case "catalogue-building-operation-city-action":
-    case "catalogue-building-operation-neighborhood-action":
-    case "catalogue-building-operation-city-neighborhood-action":
-    case "operation-v2-action":
+
     case "catalogue-sell-building-action":
       var replies = ["Oui", "Non"];
       sendQuickReplies(senderID, text, replies);
       break;
 
 
+    case "catalogue-building-operation-action":
+    case "catalogue-building-operation-city-action":
+    case "catalogue-building-operation-neighborhood-action":
+    case "catalogue-building-operation-city-neighborhood-action":
+    case "operation-v2-action":
+    case "operation-v3-action":
+    var replies = ["Filtrer", "Sauter"];
+    sendQuickReplies(senderID, text, replies);
+    break;
+
 
     //Fin scénario
     case "refuse-nbr-rooms-action":
     case "fixing-nbr-rooms-action":
+    case "skip-city-action":
+    case "skip-neighborhood-action":
+    case "skip-fixing-price-action":
       //sendTextMessageWithDelai(senderID, text);
       if(params){
         handleParameters(senderID, text, params, "send catalogue");
