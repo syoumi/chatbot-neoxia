@@ -37,7 +37,13 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 
     var elements = getRecords(query);
 
-    console.log('ELEMENTS BEFORE SENDING: ', elements);
+    console.log('******ELEMENTS TO SEND****');
+    var i =0;
+    elements.forEach((element)=>{
+      console.log("element " + i + ": " + element);
+      i++;
+    });
+
     if(elements){
       sendGenericMessage(senderID, elements);
     }
