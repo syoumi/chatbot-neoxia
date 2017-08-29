@@ -43,7 +43,7 @@ var receivedPostBack = (event) => {
         "payload": postback[3]
       }
       ];
-      sendButtonMessage(senderID, 'Vous pouvez contacter ' + postback[2] + ' pour plus de renseignements.', buttons);
+      sendButtonMessage(senderID, 'Vous pouvez contacter notre agent commercial ' + postback[2]  + ' associé à ce logement' , buttons);
       var buttons = [
       {
         "type":"postback",
@@ -52,7 +52,6 @@ var receivedPostBack = (event) => {
       }
       ];
       sendButtonMessage(senderID, 'Comme vous pouvez recevoir le devis sur votre boîte mail, si vous le souhaitez.', buttons);
-
       break;
 
 
