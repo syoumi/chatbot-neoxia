@@ -37,7 +37,7 @@ var receivedPostBack = (event) => {
     //postback = "CONTACT_PAYLOAD"  + Salesman.Id + Salesman.Name + Salesman.MobilePhone + Product.Id
     var titleContact =  "CONTACT_SALESMAN|" + postback;
     var titleQuote = "SEND_QUOTE|" + postback;
-
+    console.log("POSTBACK: " , postback);
       buttons: [
         {
           "type": "postback",
