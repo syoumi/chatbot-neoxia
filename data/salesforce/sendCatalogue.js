@@ -19,7 +19,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
     sendTextMessage(senderID, text);
     doLogin((conn) => {
     //Search for building
-    var query = "SELECT Id, Name, amount__c, image__c, link__c, Description__c, Salesman__c FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"'";
+    var query = "SELECT Id, Name, amount__c, image__c, link__c, Description__c, (SELECT Id, Name FROM Salesman__c)  FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"'";
 
     if(minPrice && maxPrice) {
       query += " AND amount__c >=" + minPrice + " AND amount__c <= " + maxPrice;
@@ -71,7 +71,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
       }
       //Search all buildings with specific operation
       if(!city && !neighborhood){
-        query = "SELECT Id, Name, amount__c, image__c, link__c, Description__c, (SELECT Id, Name FROM Salesman__c) FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"'";
+        query = "SELECT Id, Name, amount__c, image__c, link__c, Description__c FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"'";
         elements = getProductRecords(query);
         if(elements){
           sendGenericMessage(senderID, elements);
