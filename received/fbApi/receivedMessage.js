@@ -4,6 +4,8 @@
  */
 
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
+const {sendTextMessageWithDelai} = require('./../../send/fbApi/sendTextMessage');
+
 const {sendToAi} = require('./../../send/ai/sendToAi');
 
 const {getWaiting} = require('./../../utils/waiting');
@@ -48,7 +50,7 @@ var receivedMessage = (event) => {
     sendToAi(senderID, messageText);
 
   } else if (messageAttachments) {
-   sendTextMessage(senderID, 'Pièce jointe bien reçue <3 ^_^ !');
+   sendTextMessageWithDelai(senderID, "Désolé. Nous ne traitons pas pour l\'instant les pièces jointes. Veuillez nous excusez.");
   }
 
 };
