@@ -89,7 +89,7 @@ var getRecords = (query) => {
           var record = res.records[i];
 
           var title= record.Name;
-          var price= record.Image__c;
+          var price= record.Amount__c;
           var photo= record.Image__c;
           var link= record.Link__c;
 
