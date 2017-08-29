@@ -71,8 +71,17 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
         else{
           var messages = [];
           messages[0] = text;
-          messages[1] = 'Je suis désolé. Je n\'ai pas trouvé ce que vous voulez.';
+          messages[1] = `Nous sommes désolés. Des ${building}s avec les critères mentionnés ci-dessus ne sont pas disponible pour l'instant.\nSi vous n'êtes pas pressé, vous pouvez nous envoyer vos coordonnées afin de vous contacter une fois votre demande est disponible.\nSinon, nous vous proposons des ${building}s qui pourront vous intéresser.`
           sendBulkTextMessagesWithDelai(senderID, messages);
+          if(neighborhood){
+            sendCatalogue(senderID, text, building, operation, undefined, undefined, undefined, undefined, neighborhood);
+          }
+          else if(city){
+            sendCatalogue(senderID, text, building, operation, undefined, undefined, undefined, city, undefined);
+          }
+          else{
+            sendCatalogue(senderID, text, building, operation, undefined, undefined, undefined, undefined, undefined);
+          }
         }
 
       });

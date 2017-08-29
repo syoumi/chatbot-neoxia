@@ -46,12 +46,10 @@ var handleParameters = (senderID, text, params, action) => {
         maxPrice= tmp;
       }
 
-
     //sendCatalogue
     sendCatalogue(senderID, text, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood);
+    break;
 
-
-      break;
   }
 }
 
