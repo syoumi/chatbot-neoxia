@@ -37,6 +37,8 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 
     var elements = getRecords(query);
 
+    if(!elements) console.log('EMPTYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY');
+
     if(elements){
       sendGenericMessage(senderID, elements);
     }
@@ -85,7 +87,7 @@ var getRecords = (query) => {
   doLogin((conn) => {
     conn.query(query, (err, res) => {
       if (err) { return console.error(err); }
-      
+
         for (var i=0; i<res.records.length; i++) {
           var record = res.records[i];
 
