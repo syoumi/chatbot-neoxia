@@ -471,6 +471,21 @@
     },
 
     {
+      "action": "refuse-neighborhood-action",
+      "keywords": [
+        "non",
+        "plus tard",
+        "pas maintenant"
+      ],
+      "answers": [
+        "Comme vous voulez.\nVoulez-vous fixer une fourchette des prix ?"
+      ],
+      "nextActions": ["accept-fixing-price-action", "refuse-fixing-price-action"],
+      "previousActions" : ["fixing-city-action"],
+      "hasParam": "0"
+    },
+
+    {
       "action": "accept-neighborhood-action",
       "keywords": [
         "filtrer",

@@ -44,15 +44,19 @@ var handleAiAction= (senderID, answer) => {
 
 
     //Opération, fixer fourchette, refuser fourchette, fixer nbr chambres, refuser nbr chambres, fixer nom-ville
-    case "max-price-action":
     case "refuse-fixing-price-action":
-    case "fixing-city-action":
     case "refuse-neighborhood-action":
     case "type-building-v2-action":
       var replies = ["Oui", "Non"];
       sendQuickReplies(senderID, text, replies);
       break;
 
+  //Asking about neighborhood or number of rooms
+  case "fixing-city-action":
+  case "max-price-action":
+    var replies = ["Non"];
+    sendQuickReplies(senderID, text, replies);
+    break;
 
     case "catalogue-building-operation-action":
     case "catalogue-building-operation-city-action":
