@@ -37,16 +37,16 @@ var receivedPostBack = (event) => {
     //postback = "CONTACT_PAYLOAD"  + Salesman.Id + Salesman.Name + Salesman.MobilePhone + Product.Id
       buttons: [
         {
-          type: "postback",
-          title: "Contacter commercial",
-          payload: "CONTACT_SALESMAN|" + postback
+          "type": "postback",
+          "title": "Contacter commercial",
+          "payload": "CONTACT_SALESMAN|" + postback
         },
         {
-          type: "postback",
-          title: "Envoyer devis",
-          payload: "SEND_QUOTE|" + postback
+          "type": "postback",
+          "title": "Envoyer devis",
+          "payload": "SEND_QUOTE|" + postback
       }];
-      sendButtonMessage(senderID, 'Voulez-vous contacter directement le commercial en appelant ou bien recevoir le devis sur votre boîte email?', buttons);
+      sendButtonMessage(senderID, 'Voulez-vous contacter directement le commercial en l\'appelant ou bien recevoir le devis sur votre boîte email?', buttons);
       break;
 
     case "CONTACT_SALESMAN":
