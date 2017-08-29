@@ -95,7 +95,7 @@ var getProductRecords = (conn, query) => {
           var photo= record.Image__c;
           var description= "DESCRIPTION_PAYLOAD|" + record.Description__c;
           //var link= record.Link__c;
-          var contact = "CONTACT_PAYLOAD|" + record.Salesman__r.Name + "|" + record.Salesman__r.Phone;
+          var contact = "CONTACT_PAYLOAD|" + record.Salesman__r.Name + "|" + record.Salesman__r.MobilePhone;
 
           console.log('Salesman', record.Salesman__r.Name);
           console.log('DESCRIPTION: ', description);
