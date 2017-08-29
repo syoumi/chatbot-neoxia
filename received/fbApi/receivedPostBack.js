@@ -6,6 +6,7 @@
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 const {sendButtonMessage} = require('./../../send/fbApi/sendButtonMessage');
 
+
 /**
  * Postback event handler
  */
@@ -13,9 +14,10 @@ var receivedPostBack = (event) => {
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
   var timeOfPostBack = event.timestamp;
+  var postback = event.postback.payload.split('|');
 
   // Getting the payload unique name defined later
-  var payload = event.postback.payload;
+  var payload = postback[0];
 
   console.log(`### Postback recieved informations ###`);
   // console.log(`| senderID : ${senderID}`);
@@ -27,15 +29,18 @@ var receivedPostBack = (event) => {
   switch(payload){
     case "CONTACT_PAYLOAD":
       var buttons = [
-        {
-          "type":"phone_number",
-          "title":"Appeler",
-          "payload":"+15105551234"
-       }
-     ];
-      sendButtonMessage(senderID, 'Vous pouvez contacter Monsieur XXXX pour plus de renseignements.', buttons);
+      {
+        "type":"phone_number",
+        "title":"Appeler",
+        "payload": postback[2]
+      }
+      ];
+      sendButtonMessage(senderID, 'Vous pouvez contacter ' + postback[1] + ' pour plus de renseignements.', buttons);
       break;
 
+    case "DESCRIPTION_PAYLOAD":
+      sendTextMessageWithDelai(senderID, postback[1]);
+      break;
     default:
         sendTextMessage(senderID, `Postback ${payload} reçu :D`);
   }

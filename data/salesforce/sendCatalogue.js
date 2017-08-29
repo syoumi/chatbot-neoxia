@@ -91,11 +91,13 @@ var getRecords = (conn, query) => {
         for (var i=0; i<res.records.length; i++) {
           var record = res.records[i];
 
+          var id = record.Id;
           var title= record.Name;
           var price= record.Amount__c;
           var photo= record.Image__c;
+          var description= record.Description__c;
           //var link= record.Link__c;
-          var link= "http://www.google.fr";
+          var salesman = record.Salesman__c;
 
           var element= {
               title: title,
@@ -103,13 +105,13 @@ var getRecords = (conn, query) => {
               image_url: photo,
 
               buttons: [{
-                type: "web_url",
-                url: link,
-                title: "Détails"
+                type: "postback",
+                title: "Détails",
+                payload: "DESCRIPTION_PAYLOAD|" + description,
                 }, {
                 type: "postback",
                 title: "Contacter",
-                payload: "CONTACT_PAYLOAD",
+                payload: "CONTACT_PAYLOAD|" +  salesman.Name + "|" + salesman.MobilePhone,
               }]
           };
 
