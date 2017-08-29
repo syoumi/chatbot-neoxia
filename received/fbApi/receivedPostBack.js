@@ -6,7 +6,11 @@
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 const {sendTextMessageWithDelai} = require('./../../send/fbApi/sendTextMessage');
 
+const {sendQuickReplies} = require('./../../send/fbApi/sendQuickReplies');
+
 const {sendButtonMessage} = require('./../../send/fbApi/sendButtonMessage');
+
+const {addTask} = require('./../../data/salesforce/handleTasks');
 
 
 /**
@@ -30,19 +34,44 @@ var receivedPostBack = (event) => {
   //by payload
   switch(payload){
     case "CONTACT_PAYLOAD":
-      var buttons = [
-      {
-        "type":"phone_number",
-        "title":"Appeler",
-        "payload": postback[2]
-      }
-      ];
-      sendButtonMessage(senderID, 'Vous pouvez contacter ' + postback[1] + ' pour plus de renseignements.', buttons);
+    //postback = "CONTACT_PAYLOAD"  + Salesman.Id + Salesman.Name + Salesman.MobilePhone + Product.Id
+      buttons: [
+        {
+          type: "postback",
+          title: "Contacter commercial",
+          payload: "CONTACT_SALESMAN|" + postback
+        },
+        {
+          type: "postback",
+          title: "Envoyer devis",
+          payload: "SEND_QUOTE|" + postback
+      }];
+      sendButtonMessage(senderID, 'Voulez-vous contacter directement le commercial en appelant ou bien recevoir le devis sur votre boîte email?', buttons);
       break;
 
-    case "DESCRIPTION_PAYLOAD":
-      console.log("DETAIIILS: ", postback[1]);
-      sendTextMessageWithDelai(senderID, postback[1]);
+    case "CONTACT_SALESMAN":
+      //postback = "CONTACT_SALESMAN" + "CONTACT_PAYLOAD"  + Salesman.Id + Salesman.Name + Salesman.MobilePhone + Product.Id
+        var buttons = [
+        {
+          "type":"phone_number",
+          "title":"Appeler",
+          "payload": postback[4]
+        }
+        ];
+        sendButtonMessage(senderID, 'Vous pouvez contacter ' + postback[3] + ' pour plus de renseignements.', buttons);
+        sendTextMessage(senderID, "Nous avons besoin de récupérer certaines coordonnées telles que votre email, votre vrai nom, prénom et votre numéro de téléphone.\nVoulez-vous remplir un formulaire ou répondre ici?");
+        //envoyer quickreplies
+        //addTask(senderID, postback[2], postback[5], 'Contacter client');
+        break;
+
+    case "SEND_QUOTE":
+        sendTextMessage(senderID, "Nous avons besoin de récupérer certaines coordonnées telles que votre email, votre vrai nom, prénom et votre numéro de téléphone.\nVoulez-vous remplir un formulaire ou répondre ici?");
+        //envoyer quickreplies
+        //addTask(senderID, postback[2], postback[5], 'Envoyer devis');
+        break;
+
+   case "DESCRIPTION_PAYLOAD":
+      sendTextMessage(senderID, postback[1]);
       break;
 
     default:

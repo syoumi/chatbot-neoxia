@@ -31,7 +31,7 @@ var handleAiAction= (senderID, answer) => {
     case "catalogue-neighborhood-action":
     case "catalogue-city-neighborhood-action":
       var options= ['Studio', 'Appartement', 'Maison', 'Villa'];
-     sendQuickReplies(senderID, text, options);
+      sendQuickReplies(senderID, text, options);
       break;
 
     //Type logement ---> Demander opération
@@ -72,7 +72,7 @@ var handleAiAction= (senderID, answer) => {
       break;
 
 
-    //Fin scénario
+    //Send catalogue
     case "refuse-nbr-rooms-action":
     case "fixing-nbr-rooms-action":
     case "skip-city-action":
@@ -83,6 +83,7 @@ var handleAiAction= (senderID, answer) => {
         handleParameters(senderID, text, params, "send catalogue");
       }
       break;
+
 
 		default:
 			//unhandled action, just send back the text

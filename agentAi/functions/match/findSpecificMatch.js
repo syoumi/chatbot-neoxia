@@ -88,7 +88,7 @@ var findSpecificMatch = (message, actions) => {
         user.previousAction = '';
         return undefined;
       } else {
-        return {entry: getAction('unknown-action'), params: undefined};
+        return undefined;
       }
     }
   }
