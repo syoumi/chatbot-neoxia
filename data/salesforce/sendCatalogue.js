@@ -47,7 +47,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
       //Try to find something may be interested to sind to the client
       //Search building in specific city, if client fixed it
       if(city){
-        query = "SELECT Id, Name, amount__c, image__c, link__c, Description__c, Salesman__r FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"' AND city__c = '" + city + "'";
+        query = "SELECT Id, Name, amount__c, image__c, link__c, Description__c, Salesman__r.Name, Salesman__r.MobilePhone FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"' AND city__c = '" + city + "'";
         elements = getProductRecords(conn, query);
         if(elements){
           sendGenericMessage(senderID, elements);
@@ -95,8 +95,7 @@ var getProductRecords = (conn, query) => {
           var photo= record.Image__c;
           var description= "DESCRIPTION_PAYLOAD|" + record.Description__c;
           //var link= record.Link__c;
-          var salesman = record.Salesman__r;
-          var contact = "CONTACT_PAYLOAD|" + salesman.Name + "|" + salesman.MobilePhone;
+          var contact = "CONTACT_PAYLOAD|" + record.Salesman__r.Name + "|" + record.Salesman__r.MobilePhone;
 
           console.log('Salesman', salesman);
           console.log('DESCRIPTION: ', description);
