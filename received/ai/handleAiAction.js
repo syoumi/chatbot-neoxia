@@ -30,7 +30,7 @@ var handleAiAction= (senderID, answer) => {
     case "catalogue-city-action":
     case "catalogue-neighborhood-action":
     case "catalogue-city-neighborhood-action":
-      var options= ['Garçonnière', 'Appartement', 'Maison', 'Villa'];
+      var options= ['Studio', 'Appartement', 'Maison', 'Villa'];
      sendQuickReplies(senderID, text, options);
       break;
 
@@ -44,20 +44,21 @@ var handleAiAction= (senderID, answer) => {
 
 
     //Opération, fixer fourchette, refuser fourchette, fixer nbr chambres, refuser nbr chambres, fixer nom-ville
-    case "refuse-fixing-price-action":
     case "refuse-neighborhood-action":
     case "type-building-v2-action":
       var replies = ["Oui", "Non"];
       sendQuickReplies(senderID, text, replies);
       break;
 
-  //Asking about neighborhood or number of rooms
-  case "fixing-city-action":
-  case "max-price-action":
-    var replies = ["Non"];
-    sendQuickReplies(senderID, text, replies);
-    break;
+    //Asking about neighborhood or number of rooms
+    case "fixing-city-action":
+    case "max-price-action":
+    case "refuse-fixing-price-action":
+      var replies = ["Non"];
+      sendQuickReplies(senderID, text, replies);
+      break;
 
+    //Skip or filter
     case "catalogue-building-operation-action":
     case "catalogue-building-operation-city-action":
     case "catalogue-building-operation-neighborhood-action":
@@ -66,9 +67,9 @@ var handleAiAction= (senderID, answer) => {
     case "operation-action":
     case "operation-v2-action":
     case "operation-v3-action":
-    var replies = ["Filtrer", "Sauter"];
-    sendQuickReplies(senderID, text, replies);
-    break;
+      var replies = ["Filtrer", "Sauter"];
+      sendQuickReplies(senderID, text, replies);
+      break;
 
 
     //Fin scénario
