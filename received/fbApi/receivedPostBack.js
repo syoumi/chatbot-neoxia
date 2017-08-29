@@ -37,20 +37,22 @@ var receivedPostBack = (event) => {
     //postback = "CONTACT_PAYLOAD"  + Salesman.Id + Salesman.Name + Salesman.MobilePhone + Product.Id
     var titleContact =  "CONTACT_SALESMAN|" + postback;
     var titleQuote = "SEND_QUOTE|" + postback;
-    
+
       buttons: [
         {
           "type": "postback",
           "title": "Contacter commercial",
           "payload": titleContact
-        },
-        {
-          "type": "postback",
-          "title": "Envoyer devis",
-          "payload": titleQuote
-      }];
+        }];
       sendButtonMessage(senderID, 'Voulez-vous contacter directement le commercial en l\'appelant ou bien recevoir le devis sur votre boîte email?', buttons);
       break;
+
+    //   ,
+    //   {
+    //     "type": "postback",
+    //     "title": "Envoyer devis",
+    //     "payload": titleQuote
+    // }
 
     case "CONTACT_SALESMAN":
       //postback = "CONTACT_SALESMAN" + "CONTACT_PAYLOAD"  + Salesman.Id + Salesman.Name + Salesman.MobilePhone + Product.Id
