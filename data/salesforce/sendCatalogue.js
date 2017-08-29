@@ -38,9 +38,11 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
     var elements = getRecords(conn, query);
 
     if(elements){
+      console.log('-----> ELEMENTS FOUND');
       sendGenericMessage(senderID, elements);
     }
     else{
+      console.log('------> ELEMENTS NOT FOUND');
       text = `Nous sommes désolés. Des ${building}s avec les critères mentionnés ci-dessus ne sont pas disponible pour l'instant.\nSi vous n'êtes pas pressé, vous pouvez nous envoyer vos coordonnées afin de vous contacter une fois votre demande est disponible.\nSinon, nous vous proposons des ${building}s qui pourront vous intéresser.`
       sendTextMessageWithDelai(senderID, text);
 
