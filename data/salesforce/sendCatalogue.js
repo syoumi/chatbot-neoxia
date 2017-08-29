@@ -15,20 +15,20 @@ const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 
 var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood) => {
 
-    var query = "SELECT Id, Name, price__c, photo__c, link__c FROM product WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"'";
+    var query = "SELECT Id, Name, amount__c, image__c, link__c FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"'";
 
     if(minPrice && maxPrice) {
-      query += " AND price__c >=" + minPrice + " AND price__c <= " + maxPrice;
+      query += " AND amount__c >=" + minPrice + " AND amount__c <= " + maxPrice;
     }
     if(nbrRooms){
       //'"+res+"'"
-      query += " AND nbrRooms__c = " + nbrRooms ;
+      query += " AND number_of_rooms__c = " + nbrRooms ;
     }
     if(city){
       query +="  AND city__c = '" + city + "'";
     }
     if(neighborhood){
-      query += " AND neighborhood = '" + neighborhood + "'";
+      query += " AND neighborhood__c = '" + neighborhood + "'";
     }
 
     var elements = getRecords(query);
@@ -45,7 +45,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 
        //Search building in specific city, if client fixed it
       if(city){
-        query = "SELECT Id, Name, price__c, photo__c, link__c FROM "+ building +"__c WHERE type__c = '"+ operation +"' AND city__c = '" + city + "'";
+        query = "SELECT Id, Name, amount__c, image__c, link__c FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"' AND city__c = '" + city + "'";
         elements = getRecords(query);
         if(elements.length>0){
           sendGenericMessage(senderID, elements);
@@ -56,7 +56,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
       }
       //Search building in specific neighborhood, if client fixed it
       if(neighborhood){
-        query = "SELECT Id, Name, price__c, photo__c, link__c FROM product WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"' AND neighborhood__c = '" + neighborhood + "'";
+        query = "SELECT Id, Name, amount__c, image__c, link__c FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"' AND neighborhood__c = '" + neighborhood + "'";
         elements = getRecords(query);
         if(elements.length>0){
           sendGenericMessage(senderID, elements);
@@ -67,7 +67,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
       }
       //Search all buildings with specific operation
       if(!city && !neighborhood){
-        query = "SELECT Id, Name, price__c, photo__c, link__c FROM product WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"'";
+        query = "SELECT Id, Name, amount__c, image__c, link__c FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"'";
         elements = getRecords(query);
         if(elements.length>0){
           sendGenericMessage(senderID, elements);
@@ -87,8 +87,8 @@ var getRecords = (query) => {
           var record = res.records[i];
 
           var title= record.Name;
-          var price= record.Price__c;
-          var photo= record.Photo__c;
+          var price= record.Image__c;
+          var photo= record.Image__c;
           var link= record.Link__c;
 
           var element= {
