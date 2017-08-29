@@ -596,7 +596,7 @@
         "C'est noté.\nVeuillez patienter s'il vous plaît. Je vous envoie le catalogue dans quelques instants."
       ],
       "nextActions": [],
-      "previousActions" : ["max-price-action"],
+      "previousActions" : ["max-price-action", "refuse-fixing-price-action"],
       "hasParam": "1"
     },
 
