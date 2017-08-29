@@ -45,13 +45,10 @@ var handleAiAction= (senderID, answer) => {
 
     //Opération, fixer fourchette, refuser fourchette, fixer nbr chambres, refuser nbr chambres, fixer nom-ville
     case "max-price-action":
-    case "operation-action":
     case "refuse-fixing-price-action":
     case "fixing-city-action":
     case "refuse-neighborhood-action":
     case "type-building-v2-action":
-
-    case "catalogue-sell-building-action":
       var replies = ["Oui", "Non"];
       sendQuickReplies(senderID, text, replies);
       break;
@@ -61,6 +58,8 @@ var handleAiAction= (senderID, answer) => {
     case "catalogue-building-operation-city-action":
     case "catalogue-building-operation-neighborhood-action":
     case "catalogue-building-operation-city-neighborhood-action":
+    case "catalogue-sell-building-action":
+    case "operation-action":
     case "operation-v2-action":
     case "operation-v3-action":
     var replies = ["Filtrer", "Sauter"];

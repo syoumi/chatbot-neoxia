@@ -270,8 +270,7 @@
           "est ce que vous #operation|operation# des #building|building# à #neighborhood|neighborhood#"
       ],
       "answers": [
-         "D'accord. Mais si vous le permettez, j'ai besoin de vous poser quelques questions afin de choisir le logement qui vous le convient le plus.\nVous pouvez sauter cette étape si vous voulez.",
-          "Voulez-vous spécifier la fourchette des prix ?"
+         "D'accord. Mais si vous le permettez, j'ai besoin de vous poser quelques questions afin de choisir le logement qui vous le convient le plus.\nVous pouvez sauter cette étape si vous voulez."
       ],
       "nextActions": ["accept-fixing-price-action", "skip-fixing-price-action"],
       "previousActions" : [],
