@@ -95,10 +95,14 @@ var getRecords = (conn, query) => {
           var title= record.Name;
           var price= record.Amount__c;
           var photo= record.Image__c;
-          var description= record.Description__c;
+          var description= "DESCRIPTION_PAYLOAD|" + record.Description__c;
           //var link= record.Link__c;
           var salesman = record.Salesman__c;
+          var contact = "CONTACT_PAYLOAD|" +  salesman.Name + "|" + salesman.MobilePhone;
 
+
+          console.log('CONTACT', contact);
+          
           var element= {
               title: title,
               subtitle: price,
@@ -108,12 +112,12 @@ var getRecords = (conn, query) => {
                 {
                   type: "postback",
                   title: "Détails",
-                  payload: "DESCRIPTION_PAYLOAD|" + description
+                  payload: description
                 },
                 {
                   type: "postback",
                   title: "Contacter",
-                  payload: "CONTACT_PAYLOAD|" +  salesman.Name + "|" + salesman.MobilePhone
+                  payload: contact
               }]
           };
 
