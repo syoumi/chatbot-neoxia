@@ -91,7 +91,7 @@ var getProductRecords = (conn, query) => {
 
           var id = record.Id;
           var title= record.Name;
-          var price= record.Amount__c;
+          var price= record.Amount__c +"DH";
           var photo= record.Image__c;
           var description= "DESCRIPTION_PAYLOAD|" + record.Description__c;
           //var link= record.Link__c;

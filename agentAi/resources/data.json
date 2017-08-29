@@ -251,7 +251,7 @@
       "keywords": [
           "je souhaite #operation|operation# un #building|building# à #city|city#",
           "je cherche un #building|building# à #city|city# à #operation|operation#",
-          "je cherche #building|building# à #operation|operation#",
+          "je cherche #building|building# à #operation|operation# à #city|city",
           "est ce que vous #operation|operation# des #building|building# à #city|city#"
       ],
       "answers": [
