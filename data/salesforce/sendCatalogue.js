@@ -105,12 +105,13 @@ var getRecords = (query) => {
                 title: "Contacter",
                 payload: "CONTACT_PAYLOAD",
               }]
-             };
+          };
 
             elements.push(element);
         }
 
         return elements;
+    });
   });
 }
 
