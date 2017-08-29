@@ -104,14 +104,16 @@ var getRecords = (conn, query) => {
               subtitle: price,
               image_url: photo,
 
-              buttons: [{
-                type: "postback",
-                title: "Détails",
-                payload: "DESCRIPTION_PAYLOAD|" + description,
-                }, {
-                type: "postback",
-                title: "Contacter",
-                payload: "CONTACT_PAYLOAD|" +  salesman.Name + "|" + salesman.MobilePhone,
+              buttons: [
+                {
+                  type: "postback",
+                  title: "Détails",
+                  payload: "DESCRIPTION_PAYLOAD|" + description
+                },
+                {
+                  type: "postback",
+                  title: "Contacter",
+                  payload: "CONTACT_PAYLOAD|" +  salesman.Name + "|" + salesman.MobilePhone
               }]
           };
 
