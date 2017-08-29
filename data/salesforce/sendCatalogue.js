@@ -37,6 +37,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 
     var elements = getRecords(query);
 
+    console.log('ELEMENTS BEFORE SENDING: ', elements);
     if(elements){
       sendGenericMessage(senderID, elements);
     }
@@ -110,7 +111,8 @@ var getRecords = (query) => {
           };
 
             elements.push(element);
-            console.log('ELEMENTS: ', title);
+            console.log('TITLE: ', title);
+            console.log('PHOTO: ', photo);
         }
 
         return elements;
