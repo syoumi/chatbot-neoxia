@@ -36,6 +36,7 @@ var handleAiAction= (senderID, answer) => {
 
     //Type logement ---> Demander opération
     case "type-building-action":
+    case "type-building-v2-action":
     case "catalogue-building-action":
     case "catalogue-building-city-neighborhood-action":
       var replies = ["Acheter", "Louer"];
@@ -45,7 +46,6 @@ var handleAiAction= (senderID, answer) => {
 
     //Opération, fixer fourchette, refuser fourchette, fixer nbr chambres, refuser nbr chambres, fixer nom-ville
     case "refuse-neighborhood-action":
-    case "type-building-v2-action":
       var replies = ["Oui", "Non"];
       sendQuickReplies(senderID, text, replies);
       break;
