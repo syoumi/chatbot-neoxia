@@ -41,6 +41,7 @@ var receivedPostBack = (event) => {
       break;
 
     case "DESCRIPTION_PAYLOAD":
+      console.log("DETAIIILS: ", postback[1]);
       sendTextMessageWithDelai(senderID, postback[1]);
       break;
 
