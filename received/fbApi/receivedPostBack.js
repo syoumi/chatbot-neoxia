@@ -31,6 +31,7 @@ var receivedPostBack = (event) => {
   // console.log(`| timeOfPostBack ${timeOfPostBack}`);
   // console.log('#################END PRI##############');
 
+  console.log("PAYLOAAD: ", payload);
   //by payload
   switch(payload){
     case "CONTACT_PAYLOAD":
