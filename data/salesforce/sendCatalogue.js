@@ -110,7 +110,7 @@ var getRecords = (query) => {
           };
 
             elements.push(element);
-            console.log('ELEMENTS: ', titre);
+            console.log('ELEMENTS: ', title);
         }
 
         return elements;
