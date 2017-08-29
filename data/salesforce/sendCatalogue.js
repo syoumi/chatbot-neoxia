@@ -97,7 +97,7 @@ var getProductRecords = (conn, query) => {
           //var link= record.Link__c;
           var contact = "CONTACT_PAYLOAD|" + record.Salesman__r.Name + "|" + record.Salesman__r.Phone;
 
-          console.log('Salesman', salesman);
+          console.log('Salesman', record.Salesman__r.Name);
           console.log('DESCRIPTION: ', description);
           console.log('CONTACT', contact);
 
