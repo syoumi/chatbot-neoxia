@@ -94,7 +94,8 @@ var getRecords = (conn, query) => {
           var title= record.Name;
           var price= record.Amount__c;
           var photo= record.Image__c;
-          var link= record.Link__c;
+          //var link= record.Link__c;
+          var link= "http://www.google.fr";
 
           var element= {
               title: title,
@@ -114,6 +115,8 @@ var getRecords = (conn, query) => {
 
             elements.push(element);
             console.log('TITLE: ', title);
+            console.log('PHOTO: ', photo);
+            console.log('LINK: ', photo);
             console.log('PHOTO: ', photo);
         }
 
