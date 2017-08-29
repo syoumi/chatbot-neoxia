@@ -15,6 +15,10 @@ const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 
 var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood) => {
 
+   //Send text first
+    sendTextMessage(senderID, text);
+
+    //Search for building
     var query = "SELECT Id, Name, amount__c, image__c, link__c FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"'";
 
     if(minPrice && maxPrice) {
@@ -33,21 +37,19 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 
     var elements = getRecords(query);
 
-    if(elements.length>0){
-      sendTextMessage(senderID, text);
+    if(elements){
       sendGenericMessage(senderID, elements);
     }
     else{
-      var messages = [];
-      messages[0] = text;
-      messages[1] = `Nous sommes désolés. Des ${building}s avec les critères mentionnés ci-dessus ne sont pas disponible pour l'instant.\nSi vous n'êtes pas pressé, vous pouvez nous envoyer vos coordonnées afin de vous contacter une fois votre demande est disponible.\nSinon, nous vous proposons des ${building}s qui pourront vous intéresser.`
-        //Try to find something may be interested to sind to the client
+      text = `Nous sommes désolés. Des ${building}s avec les critères mentionnés ci-dessus ne sont pas disponible pour l'instant.\nSi vous n'êtes pas pressé, vous pouvez nous envoyer vos coordonnées afin de vous contacter une fois votre demande est disponible.\nSinon, nous vous proposons des ${building}s qui pourront vous intéresser.`
+      sendBulkTextMessagesWithDelai(senderID, text);
 
-       //Search building in specific city, if client fixed it
+      //Try to find something may be interested to sind to the client
+      //Search building in specific city, if client fixed it
       if(city){
         query = "SELECT Id, Name, amount__c, image__c, link__c FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"' AND city__c = '" + city + "'";
         elements = getRecords(query);
-        if(elements.length>0){
+        if(elements){
           sendGenericMessage(senderID, elements);
         }
         else {
@@ -58,7 +60,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
       if(neighborhood){
         query = "SELECT Id, Name, amount__c, image__c, link__c FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"' AND neighborhood__c = '" + neighborhood + "'";
         elements = getRecords(query);
-        if(elements.length>0){
+        if(elements){
           sendGenericMessage(senderID, elements);
         }
         else{
@@ -69,7 +71,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
       if(!city && !neighborhood){
         query = "SELECT Id, Name, amount__c, image__c, link__c FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"'";
         elements = getRecords(query);
-        if(elements.length>0){
+        if(elements){
           sendGenericMessage(senderID, elements);
         }
       }
