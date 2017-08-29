@@ -36,35 +36,29 @@ var receivedPostBack = (event) => {
   switch(payload){
     case "CONTACT_PAYLOAD":
     //postback = "CONTACT_PAYLOAD"  + Salesman.Id + Salesman.Name + Salesman.MobilePhone + Product.Id
-    var titleContact =  "CONTACT_SALESMAN|" + event.postback.payload;
-    var titleQuote = "SEND_QUOTE|" + event.postback.payload;
-    console.log("POSTBACK: " , titleContact);
-      buttons: [
-        {
-          "type": "postback",
-          "title": "Contacter commercial",
-          "payload": titleContact
-        }];
-      sendButtonMessage(senderID, 'Voulez-vous contacter directement le commercial en l\'appelant ou bien recevoir le devis sur votre boîte email?', buttons);
+      var buttons = [
+      {
+        "type":"phone_number",
+        "title":"Appeler",
+        "payload": postback[3]
+      }
+      ];
+      sendButtonMessage(senderID, 'Vous pouvez contacter ' + postback[2] + ' pour plus de renseignements.', buttons);
+      var buttons = [
+      {
+        "type":"postback",
+        "title":"Envoyer devis",
+        "payload": "SEND_QUOTE|" + postback[4]
+      }
+      ];
+      sendButtonMessage(senderID, 'Comme vous pouvez recevoir le devis sur votre boîte mail, si vous le souhaitez.', buttons);
+
       break;
 
-    //   ,
-    //   {
-    //     "type": "postback",
-    //     "title": "Envoyer devis",
-    //     "payload": titleQuote
-    // }
 
     case "CONTACT_SALESMAN":
       //postback = "CONTACT_SALESMAN" + "CONTACT_PAYLOAD"  + Salesman.Id + Salesman.Name + Salesman.MobilePhone + Product.Id
-        var buttons = [
-        {
-          "type":"phone_number",
-          "title":"Appeler",
-          "payload": postback[4]
-        }
-        ];
-        sendButtonMessage(senderID, 'Vous pouvez contacter ' + postback[3] + ' pour plus de renseignements.', buttons);
+
         sendTextMessage(senderID, "Nous avons besoin de récupérer certaines coordonnées telles que votre email, votre vrai nom, prénom et votre numéro de téléphone.\nVoulez-vous remplir un formulaire ou répondre ici?");
         //envoyer quickreplies
         //addTask(senderID, postback[2], postback[5], 'Contacter client');
