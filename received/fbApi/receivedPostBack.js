@@ -35,9 +35,9 @@ var receivedPostBack = (event) => {
   switch(payload){
     case "CONTACT_PAYLOAD":
     //postback = "CONTACT_PAYLOAD"  + Salesman.Id + Salesman.Name + Salesman.MobilePhone + Product.Id
-    var titleContact =  "CONTACT_SALESMAN|" + postback;
-    var titleQuote = "SEND_QUOTE|" + postback;
-    console.log("POSTBACK: " , postback);
+    var titleContact =  "CONTACT_SALESMAN|" + event.postback.payload;
+    var titleQuote = "SEND_QUOTE|" + event.postback.payload;
+    console.log("POSTBACK: " , event.postback.payload);
       buttons: [
         {
           "type": "postback",
