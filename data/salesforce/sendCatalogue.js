@@ -15,7 +15,7 @@ const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 
 var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood) => {
 
-    var query = "SELECT Id, Name, price__c, photo__c, link__c FROM "+ building +"__c WHERE type__c = '"+ operation +"'";
+    var query = "SELECT Id, Name, price__c, photo__c, link__c FROM product WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"'";
 
     if(minPrice && maxPrice) {
       query += " AND price__c >=" + minPrice + " AND price__c <= " + maxPrice;
@@ -56,7 +56,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
       }
       //Search building in specific neighborhood, if client fixed it
       if(neighborhood){
-        query = "SELECT Id, Name, price__c, photo__c, link__c FROM "+ building +"__c WHERE type__c = '"+ operation +"' AND neighborhood__c = '" + neighborhood + "'";
+        query = "SELECT Id, Name, price__c, photo__c, link__c FROM product WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"' AND neighborhood__c = '" + neighborhood + "'";
         elements = getRecords(query);
         if(elements.length>0){
           sendGenericMessage(senderID, elements);
@@ -67,7 +67,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
       }
       //Search all buildings with specific operation
       if(!city && !neighborhood){
-        query = "SELECT Id, Name, price__c, photo__c, link__c FROM "+ building +"__c WHERE type__c = '"+ operation +"'";
+        query = "SELECT Id, Name, price__c, photo__c, link__c FROM product WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"'";
         elements = getRecords(query);
         if(elements.length>0){
           sendGenericMessage(senderID, elements);
