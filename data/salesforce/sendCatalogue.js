@@ -37,13 +37,6 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 
     var elements = getRecords(query);
 
-    console.log('******ELEMENTS TO SEND****');
-    var i =0;
-    elements.forEach((element)=>{
-      console.log("element " + i + ": " + element);
-      i++;
-    });
-
     if(elements){
       sendGenericMessage(senderID, elements);
     }
@@ -87,11 +80,12 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 
 
 var getRecords = (query) => {
+ var elements=[];
+
   doLogin((conn) => {
     conn.query(query, (err, res) => {
       if (err) { return console.error(err); }
-
-        var elements=[];
+      
         for (var i=0; i<res.records.length; i++) {
           var record = res.records[i];
 
@@ -121,9 +115,10 @@ var getRecords = (query) => {
             console.log('PHOTO: ', photo);
         }
 
-        return elements;
+
     });
   });
+  return elements;
 }
 
 module.exports = {
