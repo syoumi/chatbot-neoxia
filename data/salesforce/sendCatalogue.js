@@ -17,7 +17,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 
    //Send text first
     sendTextMessage(senderID, text);
-
+    doLogin((conn) => {
     //Search for building
     var query = "SELECT Id, Name, amount__c, image__c, link__c FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"'";
 
@@ -35,9 +35,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
       query += " AND neighborhood__c = '" + neighborhood + "'";
     }
 
-    var elements = getRecords(query);
-
-    if(!elements) console.log('EMPTYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY');
+    var elements = getRecords(conn, query);
 
     if(elements){
       sendGenericMessage(senderID, elements);
@@ -50,7 +48,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
       //Search building in specific city, if client fixed it
       if(city){
         query = "SELECT Id, Name, amount__c, image__c, link__c FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"' AND city__c = '" + city + "'";
-        elements = getRecords(query);
+        elements = getRecords(conn, query);
         if(elements){
           sendGenericMessage(senderID, elements);
         }
@@ -61,7 +59,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
       //Search building in specific neighborhood, if client fixed it
       if(neighborhood){
         query = "SELECT Id, Name, amount__c, image__c, link__c FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"' AND neighborhood__c = '" + neighborhood + "'";
-        elements = getRecords(query);
+        elements = getRecords(conn, query);
         if(elements){
           sendGenericMessage(senderID, elements);
         }
@@ -78,13 +76,13 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
         }
       }
     }
+  });
 };
 
 
-var getRecords = (query) => {
+var getRecords = (conn, query) => {
  var elements=[];
 
-  doLogin((conn) => {
     conn.query(query, (err, res) => {
       if (err) { return console.error(err); }
 
@@ -117,8 +115,6 @@ var getRecords = (query) => {
             console.log('PHOTO: ', photo);
         }
 
-
-    });
   });
   return elements;
 }
