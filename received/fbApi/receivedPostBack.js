@@ -41,6 +41,7 @@ var receivedPostBack = (event) => {
     case "DESCRIPTION_PAYLOAD":
       sendTextMessageWithDelai(senderID, postback[1]);
       break;
+      
     default:
         sendTextMessage(senderID, `Postback ${payload} reçu :D`);
   }
