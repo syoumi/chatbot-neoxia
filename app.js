@@ -77,6 +77,9 @@ app.post('/webhook', (req, res) => {
 });
 
 //Form : Web to Lead
+app.set('view engine', 'ejs');
+app.set('views', './views');
+
 app.get("/formWTL", function(req, res){
   res.render("formWTL");
 });

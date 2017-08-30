@@ -8,7 +8,7 @@
     "async": "^2.5.0",
     "body-parser": "^1.17.2",
     "ejs": "^2.5.7",
-    "express": "^4.15.3",
+    "express": "^4.15.4",
     "html": "^1.0.0",
     "jsforce": "^1.8.0",
     "request": "^2.81.0",
