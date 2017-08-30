@@ -74,11 +74,11 @@ var receivedPostBack = (event) => {
       // sendTextMessageWithDelai(senderID, postback[1]);
 
       //TESSST
-
+      <script>
         window.extAsyncInit = function() {
           // the Messenger Extensions JS SDK is done loading
         };
-      
+      </script>
       break;
 
     default:
