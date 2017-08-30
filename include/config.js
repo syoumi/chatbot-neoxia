@@ -18,6 +18,8 @@ const API_AI_CLIENT_ACCESS_TOKEN = '47370c9dd09c4ef9bf8dfa664aa86e39';
 const FB_SECRET = '##';
 // Maximum time to wait before re-prompt user for answer
 const WAITING_BEFORE_PROMPT = 5000;
+//URL application
+const URL_APP = 'https://desolate-dusk-64146.herokuapp.com/';
 
 
 module.exports = {
