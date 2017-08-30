@@ -70,8 +70,15 @@ var receivedPostBack = (event) => {
         break;
 
    case "DESCRIPTION_PAYLOAD":
-      sendTextMessage(senderID, postback[1]);
-      sendTextMessageWithDelai(senderID, postback[1]);
+      // sendTextMessage(senderID, postback[1]);
+      // sendTextMessageWithDelai(senderID, postback[1]);
+
+      //TESSST
+
+        window.extAsyncInit = function() {
+          // the Messenger Extensions JS SDK is done loading
+        };
+      
       break;
 
     default:
