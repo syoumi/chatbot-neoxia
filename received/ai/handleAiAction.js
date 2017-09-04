@@ -46,6 +46,7 @@ var handleAiAction= (senderID, answer) => {
 
     //Opération, fixer fourchette, refuser fourchette, fixer nbr chambres, refuser nbr chambres, fixer nom-ville
     case "refuse-neighborhood-action":
+    case "fixing-neighborhood-action" :
       var replies = ["Oui", "Non"];
       sendQuickReplies(senderID, text, replies);
       break;
