@@ -39,7 +39,6 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 
     var elements = getProductRecords(conn, query);
 
-    console.log('ELEMENTS : ', elements);
     setTimeout(() => {
       if(elements.length!=0){
         sendGenericMessage(senderID, elements);
@@ -96,7 +95,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 
       }
     }
-    }, 1000);
+  }, 3000);
   });
 };
 
