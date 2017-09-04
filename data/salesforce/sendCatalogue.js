@@ -78,6 +78,8 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
       }
       console.log("City: ", city);
       console.log("Neighborhood: ", neighborhood);
+      console.log('Building: ', building);
+      console.log("Operation: ", operation);
 
       //Search all buildings with specific operation
       if((!city) && (!neighborhood)){
@@ -131,7 +133,8 @@ var getProductRecords = (conn, query) => {
               }]
           };
 
-            elements.push(element);
+          console.log("TITRE: ", title );
+          elements.push(element);
 
         }
 
