@@ -677,6 +677,19 @@
     },
 
     {
+      "action": "test-action",
+      "keywords": [
+        "test"
+      ],
+      "answers": [
+        "ATTENDEZ !"
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "0"
+    },
+
+    {
       "action": "unknown-action",
       "keywords": [],
       "answers": [

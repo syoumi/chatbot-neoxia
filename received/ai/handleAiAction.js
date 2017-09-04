@@ -1,6 +1,5 @@
 
 const {sendButtonMessage} = require('./../../send/fbApi/sendButtonMessage');
-
 const {sendFileMessage} = require('./../../send/fbApi/sendFileMessage');
 const {sendGenericMessage} = require('./../../send/fbApi/sendGenericMessage');
 const {sendImageMessage} = require('./../../send/fbApi/sendImageMessage');
@@ -83,6 +82,20 @@ var handleAiAction= (senderID, answer) => {
       if(params){
         handleParameters(senderID, text, params, "send catalogue");
       }
+      break;
+
+    case "test-action":
+      var buttons = [
+        {
+                  "type":"web_url",
+                  "url":"https://desolate-dusk-64146.herokuapp.com/formWTL",
+                  "title":"Titre titre",
+                  "webview_height_ratio": "full",
+                  "messenger_extensions": true,
+                  "fallback_url": "https://desolate-dusk-64146.herokuapp.com/formWTL"
+        }
+      ];
+      sendButtonMessage(senderID, 'TESTEZ !', buttons);
       break;
 
 
