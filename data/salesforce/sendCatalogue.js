@@ -52,20 +52,9 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
       text = `Nous sommes désolés. Des ${building}s avec les critères mentionnés ci-dessus ne sont pas disponible pour l'instant.\nSi vous n'êtes pas pressé, vous pouvez nous envoyer vos coordonnées afin de vous contacter une fois votre demande est disponible.\nSinon, nous vous proposons des ${building}s qui pourront vous intéresser.`
       sendTextMessageWithDelai(senderID, text);
 
-      //Search building in specific city, if client fixed it
-      if(city){
-        console.log("Search by city");
-        query = "SELECT Id, Name, amount__c, image__c, link__c, Description__c, Salesman__r.Id, Salesman__r.Name, Salesman__r.MobilePhone FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"' AND city__c = '" + city + "'";
-        elements = getProductRecords(conn, query);
-        if(elements){
-          sendGenericMessage(senderID, elements);
-        }
-        else {
-          city = undefined;
-        }
-      }
+
       //Search building in specific neighborhood, if client fixed it
-      if(neighborhood && !city){
+      if(neighborhood){
         console.log("Search by neighborhood");
         query = "SELECT Id, Name, amount__c, image__c, link__c, Description__c, Salesman__r.Id, Salesman__r.Name, Salesman__r.MobilePhone FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"' AND neighborhood__c = '" + neighborhood + "'";
         elements = getProductRecords(conn, query);
@@ -76,6 +65,19 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
           neighborhood = undefined;
         }
       }
+      //Search building in specific city, if client fixed it
+      if(city && !neighborhood){
+        console.log("Search by city");
+        query = "SELECT Id, Name, amount__c, image__c, link__c, Description__c, Salesman__r.Id, Salesman__r.Name, Salesman__r.MobilePhone FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"' AND city__c = '" + city + "'";
+        elements = getProductRecords(conn, query);
+        if(elements){
+          sendGenericMessage(senderID, elements);
+        }
+        else {
+          city = undefined;
+        }
+      }
+
       //Search all buildings with specific operation
       if(!city && !neighborhood){
         query = "SELECT Id, Name, amount__c, image__c, link__c, Description__c, Salesman__r.Id, Salesman__r.Name, Salesman__r.MobilePhone FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"'";

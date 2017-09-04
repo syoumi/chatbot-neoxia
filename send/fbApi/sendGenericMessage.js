@@ -24,9 +24,9 @@ var sendGenericMessage= (recipientId, elements)=> {
           }
         }
       };
-    
+
       sendTypingOn(recipientId);
-      setTimeout(() => {callSendAPI(messageData);}, 1000);
+      setTimeout(() => {callSendAPI(messageData);}, 5000);
 
 };
 
