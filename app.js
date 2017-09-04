@@ -85,7 +85,7 @@ app.get("/formWTL", function(req, res){
 });
 
 app.get("/thanks", function(req, res){
-  res.render("formWTL");
+  res.render("thanks");
 });
 
 // Let the server listening to incoming connections
