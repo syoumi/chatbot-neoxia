@@ -71,7 +71,7 @@ var receivedPostBack = (event) => {
 
    case "DESCRIPTION_PAYLOAD":
       sendTextMessage(senderID, postback[1]);
-      sendTextMessageWithDelai(senderID, postback[1]);
+      //sendTextMessageWithDelai(senderID, postback[1]);
       break;
 
     default:
