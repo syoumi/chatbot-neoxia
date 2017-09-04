@@ -91,8 +91,7 @@ var handleAiAction= (senderID, answer) => {
                   "url":"https://desolate-dusk-64146.herokuapp.com/formWTL",
                   "title":"Titre titre",
                   "webview_height_ratio": "full",
-                  "messenger_extensions": true,
-                  "fallback_url": "https://desolate-dusk-64146.herokuapp.com/formWTL"
+                  "messenger_extensions": true
         }
       ];
       sendButtonMessage(senderID, 'TESTEZ !', buttons);
