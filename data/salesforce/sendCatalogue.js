@@ -45,7 +45,6 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
       }
 
     else{
-      console.log("NON TROUVES !!");
       //Add request
       //addRequest(senderID, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, false);
 
