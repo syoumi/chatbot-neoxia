@@ -41,6 +41,7 @@ var sendTextMessageWithDelai = (recipientID, textMessage) => {
   // to simulate bot is typing on
   var delai = parseInt(Math.random() * ( 500 - 50 ) + 50) * textMessage.length;
 
+  console.log("MESSAGE WILL BE SEND IN: ", delai);
   sendTypingOn(recipientID);
 
   setTimeout(() => {
