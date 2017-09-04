@@ -92,7 +92,7 @@ var handleAiAction= (senderID, answer) => {
                   "title":"Formulaire",
                   "webview_height_ratio": "full",
                   "messenger_extensions": true,
-                  "fallback_url": "https://desolate-dusk-64146.herokuapp.com/thanks"
+                  "fallback_url": "https://desolate-dusk-64146.herokuapp.com/formWTL"
         }
       ];
       sendButtonMessage(senderID, 'TESTEZ !', buttons);
