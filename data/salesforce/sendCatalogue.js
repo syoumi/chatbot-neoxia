@@ -48,7 +48,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 
       //Add request
       console.log("ADD REQUEST...");
-      addRequest(senderID, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, false);
+      //addRequest(senderID, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, false);
 
       //Try to find something may be interested to sind to the client
       text = `Nous sommes désolés. Des ${building}s avec les critères mentionnés ci-dessus ne sont pas disponible pour l'instant.\nSi vous n'êtes pas pressé, vous pouvez nous envoyer vos coordonnées afin de vous contacter une fois votre demande est disponible.\nSinon, nous vous proposons des ${building}s qui pourront vous intéresser.`
