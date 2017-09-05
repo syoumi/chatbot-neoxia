@@ -65,6 +65,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
             sendGenericMessage(senderID, elements);
           }
           else {
+            console.log('ana looooog wahd akhor :D');
               neighborhood = undefined;
           }
         }, 30000);
