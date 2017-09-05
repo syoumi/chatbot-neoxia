@@ -22,6 +22,7 @@ var data = JSON.parse(jsonData).data;
 var findSpecificMatch = (message, actions) => {
 
   var user = getUser(message.senderID);
+  console.log('COUNTER ' , user.counter);
 
   var intents = [];
   // getting all the specific intents to look in
@@ -86,6 +87,7 @@ var findSpecificMatch = (message, actions) => {
       if (user.counter == 0) {
         user.counter = 2;
         user.previousAction = '';
+
         return undefined;
       } else {
         return undefined;

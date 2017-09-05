@@ -30,6 +30,34 @@ var sendGenericMessage= (recipientId, elements)=> {
 
 };
 
+var sendGenericMessageWithDelai = (recipientId, elements, delai) => {
+
+        var messageData = {
+          recipient: {
+            id: recipientId
+          },
+          message: {
+            attachment: {
+              type: "template",
+              payload: {
+                template_type: "generic",
+                elements: elements
+              }
+            }
+          }
+        };
+
+        setTimeout(() => {
+          sendTypingOn(recipientId);          
+        }, 1000);
+
+        setTimeout(() => {
+          callSendAPI(messageData);
+        }, delai);
+
+}
+
 module.exports = {
-  sendGenericMessage
+  sendGenericMessage,
+  sendGenericMessageWithDelai
 };

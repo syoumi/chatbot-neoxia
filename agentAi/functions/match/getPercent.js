@@ -10,8 +10,6 @@ var getPercent= (text, keywords, hasParam)=> {
   var counter = 0;
   var params = [];
 
-
-
   if (hasParam == '1') {
     // Extract parameters from text
     for(var i = 0; i<keywords.length; i++){
@@ -31,7 +29,6 @@ var getPercent= (text, keywords, hasParam)=> {
           return {percent: 0, params: undefined};
         }
       }
-
     }
   }
 
