@@ -8,11 +8,8 @@ var setUser = (senderID, action, params) => {
   var counter = 2;
 
   if(user){
-
     //parameters
     params = handleParams(user, params);
-
-    //params = user.parameters.concat(params);
 
     //Counter
     counter = user.counter;
@@ -66,7 +63,18 @@ var handleParams = (user, params) => {
    return user.parameters;
 }
 
+var removeParams = (user) => {
+  if(user.params){
+     params.forEach((param) => {
+       if(param.name != 'email' || param.name != 'phone'){
+         params.value = undefined;
+       }
+     });
+   }
+  }
+}
+
 
 module.exports= {
-  setUser, getUser, removeUser
+  setUser, getUser, removeUser, removeParams
 }

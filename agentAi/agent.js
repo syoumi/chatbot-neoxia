@@ -21,12 +21,8 @@ var receiveMessage = (request) => {
   if (!answer) {
     // Looking for a std answer
     answer = handleMessage(request);
-    if (answer.answer) {
-      // add user to the map or update it
-      //TODO function push parameters
-    }
+    //if (answer.answer) {}
   }
-
 
 
   // if this is unknown message, save the message in json file

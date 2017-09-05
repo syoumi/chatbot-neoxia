@@ -1,4 +1,5 @@
 const {getUser} = require('./../user/handleUser');
+const {removeParams} = require('./functions/user/handleUser');
 const {getAction} = require('./handleAction');
 
 var lookForSpecificActions = (senderID) => {
@@ -7,6 +8,9 @@ var lookForSpecificActions = (senderID) => {
   if (user) {
     if (user.previousAction && user.previousAction != '') {
       var action = getAction(user.previousAction);
+      if(action.previousAction == '') {
+        removeParams(user);
+      }
       actions = action.nextActions;
     }
   }
