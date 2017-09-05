@@ -1,5 +1,5 @@
 const {getUser} = require('./../user/handleUser');
-const {removeParams} = require('./functions/user/handleUser');
+const {removeParams} = require('./../user/handleUser');
 const {getAction} = require('./handleAction');
 
 var lookForSpecificActions = (senderID) => {
