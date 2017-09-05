@@ -96,7 +96,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 
       }
     }
-  }, 50000);
+  }, 3000);
   });
 };
 
