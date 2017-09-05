@@ -50,12 +50,10 @@ var addLead = (senderID, lastName, firstName, email, phone) => {
             var description = "From Facebook - Chatbot";
             var status = "Working - Contacted ";
             var company  = "UNKOWN";
+            //leadsource
             //email; mobile
-            var query = "INSERT INTO Lead (firstname, photourl, description, lastname, status, company, salutation, facebookId__c)" +
-                         "VALUES ('" + fname + "', '" + ppicture + "', '" +  description + "', '" +  company + "', '" + salutation  + "', " +  senderID + ")";
-            conn.query(query, (err) => {
-              if (err) { return console.error(err); }
-            });
+
+
 
     	});
     }
