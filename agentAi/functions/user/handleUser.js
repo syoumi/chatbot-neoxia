@@ -64,6 +64,7 @@ var handleParams = (user, params) => {
 }
 
 var removeParams = (user) => {
+  console.log("REMOVE PARAMS");
   if(user.params){
      params.forEach((param) => {
        if(param.name != 'email' || param.name != 'phone'){
@@ -71,6 +72,7 @@ var removeParams = (user) => {
        }
      });
    }
+   console.log('PARAMS AFTER REMOVE: ', user.params);
 }
 
 

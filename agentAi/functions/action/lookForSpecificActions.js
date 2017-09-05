@@ -8,6 +8,7 @@ var lookForSpecificActions = (senderID) => {
   if (user) {
     if (user.previousAction && user.previousAction != '') {
       var action = getAction(user.previousAction);
+      console.log('PREVIOUS ACTIONS: ', action.previousActions);
       if(action.previousActions.length == 0) {
         removeParams(user);
       }
