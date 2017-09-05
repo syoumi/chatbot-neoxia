@@ -40,7 +40,7 @@ var receiveMessage = (request) => {
 
   // Update answer's parameters
   // answer.parameters = getParameters(request.senderID);
-  console.log('User object ' , getUser(request.senderID));
+  console.log('USER OBJECT: ' , getUser(request.senderID));
   var response = sendAnswer(request.senderID, answer);
   return response;
 };
