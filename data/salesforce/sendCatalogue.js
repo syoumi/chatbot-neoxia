@@ -43,7 +43,6 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
       if(elements.length!=0){
         sendGenericMessage(senderID, elements);
       }
-
     else{
       //Add request
       //addRequest(senderID, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, false);
@@ -55,10 +54,12 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 
 
       //Search building in specific neighborhood, if client fixed it
+      console.log('neighborhood!! : ', neighborhood);
       if(neighborhood){
+        console.log('neighborhood2 ' , neighborhood);
         query = "SELECT Id, Name, amount__c, image__c, link__c, Description__c, Salesman__r.Id, Salesman__r.Name, Salesman__r.MobilePhone FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"' AND neighborhood__c = '" + neighborhood + "'";
         elements = getProductRecords(conn, query);
-      
+
         setTimeout(() => {
           if(elements.length!=0){
             sendGenericMessage(senderID, elements);
@@ -97,7 +98,6 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
             sendGenericMessage(senderID, elements);
           }
         }, 30000);
-
       }
     }
   }, 3000);
@@ -106,7 +106,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 
 
 var getProductRecords = (conn, query) => {
- var elements=[];
+ var elements = [];
 
     conn.query(query, (err, res) => {
       if (err) { return console.error(err); }
