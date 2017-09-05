@@ -47,7 +47,6 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
     else{
 
       //Add request
-      console.log("ADD REQUEST...");
       //addRequest(senderID, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, false);
 
       //Try to find something may be interested to sind to the client
