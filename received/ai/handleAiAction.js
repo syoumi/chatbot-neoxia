@@ -11,6 +11,8 @@ const {sendBulkTextMessages} = require('./../../send/fbApi/sendBulkTextMessages'
 
 const {handleParameters} = require('./handleAiParameters');
 
+const {addLead} = require('./../../data/salesforce/handleLeads');
+
 
 //By action
 var handleAiAction= (senderID, answer) => {
@@ -18,6 +20,7 @@ var handleAiAction= (senderID, answer) => {
   var text = answer.answer;
   var context = answer.context;
   var params = answer.parameters;
+
 
 	switch (action) {
 
@@ -54,6 +57,8 @@ var handleAiAction= (senderID, answer) => {
     case "fixing-city-action":
     case "max-price-action":
     case "refuse-fixing-price-action":
+    case "accept-neighborhood-action":
+    case "accept-fixing-price-action":
       var replies = ["Non"];
       sendQuickReplies(senderID, text, replies);
       break;
