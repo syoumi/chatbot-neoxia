@@ -65,10 +65,10 @@ var handleParams = (user, params) => {
 
 var removeParams = (user) => {
   console.log("REMOVE PARAMS");
-  if(user.params){
+  if(user.parameters){
      params.forEach((param) => {
        if(param.name != 'email' || param.name != 'phone'){
-         param.value = '';
+         param.value = undefined;
        }
      });
    }
