@@ -6,6 +6,7 @@ const {sendTypingOff} = require('./../../send/fbApi/sendTypingOnOff');
 
 
 
+
 var handleAiResponse = (senderID, answer) => {
 
   sendTypingOff(senderID);

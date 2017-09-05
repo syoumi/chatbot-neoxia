@@ -15,7 +15,7 @@ var receiveMessage = (request) => {
   var specificActions = lookForSpecificActions(request.senderID);
   if (specificActions && specificActions.length != 0) {
     var result = findSpecificMatch(request, specificActions);
-    answer = (result.entry) ? getAnswer(result) : undefined;
+    answer = (result) ? getAnswer(result) : undefined;
   }
 
   if (!answer) {
@@ -35,9 +35,9 @@ var receiveMessage = (request) => {
   } else {
     //console.log(`SET USER; Answer: ${answer.answer}`);
     setUser(request.senderID, answer.action, answer.parameters);
-    
-    if(user){
-      answer.parameters = user.parameters;
+
+    if(getUser(request.senderID)){
+      answer.parameters = getUser(request.senderID).parameters;
     }
   }
 
@@ -57,6 +57,10 @@ var sendAnswer = (recipientID, answer) => {
     parameters: answer.parameters
   };
   return toSend;
+}
+
+module.exports = {
+  receiveMessage
 }
 
 // var msg = {

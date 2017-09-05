@@ -37,7 +37,7 @@ var findSpecificMatch = (message, actions) => {
     var maxEntryPercent = 0;
     var intent = intents[i];
     for (var j = 0; j < intent.keywords.length; j++) {
-      var result = wordsFound(message.text, intent.keywords[j], intent.hasParam);
+      var result = wordsFound(message.text.toLowerCase(), intent.keywords[j], intent.hasParam);
       var percent = result.percent;
       if (percent > maxEntryPercent) {
         maxEntryPercent = percent;
@@ -88,7 +88,7 @@ var findSpecificMatch = (message, actions) => {
         user.previousAction = '';
         return undefined;
       } else {
-        return {entry: getAction('unknown-action'), params: undefined};
+        return undefined;
       }
     }
   }

@@ -9,15 +9,17 @@ const FB_PAGE_TOKEN = 'EAAEkoZBTgjzIBAH2nAilInhXo8vH34ab0F7HGI61QSusVnCMoh6Q9EJ3
 // Facebook authentification verify token
 const VERIFY_TOKEN = 'SIMPLE_VERIFY_TOKEN';
 // Salesforce login (Ex. test@example.com
-const SF_LOGIN = 'chatbot@neoxia.ma';
+const SF_LOGIN = 'sfchatbot@neoxia.ma';
 // Salesforce password + security token
-const SF_PASSWORD = '25072017fkmop3JAAuAHoMAjWdjOmITJwswB';
+const SF_PASSWORD = '25072017fkmoTsoLT51c4A85Nse88Cc6L4ITA';
 // API.ai client access token
 const API_AI_CLIENT_ACCESS_TOKEN = '47370c9dd09c4ef9bf8dfa664aa86e39';
 // Facebook app secret code
 const FB_SECRET = '##';
 // Maximum time to wait before re-prompt user for answer
 const WAITING_BEFORE_PROMPT = 5000;
+//URL application
+const URL_APP = 'https://desolate-dusk-64146.herokuapp.com/';
 
 
 module.exports = {

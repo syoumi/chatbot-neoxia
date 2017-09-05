@@ -76,6 +76,18 @@ app.post('/webhook', (req, res) => {
   }
 });
 
+//Form : Web to Lead
+app.set('view engine', 'ejs');
+app.set('views', './views');
+
+app.get("/formWTL", function(req, res){
+  res.render("formWTL");
+});
+
+app.get("/thanks", function(req, res){
+  res.render("thanks");
+});
+
 // Let the server listening to incoming connections
 app.listen(PORT, () => {
   console.log(`Listening to incoming connections on port ${PORT} ...`);
