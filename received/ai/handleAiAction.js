@@ -60,6 +60,7 @@ var handleAiAction= (senderID, answer) => {
     case "refuse-fixing-price-action":
     case "accept-neighborhood-action":
     case "accept-fixing-price-action":
+    case "fixing-price-action":
       var replies = ["Non"];
       sendQuickReplies(senderID, text, replies);
       break;

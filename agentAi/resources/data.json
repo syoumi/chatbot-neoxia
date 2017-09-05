@@ -480,7 +480,7 @@
       "answers": [
         "Comme vous voulez.\nVoulez-vous fixer une fourchette des prix ?"
       ],
-      "nextActions": ["accept-fixing-price-action", "refuse-fixing-price-action"],
+      "nextActions": ["accept-fixing-price-action", "refuse-fixing-price-action", "fixing-price-action"],
       "previousActions" : ["fixing-city-action"],
       "hasParam": "0"
     },
@@ -571,6 +571,21 @@
     },
 
     {
+      "action": "fixing-price-action",
+      "keywords": [
+        "#minPrice|currency# #maxPrice|currency#",
+        "entre #minPrice|currency# et #maxPrice|currency#",
+        "#minPrice|currency# dh #maxPrice|currency# dh"
+      ],
+      "answers": [
+        "C'est noté.\nSouhaitez-vous spécifier le nombre de chambres?\nSi oui, combien ?"
+      ],
+      "nextActions": ["fixing-nbr-rooms-action", "refuse-nbr-rooms-action"],
+      "previousActions" : ["fixing-neighborhood-action", "refuse-neighborhood-action"],
+      "hasParam": "1"
+    },
+
+    {
       "action": "refuse-fixing-price-action",
       "keywords": [
         "non",
@@ -596,7 +611,7 @@
         "C'est noté.\nVeuillez patienter s'il vous plaît. Je vous envoie le catalogue dans quelques instants."
       ],
       "nextActions": [],
-      "previousActions" : ["max-price-action", "refuse-fixing-price-action"],
+      "previousActions" : ["max-price-action", "refuse-fixing-price-action", "fixing-price-action"],
       "hasParam": "1"
     },
 
@@ -611,7 +626,7 @@
         "Comme vous voulez.\nVeuillez patienter s'il vous plaît. Je vous envoie le catalogue dans quelques instants."
       ],
       "nextActions": [],
-      "previousActions" : ["refuse-fixing-price-action", "max-price-action"],
+      "previousActions" : ["refuse-fixing-price-action", "max-price-action", "fixing-price-action"],
       "hasParam": "0"
     },
 
@@ -655,7 +670,7 @@
       "answers": [
         "C'est noté. Voulez-vous fixer la fourchette des prix ?"
       ],
-      "nextActions": ["accept-fixing-price-action", "refuse-fixing-price-action"],
+      "nextActions": ["accept-fixing-price-action", "refuse-fixing-price-action", "fixing-price-action"],
       "previousActions" : ["fixing-city-action", "type-building-v2-action"],
       "hasParam": "1"
     },
