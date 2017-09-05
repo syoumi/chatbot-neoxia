@@ -148,6 +148,7 @@ var getProductRecords = (conn, query) => {
         }
 
   });
+  console.log('Elements to return ' , elements);
   return elements;
 }
 
