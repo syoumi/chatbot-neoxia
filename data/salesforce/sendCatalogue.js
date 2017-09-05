@@ -98,7 +98,6 @@ var getProductRecords = (conn, query, callback) => {
  var elements = [];
 
     conn.query(query, (err, res) => {
-      console.log('The query is ' , query);
       if (err) { return console.error(err); }
 
         for (var i=0; i<res.records.length; i++) {

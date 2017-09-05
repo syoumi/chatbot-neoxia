@@ -8,10 +8,13 @@ var lookForSpecificActions = (senderID) => {
   if (user) {
     if (user.previousAction && user.previousAction != '') {
       var action = getAction(user.previousAction);
-      if(action.previousAction == '') {
+      if(action.previousActions.length == 0) {
         removeParams(user);
       }
       actions = action.nextActions;
+    }
+    else{
+        removeParams(user);
     }
   }
   return actions;
