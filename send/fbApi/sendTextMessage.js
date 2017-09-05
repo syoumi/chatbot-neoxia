@@ -42,7 +42,11 @@ var sendTextMessageWithDelai = (recipientID, textMessage) => {
   var delai = parseInt(Math.random() * ( 100 - 50 ) + 50) * textMessage.length;
 
   console.log("MESSAGE WILL BE SENT IN: ", delai);
-  sendTypingOn(recipientID);
+
+  setTimeout(() => {
+    sendTypingOn(recipientID);
+  }, 1000);
+
 
   setTimeout(() => {
 
