@@ -5,6 +5,8 @@ const {getCity} = require('./city');
 const {getNeighborhood} = require('./neighborhood');
 const {getOperation} = require('./operation');
 const {getBuilding} = require('./building');
+const {isCurrency} = require('./currency');
+const {isNumber} = require('./number');
 
 var getParameter = (userWord, keywordParam) => {
 
@@ -31,6 +33,12 @@ var getParameter = (userWord, keywordParam) => {
       break;
     case 'building':
       param.value = getBuilding(userWord);
+      break;
+    case 'currency':
+      param.value = isCurrency(userWord)? userWord : undefined;
+      break;
+    case 'number':
+      param.value = isNumber(userWord)? userWord : undefined;
       break;
     default:
       //TODO

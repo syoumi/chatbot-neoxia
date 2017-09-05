@@ -150,6 +150,17 @@
     },
 
     {
+        "name": "cherche",
+        "synonyms": [
+          "cherche",
+          "veux",
+          "souhaite",
+          "espère",
+          "rêve"
+        ]
+    },
+
+    {
         "name": "paiement",
         "synonyms": [
           "paiement",
