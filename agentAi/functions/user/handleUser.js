@@ -71,7 +71,6 @@ var removeParams = (user) => {
        }
      });
    }
-  }
 }
 
 
