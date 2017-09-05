@@ -52,6 +52,8 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
       text = `Nous sommes désolés. Des ${building}s avec les critères mentionnés ci-dessus ne sont pas disponible pour l'instant.\nSi vous n'êtes pas pressé, vous pouvez nous envoyer vos coordonnées afin de vous contacter une fois votre demande est disponible.\nSinon, nous vous proposons des ${building}s qui pourront vous intéresser.`
       sendTextMessageWithDelai(senderID, text);
 
+      console.log("neighborhood: ", neighborhood);
+      console.log("city: ", city);
 
       //Search building in specific neighborhood, if client fixed it
       if(neighborhood){
@@ -94,7 +96,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 
       }
     }
-  }, 3000);
+  }, 50000);
   });
 };
 
