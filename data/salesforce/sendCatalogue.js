@@ -60,11 +60,9 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 
         setTimeout(() => {
           if ( elements.length != 0 ) { // TODO by syoumi
-            console.log('ana looooog :D');
             sendGenericMessage(senderID, elements);
           }
           else {
-            console.log('ana looooog wahd akhor :D');
               neighborhood = undefined;
           }
         }, 30000);
@@ -72,6 +70,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 
 
       //Search building in specific city, if client fixed it
+      console.log('neighborhood is ' , neighborhood);
       if(city && (!neighborhood)){
         query = "SELECT Id, Name, amount__c, image__c, link__c, Description__c, Salesman__r.Id, Salesman__r.Name, Salesman__r.MobilePhone FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"' AND city__c = '" + city + "'";
         elements = getProductRecords(conn, query);
