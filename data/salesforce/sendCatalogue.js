@@ -139,10 +139,12 @@ var getProductRecords = (conn, query, callback) => {
 
         }
 
+        console.log('Elements to return ' , elements);
+        // return elements;
+        callback(elements);
+
   });
-  console.log('Elements to return ' , elements);
-  // return elements;
-  callback(elements);
+
 }
 
 module.exports = {
