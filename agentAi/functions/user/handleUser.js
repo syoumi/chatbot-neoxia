@@ -66,13 +66,13 @@ var handleParams = (user, params) => {
 var removeParams = (user) => {
   console.log("REMOVE PARAMS");
   if(user.parameters){
-     params.forEach((param) => {
-       if(param.type != 'email' || param.type != 'phone' || param.type!= "building" || param.type != "operation"){
+     user.parameters.forEach((param) => {
+       if(param.type != 'email' || param.type != 'phone' || param.type != 'building' || param.type != 'operation'){
          param.value = undefined;
        }
      });
    }
-   console.log('PARAMS AFTER REMOVE: ', user.params);
+   console.log('PARAMS AFTER REMOVE: ', user.parameters);
 }
 
 
