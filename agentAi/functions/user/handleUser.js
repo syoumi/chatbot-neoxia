@@ -67,7 +67,7 @@ var removeParams = (user) => {
   console.log("REMOVE PARAMS");
   if(user.parameters){
      params.forEach((param) => {
-       if(param.name != 'email' || param.name != 'phone'){
+       if(param.type != 'email' || param.type != 'phone' || param.type!= "building" || param.type != "operation"){
          param.value = undefined;
        }
      });
