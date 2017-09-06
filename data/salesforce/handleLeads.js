@@ -17,7 +17,10 @@ var isLead = (senderID) => {
     }
   });
   console.log('IS LEAD? ', res);
-  return res;
+  setTimeout( () => {
+      return res;
+  }, 1000);
+
 }
 
 
