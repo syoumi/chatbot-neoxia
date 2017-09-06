@@ -11,7 +11,6 @@ const {addOpportunity} = require("./handleOpportunities");
 var isLead = (senderID) => {
   var res = false;
   getLead(senderID, (lead) => {
-    console.log("LEAD RETURNED: ", lead);
     if(lead){
       res = true;
     }
@@ -30,7 +29,7 @@ var getLead = (senderID, callback) => {
 
           for (var i=0; i<res.records.length; i++) {
             var record = res.records[i];
-              console.log('SENDER ID: ' + senderID + '; fbID: ' + record.FacebookId__c);
+
             if(senderID == record.FacebookId__c){
               lead = record;
             }
