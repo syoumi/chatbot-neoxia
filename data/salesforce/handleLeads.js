@@ -10,7 +10,7 @@ const {addOpportunity} = require("./handleOpportunities");
 
 var isLead = (senderID) => {
   console.log("is Lead?");
-  if(getLead(senderID){
+  if(getLead(senderID)){
     console.log("user is lead");
     return true;
   }
