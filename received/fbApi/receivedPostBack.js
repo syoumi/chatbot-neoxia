@@ -41,17 +41,24 @@ var receivedPostBack = (event) => {
         "type":"phone_number",
         "title":"Appeler",
         "payload": postback[3]
-      }
-      ];
-      sendButtonMessage(senderID, 'Vous pouvez contacter notre agent commercial ' + postback[2]  + ' associé à ce logement' , buttons);
-      var buttons = [
+      },
       {
         "type":"postback",
         "title":"Envoyer devis",
         "payload": "SEND_QUOTE|" + postback[4]
       }
       ];
-      sendButtonMessage(senderID, 'Comme vous pouvez recevoir le devis sur votre boîte mail, si vous le souhaitez.', buttons);
+      sendButtonMessage(senderID, 'Vous pouvez contacter notre agent commercial ' + postback[2]  + ' associé à ce logement' , buttons);
+      setTimeout(() => {
+        var buttons = [
+        {
+          "type":"postback",
+          "title":"Envoyer devis",
+          "payload": "SEND_QUOTE|" + postback[4]
+        }
+        ];
+        sendButtonMessage(senderID, 'Comme vous pouvez recevoir le devis sur votre boîte mail, si vous le souhaitez.', buttons);
+      }, 1000);
       break;
 
 
@@ -64,8 +71,8 @@ var receivedPostBack = (event) => {
         break;
 
     case "SEND_QUOTE":
-        sendTextMessage(senderID, "Nous avons besoin de récupérer certaines coordonnées telles que votre email, votre vrai nom, prénom et votre numéro de téléphone.\nVoulez-vous remplir un formulaire ou répondre ici?");
-        //envoyer quickreplies
+        sendTextMessage(senderID, "Nous avons besoin de récupérer vos coordonnées telles que votre nom, votre prénom votre email et votre numéro de téléphone.");
+        //sendButtonMessage(senderID, 'Veuillez remplir le formulaire.', button);
         //addTask(senderID, postback[2], postback[5], 'Envoyer devis');
         break;
 
