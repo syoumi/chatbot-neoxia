@@ -37,6 +37,7 @@ var getLead = (senderID, email) => {
 
       });
     });
+    console.log("LEAD FOUND: ", lead);
     return lead;
 }
 
