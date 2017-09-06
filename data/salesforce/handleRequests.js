@@ -41,8 +41,6 @@ var updateRequest = (senderID, isTreated) => {
 
             });
       });
-  });
-
 }
 
 module.exports = {
