@@ -10,9 +10,6 @@ var setUser = (senderID, action, params) => {
   if(user){
 
     //parameters
-    
-
-    //Set new params
     params = handleParams(user, params);
 
     //Counter

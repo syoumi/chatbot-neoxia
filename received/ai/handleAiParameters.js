@@ -47,7 +47,7 @@ var handleParameters = (senderID, text, params, action) => {
       }
 
     //sendCatalogue
-    sendCatalogue(senderID, text, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood);
+    sendCatalogue(senderID, text, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, 3);
     break;
 
   }
