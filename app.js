@@ -84,9 +84,12 @@ app.get("/formWTL", function(req, res){
   res.render("formWTL");
 });
 
-app.get("/thanks", function(req, res){
-  res.render("thanks");
+
+
+app.get("/editLead", function(req, res){
+  res.render("editLead");
 });
+
 
 // Let the server listening to incoming connections
 app.listen(PORT, () => {

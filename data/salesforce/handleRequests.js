@@ -11,14 +11,47 @@ var addRequest = (senderID, building, operation, minPrice, maxPrice, nbrRooms, c
     });
 }
 
+//Get last user's request
+var getRequest = (senderID, callback) => {
+    doLogin((conn) => {
+      var request = undefined;
+      var query = "SELECT Name, FacebookId__c, isTreated__c FROM Request__c";
+      conn.query(query, (err, res) => {
+        if (err) { return console.error(err); }
 
-//Modify existing request
-var editRequest = (senderID, requestID, isTreated) => {
-  doLogin((conn) => {
+          for (var i=0; i<res.records.length; i++) {
+            var record = res.records[i];
+
+            if(senderID == record.FacebookId__c){
+              request = record;
+            }
+          }
+        callback(request);
+      });
+    });
+}
+
+//Update request is Treated or not
+var updateRequest = (senderID, isTreated) => {
+  getRequest(senderID, (request) => {
+
+    if(request){
+
+      doLogin((conn) => {
+        conn.sobject('Request__c')
+            .find({ 'FacebookID__c' : senderID })
+            .update({isTreated__c: isTreated }, function(err, rets) {
+              if (err) { return console.error(err); }
+              console.log('REQUEST UPDATED');
+            });
+      });
+
+    }
 
   });
+
 }
 
 module.exports = {
-  addRequest, editRequest
+  addRequest, updateRequest, getRequest
 }

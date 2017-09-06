@@ -29,12 +29,15 @@ var getLead = (senderID, callback) => {
 }
 
 var addLead = (senderID) => {
+
   //Verify if lead  doesn't exist
   getLead(senderID, (lead) => {
     if(!lead){
+
       //Verify if lead was not Converted
       getContact(senderID, undefined, (contact) => {
         if(!contact){
+
           getUserInfos(senderID, (fname, lname, ppicture, locale, timezone, gender) => {
           	var salutation= 'Mr.';
           	if(gender=='female') salutation= 'Mrs.';
@@ -49,8 +52,10 @@ var addLead = (senderID) => {
             });
 
           });
+
         }
       });
+
     }
   });
 

@@ -1,6 +1,8 @@
 
 const {getProductRecords} = require('./handleProducts');
 
+const {updateRequest} = require('./handleRequests');
+
 const {sendTextMessageWithDelai} = require('./../../send/fbApi/sendTextMessage');
 const {sendBulkTextMessagesWithDelai} = require('./../../send/fbApi/sendBulkTextMessages');
 const {sendBulkTextMessages} = require('./../../send/fbApi/sendBulkTextMessages');
@@ -38,6 +40,10 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
       if(elements.length!=0){
         sendTextMessageWithDelai(senderID, text);
         sendGenericMessageWithDelay(senderID, elements, 30000);
+        //update request
+        if(count == 3){
+          updateRequest(senderID, true);
+        }
       }
       else{
 
