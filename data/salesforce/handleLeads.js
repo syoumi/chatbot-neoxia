@@ -48,6 +48,9 @@ var getLead = (senderID, callback) => {
 var addLead = (senderID) => {
   console.log("ADD LEAD");
   //Verify if lead was not Converted or doesn't exist
+  console.log("IS LEAD? : ", isLead(senderID));
+  console.log("IS CONTACT? : ", isContact(senderID, undefined));
+  
   if( (!isLead(senderID)) && (!isContact(senderID, undefined)) ){
     console.log("NEW LEAD TO ADD");
     getUserInfos(senderID, (fname, lname, ppicture, locale, timezone, gender) => {
@@ -56,7 +59,7 @@ var addLead = (senderID) => {
       var status = "Working - Contacted";
       var leadSource = "Facebook";
       var company  = "UNKOWN";
-      
+
       doLogin((conn) => {
         conn.sobject("Lead").create({FacebookId__c: senderID, LeadSource: leadSource, Status: status, FirstName: fname, LastName: lname, company: company}, function(err, res) {
           if (err) { return console.error(err); }
