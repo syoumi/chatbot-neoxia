@@ -40,7 +40,7 @@ var sendBulkTextMessages = (recipientID, messages) => {
 var sendBulkTextMessagesWithDelay = (recipientID, messages) => {
   async.eachSeries(messages, (message, callback) => {
     // Assuming thet the bot will be typing 3 characters per second
-    // the delai will be
+    // the delay will be
     var delay = ( message.length / 3 ) * 1000; // in Milliseconds
     sendTypingOn(recipientID);
     setTimeout(() => {
@@ -54,9 +54,9 @@ var sendBulkTextMessagesWithDelay = (recipientID, messages) => {
     };
 
     // If it's an important message, we will be waiting for answer
-    if (message === 'Test?') {
-     setWaiting();
-    }
+    // if (message === 'Test?') {
+    //  setWaiting();
+    // }
 
     syncCallSendAPI(messageData, callback);
   }, delay);
