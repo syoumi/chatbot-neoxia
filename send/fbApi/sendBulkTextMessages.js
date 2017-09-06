@@ -37,11 +37,11 @@ var sendBulkTextMessages = (recipientID, messages) => {
  * Sends list of text messages to recipient one by one
  * this function will make a random delai before sending each text message
  */
-var sendBulkTextMessagesWithDelai = (recipientID, messages) => {
+var sendBulkTextMessagesWithDelay = (recipientID, messages) => {
   async.eachSeries(messages, (message, callback) => {
     // Assuming thet the bot will be typing 3 characters per second
     // the delai will be
-    var delai = ( message.length / 3 ) * 1000; // in Milliseconds
+    var delay = ( message.length / 3 ) * 1000; // in Milliseconds
     sendTypingOn(recipientID);
     setTimeout(() => {
      var messageData = {
@@ -59,11 +59,11 @@ var sendBulkTextMessagesWithDelai = (recipientID, messages) => {
     }
 
     syncCallSendAPI(messageData, callback);
-    }, delai);
+  }, delay);
   });
 };
 
 module.exports = {
   sendBulkTextMessages,
-  sendBulkTextMessagesWithDelai
+  sendBulkTextMessagesWithDelay
 }

@@ -5,8 +5,8 @@ const {sendGenericMessage} = require('./../../send/fbApi/sendGenericMessage');
 const {sendImageMessage} = require('./../../send/fbApi/sendImageMessage');
 const {sendQuickReplies} = require('./../../send/fbApi/sendQuickReplies');
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
-const {sendTextMessageWithDelai} = require('./../../send/fbApi/sendTextMessage');
-const {sendBulkTextMessagesWithDelai} = require('./../../send/fbApi/sendBulkTextMessages');
+const {sendTextMessageWithDelay} = require('./../../send/fbApi/sendTextMessage');
+const {sendBulkTextMessagesWithDelay} = require('./../../send/fbApi/sendBulkTextMessages');
 const {sendBulkTextMessages} = require('./../../send/fbApi/sendBulkTextMessages');
 
 const {handleParameters} = require('./handleAiParameters');
@@ -89,7 +89,6 @@ var handleAiAction= (senderID, answer) => {
     case "skip-city-action":
     case "skip-neighborhood-action":
     case "skip-fixing-price-action":
-      //sendTextMessageWithDelai(senderID, text);
       if(params){
         handleParameters(senderID, text, params, "send catalogue");
       }
@@ -98,7 +97,7 @@ var handleAiAction= (senderID, answer) => {
 
 		default:
 			//unhandled action, just send back the text
-			sendTextMessage(senderID, text);
+			sendTextMessageWithDelay(senderID, text);
 
 	}
 }

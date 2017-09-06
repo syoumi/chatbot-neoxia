@@ -4,7 +4,7 @@
  */
 
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
-const {sendTextMessageWithDelai} = require('./../../send/fbApi/sendTextMessage');
+const {sendTextMessageWithDelay} = require('./../../send/fbApi/sendTextMessage');
 
 const {sendQuickReplies} = require('./../../send/fbApi/sendQuickReplies');
 

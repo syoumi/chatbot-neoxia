@@ -3,8 +3,8 @@ const {getProductRecords} = require('./handleProducts');
 
 const {updateRequest} = require('./handleRequests');
 
-const {sendTextMessageWithDelai} = require('./../../send/fbApi/sendTextMessage');
-const {sendBulkTextMessagesWithDelai} = require('./../../send/fbApi/sendBulkTextMessages');
+const {sendTextMessageWithDelay} = require('./../../send/fbApi/sendTextMessage');
+const {sendBulkTextMessagesWithDelay} = require('./../../send/fbApi/sendBulkTextMessages');
 const {sendBulkTextMessages} = require('./../../send/fbApi/sendBulkTextMessages');
 const {sendButtonMessage} = require('./../../send/fbApi/sendButtonMessage');
 const {sendFileMessage} = require('./../../send/fbApi/sendFileMessage');
@@ -38,7 +38,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
     getProductRecords(query, (elements) => {
       console.log("ELEMENTS: ", elements);
       if(elements.length!=0){
-        sendTextMessageWithDelai(senderID, text);
+        sendTextMessageWithDelay(senderID, text);
         sendGenericMessageWithDelay(senderID, elements, 30000);
         //update request
         if(count == 3){
@@ -62,7 +62,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
         }
         else {
           text = `Nous sommes désolés. Des ${building}s avec les critères mentionnés ci-dessus ne sont pas disponible pour l'instant.\nSi vous n'êtes pas pressé, vous pouvez nous envoyer vos coordonnées afin de vous contacter une fois votre demande est disponible.`;
-          sendTextMessageWithDelai(senderID, text);
+          sendTextMessageWithDelay(senderID, text);
         }
 
       }
