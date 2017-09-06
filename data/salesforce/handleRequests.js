@@ -34,7 +34,8 @@ var getRequest = (senderID, callback) => {
 //Update request is Treated or not
 var updateRequest = (senderID, isTreated) => {
       doLogin((conn) => {
-        conn.query("SELECT isTreated__c, FacebookID__c FROM Request__c WHERE FacebookID__c = " + senderID + " ORDER BY CreatedDate DESC LIMIT 1")
+        var query = "SELECT isTreated__c, FacebookID__c FROM Request__c WHERE FacebookID__c= " + senderID + " ORDER BY CreatedDate DESC LIMIT 1";
+        conn.query(query)
             .update({ isTreated__c : isTreated }, 'Request__c', function(err, rets) {
               if (err) { return console.error(err); }
               console.log(rets);
