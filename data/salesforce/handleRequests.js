@@ -11,7 +11,7 @@ var addRequest = (senderID, building, operation, minPrice, maxPrice, nbrRooms, c
     });
 }
 
-//Get last user's request
+//Get user's last request
 var getRequest = (senderID, callback) => {
     doLogin((conn) => {
       var request = undefined;
@@ -33,21 +33,14 @@ var getRequest = (senderID, callback) => {
 
 //Update request is Treated or not
 var updateRequest = (senderID, isTreated) => {
-  getRequest(senderID, (request) => {
-
-    if(request){
-
       doLogin((conn) => {
-        conn.sobject('Request__c')
-            .find({ 'FacebookID__c' : senderID })
-            .update({isTreated__c: isTreated }, function(err, rets) {
-              if (err) { console.log("ERROR", err); return console.error(err); }
-              console.log('REQUEST UPDATED');
+        conn.query("SELECT isTreated__c, FacebookID__c FROM Request__c WHERE FacebookID__c = " + senderID + " ORDER BY CreatedDate DESC LIMIT 1")
+            .update({ isTreated__c : isTreated }, 'Request__c', function(err, rets) {
+              if (err) { return console.error(err); }
+              console.log(rets);
+
             });
       });
-
-    }
-
   });
 
 }
