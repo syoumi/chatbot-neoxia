@@ -22,7 +22,7 @@ var isLead = (senderID, email) => {
 var getLead = (senderID, email) => {
    var lead = undefined;
     doLogin((conn) => {
-      var query = "SELECT Name, company, Description, Languages, MobilePhone, DoNotCall, LeadSource, FacebookId__c, email FROM Lead";
+      var query = "SELECT Name, company, MobilePhone, LeadSource, FacebookId__c, Email FROM Lead";
       conn.query(query, (err, res) => {
         if (err) { return console.error(err); }
 
