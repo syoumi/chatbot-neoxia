@@ -10,16 +10,18 @@ const {addOpportunity} = require("./handleOpportunities");
 
 var isLead = (senderID) => {
   console.log("is Lead?");
-  if(getLead(senderID)){
-    console.log("user is lead");
-    return true;
-  }
-  console.log("new lead");
-  return false;
+  getLead(senderID, (lead) => {
+    if(lead){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
 }
 
 
-var getLead = (senderID) => {
+var getLead = (senderID, callback) => {
   console.log("GET LEAD");
    var lead = undefined;
     doLogin((conn) => {
@@ -35,11 +37,11 @@ var getLead = (senderID) => {
                lead = record;
             }
           }
-
+        console.log("LEAD FOUND: ", lead);
+        callback(lead);
       });
     });
-    console.log("LEAD FOUND: ", lead);
-    return lead;
+
 }
 
 var addLead = (senderID) => {
