@@ -37,44 +37,53 @@ var receivedPostBack = (event) => {
     case "CONTACT_PAYLOAD":
     //postback = "CONTACT_PAYLOAD"  + Salesman.Id + Salesman.Name + Salesman.MobilePhone + Product.Id
       var buttons = [
-      {
-        "type":"phone_number",
-        "title":"Appeler",
-        "payload": postback[3]
-      },
-      {
-        "type":"postback",
-        "title":"Envoyer devis",
-        "payload": "SEND_QUOTE|" + postback[4]
-      }
-      ];
-      sendButtonMessage(senderID, 'Vous pouvez contacter notre agent commercial ' + postback[2]  + ' associé à ce logement' , buttons);
-      setTimeout(() => {
-        var buttons = [
+        {
+          "type":"phone_number",
+          "title":"Appeler",
+          "payload": postback[3]
+        },
         {
           "type":"postback",
           "title":"Envoyer devis",
           "payload": "SEND_QUOTE|" + postback[4]
         }
-        ];
-        sendButtonMessage(senderID, 'Comme vous pouvez recevoir le devis sur votre boîte mail, si vous le souhaitez.', buttons);
-      }, 1000);
+      ];
+      sendButtonMessage(senderID, 'Vous pouvez contacter notre agent commercial ' + postback[2]  + ' associé à ce logement en l\'applant.\nComme vous pouvez recevoir le devis directement sur votre boîte mail, si vous le souhaitez.' , buttons);
       break;
 
 
     case "CONTACT_SALESMAN":
       //postback = "CONTACT_SALESMAN" + "CONTACT_PAYLOAD"  + Salesman.Id + Salesman.Name + Salesman.MobilePhone + Product.Id
-
-        sendTextMessage(senderID, "Nous avons besoin de récupérer certaines coordonnées telles que votre email, votre vrai nom, prénom et votre numéro de téléphone.\nVoulez-vous remplir un formulaire ou répondre ici?");
-        //envoyer quickreplies
-        //addTask(senderID, postback[2], postback[5], 'Contacter client');
-        break;
+      sendTextMessage(senderID, "Nous avons besoin de récupérer vos coordonnées telles que votre nom, votre prénom votre email et votre numéro de téléphone.");
+      var buttons = [
+        {
+                  "type":"web_url",
+                  "url":"https://desolate-dusk-64146.herokuapp.com/formWTL",
+                  "title":"Formulaire",
+                  "webview_height_ratio": "full",
+                  "messenger_extensions": true,
+                  "fallback_url": "https://desolate-dusk-64146.herokuapp.com/formWTL"
+        }
+      ];
+      sendButtonMessage(senderID, 'Veuillez remplir le formulaire.', buttons);
+      //addTask(senderID, postback[2], postback[5], 'Contacter client');
+      break;
 
     case "SEND_QUOTE":
-        sendTextMessage(senderID, "Nous avons besoin de récupérer vos coordonnées telles que votre nom, votre prénom votre email et votre numéro de téléphone.");
-        //sendButtonMessage(senderID, 'Veuillez remplir le formulaire.', button);
-        //addTask(senderID, postback[2], postback[5], 'Envoyer devis');
-        break;
+      sendTextMessage(senderID, "Nous avons besoin de récupérer vos coordonnées telles que votre nom, votre prénom votre email et votre numéro de téléphone.");
+      var buttons = [
+        {
+                  "type":"web_url",
+                  "url":"https://desolate-dusk-64146.herokuapp.com/formWTL",
+                  "title":"Formulaire",
+                  "webview_height_ratio": "full",
+                  "messenger_extensions": true,
+                  "fallback_url": "https://desolate-dusk-64146.herokuapp.com/formWTL"
+        }
+      ];
+      sendButtonMessage(senderID, 'Veuillez remplir le formulaire.', buttons);
+      //addTask(senderID, postback[2], postback[5], 'Envoyer devis');
+      break;
 
    case "DESCRIPTION_PAYLOAD":
       sendTextMessage(senderID, postback[1]);
