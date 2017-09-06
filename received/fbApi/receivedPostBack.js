@@ -54,7 +54,7 @@ var receivedPostBack = (event) => {
 
     case "CONTACT_SALESMAN":
       //postback = "CONTACT_SALESMAN" + "CONTACT_PAYLOAD"  + Salesman.Id + Salesman.Name + Salesman.MobilePhone + Product.Id
-      sendTextMessage(senderID, "Nous avons besoin de récupérer vos coordonnées telles que votre nom, votre prénom votre email et votre numéro de téléphone.");
+      sendTextMessage(senderID, "Nous avons besoin de récupérer vos coordonnées telles que votre nom, votre prénom votre email et votre numéro de téléphone pour que l'agent commercial puisse vous appeler le plus tôt possible.");
       var buttons = [
         {
                   "type":"web_url",
