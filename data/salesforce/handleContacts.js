@@ -2,6 +2,7 @@ const {doLogin} = require('./login');
 
 
 var isContact = (senderID, email) => {
+  console.log("is Contact?");
   var res = false;
   doLogin((conn) => {
     var query = "SELECT FacebookId__c, email FROM Contact";
