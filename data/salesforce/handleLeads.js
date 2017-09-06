@@ -42,6 +42,8 @@ var getLead = (senderID, callback) => {
 }
 
 var addLead = (senderID) => {
+  
+  console.log("RETURN IS LEAD : ", isLead(senderID) );
 
   //Verify if lead was not Converted or doesn't exist
   if( (!isLead(senderID)) && (!isContact(senderID, undefined)) ){
