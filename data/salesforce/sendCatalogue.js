@@ -42,7 +42,8 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
     //First research
     getProductRecords(query, (elements) => {
       if(elements.length!=0){
-        sendGenericMessageWithDelai(senderID, elements, 30000);
+        console.log("ELEMENTS: ", elements);
+        sendGenericMessage(senderID, elements);
       }
       else{
 
