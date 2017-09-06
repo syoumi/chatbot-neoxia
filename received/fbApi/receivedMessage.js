@@ -52,7 +52,7 @@ var receivedMessage = (event) => {
     sendToAi(senderID, messageText);
 
   } else if (messageAttachments) {
-   sendTextMessageWithDelai(senderID, "Désolé. Nous ne traitons pas pour l\'instant les pièces jointes. Veuillez nous excusez.");
+   //sendTextMessageWithDelai(senderID, "Désolé. Nous ne traitons pas pour l\'instant les pièces jointes. Veuillez nous excusez.");
   }
 
 };
