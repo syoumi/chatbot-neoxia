@@ -8,9 +8,9 @@ const {upsertAccount} = require("./handleAccounts");
 const {addOpportunity} = require("./handleOpportunities");
 
 
-var isLead = (senderID, email) => {
+var isLead = (senderID) => {
   console.log("is Lead?");
-  if(getLead(senderID, email)){
+  if(getLead(senderID){
     console.log("user is lead");
     return true;
   }
@@ -19,7 +19,7 @@ var isLead = (senderID, email) => {
 }
 
 
-var getLead = (senderID, email) => {
+var getLead = (senderID) => {
   console.log("GET LEAD");
    var lead = undefined;
     doLogin((conn) => {
@@ -29,10 +29,11 @@ var getLead = (senderID, email) => {
 
           for (var i=0; i<res.records.length; i++) {
             var record = res.records[i];
-            if( (senderID == record.FacebookId__c) || (email && email == record.email) ){
+            console.log("RECORD: ", record);
+            if(senderID == record.FacebookId__c){
+              console.log('FOUUUUUND!!');
                lead = record;
             }
-            console.log("-->Facebook ID found: ", record.FacebookId__c);
           }
 
       });
