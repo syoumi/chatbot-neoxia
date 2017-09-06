@@ -41,7 +41,7 @@ var updateRequest = (senderID, isTreated) => {
         conn.sobject('Request__c')
             .find({ 'FacebookID__c' : senderID })
             .update({isTreated__c: isTreated }, function(err, rets) {
-              if (err) { return console.error(err); }
+              if (err) { console.log("ERROR", err); return console.error(err); }
               console.log('REQUEST UPDATED');
             });
       });
