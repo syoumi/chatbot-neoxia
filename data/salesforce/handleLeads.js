@@ -48,7 +48,7 @@ var addLead = (senderID) => {
             var status = "Working - Contacted";
             var leadSource = "Facebook";
             var company  = "UNKOWN";
-            conn.sobject("Lead").create({FacebookId__c: senderID, LeadSource: leadSource, Status: status, FirstName: fname, LastName: lname, company: company, MobilePhone: phone, Email: email}, function(err, res) {
+            conn.sobject("Lead").create({FacebookId__c: senderID, LeadSource: leadSource, Status: status, FirstName: fname, LastName: lname, company: company}, function(err, res) {
               if (err) { return console.error(err); }
             });
     	});
