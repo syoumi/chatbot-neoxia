@@ -1,5 +1,7 @@
 const {sendCatalogue} = require('./../../data/salesforce/sendCatalogue');
 
+const {addRequest} = require('./../../data/salesforce/handleRequests');
+
 
 var handleParameters = (senderID, text, params, action) => {
   switch(action){
@@ -48,6 +50,10 @@ var handleParameters = (senderID, text, params, action) => {
 
     //sendCatalogue
     sendCatalogue(senderID, text, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, 3);
+
+    //Add request
+    addRequest(senderID, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, false);
+
     break;
 
   }

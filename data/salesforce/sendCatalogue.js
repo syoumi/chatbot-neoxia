@@ -1,9 +1,6 @@
 
 const {getProductRecords} = require('./handleProducts');
 
-const {addRequest} = require('./handleRequests');
-
-
 const {sendTextMessageWithDelai} = require('./../../send/fbApi/sendTextMessage');
 const {sendBulkTextMessagesWithDelai} = require('./../../send/fbApi/sendBulkTextMessages');
 const {sendBulkTextMessages} = require('./../../send/fbApi/sendBulkTextMessages');
@@ -19,7 +16,7 @@ const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 
 var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, count) => {
 
-   //Send text first
+    //Send text first
     sendTextMessageWithDelai(senderID, text);
 
     //Search for building
@@ -29,7 +26,6 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
       query += " AND amount__c >=" + minPrice + " AND amount__c <= " + maxPrice;
     }
     if(nbrRooms){
-      //'"+res+"'"
       query += " AND number_of_rooms__c = " + nbrRooms ;
     }
     if(city){
@@ -47,17 +43,14 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
       }
       else{
 
-        //Add request
-        //addRequest(senderID, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, false);
-
         //Try to find something may be interested to send to the client
         text = `Nous sommes désolés. Des ${building}s avec les critères mentionnés ci-dessus ne sont pas disponible pour l'instant.\nSi vous n'êtes pas pressé, vous pouvez nous envoyer vos coordonnées afin de vous contacter une fois votre demande est disponible.\nSinon, nous vous proposons des ${building}s qui pourront vous intéresser.`;
 
         count--;
-        if(count == 2){
+        if(count == 2 || neighborhood){
           sendCatalogue(senderID, text, building, operation, undefined, undefined, undefined, city, neighborhood, count);
         }
-        else if(count == 1 ){
+        else if(count == 1 || city){
           sendCatalogue(senderID, text, building, operation, undefined, undefined, undefined, city, undefined, count);
         }
         else if(count == 0){
@@ -68,47 +61,8 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
           sendTextMessageWithDelai(senderID, text);
         }
 
-
-        //Search building in specific neighborhood, if client fixed it
-        // if(neighborhood){
-        //   query = "SELECT Id, Name, amount__c, image__c, link__c, Description__c, Salesman__r.Id, Salesman__r.Name, Salesman__r.MobilePhone FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"' AND neighborhood__c = '" + neighborhood + "'";
-        //   getProductRecords(query, (elements) => {
-        //     if ( elements.length != 0 ) {
-        //       sendGenericMessageWithDelai(senderID, elements, 30000);
-        //     }
-        //     else {
-        //         neighborhood = undefined;
-        //     }
-        //
-        //     //Search building in specific city, if client fixed it
-        //     if(city && (!neighborhood)){
-        //       query = "SELECT Id, Name, amount__c, image__c, link__c, Description__c, Salesman__r.Id, Salesman__r.Name, Salesman__r.MobilePhone FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"' AND city__c = '" + city + "'";
-        //       getProductRecords(conn, query, (elements) => {
-        //         if(elements.length!=0){
-        //           sendGenericMessageWithDelai(senderID, elements, 30000);
-        //         }
-        //         else {
-        //             city = undefined;
-        //         }
-        //
-        //         //Search all buildings with specific operation
-        //         if((!city) && (!neighborhood)){
-        //           query = "SELECT Id, Name, amount__c, image__c, link__c, Description__c, Salesman__r.Id, Salesman__r.Name, Salesman__r.MobilePhone  FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"'";
-        //           getProductRecords(conn, query, (elements) => {
-        //             if(elements.length!=0){
-        //               sendGenericMessageWithDelai(senderID, elements, 30000);
-        //             }
-        //           });//END getProductRecords 3
-        //         }//END if 3 : (!city) && (!neighborhood)
-        //       });//END getProductRecords  2
-        //     }//END if 2 : (city) && (!neighborhood)
-        //   });//END getProductRecords  1
-        // }//END if 1 : (neighborhood)
-
-
-      }//END Else
-    });// END getProductRecords  0
-
+      }
+    });
 };
 
 
