@@ -108,7 +108,6 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
       }//END Else
     });// END getProductRecords  0
 
-  });
 };
 
 
