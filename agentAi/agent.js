@@ -6,7 +6,9 @@ const {findSpecificMatch} = require('./functions/match/findSpecificMatch');
 const {lookForSpecificActions} = require('./functions/action/lookForSpecificActions');
 const {setUser} = require('./functions/user/handleUser');
 const {getUser} = require('./functions/user/handleUser');
+const {removeParams} = require('./functions/user/handleUser');
 const {getAnswer} = require('./functions/answer/handleAnswer');
+
 
 var receiveMessage = (request) => {
 
@@ -30,6 +32,12 @@ var receiveMessage = (request) => {
     saveUndefinedAnswer(request.text);
   } else {
     //console.log(`SET USER; Answer: ${answer.answer}`);
+
+    var user = getUser(request.senderID);
+    if(user && specificActions.indexOf(answer.action)<0){
+      removeParams(user);
+    }
+
     setUser(request.senderID, answer.action, answer.parameters);
 
     if(getUser(request.senderID)){

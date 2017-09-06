@@ -8,7 +8,11 @@ var setUser = (senderID, action, params) => {
   var counter = 2;
 
   if(user){
+
     //parameters
+    
+
+    //Set new params
     params = handleParams(user, params);
 
     //Counter
