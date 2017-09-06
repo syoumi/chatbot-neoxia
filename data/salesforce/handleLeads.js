@@ -9,35 +9,32 @@ const {addOpportunity} = require("./handleOpportunities");
 
 
 var isLead = (senderID) => {
-  console.log("is Lead?");
   getLead(senderID, (lead) => {
     var res = false;
     console.log("LEAD RETURNED: ", lead);
     if(lead){
       res = true;
     }
+    console.log('IS LEAD? ', res);
     return res;
   });
 }
 
 
 var getLead = (senderID, callback) => {
-  console.log("GET LEAD");
-   var lead = undefined;
-    doLogin((conn) => {
+  doLogin((conn) => {
+      var lead = undefined;
       var query = "SELECT Name, company, MobilePhone, LeadSource, FacebookId__c, Email FROM Lead";
       conn.query(query, (err, res) => {
         if (err) { return console.error(err); }
 
           for (var i=0; i<res.records.length; i++) {
             var record = res.records[i];
-
+              console.log('SENDER ID: ' + senderID + '; fbID: ' + record.FacebookId__c);
             if(senderID == record.FacebookId__c){
-              console.log('FOUUUUUND!!');
-               lead = record;
+              lead = record;
             }
           }
-        console.log("LEAD FOUND: ", lead);
         callback(lead);
       });
     });
@@ -45,13 +42,9 @@ var getLead = (senderID, callback) => {
 }
 
 var addLead = (senderID) => {
-  console.log("ADD LEAD");
-  //Verify if lead was not Converted or doesn't exist
-  console.log("IS LEAD? : ", isLead(senderID));
-  console.log("IS CONTACT? : ", isContact(senderID, undefined));
 
+  //Verify if lead was not Converted or doesn't exist
   if( (!isLead(senderID)) && (!isContact(senderID, undefined)) ){
-    console.log("NEW LEAD TO ADD");
     getUserInfos(senderID, (fname, lname, ppicture, locale, timezone, gender) => {
     	var salutation= 'Mr.';
     	if(gender=='female') salutation= 'Mrs.';
