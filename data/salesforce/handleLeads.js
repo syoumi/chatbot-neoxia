@@ -11,6 +11,7 @@ const {addOpportunity} = require("./handleOpportunities");
 var isLead = (senderID) => {
   console.log("is Lead?");
   getLead(senderID, (lead) => {
+    console.log("LEAD RETURNED: ", lead);
     if(lead){
       return true;
     }
@@ -48,7 +49,7 @@ var addLead = (senderID) => {
   console.log("ADD LEAD");
   doLogin((conn) => {
     //Verify if lead was not Converted or doesn't exist
-    if( (!isLead(senderID, undefined)) && (!isContact(senderID, undefined)) ){
+    if( (!isLead(senderID) && (!isContact(senderID, undefined)) ){
       console.log("NEW LEAD TO ADD");
       getUserInfos(senderID, (fname, lname, ppicture, locale, timezone, gender) => {
     				var salutation= 'Mr.';
