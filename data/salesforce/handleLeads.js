@@ -8,8 +8,6 @@ const {upsertAccount} = require("./handleAccounts");
 const {addOpportunity} = require("./handleOpportunities");
 
 
-
-
 var getLead = (senderID, callback) => {
   doLogin((conn) => {
       var lead = undefined;
@@ -68,5 +66,5 @@ var convertLead = (senderID) => {
 
 
 module.exports = {
-  isLead, getLead, addLead, updateLead, convertLead
+  getLead, addLead, updateLead, convertLead
 }

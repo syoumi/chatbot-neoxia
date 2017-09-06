@@ -30,5 +30,5 @@ var updateContact = (senderID) => {
 }
 
 module.exports = {
-  isContact, getContact, addContact, updateContact
+getContact, addContact, updateContact
 }
