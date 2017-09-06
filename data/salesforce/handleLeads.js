@@ -9,15 +9,15 @@ const {addOpportunity} = require("./handleOpportunities");
 
 
 var isLead = (senderID) => {
+  var res = false;
   getLead(senderID, (lead) => {
-    var res = false;
     console.log("LEAD RETURNED: ", lead);
     if(lead){
       res = true;
     }
-    console.log('IS LEAD? ', res);
-    return res;
   });
+  console.log('IS LEAD? ', res);
+  return res;
 }
 
 
@@ -42,7 +42,7 @@ var getLead = (senderID, callback) => {
 }
 
 var addLead = (senderID) => {
-  
+
   console.log("RETURN IS LEAD : ", isLead(senderID) );
 
   //Verify if lead was not Converted or doesn't exist
