@@ -7,7 +7,7 @@ var addTask = (senderID, salesmanID, productID, subject)=> {
 
     case "Envoyer devis":
       doLogin((conn) => {
-        conn.sobject("Task").create({OwnerId: salesmanID, Status: 'Not Started', Subject: subject}}, function(err, res) {
+        conn.sobject("Task").create({OwnerId: salesmanID, Status: 'Not Started', Subject: subject}, function(err, res) {
           if (err) { return console.error(err); }
         });
       });
