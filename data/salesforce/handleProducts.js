@@ -3,7 +3,7 @@ const {doLogin} = require('./login');
 
 
 //Get product records for catalogue
-var getProductRecords = (query) => {
+var getProductRecords = (query, callback) => {
   doLogin((conn) => {
     var elements = [];
     conn.query(query, (err, res) => {
