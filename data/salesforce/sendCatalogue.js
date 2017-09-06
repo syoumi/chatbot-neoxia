@@ -10,7 +10,7 @@ const {sendBulkTextMessages} = require('./../../send/fbApi/sendBulkTextMessages'
 const {sendButtonMessage} = require('./../../send/fbApi/sendButtonMessage');
 const {sendFileMessage} = require('./../../send/fbApi/sendFileMessage');
 const {sendGenericMessage} = require('./../../send/fbApi/sendGenericMessage');
-const {sendGenericMessageWithDelai} = require('./../../send/fbApi/sendGenericMessage');
+const {sendGenericMessageWithDelay} = require('./../../send/fbApi/sendGenericMessage');
 const {sendImageMessage} = require('./../../send/fbApi/sendImageMessage');
 const {sendQuickReply} = require('./../../send/fbApi/sendQuickReplies');
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
@@ -43,7 +43,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
     getProductRecords(query, (elements) => {
       console.log("ELEMENTS: ", elements);
       if(elements.length!=0){
-        sendGenericMessage(senderID, elements);
+        sendGenericMessageWithDelay(senderID, elements, 30000);
       }
       else{
 

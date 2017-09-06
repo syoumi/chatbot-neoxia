@@ -30,7 +30,7 @@ var sendGenericMessage= (recipientId, elements)=> {
 
 };
 
-var sendGenericMessageWithDelai = (recipientId, elements, delai) => {
+var sendGenericMessageWithDelay = (recipientId, elements, delay) => {
 
         var messageData = {
           recipient: {
@@ -48,16 +48,16 @@ var sendGenericMessageWithDelai = (recipientId, elements, delai) => {
         };
 
         setTimeout(() => {
-          sendTypingOn(recipientId);          
+          sendTypingOn(recipientId);
         }, 1000);
 
         setTimeout(() => {
           callSendAPI(messageData);
-        }, delai);
+        }, delay);
 
 }
 
 module.exports = {
   sendGenericMessage,
-  sendGenericMessageWithDelai
+  sendGenericMessageWithDelay
 };
