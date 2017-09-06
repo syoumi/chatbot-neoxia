@@ -47,24 +47,24 @@ var getLead = (senderID, callback) => {
 
 var addLead = (senderID) => {
   console.log("ADD LEAD");
-  doLogin((conn) => {
-    //Verify if lead was not Converted or doesn't exist
-    if( (!isLead(senderID)) && (!isContact(senderID, undefined)) ){
-      console.log("NEW LEAD TO ADD");
-      getUserInfos(senderID, (fname, lname, ppicture, locale, timezone, gender) => {
-    				var salutation= 'Mr.';
-    				if(gender=='female') salutation= 'Mrs.';
-            var status = "Working - Contacted";
-            var leadSource = "Facebook";
-            var company  = "UNKOWN";
-            conn.sobject("Lead").create({FacebookId__c: senderID, LeadSource: leadSource, Status: status, FirstName: fname, LastName: lname, company: company}, function(err, res) {
-              if (err) { return console.error(err); }
-            });
-    	});
-    }
+  //Verify if lead was not Converted or doesn't exist
+  if( (!isLead(senderID)) && (!isContact(senderID, undefined)) ){
+    console.log("NEW LEAD TO ADD");
+    getUserInfos(senderID, (fname, lname, ppicture, locale, timezone, gender) => {
+    	var salutation= 'Mr.';
+    	if(gender=='female') salutation= 'Mrs.';
+      var status = "Working - Contacted";
+      var leadSource = "Facebook";
+      var company  = "UNKOWN";
+      
+      doLogin((conn) => {
+        conn.sobject("Lead").create({FacebookId__c: senderID, LeadSource: leadSource, Status: status, FirstName: fname, LastName: lname, company: company}, function(err, res) {
+          if (err) { return console.error(err); }
+        });
+      });
 
-  });
-
+    });
+  }
 }
 
 var updateLead = (senderID) => {
