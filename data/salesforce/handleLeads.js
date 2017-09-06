@@ -2,26 +2,12 @@
 const {doLogin} = require('./login');
 
 const {getUserInfos} = require("./../../utils/getUserInfos");
-const {isContact} = require("./handleContacts");
+const {getContact} = require("./handleContacts");
 const {addContact} = require("./handleContacts");
 const {upsertAccount} = require("./handleAccounts");
 const {addOpportunity} = require("./handleOpportunities");
 
 
-var isLead = (senderID) => {
-  var res = false;
-  getLead(senderID, (lead) => {
-    if(lead){
-      console.log("LEAAAD");
-      res = true;
-    }
-  });
-  console.log('IS LEAD? ', res);
-  setTimeout( () => {
-      return res;
-  }, 1000);
-
-}
 
 
 var getLead = (senderID, callback) => {
@@ -45,26 +31,31 @@ var getLead = (senderID, callback) => {
 }
 
 var addLead = (senderID) => {
+  //Verify if lead  doesn't exist
+  getLead(senderID, (lead) => {
+    if(!lead){
+      //Verify if lead was not Converted
+      getContact(senderID, undefined, (contact) => {
+        if(!contact){
+          getUserInfos(senderID, (fname, lname, ppicture, locale, timezone, gender) => {
+          	var salutation= 'Mr.';
+          	if(gender=='female') salutation= 'Mrs.';
+            var status = "Working - Contacted";
+            var leadSource = "Facebook";
+            var company  = "UNKOWN";
 
-  console.log("RETURN IS LEAD : ", isLead(senderID) );
+            doLogin((conn) => {
+              conn.sobject("Lead").create({FacebookId__c: senderID, LeadSource: leadSource, Status: status, FirstName: fname, LastName: lname, company: company}, function(err, res) {
+                if (err) { return console.error(err); }
+              });
+            });
 
-  //Verify if lead was not Converted or doesn't exist
-  if( (!isLead(senderID)) && (!isContact(senderID, undefined)) ){
-    getUserInfos(senderID, (fname, lname, ppicture, locale, timezone, gender) => {
-    	var salutation= 'Mr.';
-    	if(gender=='female') salutation= 'Mrs.';
-      var status = "Working - Contacted";
-      var leadSource = "Facebook";
-      var company  = "UNKOWN";
-
-      doLogin((conn) => {
-        conn.sobject("Lead").create({FacebookId__c: senderID, LeadSource: leadSource, Status: status, FirstName: fname, LastName: lname, company: company}, function(err, res) {
-          if (err) { return console.error(err); }
-        });
+          });
+        }
       });
+    }
+  });
 
-    });
-  }
 }
 
 var updateLead = (senderID) => {

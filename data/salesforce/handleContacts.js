@@ -1,20 +1,6 @@
 const {doLogin} = require('./login');
 
 
-var isContact = (senderID, email) => {
-  console.log("is Contact?");
-  var res = false;
-  getContact(senderID, email, (contact) => {
-    if(contact){
-      return true;
-    }
-    else{
-      return false;
-    }
-  });
-
-}
-
 var getContact = (senderID, email, callback) => {
   var contact = undefined;
   doLogin((conn) => {
