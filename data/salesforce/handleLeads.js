@@ -12,6 +12,7 @@ var isLead = (senderID) => {
   var res = false;
   getLead(senderID, (lead) => {
     if(lead){
+      console.log("LEAAAD");
       res = true;
     }
   });
