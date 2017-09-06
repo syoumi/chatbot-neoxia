@@ -24,6 +24,9 @@ var handleAiAction= (senderID, answer) => {
   console.log('**SENDER ID: ', senderID);
   console.log('**PARAMS: ', params);
 
+  //Add User as lead if he doesn't exist or he isn't a contact
+  addLead(senderID);
+
 	switch (action) {
 
     /**

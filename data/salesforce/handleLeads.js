@@ -32,29 +32,25 @@ var getLead = (senderID, email) => {
                lead = record;
             }
           }
+
       });
     });
     return lead;
 }
 
-var addLead = (senderID, lastName, firstName, email, phone) => {
+var addLead = (senderID) => {
   doLogin((conn) => {
     //Verify if lead was not Converted or doesn't exist
-    if( (!isLead(senderID, email)) && (!isContact(senderID, email)) ){
-
+    if( (!isLead(senderID, undefined)) && (!isContact(senderID, undefined)) ){
       getUserInfos(senderID, (fname, lname, ppicture, locale, timezone, gender) => {
     				var salutation= 'Mr.';
     				if(gender=='female') salutation= 'Mrs.';
-            if(lname!=lastName) lname = lastName;
-            if(fname!=firstName) fname = firstName;
-            var description = "From Facebook - Chatbot";
-            var status = "Working - Contacted ";
+            var status = "Working - Contacted";
+            var leadSource = "Facebook";
             var company  = "UNKOWN";
-            //leadsource
-            //email; mobile
-
-
-
+            conn.sobject("Lead").create({FacebookId__c: senderID, LeadSource: leadSource, Status: status, FirstName: fname, LastName: lname, company: company, MobilePhone: phone, Email: email}, function(err, res) {
+              if (err) { return console.error(err); }
+            });
     	});
     }
 
