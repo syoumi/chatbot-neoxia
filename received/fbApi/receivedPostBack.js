@@ -38,9 +38,9 @@ var receivedPostBack = (event) => {
     //postback = "CONTACT_PAYLOAD"  + Salesman.Id + Salesman.Name + Salesman.MobilePhone + Product.Id
       var buttons = [
         {
-          "type":"phone_number",
+          "type":"postback",
           "title":"Appeler",
-          "payload": postback[3]
+          "payload": "CONTACT_SALESMAN|" + postback[3]
         },
         {
           "type":"postback",
@@ -48,7 +48,7 @@ var receivedPostBack = (event) => {
           "payload": "SEND_QUOTE|" + postback[4]
         }
       ];
-      sendButtonMessage(senderID, 'Vous pouvez contacter notre agent commercial ' + postback[2]  + ' associé à ce logement en l\'applant.\nComme vous pouvez recevoir le devis directement sur votre boîte mail, si vous le souhaitez.' , buttons);
+      sendButtonMessage(senderID, 'Vous pouvez contacter notre agent commercial ' + postback[2]  + ' associé à ce logement.\nComme vous pouvez recevoir le devis directement sur votre boîte mail, si vous le souhaitez.' , buttons);
       break;
 
 
