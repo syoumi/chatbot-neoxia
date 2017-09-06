@@ -6,7 +6,9 @@ const {findSpecificMatch} = require('./functions/match/findSpecificMatch');
 const {lookForSpecificActions} = require('./functions/action/lookForSpecificActions');
 const {setUser} = require('./functions/user/handleUser');
 const {getUser} = require('./functions/user/handleUser');
+const {removeParams} = require('./functions/user/handleUser');
 const {getAnswer} = require('./functions/answer/handleAnswer');
+
 
 var receiveMessage = (request) => {
 
@@ -21,12 +23,8 @@ var receiveMessage = (request) => {
   if (!answer) {
     // Looking for a std answer
     answer = handleMessage(request);
-    if (answer.answer) {
-      // add user to the map or update it
-      //TODO function push parameters
-    }
+    //if (answer.answer) {}
   }
-
 
 
   // if this is unknown message, save the message in json file
@@ -34,6 +32,12 @@ var receiveMessage = (request) => {
     saveUndefinedAnswer(request.text);
   } else {
     //console.log(`SET USER; Answer: ${answer.answer}`);
+
+    var user = getUser(request.senderID);
+    if(user && specificActions.indexOf(answer.action)<0){
+      removeParams(user);
+    }
+
     setUser(request.senderID, answer.action, answer.parameters);
 
     if(getUser(request.senderID)){
@@ -44,7 +48,7 @@ var receiveMessage = (request) => {
 
   // Update answer's parameters
   // answer.parameters = getParameters(request.senderID);
-  console.log('User object ' , getUser(request.senderID));
+  console.log('USER OBJECT: ' , getUser(request.senderID));
   var response = sendAnswer(request.senderID, answer);
   return response;
 };
