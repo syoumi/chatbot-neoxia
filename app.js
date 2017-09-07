@@ -82,15 +82,16 @@ app.set('views', './views');
 app.use(express.static(__dirname + '/views'));
 
 app.get("/formWTL", function(req, res){
+  var senderID = req.body.senderID;
+  console.log("SENDER ID: " , senderID);
   res.sendfile('./views/formWTL.html');
- console.log("SENDER ID: " , req.senderID);
-  console.log("REQ BODY: ", req.body);
+  console.log("REQ BODY form: ", req.body);
 });
 
 
 app.post("/completeFormWTL", function(req, res){
   res.sendfile('./views/completeFormWTL.html');
-  console.log("REQ BODY: ", req.body);
+  console.log("REQ BODY Complete form: ", req.body);
 });
 
 
