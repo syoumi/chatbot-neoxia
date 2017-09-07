@@ -83,14 +83,13 @@ app.use(express.static(__dirname + '/views'));
 
 app.get("/formWTL", function(req, res){
   var senderID = req.param("senderID");
-  console.log("SENDER ID: " , senderID);
+  res.send(senderID);
   res.sendfile('./views/formWTL.html');
   console.log("REQ BODY form: ", req.body);
 });
 
 
 app.post("/completeFormWTL", function(req, res){
-
   res.sendfile('./views/completeFormWTL.html');
   console.log("REQ BODY Complete form: ", req.body);
 });
