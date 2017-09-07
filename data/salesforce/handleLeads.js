@@ -91,9 +91,9 @@ var convertLead = (senderID) => {
     if(lead){
 
       doLogin((conn) => {
-        var query = "SELECT Id, status FROM lead WHERE FacebookID__c= '" + senderID + "'";
+        var query = "SELECT Id, ToConvert__c FROM lead WHERE FacebookID__c= '" + senderID + "'";
         conn.query(query)
-            .update({ status : "Closed - Converted" }, 'Lead', function(err, rets) {
+            .update({ ToConvert__c : true }, 'Lead', function(err, rets) {
               if (err) { return console.error(err); }
               console.log('LEAD CONVERTED');
             });
