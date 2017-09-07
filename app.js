@@ -77,7 +77,7 @@ app.post('/webhook', (req, res) => {
 });
 
 //Form : Web to Lead
-//app.set('view engine', 'ejs');
+app.set('view engine', 'html');
 app.set('views', './views');
 
 app.get("/formWTL", function(req, res){
@@ -85,10 +85,6 @@ app.get("/formWTL", function(req, res){
 });
 
 
-
-app.get("/editLead", function(req, res){
-  res.render("editLead");
-});
 
 
 // Let the server listening to incoming connections
