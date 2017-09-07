@@ -8,6 +8,7 @@ const {upsertAccount} = require("./handleAccounts");
 const {addOpportunity} = require("./handleOpportunities");
 
 
+//Extract lead
 var getLead = (senderID, callback) => {
   doLogin((conn) => {
       var lead = undefined;
@@ -28,6 +29,8 @@ var getLead = (senderID, callback) => {
 
 }
 
+
+//Insert lead
 var addLead = (senderID) => {
 
   //Verify if lead  doesn't exist
@@ -61,14 +64,16 @@ var addLead = (senderID) => {
 
 }
 
-var updateLead = (senderID, fname, lname, company, city, email, phone, callback) => {
+
+//update lead
+var updateLead = (senderID, fname, lname, company, city, country, email, phone, callback) => {
 
   getLead(senderID, (leadFound) => {
     if(leadFound){
       doLogin((conn) => {
-        var query = "SELECT Id, firstName, lastName, facebookId__c, company,  city, email, MobilePhone FROM lead WHERE FacebookID__c= '" + senderID + "'";
+        var query = "SELECT Id, firstName, lastName, facebookId__c, company,  city, country, email, MobilePhone FROM lead WHERE FacebookID__c= '" + senderID + "'";
         conn.query(query)
-            .update({ firstName : fname, lastName : lname, company : company, city : city, email : email, MobilePhone : phone }, 'Lead', function(err, rets) {
+            .update({ firstName : fname, lastName : lname, company : company, city : city, country: country, email : email, MobilePhone : phone }, 'Lead', function(err, rets) {
               if (err) { return console.error(err); }
               console.log(rets);
 
@@ -80,9 +85,11 @@ var updateLead = (senderID, fname, lname, company, city, email, phone, callback)
 
 }
 
+//Convert lead to Contact, account and opportunity
 var convertLead = (senderID) => {
 
 }
+
 
 
 module.exports = {

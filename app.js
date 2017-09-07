@@ -15,7 +15,7 @@ const {receivedPostBack} = require('./received/fbApi/receivedPostBack');
 const {receivedSeen} = require('./received/fbApi/receivedSeen');
 const {receivedDelivery} = require('./received/fbApi/receivedDelivery');
 
-const {getLead} = require('./utils/getForm');
+const {getFormLead} = require('./utils/getForm');
 
 var app = express();
 
@@ -93,9 +93,9 @@ app.post("/completeFormWTL", function(req, res){
   //res.sendfile('./views/completeFormWTL.html');
   res.render('completeFormWTL');
   console.log("REQ BODY Complete form: ", req.body);
-  getLead(req.body, (lead) => {
+  getFormLead(req.body, (lead) => {
     if(!lead){
-      //redirect error
+      res.redirect('errorFormWTL');
     }
   });
 });

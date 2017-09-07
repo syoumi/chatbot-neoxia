@@ -1,7 +1,7 @@
 
 var {updateLead} = require('./../data/salesforce/handleLeads');
 
-var getLead = (req, callback) => {
+var getFormLead = (req, callback) => {
   var result = undefined;
 
   var senderID = req.senderID;
@@ -9,10 +9,11 @@ var getLead = (req, callback) => {
   var lname = req.last_name;
   var company = req.company;
   var city = req.city;
+  var country = req.country;
   var email = req.email;
   var phone = req.mobile ;
 
-  updateLead(senderID, fname, lname, company, city, email, phone, (lead) => {
+  updateLead(senderID, fname, lname, company, city, country, email, phone, (lead) => {
     if(lead){
       result = lead;
     }
@@ -22,5 +23,5 @@ var getLead = (req, callback) => {
 }
 
 module.exports  = {
-  getLead
+  getFormLead
 }

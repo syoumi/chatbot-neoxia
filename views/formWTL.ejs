@@ -29,7 +29,7 @@
   <form action="https://desolate-dusk-64146.herokuapp.com/completeFormWTL" method="POST">
 
 
-
+<center>
 <table>
 
     <tr>
@@ -45,6 +45,10 @@
         <th><input  id="email" maxlength="80" name="email" size="20" type="email" required/></th>
     </tr>
     <tr>
+        <th><label for="mobile">N° téléphone</label></th>
+        <th><input  id="mobile" maxlength="40" name="mobile" size="20" type="tel" required/></th>
+    </tr>
+    <tr>
         <th><label for="company">Compagnie</label></th>
         <th><input  id="company" maxlength="40" name="company" size="20" type="text" required/></th>
     </tr>
@@ -53,13 +57,10 @@
         <th><input  id="city" maxlength="40" name="city" size="20" type="text" /></th>
     </tr>
     <tr>
-        <th><label for="mobile">N° téléphone</label></th>
-        <th><input  id="mobile" maxlength="40" name="mobile" size="20" type="number" required/></th>
+        <th><label for="country">Pays</label></th>
+        <th><input  id="country" maxlength="40" name="country" size="20" type="text" /></th>
     </tr>
-    <tr>
-        <th></th>
-        <th><input  id="fbid" maxlength="40"  name="00N0Y00000NsbvF" size="20" type="hidden" required/></th>
-    </tr>
+
     <tr>
         <th></th>
         <th><input  id="senderID" maxlength="40" name="senderID" size="20" type="hidden" value=<%= senderID %> required/></th>
@@ -70,6 +71,7 @@
         <th><input type="submit" name="submit"></th>
     </tr>
 </table>
+</center>
 
 </form>
 
