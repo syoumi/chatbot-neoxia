@@ -86,6 +86,20 @@ var updateLead = (senderID, fname, lname, company, city, country, email, phone, 
 //Convert lead to Contact, account and opportunity
 var convertLead = (senderID) => {
 
+  getLead(senderID, (lead) => {
+    if(lead){
+
+      doLogin((conn) => {
+        var query = "SELECT Id, status FROM lead WHERE FacebookID__c= '" + senderID + "'";
+        conn.query(query)
+            .update({ status : "Closed - Converted" }, 'Lead', function(err, rets) {
+              if (err) { return console.error(err); }
+            });
+      });
+
+    }
+  });
+
 }
 
 

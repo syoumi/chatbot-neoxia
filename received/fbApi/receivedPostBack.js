@@ -58,15 +58,15 @@ var receivedPostBack = (event) => {
       var buttons = [
         {
                   "type":"web_url",
-                  "url":"https://desolate-dusk-64146.herokuapp.com/formWTL",
+                  "url":"https://desolate-dusk-64146.herokuapp.com/formWTL/"+senderID,
                   "title":"Formulaire",
                   "webview_height_ratio": "full",
-                  "messenger_extensions": true,
-                  "fallback_url": "https://desolate-dusk-64146.herokuapp.com/formWTL"
+                  "messenger_extensions": true
         }
       ];
       sendButtonMessage(senderID, 'Veuillez remplir le formulaire.', buttons);
       //addTask(senderID, postback[2], postback[5], 'Contacter client');
+      //sendTextMessageWithDelay(senderID, "Votre demande est bien enregistrée.\nl'agent commercial vous appelera le plutôt possible.\n\nAvez-vous d'autres demandes?");
       break;
 
     case "SEND_QUOTE":
@@ -74,15 +74,15 @@ var receivedPostBack = (event) => {
       var buttons = [
         {
                   "type":"web_url",
-                  "url":"https://desolate-dusk-64146.herokuapp.com/formWTL",
+                  "url":"https://desolate-dusk-64146.herokuapp.com/formWTL/"+senderID,
                   "title":"Formulaire",
                   "webview_height_ratio": "full",
-                  "messenger_extensions": true,
-                  "fallback_url": "https://desolate-dusk-64146.herokuapp.com/formWTL"
+                  "messenger_extensions": true
         }
       ];
       sendButtonMessage(senderID, 'Veuillez remplir le formulaire.', buttons);
       //addTask(senderID, postback[2], postback[5], 'Envoyer devis');
+      //TODO vérifier que le devis a été bien envoyé et selon le cas envoyer un message au client
       break;
 
    case "DESCRIPTION_PAYLOAD":
