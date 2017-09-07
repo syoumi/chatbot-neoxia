@@ -77,20 +77,21 @@ app.post('/webhook', (req, res) => {
 });
 
 //Form : Web to Lead
-app.set('view engine', 'html');
+app.set('view engine', 'ejs');
 app.set('views', './views');
-app.use(express.static(__dirname + '/views'));
+//app.use(express.static(__dirname + '/views'));
 
-app.get("/formWTL", function(req, res){
-  var senderID = req.param("senderID");
-  res.sendfile('./views/formWTL.html');
-  res.send(senderID);
+app.get("/formWTL/:senderID", function(req, res){
+  //var senderID = req.param("senderID");
+  //res.sendfile('./views/formWTL.html');
+  res.render('formWTL',  {senderID: req.params.senderID});
   console.log("REQ BODY form: ", req.body);
 });
 
 
 app.post("/completeFormWTL", function(req, res){
-  res.sendfile('./views/completeFormWTL.html');
+  //res.sendfile('./views/completeFormWTL.html');
+  res.render('completeFormWTL');
   console.log("REQ BODY Complete form: ", req.body);
 });
 

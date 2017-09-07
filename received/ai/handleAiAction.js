@@ -98,11 +98,11 @@ var handleAiAction= (senderID, answer) => {
       var buttons = [
         {
                   "type":"web_url",
-                  "url":"https://desolate-dusk-64146.herokuapp.com/formWTL?senderID="+senderID,
+                  "url":"https://desolate-dusk-64146.herokuapp.com/formWTL/"+senderID,
                   "title":"Formulaire",
                   "webview_height_ratio": "full",
                   "messenger_extensions": true,
-                  "fallback_url": "https://desolate-dusk-64146.herokuapp.com/formWTL?senderID="+senderID
+                  "fallback_url": "https://desolate-dusk-64146.herokuapp.com/formWTL/"+senderID
         }
       ];
       sendButtonMessage(senderID, 'Veuillez remplir le formulaire.', buttons);
