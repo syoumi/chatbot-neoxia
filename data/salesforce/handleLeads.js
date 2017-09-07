@@ -76,6 +76,7 @@ var updateLead = (senderID, fname, lname, company, city, country, email, phone, 
             .update({ firstName : fname, lastName : lname, company : company, city : city, country: country, email : email, Phone : phone }, 'Lead', function(err, rets) {
               if (err) { return console.error(err); }
             });
+        console.log('LEAD UPDATED');
         callback(leadFound);
       });
     }
