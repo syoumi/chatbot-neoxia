@@ -71,12 +71,10 @@ var updateLead = (senderID, fname, lname, company, city, country, email, phone, 
   getLead(senderID, (leadFound) => {
     if(leadFound){
       doLogin((conn) => {
-        var query = "SELECT Id, firstName, lastName, facebookId__c, company,  city, country, email, MobilePhone FROM lead WHERE FacebookID__c= '" + senderID + "'";
+        var query = "SELECT Id, firstName, lastName, facebookId__c, company,  city, country, email, Phone FROM lead WHERE FacebookID__c= '" + senderID + "'";
         conn.query(query)
-            .update({ firstName : fname, lastName : lname, company : company, city : city, country: country, email : email, MobilePhone : phone }, 'Lead', function(err, rets) {
+            .update({ firstName : fname, lastName : lname, company : company, city : city, country: country, email : email, Phone : phone }, 'Lead', function(err, rets) {
               if (err) { return console.error(err); }
-              console.log(rets);
-
             });
         callback(leadFound);
       });

@@ -11,7 +11,7 @@ var getFormLead = (req, callback) => {
   var city = req.city;
   var country = req.country;
   var email = req.email;
-  var phone = req.mobile ;
+  var phone = req.phone ;
 
   updateLead(senderID, fname, lname, company, city, country, email, phone, (lead) => {
     if(lead){
