@@ -18,8 +18,10 @@ var getFormLead = (req, callback) => {
   var phone = req.phone ;
 
   updateLead(senderID, fname, lname, company, city, country, email, phone, (lead) => {
+
     if(lead){
       result = lead;
+      console.log('UPDATE LEAD FOUND');
 
       //It's time to convert lead :D
       convertLead(senderID);

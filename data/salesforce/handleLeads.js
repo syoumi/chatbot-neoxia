@@ -85,7 +85,7 @@ var updateLead = (senderID, fname, lname, company, city, country, email, phone, 
 
 //Convert lead to Contact, account and opportunity
 var convertLead = (senderID) => {
-
+    console.log('TRYING TO CONVERT LEAD');
   getLead(senderID, (lead) => {
     if(lead){
 
@@ -94,6 +94,7 @@ var convertLead = (senderID) => {
         conn.query(query)
             .update({ status : "Closed - Converted" }, 'Lead', function(err, rets) {
               if (err) { return console.error(err); }
+              console.log('LEAD CONVERTED');
             });
       });
 

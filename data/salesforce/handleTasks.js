@@ -16,6 +16,8 @@ var saveTask = (senderID, salesmanID, productID, subject)=> {
 
  tasks.set(senderID, data);
 
+ console.log('TASK SAVED');
+
 }
 
 
@@ -45,9 +47,11 @@ var addTask = (senderID) => {
               conn.sobject("Task").create({OwnerId: task.salesmanID, Status: 'Not Started', Subject: task.subject, WhoId : contact.Id, WhatId: task.productID}, function(err, res) {
                 if (err) { return console.error(err); }
                 tasks.delete(senderID);
+                console.log('TASK DELETED');
               });
             }
           });
+
 
         });
         break;
