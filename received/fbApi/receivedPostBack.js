@@ -65,8 +65,11 @@ var receivedPostBack = (event) => {
         }
       ];
       sendButtonMessage(senderID, 'Veuillez remplir le formulaire.', buttons);
-      //addTask(senderID, postback[2], postback[5], 'Contacter client');
-      //sendTextMessageWithDelay(senderID, "Votre demande est bien enregistrée.\nl'agent commercial vous appelera le plutôt possible.\n\nAvez-vous d'autres demandes?");
+      setTimeout( () => {
+        addTask(senderID, postback[2], postback[5], 'Contacter client');
+        sendTextMessageWithDelay(senderID, "Votre demande est bien enregistrée.\nl'agent commercial vous appelera le plutôt possible.\n\nJe suis toujours à votre disposition si vous avez de nouvelles demandes :D.");
+      }, 10000);
+
       break;
 
     case "SEND_QUOTE":

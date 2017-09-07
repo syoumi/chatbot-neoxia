@@ -1,5 +1,6 @@
 
 var {updateLead} = require('./../data/salesforce/handleLeads');
+var {convertLead} = require('./../data/salesforce/handleLeads');
 
 var getFormLead = (req, callback) => {
   var result = undefined;
@@ -16,9 +17,13 @@ var getFormLead = (req, callback) => {
   updateLead(senderID, fname, lname, company, city, country, email, phone, (lead) => {
     if(lead){
       result = lead;
+
+      //It's time to convert lead :D
+      convertLead(senderID);
     }
   });
 
+  
   callback(result);
 }
 

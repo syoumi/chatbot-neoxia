@@ -1,6 +1,8 @@
 
 const {doLogin} = require('./login');
 
+const {getContact} = require('./handleContacts');
+
 var addTask = (senderID, salesmanID, productID, subject)=> {
 
   switch(subject){
@@ -14,11 +16,17 @@ var addTask = (senderID, salesmanID, productID, subject)=> {
       break;
 
 
-    case "Appeler client":
+    case "Contacter client":
       doLogin((conn) => {
-        conn.sobject("Task").create({OwnerId: salesmanID, Status: 'Not Started', Subject: subject}, function(err, res) {
-          if (err) { return console.error(err); }
+
+        getContact(senderID, undefined, (contact) => {
+          if(contact){
+            conn.sobject("Task").create({OwnerId: salesmanID, Status: 'Not Started', Subject: subject, WhoId : contact.Id, WhatId: productID}, function(err, res) {
+              if (err) { return console.error(err); }
+            });
+          }
         });
+
       });
       break;
 

@@ -4,7 +4,7 @@ const {doLogin} = require('./login');
 var getContact = (senderID, email, callback) => {
   var contact = undefined;
   doLogin((conn) => {
-    var query = "SELECT Name, AccountId, MobilePhone, LeadSource, FacebookId__c, email FROM Contact";
+    var query = "SELECT Id, Name, AccountId, MobilePhone, LeadSource, FacebookId__c, email FROM Contact";
     conn.query(query, (err, res) => {
       if (err) { return console.error(err); }
 
