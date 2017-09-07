@@ -79,9 +79,10 @@ app.post('/webhook', (req, res) => {
 //Form : Web to Lead
 app.set('view engine', 'html');
 app.set('views', './views');
+app.use(express.static(__dirname + '/views'));
 
 app.get("/formWTL", function(req, res){
-  res.render("formWTL");
+  res.sendfile('./views/formWTL.html');
 });
 
 
