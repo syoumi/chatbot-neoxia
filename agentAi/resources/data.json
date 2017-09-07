@@ -693,6 +693,19 @@
       "hasParam": "0"
     },
 
+
+
+    {
+      "action": "test-action",
+      "keywords": [],
+      "answers": [
+        "test"
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "0"
+    },
+
     {
       "action": "unknown-action",
       "keywords": [],

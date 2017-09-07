@@ -94,6 +94,20 @@ var handleAiAction= (senderID, answer) => {
       }
       break;
 
+    case "test-action":
+    var buttons = [
+      {
+                "type":"web_url",
+                "url":"https://desolate-dusk-64146.herokuapp.com/formWTL",
+                "title":"Formulaire",
+                "webview_height_ratio": "full",
+                "messenger_extensions": true,
+                "fallback_url": "https://desolate-dusk-64146.herokuapp.com/formWTL"
+      }
+    ];
+    sendButtonMessage(senderID, 'Veuillez remplir le formulaire.', buttons);
+      break;
+
 
 		default:
 			//unhandled action, just send back the text
