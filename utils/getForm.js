@@ -1,5 +1,5 @@
 
-var {upsertLead} = require('./../data/salesforce/handleLeads');
+var {updateLead} = require('./../data/salesforce/handleLeads');
 
 var getLead = (req, callback) => {
   var result = undefined;
@@ -12,7 +12,7 @@ var getLead = (req, callback) => {
   var email = req.email;
   var phone = req.mobile ;
 
-  upsertLead(senderID, fname, lname, company, city, email, phone, (lead) => {
+  updateLead(senderID, fname, lname, company, city, email, phone, (lead) => {
     if(lead){
       result = lead;
     }

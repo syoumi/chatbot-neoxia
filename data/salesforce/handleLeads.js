@@ -61,22 +61,20 @@ var addLead = (senderID) => {
 
 }
 
-var upsertLead = (senderID, fname, lname, company, city, email, phone, callback) => {
+var updateLead = (senderID, fname, lname, company, city, email, phone, callback) => {
   var lead = undefined;
   getLead(senderID, (leadFound) => {
-    if(!leadFound){
+    if(leadFound){
+      doLogin((conn) => {
+        var query = "SELECT Id, first_name, last_name, facebookId__c, company,  city, email, mobile FROM lead WHERE FacebookID__c= '" + senderID + "'";
+        conn.query(query)
+            .update({ first_name : fname, last_name : lname, company : company, city : city, email : email, mobile : phone }, 'Lead', function(err, rets) {
+              if (err) { return console.error(err); }
+              console.log(rets);
 
-    doLogin((conn) => {
-      var query = "SELECT Id, first_name, last_name, facebookId__c, company,  city, email, mobile FROM lead WHERE FacebookID__c= '" + senderID + "'";
-      conn.query(query)
-          .update({ first_name : fname, last_name : lname, company : company, city : city, email : email, mobile : phone }, 'Lead', function(err, rets) {
-            if (err) { return console.error(err); }
-            console.log(rets);
-
-          });
-      callback(request);
-    });
-
+            });
+        callback(request);
+      });
     }
   });
 
@@ -88,5 +86,5 @@ var convertLead = (senderID) => {
 
 
 module.exports = {
-  getLead, addLead, upsertLead, convertLead
+  getLead, addLead, updateLead, convertLead
 }
