@@ -83,7 +83,7 @@ app.use(express.static(__dirname + '/views'));
 
 app.get("/formWTL", function(req, res){
   res.sendfile('./views/formWTL.html');
-  //res.send(req.body.senderID);
+  res.send(req.body.senderID);
   console.log("REQ BODY: ", req.body);
 });
 
