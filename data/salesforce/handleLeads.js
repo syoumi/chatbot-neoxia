@@ -66,9 +66,9 @@ var updateLead = (senderID, fname, lname, company, city, email, phone, callback)
   getLead(senderID, (leadFound) => {
     if(leadFound){
       doLogin((conn) => {
-        var query = "SELECT Id, first_name, last_name, facebookId__c, company,  city, email, mobile FROM lead WHERE FacebookID__c= '" + senderID + "'";
+        var query = "SELECT Id, firstName, lastName, facebookId__c, company,  city, email, MobilePhone FROM lead WHERE FacebookID__c= '" + senderID + "'";
         conn.query(query)
-            .update({ first_name : fname, last_name : lname, company : company, city : city, email : email, mobile : phone }, 'Lead', function(err, rets) {
+            .update({ firstName : fname, lastName : lname, company : company, city : city, email : email, MobilePhone : phone }, 'Lead', function(err, rets) {
               if (err) { return console.error(err); }
               console.log(rets);
 
