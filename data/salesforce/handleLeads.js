@@ -62,7 +62,7 @@ var addLead = (senderID) => {
 }
 
 var updateLead = (senderID, fname, lname, company, city, email, phone, callback) => {
-  var lead = undefined;
+
   getLead(senderID, (leadFound) => {
     if(leadFound){
       doLogin((conn) => {
@@ -73,7 +73,7 @@ var updateLead = (senderID, fname, lname, company, city, email, phone, callback)
               console.log(rets);
 
             });
-        callback(request);
+        callback(leadFound);
       });
     }
   });
