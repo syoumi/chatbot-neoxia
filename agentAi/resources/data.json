@@ -697,9 +697,9 @@
 
     {
       "action": "test-action",
-      "keywords": [],
+      "keywords": ["test"],
       "answers": [
-        "test"
+        "att"
       ],
       "nextActions": [],
       "previousActions" : [],
