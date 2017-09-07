@@ -83,6 +83,17 @@ app.use(express.static(__dirname + '/views'));
 
 app.get("/formWTL", function(req, res){
   res.sendfile('./views/formWTL.html');
+  console.log("REQ BODY: ", req.body);
+});
+
+app.post("/formWTL", function(req, res){
+  console.log("REQ BODY: ", req.body);
+});
+
+
+app.get("/completeFormWTL", function(req, res){
+  res.sendfile('./views/completeFormWTL.html');
+  console.log("REQ BODY: ", req.body);
 });
 
 
