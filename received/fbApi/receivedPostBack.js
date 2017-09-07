@@ -10,7 +10,7 @@ const {sendQuickReplies} = require('./../../send/fbApi/sendQuickReplies');
 
 const {sendButtonMessage} = require('./../../send/fbApi/sendButtonMessage');
 
-const {addTask} = require('./../../data/salesforce/handleTasks');
+const {saveTask} = require('./../../data/salesforce/handleTasks');
 
 
 /**
@@ -65,11 +65,8 @@ var receivedPostBack = (event) => {
         }
       ];
       sendButtonMessage(senderID, 'Veuillez remplir le formulaire.', buttons);
-      setTimeout( () => {
-        addTask(senderID, postback[2], postback[5], 'Contacter client');
-        sendTextMessageWithDelay(senderID, "Votre demande est bien enregistrée.\nl'agent commercial vous appelera le plutôt possible.\n\nJe suis toujours à votre disposition si vous avez de nouvelles demandes :D.");
-      }, 10000);
-
+      var text = "Votre demande est bien enregistrée.\nl'agent commercial vous appelera le plutôt possible.\n\nJe suis toujours à votre disposition si vous avez de nouvelles demandes :D.";
+      saveTask(senderID, postback[2], postback[5], 'Contacter client');
       break;
 
     case "SEND_QUOTE":
@@ -84,7 +81,7 @@ var receivedPostBack = (event) => {
         }
       ];
       sendButtonMessage(senderID, 'Veuillez remplir le formulaire.', buttons);
-      //addTask(senderID, postback[2], postback[5], 'Envoyer devis');
+      //saveTask(senderID, postback[2], postback[5], 'Envoyer devis', '');
       //TODO vérifier que le devis a été bien envoyé et selon le cas envoyer un message au client
       break;
 

@@ -3,36 +3,61 @@ const {doLogin} = require('./login');
 
 const {getContact} = require('./handleContacts');
 
-var addTask = (senderID, salesmanID, productID, subject)=> {
+var tasks = new Map();
 
-  switch(subject){
+//Save task in map before insert it
+var saveTask = (senderID, salesmanID, productID, subject)=> {
 
-    case "Envoyer devis":
-      doLogin((conn) => {
-        conn.sobject("Task").create({OwnerId: salesmanID, Status: 'Not Started', Subject: subject}, function(err, res) {
-          if (err) { return console.error(err); }
+ var data = {
+   salesmanID,
+   productID,
+   subject
+ }
+
+ tasks.set(senderID, data);
+
+}
+
+
+//Insert task
+var addTask = (senderID) => {
+
+  var task = tasks.has(senderID);
+
+  if(task){
+
+    switch(task.subject){
+
+      case "Envoyer devis":
+        doLogin((conn) => {
+          conn.sobject("Task").create({OwnerId: task.salesmanID, Status: 'Not Started', Subject: task.subject}, function(err, res) {
+            if (err) { return console.error(err); }
+          });
         });
-      });
-      break;
+        break;
 
 
-    case "Contacter client":
-      doLogin((conn) => {
+      case "Contacter client":
+        doLogin((conn) => {
 
-        getContact(senderID, undefined, (contact) => {
-          if(contact){
-            conn.sobject("Task").create({OwnerId: salesmanID, Status: 'Not Started', Subject: subject, WhoId : contact.Id, WhatId: productID}, function(err, res) {
-              if (err) { return console.error(err); }
-            });
-          }
+          getContact(senderID, undefined, (contact) => {
+            if(contact){
+              conn.sobject("Task").create({OwnerId: task.salesmanID, Status: 'Not Started', Subject: task.subject, WhoId : contact.Id, WhatId: task.productID}, function(err, res) {
+                if (err) { return console.error(err); }
+                tasks.delete(senderID);
+              });
+            }
+          });
+
         });
+        break;
 
-      });
-      break;
-
+    }
   }
+
+
 }
 
 module.exports = {
-  addTask
+  saveTask, addTask
 }

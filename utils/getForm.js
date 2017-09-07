@@ -2,6 +2,9 @@
 var {updateLead} = require('./../data/salesforce/handleLeads');
 var {convertLead} = require('./../data/salesforce/handleLeads');
 
+var {addTask} = require('./../data/salesforce/handleTasks');
+
+
 var getFormLead = (req, callback) => {
   var result = undefined;
 
@@ -20,10 +23,14 @@ var getFormLead = (req, callback) => {
 
       //It's time to convert lead :D
       convertLead(senderID);
+      setTimeout(() => {
+          addTask(senderID);
+      }, 5000);
+
     }
   });
 
-  
+
   callback(result);
 }
 
