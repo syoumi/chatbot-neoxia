@@ -95,7 +95,7 @@ app.post("/completeFormWTL", function(req, res){
   console.log("REQ BODY Complete form: ", req.body);
   getFormLead(req.body, (lead) => {
     if(!lead){
-      res.redirect('errorFormWTL');
+      //res.redirect('errorFormWTL');
     }
   });
 });
