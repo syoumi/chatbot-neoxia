@@ -15,6 +15,7 @@ const {receivedPostBack} = require('./received/fbApi/receivedPostBack');
 const {receivedSeen} = require('./received/fbApi/receivedSeen');
 const {receivedDelivery} = require('./received/fbApi/receivedDelivery');
 
+const {getLead} = require('./utils/getForm');
 
 var app = express();
 
@@ -85,7 +86,6 @@ app.get("/formWTL/:senderID", function(req, res){
   //var senderID = req.param("senderID");
   //res.sendfile('./views/formWTL.html');
   res.render('formWTL',  {senderID: req.params.senderID});
-  console.log("REQ BODY form: ", req.body);
 });
 
 
@@ -93,6 +93,11 @@ app.post("/completeFormWTL", function(req, res){
   //res.sendfile('./views/completeFormWTL.html');
   res.render('completeFormWTL');
   console.log("REQ BODY Complete form: ", req.body);
+  getLead(req.body, (lead) => {
+    if(!lead){
+      //redirect error
+    }
+  });
 });
 
 
