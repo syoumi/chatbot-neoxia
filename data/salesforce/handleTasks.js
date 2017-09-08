@@ -5,6 +5,9 @@ const {getContact} = require('./handleContacts');
 
 const {sendTextMessageWithDelay} = require('./../../send/fbApi/sendTextMessage');
 
+const {getText} = require('./../../utils/getPredefinedAnswers');
+
+
 var tasks = new Map();
 
 //Save task in map before insert it
@@ -26,8 +29,7 @@ var saveTask = (senderID, salesmanID, productID, subject)=> {
 //Insert task
 var addTask = (senderID) => {
 
-
-  sendTextMessage(senderID, "Attendez, s'il vous plaît.");
+  sendTextMessage(senderID, getText('fr', 'Ask to wait', undefined));
 
   var task = tasks.get(senderID);
 
@@ -58,8 +60,8 @@ var addTask = (senderID) => {
                 if (err) { return console.error(err); }
                 tasks.delete(senderID);
                 console.log('TASK DELETED');
-                sendTextMessageWithDelay(senderID,  `${contact.Salutation} ${contact.Name}, votre demande est bien enregistrée.\nL'agent commercial vous appelera le plutôt possible.`);
-                sendTextMessageWithDelay(senderID, "Nous sommes toujours à votre disposition si vous avez de nouvelles demandes :D.");
+                sendTextMessageWithDelay(senderID, getText('fr', 'Task call salesman', contact.salutation + ' ' + contact.Name + ','));
+                sendTextMessageWithDelay(senderID, getText('fr', 'Ask for something else', undefined));
               });
             }
           });
