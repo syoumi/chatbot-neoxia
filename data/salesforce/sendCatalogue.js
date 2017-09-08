@@ -34,12 +34,17 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
       query += " AND neighborhood__c = '" + neighborhood + "'";
     }
 
+    var delay = 10000;
+    if(count > 3){
+      delay = 30000;
+    }
+
     //First research
     getProductRecords(query, (elements) => {
-      
+
       if(elements.length!=0){
         sendTextMessageWithDelay(senderID, text);
-        sendGenericMessageWithDelay(senderID, elements, 30000);
+        sendGenericMessageWithDelay(senderID, elements, delay);
         //update request
         if(count == 3){
           updateRequest(senderID, true);

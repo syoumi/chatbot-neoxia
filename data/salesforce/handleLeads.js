@@ -10,20 +10,15 @@ const {getContact} = require("./handleContacts");
 //Extract lead
 var getLead = (senderID, callback) => {
   doLogin((conn) => {
-      var lead = undefined;
-      var query = "SELECT Name, company, MobilePhone, LeadSource, FacebookId__c, Email FROM Lead";
+
+      var query = "SELECT Name, company, MobilePhone, LeadSource, FacebookId__c, Email FROM Lead WHERE FacebookId__c='" + senderID + "' LIMIT 1";
       conn.query(query, (err, res) => {
         if (err) { return console.error(err); }
-
-          for (var i=0; i<res.records.length; i++) {
-            var record = res.records[i];
-
-            if(senderID == record.FacebookId__c){
-              lead = record;
-            }
-          }
-        callback(lead);
+        if(res.records.length > 0){
+          callback(res.records[0]);
+        }
       });
+
     });
 
 }
@@ -62,7 +57,7 @@ var updateLead = (senderID, fname, lname, company, city, country, email, phone, 
 
   getLead(senderID, (leadFound) => {
     if(leadFound){
-      //TODO Search if there's a contact with the same email if so update contact's facebookId__c and delete lead else update lead 
+      //TODO Search if there's a contact with the same email if so update contact's facebookId__c and delete lead else update lead
       doLogin((conn) => {
         var query = "SELECT Id, firstName, lastName, facebookId__c, company,  city, country, email, Phone, ToConvert__c FROM lead WHERE FacebookID__c= '" + senderID + "'";
         conn.query(query)
