@@ -62,6 +62,7 @@ var updateLead = (senderID, fname, lname, company, city, country, email, phone, 
 
   getLead(senderID, (leadFound) => {
     if(leadFound){
+      //TODO Search if there's a contact with the same email if so update contact's facebookId__c and delete lead else update lead 
       doLogin((conn) => {
         var query = "SELECT Id, firstName, lastName, facebookId__c, company,  city, country, email, Phone, ToConvert__c FROM lead WHERE FacebookID__c= '" + senderID + "'";
         conn.query(query)

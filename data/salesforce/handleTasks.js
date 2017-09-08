@@ -36,6 +36,7 @@ var addTask = (senderID) => {
         doLogin((conn) => {
           conn.sobject("Task").create({OwnerId: task.salesmanID, Status: 'Not Started', Subject: task.subject}, function(err, res) {
             if (err) { return console.error(err); }
+            //TODO vérifier que le devis a été bien envoyé et selon le cas envoyer un message au client
           });
         });
         break;
@@ -52,6 +53,8 @@ var addTask = (senderID) => {
                 if (err) { return console.error(err); }
                 tasks.delete(senderID);
                 console.log('TASK DELETED');
+                var text = "Votre demande est bien enregistrée.\nl'agent commercial vous appelera le plutôt possible.\n\nJe suis toujours à votre disposition si vous avez de nouvelles demandes :D.";
+
               });
             }
           });

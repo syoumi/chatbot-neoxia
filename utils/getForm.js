@@ -21,14 +21,12 @@ var getFormLead = (req, callback) => {
 
     if(lead){
       result = lead;
-      console.log('UPDATE LEAD FOUND');
 
       //It's time to convert lead if he's not converted yet :D
       convertLead(senderID, () => {
         addTask(senderID);
       });
     }
-
 
   });
 

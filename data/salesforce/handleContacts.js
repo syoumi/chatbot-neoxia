@@ -1,7 +1,7 @@
 const {doLogin} = require('./login');
 
 
-var getContact = (senderID, email, callback) => {
+var getContact = (senderID, callback) => {
   var contact = undefined;
   doLogin((conn) => {
     var query = "SELECT Id, Name, AccountId, MobilePhone, LeadSource, FacebookId__c, email FROM Contact";
@@ -11,7 +11,7 @@ var getContact = (senderID, email, callback) => {
         for (var i=0; i<res.records.length; i++) {
           var record = res.records[i];
           console.log('RECORD: ', record);
-          if( (senderID == record.FacebookId__c) || (email && email == record.email) ){
+          if(senderID == record.FacebookId__c){
             contact = record;
           }
         }
@@ -22,9 +22,6 @@ var getContact = (senderID, email, callback) => {
 
 }
 
-var addContact = (senderID) => {
-
-}
 
 
 var updateContact = (senderID) => {
@@ -32,5 +29,5 @@ var updateContact = (senderID) => {
 }
 
 module.exports = {
-getContact, addContact, updateContact
+  getContact, updateContact
 }

@@ -11,6 +11,9 @@ const {sendQuickReplies} = require('./../../send/fbApi/sendQuickReplies');
 const {sendButtonMessage} = require('./../../send/fbApi/sendButtonMessage');
 
 const {saveTask} = require('./../../data/salesforce/handleTasks');
+const {addTask} = require('./../../data/salesforce/handleTasks');
+
+const {getContact} = require('./../../data/salesforce/handleContacts');
 
 
 /**
@@ -34,6 +37,7 @@ var receivedPostBack = (event) => {
 
   //by payload
   switch(payload){
+
     case "CONTACT_PAYLOAD":
     //postback = "CONTACT_PAYLOAD"  + Salesman.Id + Salesman.Name + Salesman.MobilePhone + Product.Id
       var buttons = [
@@ -69,9 +73,16 @@ var receivedPostBack = (event) => {
                   "messenger_extensions": true
         }
       ];
-      sendButtonMessage(senderID, 'Veuillez remplir le formulaire.', buttons);
-      var text = "Votre demande est bien enregistrée.\nl'agent commercial vous appelera le plutôt possible.\n\nJe suis toujours à votre disposition si vous avez de nouvelles demandes :D.";
-      saveTask(senderID, postback[2], postback[5], 'Contacter client');
+      //Check if user is not a contac if so send the form else save task and insert it directly
+      getContact(senderID, (contact) => {
+        saveTask(senderID, postback[2], postback[5], 'Contacter client');
+        if(!contact){
+          sendButtonMessage(senderID, 'Veuillez remplir le formulaire.', buttons);
+        }
+        else{
+          addTask(senderID);
+        }
+      });
       break;
 
     case "SEND_QUOTE":
@@ -85,14 +96,20 @@ var receivedPostBack = (event) => {
                   "messenger_extensions": true
         }
       ];
-      sendButtonMessage(senderID, 'Veuillez remplir le formulaire.', buttons);
-      //saveTask(senderID, postback[2], postback[5], 'Envoyer devis', '');
-      //TODO vérifier que le devis a été bien envoyé et selon le cas envoyer un message au client
+      getContact(senderID, (contact) => {
+        //saveTask(senderID, postback[2], postback[5], 'Envoyer devis', '');
+        if(!contact){
+          sendButtonMessage(senderID, 'Veuillez remplir le formulaire.', buttons);
+        }
+        else{
+          addTask(senderID);
+        }
+      });
       break;
 
    case "DESCRIPTION_PAYLOAD":
       sendTextMessage(senderID, postback[1]);
-      //sendTextMessageWithDelai(senderID, postback[1]);
+      //sendTextMessageWithDelay(senderID, postback[1]);
       break;
 
     default:
