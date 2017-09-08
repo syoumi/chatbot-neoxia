@@ -52,7 +52,7 @@ var findExactMatch = (message) => {
                 var param = getParameter(words[i], keywordsArray[i]);
                 if(param.value){
                   params.push(param);
-                  console.log("Param: ", param);
+                  //console.log("Param: ", param);
                 } else {
                   areEquals = false;
                   params = [];
