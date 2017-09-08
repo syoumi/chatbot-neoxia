@@ -80,10 +80,10 @@ var updateLead = (senderID, fname, lname, company, city, country, email, phone, 
 var convertLead = (senderID, callback) => {
   console.log('TRYING TO CONVERT LEAD');
   getLead(senderID, (lead) => {
-    if(lead && !lead.ToConvert__c){
+    if(lead){
 
       doLogin((conn) => {
-        var query = "SELECT Id, ToConvert__c FROM lead WHERE FacebookID__c= '" + senderID + "'";
+        var query = "SELECT Id, ToConvert__c FROM lead WHERE FacebookID__c= '" + senderID + "' AND ToConvert__c = false";
         conn.query(query)
             .update({ ToConvert__c : true }, 'Lead', function(err, rets) {
               if (err) { return console.error(err); }
