@@ -87,9 +87,8 @@ var convertLead = (senderID, callback) => {
         conn.query(query)
             .update({ ToConvert__c : true }, 'Lead', function(err, rets) {
               if (err) { return console.error(err); }
-              console.log('LEAD CONVERTED');
+              callback();
             });
-        callback();
       });
     }
 

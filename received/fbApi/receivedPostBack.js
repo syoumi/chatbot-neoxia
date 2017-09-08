@@ -30,8 +30,8 @@ var receivedPostBack = (event) => {
   // console.log(`| recipientID ${recipientID}`);
   // console.log(`| timeOfPostBack ${timeOfPostBack}`);
   // console.log('#################END PRI##############');
+  //console.log("POSTBACK: ", postback);
 
-  console.log("POSTBACK: ", postback);
   //by payload
   switch(payload){
     case "CONTACT_PAYLOAD":
@@ -71,7 +71,6 @@ var receivedPostBack = (event) => {
       ];
       sendButtonMessage(senderID, 'Veuillez remplir le formulaire.', buttons);
       var text = "Votre demande est bien enregistrée.\nl'agent commercial vous appelera le plutôt possible.\n\nJe suis toujours à votre disposition si vous avez de nouvelles demandes :D.";
-      console.log('SALESMANID && PRODUCTID :', postback[2], postback[5]);
       saveTask(senderID, postback[2], postback[5], 'Contacter client');
       break;
 
