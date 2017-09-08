@@ -80,6 +80,7 @@ var receivedPostBack = (event) => {
           sendButtonMessage(senderID, 'Veuillez remplir le formulaire.', buttons);
         }
         else{
+          console.log('ADD TASK');
           addTask(senderID);
         }
       });
