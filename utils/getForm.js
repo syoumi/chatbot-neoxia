@@ -24,7 +24,7 @@ var getFormLead = (req, callback) => {
       console.log('UPDATE LEAD FOUND');
 
       //It's time to convert lead :D
-      //convertLead(senderID);
+      convertLead(senderID);
 
       /*setTimeout(() => {
           addTask(senderID);
