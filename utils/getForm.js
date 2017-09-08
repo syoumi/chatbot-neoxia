@@ -26,9 +26,9 @@ var getFormLead = (req, callback) => {
       //It's time to convert lead :D
       //convertLead(senderID);
 
-      setTimeout(() => {
+      /*setTimeout(() => {
           addTask(senderID);
-      }, 10000);
+      }, 10000);*/
 
     }
   });
