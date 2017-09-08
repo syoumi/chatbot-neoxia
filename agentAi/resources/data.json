@@ -746,8 +746,7 @@
     {
       "action": "don't-know-action",
       "keywords": [
-        "je ne sais pas",
-        "connais pas"
+        "je ne sais pas"
       ],
       "answers": [
         "Nous sommes ici pour vous aider à chercher des logements de différent type, pour achat ou location, aux différentes villes et quartiers du Maroc.\nPar quel type de logements êtes-vous intéressé?"
@@ -756,7 +755,6 @@
       "previousActions" : [],
       "hasParam": "0"
     },
-
 
     {
       "action": "wait-for-answer-action",
