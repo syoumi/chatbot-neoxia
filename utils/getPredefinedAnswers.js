@@ -26,9 +26,9 @@ var replaceParam = (textArray, param) => {
   var text = '';
   textArray.forEach((word) => {
     console.log('WORD: ', word);
-    console.log('FIRST LETTER =', word[0]);
-    console.log('LAST LETTER= ', word[word.length-1]);
     if(word[0]=='#' && word[word.length-1]=='#'){
+      console.log('FIRST LETTER =', word[0]);
+      console.log('LAST LETTER= ', word[word.length-1]);
       word.replace(word, param + "s");
     }
     text += ' ' + word;
