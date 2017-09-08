@@ -10,15 +10,15 @@ const {getContact} = require("./handleContacts");
 //Extract lead
 var getLead = (senderID, callback) => {
   doLogin((conn) => {
-
+      var lead = undefined;
       var query = "SELECT Name, company, MobilePhone, LeadSource, FacebookId__c, Email FROM Lead WHERE FacebookId__c='" + senderID + "' LIMIT 1";
       conn.query(query, (err, res) => {
         if (err) { return console.error(err); }
         console.log('RECORD: ', res.records);
         if(res.records.length > 0){
-          console.log('RECORD: ', res.records[0]);
-          callback(res.records[0]);
+          lead = res.records[0];
         }
+        callback(lead);
       });
 
     });
