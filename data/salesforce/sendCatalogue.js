@@ -34,9 +34,9 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
       query += " AND neighborhood__c = '" + neighborhood + "'";
     }
 
-    var delay = 10000;
-    if(count > 3){
-      delay = 30000;
+    var delay = 20000;
+    if(count < 3){
+      delay = 40000;
     }
 
     //First research
