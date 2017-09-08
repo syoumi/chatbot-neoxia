@@ -29,7 +29,7 @@ var saveTask = (senderID, salesmanID, productID, subject)=> {
 //Insert task
 var addTask = (senderID) => {
 
-  sendTextMessage(senderID, getText('fr', 'Ask to wait', undefined));
+  sendTextMessageWithDelay(senderID, getText('fr', 'Ask to wait', undefined));
 
   var task = tasks.get(senderID);
 

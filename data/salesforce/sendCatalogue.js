@@ -38,7 +38,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 
     var delay = 15000;
     if(count < 3){
-      delay = 30000;
+      delay = 35000;
     }
 
     //First research
@@ -56,7 +56,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 
         //Try to find something may be interested to send to the client
         //text = `Nous sommes désolés. Des ${building}s avec les critères mentionnés ci-dessus ne sont pas disponible pour l'instant.\nSi vous n'êtes pas pressé, vous pouvez nous envoyer vos coordonnées afin de vous contacter une fois votre demande est disponible.\nSinon, nous vous proposons des ${building}s qui pourront vous intéresser.`;
-        text = getText("fr", "Buildig not found", building);
+        text = getText("fr", "Buildig not found", building + "s");
 
         count--;
         if(count == 2){
@@ -68,7 +68,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
         else if(count == 0){
           sendCatalogue(senderID, text, building, operation, undefined, undefined, undefined, undefined, undefined, count);
         }
-        
+
       }
     });
 };
