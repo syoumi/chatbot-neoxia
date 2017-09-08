@@ -14,6 +14,7 @@ var getContact = (senderID, email, callback) => {
             contact = record;
           }
         }
+        console.log('GET CONTACT: ', contact);
         callback(contact);
     });
   });
