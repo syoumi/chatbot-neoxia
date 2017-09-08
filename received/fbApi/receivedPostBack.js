@@ -74,6 +74,7 @@ var receivedPostBack = (event) => {
       ];
       //Check if user is not a contac if so send the form else save task and insert it directly
       getContact(senderID, (contact) => {
+        console.log('CONTACT POSTBACK FOUND: ', contact);
         saveTask(senderID, postback[2], postback[5], 'Contacter client');
         if(!contact){
           sendTextMessage(senderID, "Nous avons besoin de récupérer vos coordonnées telles que votre nom, votre prénom votre email et votre numéro de téléphone pour que l'agent commercial puisse vous appeler le plus tôt possible.");
