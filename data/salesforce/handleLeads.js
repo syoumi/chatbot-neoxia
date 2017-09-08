@@ -2,10 +2,10 @@
 const {doLogin} = require('./login');
 
 const {getUserInfos} = require("./../../utils/getUserInfos");
+
 const {getContact} = require("./handleContacts");
-const {addContact} = require("./handleContacts");
-const {upsertAccount} = require("./handleAccounts");
-const {addOpportunity} = require("./handleOpportunities");
+
+const {addTask} = require('./handleTasks');
 
 
 //Extract lead
@@ -97,6 +97,7 @@ var convertLead = (senderID) => {
               if (err) { return console.error(err); }
               console.log('LEAD CONVERTED');
             });
+        addTask(senderID);
       });
 
     }
