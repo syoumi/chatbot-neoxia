@@ -26,6 +26,8 @@ var addTask = (senderID) => {
 
   var task = tasks.has(senderID);
 
+  console.log('TASK FOUND :', task);
+  
   if(task){
 
     switch(task.subject){
