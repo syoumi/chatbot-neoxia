@@ -48,7 +48,7 @@ var addTask = (senderID) => {
         console.log("NEW TASK");
         doLogin((conn) => {
 
-          getContact(senderID, undefined, (contact) => {
+          getContact(senderID, (contact) => {
             console.log('CONTACT FOUND: ', contact);
             if(contact){
               conn.sobject("Task").create({OwnerId: task.salesmanID, Status: 'Not Started', Subject: task.subject, WhoId : contact.Id, WhatId: task.productID}, function(err, res) {
