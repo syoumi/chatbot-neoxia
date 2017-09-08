@@ -15,6 +15,8 @@ const {addTask} = require('./../../data/salesforce/handleTasks');
 
 const {getContact} = require('./../../data/salesforce/handleContacts');
 
+const {getText} = require('./../../utils/getPredefinedAnswers');
+
 
 /**
  * Postback event handler
@@ -57,7 +59,8 @@ var receivedPostBack = (event) => {
           "payload": "SEND_QUOTE|" + event.postback.payload
         }
       ];
-      sendButtonMessage(senderID, 'Vous pouvez contacter notre agent commercial ' + postback[2]  + ' associé à ce logement soit en l\'appelant ou en lui envoyant une demande afin qu\'il vous appelle.\nComme vous pouvez recevoir le devis directement sur votre boîte mail, si vous le souhaitez.' , buttons);
+      var text = getText('fr', 'Send contact', postback[2]);
+      sendButtonMessage(senderID, text , buttons);
       break;
 
 
@@ -77,11 +80,12 @@ var receivedPostBack = (event) => {
         console.log('CONTACT POSTBACK FOUND: ', contact);
         saveTask(senderID, postback[2], postback[5], 'Contacter client');
         if(!contact){
-          sendTextMessage(senderID, "Nous avons besoin de récupérer vos coordonnées telles que votre nom, votre prénom votre email et votre numéro de téléphone pour que l'agent commercial puisse vous appeler le plus tôt possible.");
-          sendButtonMessage(senderID, 'Veuillez remplir le formulaire.', buttons);
+          var text = getText('fr', 'Send form call', undefined);
+          sendTextMessage(senderID, text);
+          text = getText('fr', 'Ask to complete form', undefined);
+          sendButtonMessage(senderID, text, buttons);
         }
         else{
-          console.log('ADD TASK');
           addTask(senderID);
         }
       });
@@ -101,8 +105,10 @@ var receivedPostBack = (event) => {
       getContact(senderID, (contact) => {
         //saveTask(senderID, postback[2], postback[5], 'Envoyer devis', '');
         if(!contact){
-          sendTextMessage(senderID, "Nous avons besoin de récupérer vos coordonnées telles que votre nom, votre prénom votre email et votre numéro de téléphone.");
-          sendButtonMessage(senderID, 'Veuillez remplir le formulaire.', buttons);
+          var text = getText('fr', 'Send form quote', undefined);
+          sendTextMessage(senderID, text);
+          text = getText('fr', 'Ask to complete form', undefined);
+          sendButtonMessage(senderID, text, buttons);
         }
         else{
           addTask(senderID);
@@ -116,7 +122,7 @@ var receivedPostBack = (event) => {
       break;
 
     default:
-        sendTextMessage(senderID, `Postback ${payload} reçu :D`);
+        sendTextMessage(senderID, ':D');
   }
 
 };

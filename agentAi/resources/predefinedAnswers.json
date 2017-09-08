@@ -8,12 +8,12 @@
 
     {
       "title": "Buildig not found",
-      "text": "`Nous sommes désolés. Des #building# avec les critères mentionnés ci-dessus ne sont pas disponible pour l'instant.\nSi vous n'êtes pas pressé, vous pouvez nous envoyer vos coordonnées afin de vous contacter une fois votre demande est disponible.\nSinon, nous vous proposons des #building# qui pourront vous intéresser."
+      "text": "Nous sommes désolés. Des #building# avec les critères mentionnés ci-dessus ne sont pas disponible pour l'instant.\nSi vous n'êtes pas pressé, vous pouvez nous envoyer vos coordonnées afin de vous contacter une fois votre demande est disponible.\nSinon, nous vous proposons des #building# qui pourront vous intéresser."
     },
 
     {
-      "title": "Send contact ",
-      "text": ""
+      "title": "Send contact",
+      "text": "Vous pouvez contacter notre agent commercial #name# associé à ce logement soit en l'appelant ou en lui envoyant une demande afin qu'il vous appelle.\nComme vous pouvez recevoir le devis directement sur votre boîte mail, si vous le souhaitez."
     },
 
     {
@@ -32,13 +32,18 @@
     },
 
     {
-      "title": "Send form",
-      "text": ""
+      "title": "Send form call",
+      "text": "Nous avons besoin de récupérer vos coordonnées telles que votre nom, votre prénom votre email et votre numéro de téléphone pour que l'agent commercial puisse vous appeler le plus tôt possible."
+    },
+
+    {
+      "title": "Send form quote",
+      "text": "Nous avons besoin de récupérer vos coordonnées telles que votre nom, votre prénom votre email et votre numéro de téléphone pour vous envoyer le devis."
     },
 
     {
       "title": "Ask to complete form",
-      "text": ""
+      "text": "Veuillez remplir le formulaire."
     }
 
 

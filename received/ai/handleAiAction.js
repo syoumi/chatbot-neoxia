@@ -13,6 +13,8 @@ const {handleParameters} = require('./handleAiParameters');
 
 const {addLead} = require('./../../data/salesforce/handleLeads');
 
+const {getText} = require('./../../utils/getPredefinedAnswers');
+
 
 //By action
 var handleAiAction= (senderID, answer) => {
@@ -105,7 +107,8 @@ var handleAiAction= (senderID, answer) => {
                   "fallback_url": "https://desolate-dusk-64146.herokuapp.com/formWTL/"+senderID
         }
       ];
-      sendButtonMessage(senderID, 'Veuillez remplir le formulaire.', buttons);
+      var text = getText('fr', 'Ask to complete form', undefined);
+      sendButtonMessage(senderID, text, buttons);
       break;
 
 

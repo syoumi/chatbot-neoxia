@@ -12,7 +12,6 @@ var getText = (lang, title, param) => {
     if(answer.title == title) {
       text = answer.text;
       if(param){
-        console.log('PARAM: ', param);
         var textArray = answer.text.split(' ');
         text = replaceParam(textArray, param);
       }
@@ -26,10 +25,7 @@ var replaceParam = (textArray, param) => {
   var text = '';
   textArray.forEach((word) => {
     if(word[0]=='#' && word[word.length-1]=='#'){
-      console.log('FIRST LETTER =', word[0]);
-      console.log('LAST LETTER= ', word[word.length-1]);
       word = word.replace(word, param + "s");
-      console.log('WORD REPLACED: ', word);
     }
     text += ' ' + word;
   });
