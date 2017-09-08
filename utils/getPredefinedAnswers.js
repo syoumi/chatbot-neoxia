@@ -8,12 +8,11 @@ var predefinedAnswers = JSON.parse(jsonData).data;
 var getText = (lang, title, param) => {
   var text = undefined;
 
-
-  predefinedAnswers.title.forEach((item) => {
-    if(item == title) {
-      text = predefinedAnswers.text;
+  predefinedAnswers.forEach((answer) => {
+    if(answer.title == title) {
+      text = answer.text;
       if(param){
-        var textArray = predefinedAnswers.text.split(' ');
+        var textArray = answer.text.split(' ');
         text = replaceParam(textArray, param);
       }
     }
