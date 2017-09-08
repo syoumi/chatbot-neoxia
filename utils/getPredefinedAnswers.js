@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-var jsonData = fs.readFileSync('./../agentAi/resources/predefinedAnswers.json');
+var jsonData = fs.readFileSync('./agentAi/resources/predefinedAnswers.json');
 
 var predefinedAnswers = JSON.parse(jsonData).data;
 
