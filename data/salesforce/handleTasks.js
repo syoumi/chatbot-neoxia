@@ -20,7 +20,6 @@ var saveTask = (senderID, salesmanID, productID, subject)=> {
  }
 
  tasks.set(senderID, data);
-
  console.log('TASK SAVED: ', tasks);
 
 }
@@ -29,11 +28,11 @@ var saveTask = (senderID, salesmanID, productID, subject)=> {
 //Insert task
 var addTask = (senderID) => {
 
+  //Ask user to wait
   sendTextMessageWithDelay(senderID, getText('fr', 'Ask to wait', undefined));
 
   var task = tasks.get(senderID);
-
-  console.log('TASK FOUND :', task);
+  //console.log('TASK FOUND :', task);
 
   if(task){
 
@@ -41,16 +40,29 @@ var addTask = (senderID) => {
 
       case "Envoyer devis":
         doLogin((conn) => {
-          conn.sobject("Task").create({OwnerId: task.salesmanID, Status: 'Not Started', Subject: task.subject}, function(err, res) {
-            if (err) { return console.error(err); }
-            //TODO vérifier que le devis a été bien envoyé et selon le cas envoyer un message au client
+
+          getContact(senderID, (contact) => {
+            console.log('CONTACT FOUND: ', contact);
+            if(contact){
+              conn.sobject("Task").create({OwnerId: task.salesmanID, Status: 'Not Started', Subject: task.subject, WhoId : contact.Id, WhatId: task.productID}, function(err, res) {
+                if (err) { return console.error(err); }
+                tasks.delete(senderID);
+                console.log('TASK DELETED');
+
+                //Message to send
+                var salutation = contact.Salutation;
+                if(!salutation) salutation = '';
+                sendTextMessageWithDelay(senderID, getText('fr', 'Task send quote', salutation + ' ' + contact.Name + ','));
+
+              });
+            }
           });
+
         });
         break;
 
 
       case "Contacter client":
-        console.log("NEW TASK");
         doLogin((conn) => {
 
           getContact(senderID, (contact) => {
