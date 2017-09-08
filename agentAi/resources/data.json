@@ -174,7 +174,9 @@
         "je cherche un logement",
         "qu est ce que vous proposez",
         "quels sont vos biens",
-        "qu est ce que vous vendez"
+        "qu est ce que vous vendez",
+        "propositions",
+        "suggestions"
     ],
     "answers": [
         "Quel type de logement voulez-vous consulter?",

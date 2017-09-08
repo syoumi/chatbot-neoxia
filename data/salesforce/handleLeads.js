@@ -89,10 +89,10 @@ var convertLead = (senderID, callback) => {
               if (err) { return console.error(err); }
               console.log('LEAD CONVERTED');
             });
+        callback();
       });
-
     }
-    callback();
+
 
   });
 
