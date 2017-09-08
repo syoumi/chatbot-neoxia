@@ -10,6 +10,7 @@ var getContact = (senderID, email, callback) => {
 
         for (var i=0; i<res.records.length; i++) {
           var record = res.records[i];
+          console.log('RECORD: ', record);
           if( (senderID == record.FacebookId__c) || (email && email == record.email) ){
             contact = record;
           }

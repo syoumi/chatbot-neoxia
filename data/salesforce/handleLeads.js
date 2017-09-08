@@ -63,7 +63,7 @@ var updateLead = (senderID, fname, lname, company, city, country, email, phone, 
   getLead(senderID, (leadFound) => {
     if(leadFound){
       doLogin((conn) => {
-        var query = "SELECT Id, firstName, lastName, facebookId__c, company,  city, country, email, Phone FROM lead WHERE FacebookID__c= '" + senderID + "'";
+        var query = "SELECT Id, firstName, lastName, facebookId__c, company,  city, country, email, Phone, ToConvert FROM lead WHERE FacebookID__c= '" + senderID + "'";
         conn.query(query)
             .update({ firstName : fname, lastName : lname, company : company, city : city, country: country, email : email, Phone : phone }, 'Lead', function(err, rets) {
               if (err) { return console.error(err); }
@@ -80,7 +80,7 @@ var updateLead = (senderID, fname, lname, company, city, country, email, phone, 
 var convertLead = (senderID, callback) => {
   console.log('TRYING TO CONVERT LEAD');
   getLead(senderID, (lead) => {
-    if(lead){
+    if(lead && !lead.ToConvert__c){
 
       doLogin((conn) => {
         var query = "SELECT Id, ToConvert__c FROM lead WHERE FacebookID__c= '" + senderID + "'";
@@ -93,6 +93,7 @@ var convertLead = (senderID, callback) => {
 
     }
     callback();
+
   });
 
 }
