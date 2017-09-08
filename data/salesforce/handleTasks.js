@@ -55,8 +55,8 @@ var addTask = (senderID) => {
                 if (err) { return console.error(err); }
                 tasks.delete(senderID);
                 console.log('TASK DELETED');
-                var text = "Votre demande est bien enregistrée.\nl'agent commercial vous appelera le plutôt possible.\n\nJe suis toujours à votre disposition si vous avez de nouvelles demandes :D.";
-                sendTextMessageWithDelay(senderID, text);
+                sendTextMessageWithDelay(senderID,  "${contact.Salutation} ${contact.Name}, votre demande est bien enregistrée.\nL'agent commercial vous appelera le plutôt possible.");
+                sendTextMessageWithDelay(senderID, "Je suis toujours à votre disposition si vous avez de nouvelles demandes :D.");
               });
             }
           });

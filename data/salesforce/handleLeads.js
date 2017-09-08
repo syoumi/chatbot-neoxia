@@ -40,7 +40,7 @@ var addLead = (senderID) => {
             var company  = "UNKOWN";
 
             doLogin((conn) => {
-              conn.sobject("Lead").create({FacebookId__c: senderID, LeadSource: leadSource, Status: status, FirstName: fname, LastName: lname, company: company}, function(err, res) {
+              conn.sobject("Lead").create({Salutation : salutation, FacebookId__c: senderID, LeadSource: leadSource, Status: status, FirstName: fname, LastName: lname, company: company}, function(err, res) {
                 if (err) { return console.error(err); }
               });
             });
