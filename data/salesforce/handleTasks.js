@@ -60,8 +60,13 @@ var addTask = (senderID) => {
                 if (err) { return console.error(err); }
                 tasks.delete(senderID);
                 console.log('TASK DELETED');
-                sendTextMessageWithDelay(senderID, getText('fr', 'Task call salesman', contact.salutation + ' ' + contact.Name + ','));
+
+                //Message to send
+                var salutation = contact.Salutation;
+                if(!salutation) salutation = '';
+                sendTextMessageWithDelay(senderID, getText('fr', 'Task call salesman', salutation + ' ' + contact.Name + ','));
                 sendTextMessageWithDelay(senderID, getText('fr', 'Ask for something else', undefined));
+                
               });
             }
           });
