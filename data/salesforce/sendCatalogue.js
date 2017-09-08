@@ -56,6 +56,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 
         //Try to find something may be interested to send to the client
         text = getText("fr", "Buildig not found", building);
+        console.log('TEXT: ', text);
         //text = `Nous sommes désolés. Des ${building}s avec les critères mentionnés ci-dessus ne sont pas disponible pour l'instant.\nSi vous n'êtes pas pressé, vous pouvez nous envoyer vos coordonnées afin de vous contacter une fois votre demande est disponible.\nSinon, nous vous proposons des ${building}s qui pourront vous intéresser.`;
 
         count--;
