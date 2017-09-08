@@ -63,7 +63,6 @@ var receivedPostBack = (event) => {
 
     case "CONTACT_SALESMAN":
       //postback = "CONTACT_SALESMAN" + "CONTACT_PAYLOAD"  + Salesman.Id + Salesman.Name + Salesman.MobilePhone + Product.Id
-      sendTextMessage(senderID, "Nous avons besoin de récupérer vos coordonnées telles que votre nom, votre prénom votre email et votre numéro de téléphone pour que l'agent commercial puisse vous appeler le plus tôt possible.");
       var buttons = [
         {
                   "type":"web_url",
@@ -77,6 +76,7 @@ var receivedPostBack = (event) => {
       getContact(senderID, (contact) => {
         saveTask(senderID, postback[2], postback[5], 'Contacter client');
         if(!contact){
+          sendTextMessage(senderID, "Nous avons besoin de récupérer vos coordonnées telles que votre nom, votre prénom votre email et votre numéro de téléphone pour que l'agent commercial puisse vous appeler le plus tôt possible.");
           sendButtonMessage(senderID, 'Veuillez remplir le formulaire.', buttons);
         }
         else{
@@ -86,7 +86,7 @@ var receivedPostBack = (event) => {
       break;
 
     case "SEND_QUOTE":
-      sendTextMessage(senderID, "Nous avons besoin de récupérer vos coordonnées telles que votre nom, votre prénom votre email et votre numéro de téléphone.");
+      //postback = "SEND_QUOTE" + "CONTACT_PAYLOAD"  + Salesman.Id + Salesman.Name + Salesman.MobilePhone + Product.Id
       var buttons = [
         {
                   "type":"web_url",
@@ -99,6 +99,7 @@ var receivedPostBack = (event) => {
       getContact(senderID, (contact) => {
         //saveTask(senderID, postback[2], postback[5], 'Envoyer devis', '');
         if(!contact){
+          sendTextMessage(senderID, "Nous avons besoin de récupérer vos coordonnées telles que votre nom, votre prénom votre email et votre numéro de téléphone.");
           sendButtonMessage(senderID, 'Veuillez remplir le formulaire.', buttons);
         }
         else{

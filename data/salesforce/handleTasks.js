@@ -3,6 +3,8 @@ const {doLogin} = require('./login');
 
 const {getContact} = require('./handleContacts');
 
+const {sendTextMessageWithDelay} = require('./../../send/fbApi/sendTextMessage');
+
 var tasks = new Map();
 
 //Save task in map before insert it
@@ -54,7 +56,7 @@ var addTask = (senderID) => {
                 tasks.delete(senderID);
                 console.log('TASK DELETED');
                 var text = "Votre demande est bien enregistrée.\nl'agent commercial vous appelera le plutôt possible.\n\nJe suis toujours à votre disposition si vous avez de nouvelles demandes :D.";
-
+                sendTextMessageWithDelay(senderID, text);
               });
             }
           });
