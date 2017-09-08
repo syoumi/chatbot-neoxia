@@ -36,7 +36,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 
     //First research
     getProductRecords(query, (elements) => {
-      console.log("ELEMENTS: ", elements);
+      
       if(elements.length!=0){
         sendTextMessageWithDelay(senderID, text);
         sendGenericMessageWithDelay(senderID, elements, 30000);

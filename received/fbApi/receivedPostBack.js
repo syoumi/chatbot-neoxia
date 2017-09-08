@@ -40,12 +40,12 @@ var receivedPostBack = (event) => {
         {
           "type":"postback",
           "title":"Appeler",
-          "payload": "CONTACT_SALESMAN|" + postback[3]
+          "payload": "CONTACT_SALESMAN|" + event.postback.payload
         },
         {
           "type":"postback",
           "title":"Envoyer devis",
-          "payload": "SEND_QUOTE|" + postback[4]
+          "payload": "SEND_QUOTE|" + event.postback.payload
         }
       ];
       sendButtonMessage(senderID, 'Vous pouvez contacter notre agent commercial ' + postback[2]  + ' associé à ce logement.\nComme vous pouvez recevoir le devis directement sur votre boîte mail, si vous le souhaitez.' , buttons);
