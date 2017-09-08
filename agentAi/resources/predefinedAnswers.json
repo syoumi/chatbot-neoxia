@@ -18,17 +18,12 @@
 
     {
       "title": "Task call salesman",
-      "text": "#name# votre demande est bien enregistrée.\nL'agent commercial vous appelera le plutôt possible."
+      "text": "#name# votre demande est bien enregistrée.\nL'agent commercial vous appelera le plutôt possible.\n\nNous sommes toujours à votre disposition si vous avez de nouvelles demandes :D."
     },
 
     {
       "title": "Task send quote",
       "text": "#name# le devis est envoyé. Vous pouvez vérifier votre boîte mail.\nAu cas où vous n'avez pas bien reçu le devis, veuillez contacter l'agent commercial."
-    },
-
-    {
-      "title": "Ask for something else",
-      "text": "Nous sommes toujours à votre disposition si vous avez de nouvelles demandes :D."
     },
 
     {
