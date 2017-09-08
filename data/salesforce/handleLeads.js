@@ -77,8 +77,8 @@ var updateLead = (senderID, fname, lname, company, city, country, email, phone, 
 }
 
 //Convert lead to Contact, account and opportunity
-var convertLead = (senderID) => {
-    console.log('TRYING TO CONVERT LEAD');
+var convertLead = (senderID, callback) => {
+  console.log('TRYING TO CONVERT LEAD');
   getLead(senderID, (lead) => {
     if(lead){
 
@@ -92,6 +92,7 @@ var convertLead = (senderID) => {
       });
 
     }
+    callback();
   });
 
 }

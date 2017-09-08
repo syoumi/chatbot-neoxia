@@ -5,7 +5,6 @@ const {convertLead} = require('./../data/salesforce/handleLeads');
 const {addTask} = require('./../data/salesforce/handleTasks');
 
 
-
 var getFormLead = (req, callback) => {
   var result = undefined;
 
@@ -24,12 +23,10 @@ var getFormLead = (req, callback) => {
       result = lead;
       console.log('UPDATE LEAD FOUND');
 
-      //It's time to convert lead :D
-      convertLead(senderID);
-
-      //Add task
-      addTask(senderID);
-
+      //It's time to convert lead if he's not converted yet :D
+      convertLead(senderID, (res) => {
+        addTask(senderID);
+      });
     }
 
 
