@@ -15,6 +15,7 @@ var getLead = (senderID, callback) => {
       conn.query(query, (err, res) => {
         if (err) { return console.error(err); }
         if(res.records.length > 0){
+          console.log('RECORD: ', res.records[0]);
           callback(res.records[0]);
         }
       });
