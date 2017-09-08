@@ -16,7 +16,7 @@ var saveTask = (senderID, salesmanID, productID, subject)=> {
 
  tasks.set(senderID, data);
 
- console.log('TASK SAVED');
+ console.log('TASK SAVED: ', tasks);
 
 }
 
@@ -40,6 +40,7 @@ var addTask = (senderID) => {
 
 
       case "Contacter client":
+        console.log("NEW TASK");
         doLogin((conn) => {
 
           getContact(senderID, undefined, (contact) => {

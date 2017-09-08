@@ -5,7 +5,6 @@ const {getUserInfos} = require("./../../utils/getUserInfos");
 
 const {getContact} = require("./handleContacts");
 
-const {addTask} = require('./handleTasks');
 
 
 //Extract lead
@@ -33,13 +32,9 @@ var getLead = (senderID, callback) => {
 //Insert lead
 var addLead = (senderID) => {
 
-  //Verify if lead  doesn't exist
+  //Verify if lead  doesn't exist and wasn't converted
   getLead(senderID, (lead) => {
     if(!lead){
-
-      //Verify if lead was not Converted
-      getContact(senderID, undefined, (contact) => {
-        if(!contact){
 
           getUserInfos(senderID, (fname, lname, ppicture, locale, timezone, gender) => {
           	var salutation= 'Mr.';
@@ -55,9 +50,6 @@ var addLead = (senderID) => {
             });
 
           });
-
-        }
-      });
 
     }
   });
@@ -97,7 +89,6 @@ var convertLead = (senderID) => {
               if (err) { return console.error(err); }
               console.log('LEAD CONVERTED');
             });
-        addTask(senderID);
       });
 
     }
