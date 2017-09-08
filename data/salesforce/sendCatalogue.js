@@ -14,6 +14,8 @@ const {sendImageMessage} = require('./../../send/fbApi/sendImageMessage');
 const {sendQuickReply} = require('./../../send/fbApi/sendQuickReplies');
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 
+const {getText} = require('./../../utils/getPredefinedAnswers');
+
 
 
 var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, count) => {
@@ -51,7 +53,7 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
         }
       }
       else{
-
+        
         //Try to find something may be interested to send to the client
         text = `Nous sommes désolés. Des ${building}s avec les critères mentionnés ci-dessus ne sont pas disponible pour l'instant.\nSi vous n'êtes pas pressé, vous pouvez nous envoyer vos coordonnées afin de vous contacter une fois votre demande est disponible.\nSinon, nous vous proposons des ${building}s qui pourront vous intéresser.`;
 

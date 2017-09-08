@@ -26,6 +26,9 @@ var saveTask = (senderID, salesmanID, productID, subject)=> {
 //Insert task
 var addTask = (senderID) => {
 
+
+  sendTextMessage(senderID, "Attendez, s'il vous plaît.");
+
   var task = tasks.get(senderID);
 
   console.log('TASK FOUND :', task);
@@ -55,8 +58,8 @@ var addTask = (senderID) => {
                 if (err) { return console.error(err); }
                 tasks.delete(senderID);
                 console.log('TASK DELETED');
-                sendTextMessageWithDelay(senderID,  "${contact.Salutation} ${contact.Name}, votre demande est bien enregistrée.\nL'agent commercial vous appelera le plutôt possible.");
-                sendTextMessageWithDelay(senderID, "Je suis toujours à votre disposition si vous avez de nouvelles demandes :D.");
+                sendTextMessageWithDelay(senderID,  `${contact.Salutation} ${contact.Name}, votre demande est bien enregistrée.\nL'agent commercial vous appelera le plutôt possible.`);
+                sendTextMessageWithDelay(senderID, "Nous sommes toujours à votre disposition si vous avez de nouvelles demandes :D.");
               });
             }
           });
