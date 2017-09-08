@@ -24,10 +24,10 @@ var saveTask = (senderID, salesmanID, productID, subject)=> {
 //Insert task
 var addTask = (senderID) => {
 
-  var task = tasks.has(senderID);
+  var task = tasks.get(senderID);
 
   console.log('TASK FOUND :', task);
-  
+
   if(task){
 
     switch(task.subject){
