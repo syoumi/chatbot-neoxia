@@ -39,7 +39,7 @@ var handleAiAction= (senderID, answer) => {
     case "catalogue-city-action":
     case "catalogue-neighborhood-action":
     case "catalogue-city-neighborhood-action":
-    case "don't-know-action:"
+    case "don't-know-action":
       var options= ['Studio', 'Appartement', 'Maison', 'Villa'];
       sendQuickReplies(senderID, text, options);
       break;
