@@ -19,7 +19,7 @@ var sendQuote = (contact, productID, quantity) => {
   getProduct(productID, (product) => {
 
     //Then, create a new Price Book Entry
-    addPriceBookEntry(product, name, (priceBookEntryId) => {
+    addPriceBookEntry(product, 'Standard Price Book', (priceBookEntryId) => {
 
       //Update Opportunity
       updateOpportunity(contact.AccountId, priceBookEntryId, () => {
