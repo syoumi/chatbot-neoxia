@@ -32,7 +32,7 @@ var getPriceBook = (name, callback) => {
 }
 
 //Get Price Book Entry by it's ID
-var getPriceBookEntry = (pricebookEntryId, name, callback) => {
+var getPriceBookEntry = (pricebookEntryId, callback) => {
   getPriceBook(name, (pricebook) => {
     doLogin((conn) => {
       var pricebookEntry = undefined;
