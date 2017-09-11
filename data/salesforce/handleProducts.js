@@ -57,7 +57,7 @@ var getProductRecords = (query, callback) => {
 var getProduct = (productID, callback) => {
   doLogin((conn) => {
     var product = undefined;
-    var query = "SELECT Id, Amount__c FROM Product2 WHERE Id=" + productID + " LIMIT 1";
+    var query = "SELECT Id, Amount__c FROM Product2 WHERE Id= '" + productID + "' LIMIT 1";
     conn.query(query, (err, res) => {
       if (err) { return console.error(err); }
       product = res.records[0];
