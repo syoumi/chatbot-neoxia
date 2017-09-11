@@ -20,6 +20,7 @@ var getOpportunity = (accountId, callback) => {
 
 //Update Price Book ID
 var updateOpportunity = (accountId, pricebookEntry, callback) => {
+  console.log('----->PricebookEntry: ', pricebookEntry);
   doLogin((conn) => {
     var query = "SELECT Id, Name, AccountId, Pricebook2Id FROM Quote WHERE AccountId= '" + accountId + "'";
     conn.query(query)
