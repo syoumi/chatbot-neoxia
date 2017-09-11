@@ -18,7 +18,7 @@ var sendQuote = (contact, productID, quantity) => {
   getProduct(productID, (product) => {
 
       //Get Price Book Entry
-      getPriceBookEntry(priceBookEntryId, 'Standard Price Book', (priceBookEntry) => {
+      getPriceBookEntry(productID, 'Standard Price Book', (priceBookEntry) => {
         console.log('PRICE BOOK ENTRY : ', pricebookEntry);
 
         //Update Opportunity
