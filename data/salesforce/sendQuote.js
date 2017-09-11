@@ -19,14 +19,14 @@ var sendQuote = (contact, productID, quantity) => {
   getProduct(productID, (product) => {
 
     //Then, create a new Price Book Entry for product
-    addPriceBookEntry(product, 'Standard Price Book', (priceBookEntryId) => {
+    addPriceBookEntry(product, 'Standard Price Book', (pricebookEntryId) => {
 
       //Get Price Book Entry
-      getPriceBookEntry(priceBookEntryId, (priceBookEntry) => {
+      getPriceBookEntry(pricebookEntryId, (pricebookEntry) => {
         console.log('PRICE BOOK ENTRY : ', pricebookEntry);
 
         //Update Opportunity
-        updateOpportunity(contact.AccountId, priceBookEntry, () => {
+        updateOpportunity(contact.AccountId, pricebookEntry, () => {
 
           //Get Opportunity
           getOpportunity(contact.AccountId, (opportunity) => {
@@ -35,7 +35,7 @@ var sendQuote = (contact, productID, quantity) => {
               console.log('QUOTE ID: ', quoteID);
               if(quoteID && quoteID != ''){
                 //Add Quote Line Item and send Quote by Email
-                addQuoteLineItem(quoteID, priceBookEntry, product, quantity);
+                addQuoteLineItem(quoteID, pricebookEntry, product, quantity);
                 updateQuote(quoteID);
               }
             });
