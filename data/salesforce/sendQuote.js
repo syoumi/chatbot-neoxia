@@ -16,7 +16,7 @@ var sendQuote = (contact, productID, quantity) => {
     getOpportunity(contact.AccountId, (opportunity)  => {
 
       //Then, Look for PriceBookEntryId
-      getPriceBookEntry(product.Id, (pricebookEntry) => {
+      getPriceBookEntry(productID, (pricebookEntry) => {
 
         if(pricebookEntry){
           //Update Opportunity
