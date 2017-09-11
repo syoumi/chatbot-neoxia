@@ -24,7 +24,7 @@ var sendQuote = (contact, productID, quantity) => {
           console.log('QUOTE ID: ', quoteID);
           if(quoteID !=''){
             //Add Quote Line Item and send Quote by Email
-            addQuoteLineItem(quoteID, productID, quantity);
+            addQuoteLineItem(quoteID, pricebookEntry, quantity);
             updateQuote(quoteID);
           }
         });

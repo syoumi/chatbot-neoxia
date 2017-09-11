@@ -22,7 +22,7 @@ var addQuoteLineItem= (quoteID, pricebookEntry, quantity) => {
     //Check if product exists
     if(product){
         doLogin((conn) => {
-          conn.sobject("QuoteLineItem").create({Product2Id: productID, QuoteId: quoteID, Quantity: quantity, UnitPrice: product.Amount__c, PriceBookEntryId : pricebookEntry.Id}, function(err, res) {
+          conn.sobject("QuoteLineItem").create({Product2Id: product.Id, QuoteId: quoteID, Quantity: quantity, UnitPrice: product.Amount__c, PriceBookEntryId : pricebookEntry.Id}, function(err, res) {
             if (err) { return console.error(err); }
           });
         });
