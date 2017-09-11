@@ -30,7 +30,6 @@ var getFormLead = (req, callback) => {
 
   });
 
-
   callback(result);
 }
 

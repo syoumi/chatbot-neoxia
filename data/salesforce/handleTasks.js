@@ -3,6 +3,8 @@ const {doLogin} = require('./login');
 
 const {getContact} = require('./handleContacts');
 
+const {sendQuote} = require('./sendQuote');
+
 const {sendTextMessageWithDelay} = require('./../../send/fbApi/sendTextMessage');
 
 const {getText} = require('./../../utils/getPredefinedAnswers');
@@ -39,6 +41,7 @@ var addTask = (senderID) => {
     switch(task.subject){
 
       case "Envoyer devis":
+
         doLogin((conn) => {
 
           getContact(senderID, (contact) => {
@@ -48,6 +51,9 @@ var addTask = (senderID) => {
                 if (err) { return console.error(err); }
                 tasks.delete(senderID);
                 console.log('TASK DELETED');
+
+                //Send Quote
+                sendQuote(contact);
 
                 //Message to send
                 var salutation = contact.Salutation;

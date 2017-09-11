@@ -103,7 +103,7 @@ var receivedPostBack = (event) => {
         }
       ];
       getContact(senderID, (contact) => {
-        //saveTask(senderID, postback[2], postback[5], 'Envoyer devis', '');
+        saveTask(senderID, postback[2], postback[5], 'Envoyer devis');
         if(!contact){
           var text = getText('fr', 'Send form quote', undefined);
           sendTextMessage(senderID, text);
@@ -113,6 +113,7 @@ var receivedPostBack = (event) => {
         else{
           addTask(senderID);
         }
+
       });
       break;
 

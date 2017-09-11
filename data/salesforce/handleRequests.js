@@ -15,18 +15,26 @@ var addRequest = (senderID, building, operation, minPrice, maxPrice, nbrRooms, c
 var getRequest = (senderID, callback) => {
     doLogin((conn) => {
       var request = undefined;
-      var query = "SELECT Name, FacebookId__c, isTreated__c FROM Request__c";
+      var query = "SELECT Name, FacebookId__c, isTreated__c FROM Request__c ORDER BY CreatedDate DESC LIMIT 1 ";
       conn.query(query, (err, res) => {
         if (err) { return console.error(err); }
-
-          for (var i=0; i<res.records.length; i++) {
-            var record = res.records[i];
-
-            if(senderID == record.FacebookId__c){
-              request = record;
-            }
-          }
+        request = res.records[0];
         callback(request);
+      });
+    });
+}
+
+//Get all user's requests
+var getAllRequests = (senderID, callback) => {
+    doLogin((conn) => {
+      var requests = [];
+      var query = "SELECT Name, FacebookId__c, isTreated__c FROM Request__c ORDER BY CreatedDate DESC ";
+      conn.query(query, (err, res) => {
+        if (err) { return console.error(err); }
+        res.records.forEach( (record) => {
+          requests.push(record);
+        });
+        callback(requests);
       });
     });
 }
@@ -45,5 +53,5 @@ var updateRequest = (senderID, isTreated) => {
 }
 
 module.exports = {
-  addRequest, updateRequest, getRequest
+  addRequest, updateRequest, getRequest, getAllRequests
 }
