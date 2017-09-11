@@ -3,6 +3,8 @@ const {doLogin} = require('./login');
 
 const {getProduct} = require('./handleProducts');
 
+const {getPriceBookEntry} = require('./handlePriceBookEntry');
+
 //Create new quote
 var addQuote = (contact, opportunity, callback) => {
   doLogin((conn) => {
