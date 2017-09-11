@@ -15,15 +15,16 @@ const {getProduct} = require('./handleProducts');
 //Send Quote
 var sendQuote = (contact, productID, quantity) => {
 
-
   //Look for product first
   getProduct(productID, (product) => {
 
-    //Then, create a new Price Book Entry
+    //Then, create a new Price Book Entry for product
     addPriceBookEntry(product, 'Standard Price Book', (priceBookEntryId) => {
+
       //Get Price Book Entry
       getPriceBookEntry(priceBookEntryId, (priceBookEntry) => {
-
+        console.log('PRICE BOOK ENTRY : ', pricebookEntry);
+        
         //Update Opportunity
         updateOpportunity(contact.AccountId, priceBookEntry, () => {
 

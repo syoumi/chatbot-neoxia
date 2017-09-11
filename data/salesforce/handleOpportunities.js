@@ -25,6 +25,7 @@ var updateOpportunity = (accountId, pricebookEntry, callback) => {
     conn.query(query)
         .update({ Pricebook2Id: pricebookEntry.Pricebook2Id }, 'Opportunity', function(err, res) {
           if (err) { return console.error(err); }
+          console.log('OPP UPDATED: ', res);
           callback();
     });
   });
