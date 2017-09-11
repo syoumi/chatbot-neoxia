@@ -19,7 +19,7 @@ var addQuoteLineItem= (quote, productID, quantity) => {
   getProduct(productID, (product) => {
     if(product){
       doLogin((conn) => {
-        conn.sobject("QuoteLineItem").create({Product2Id: productID, QuoteId: quote.Id, Quantity: quantity, UnitPrice: product.Amount__c, PriceBookEntryId : 1}, function(err, res) {
+        conn.sobject("QuoteLineItem").create({Product2Id: productID, QuoteId: quote.Id, Quantity: quantity, UnitPrice: product.Amount__c, PriceBookEntryId : '1PBEI'}, function(err, res) {
           if (err) { return console.error(err); }
         });
       });
