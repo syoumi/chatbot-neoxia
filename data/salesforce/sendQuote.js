@@ -7,7 +7,7 @@ const {addQuoteLineItem} = require('./handleQuotes');
 const {getOpportunity} = require('./handleOpportunities');
 const {updateOpportunity} = require('./handleOpportunities');
 
-const {addPriceBookEntry} = require('./handlePriceBookEntry');
+const {addPriceBookEntry} = require('./handlePriceBookEntries');
 
 const {getProduct} = require('./handleProducts');
 

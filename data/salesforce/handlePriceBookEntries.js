@@ -9,6 +9,7 @@ var addPriceBookEntry = (product, name, callback) => {
     doLogin((conn) => {
       conn.sobject("PricebookEntry").create({Product2Id: product.Id, PriceBook2Id: pricebook.Id, UnitPrice: product.Amount__c, isActive: true}, function(err, res) {
         if (err) { return console.error(err); }
+        console.log('RES PRICE BOOK ENTRY: ', res);
        callback(res.id);
       });
     });
@@ -47,5 +48,5 @@ var getPriceBookEntry = (PriceBookEntryId, callback) => {
 }
 
 module.exports = {
-  addPriceBookEntry, getPriceBookEntry
+  addPriceBookEntry, getPriceBookEntry, getPriceBook
 }
