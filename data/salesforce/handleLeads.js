@@ -55,21 +55,16 @@ var addLead = (senderID) => {
 
 //update lead
 var updateLead = (senderID, fname, lname, company, city, country, email, phone, callback) => {
-
-  getLead(senderID, (leadFound) => {
-    if(leadFound){
-      //TODO Search if there's a contact with the same email if so update contact's facebookId__c and delete lead else update lead
-      doLogin((conn) => {
-        var query = "SELECT Id, firstName, lastName, facebookId__c, company,  city, country, email, Phone, ToConvert__c FROM lead WHERE FacebookID__c= '" + senderID + "'";
-        conn.query(query)
-            .update({ firstName : fname, lastName : lname, company : company, city : city, country: country, email : email, Phone : phone }, 'Lead', function(err, rets) {
-              if (err) { return console.error(err); }
-            });
-        console.log('LEAD UPDATED');
-        callback(leadFound);
-      });
-    }
-  });
+    //TODO Search if there's a contact with the same email if so update contact's facebookId__c and delete lead else update lead
+    doLogin((conn) => {
+      var query = "SELECT Id, firstName, lastName, facebookId__c, company,  city, country, email, Phone, ToConvert__c FROM lead WHERE FacebookID__c= '" + senderID + "'";
+      conn.query(query)
+          .update({ firstName : fname, lastName : lname, company : company, city : city, country: country, email : email, Phone : phone }, 'Lead', function(err, rets) {
+            if (err) { return console.error(err); }
+            console.log('LEAD UPDATED');
+            callback(rets);
+          });
+    });
 
 }
 

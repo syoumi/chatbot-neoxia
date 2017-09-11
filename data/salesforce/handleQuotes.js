@@ -18,8 +18,8 @@ var addQuote = (contact, opportunity, callback) => {
 }
 
 //Create new Quote Line Item related to quote
-var addQuoteLineItem= (quote, productID, quantity) => {
-  getProduct(productID, (product) => {
+var addQuoteLineItem= (quote, pricebookEntry, quantity) => {
+  getProduct(pricebookEntry.Product2Id, (product) => {
     //Check if product exists
     if(product){
         doLogin((conn) => {
@@ -55,7 +55,7 @@ var updateQuote = (quote) => {
     conn.query(query)
         .update({ ToSend__c: true }, 'Quote', function(err, rets) {
           if (err) { return console.error(err); }
-          console.log(rets);
+          console.log("Quote updated: ", rets);
         });
   });
 }

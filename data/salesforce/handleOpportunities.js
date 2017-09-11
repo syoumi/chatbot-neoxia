@@ -24,7 +24,7 @@ var updateOpportunity = (opportunity, pricebookID, callback) => {
         .update({ Pricebook2Id: pricebookID }, 'Opportunity', function(err, rets) {
           if (err) { return console.error(err); }
           console.log(rets);
-          callback();
+          callback(rets);
         });
   });
 }
