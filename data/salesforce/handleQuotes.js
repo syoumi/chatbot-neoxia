@@ -45,7 +45,7 @@ var getQuote = (opportunity, callback) => {
 //Update ToSend__c
 var updateQuote = (quote) => {
   doLogin((conn) => {
-    var query = "SELECT Id, ToSend__c FROM Quote WHERE Id= " + quote.Id;
+    var query = "SELECT Id, ToSend__c FROM Quote WHERE Id= '" + quote.Id + "'";
     conn.query(query)
         .update({ ToSend__c: true }, 'Quote', function(err, rets) {
           if (err) { return console.error(err); }
