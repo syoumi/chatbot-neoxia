@@ -21,6 +21,7 @@ var sendQuote = (contact, productID, quantity) => {
         updateOpportunity(opportunity, pricebookEntry.Id);
         //Then, Add Quote
         addQuote(contact, opportunity, (quoteID)=> {
+          console.log('QUOTE ID: ', quoteID);
           if(quoteID !=''){
             //Add Quote Line Item and send Quote by Email
             addQuoteLineItem(quoteID, productID, quantity);
