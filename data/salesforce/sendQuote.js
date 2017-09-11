@@ -7,6 +7,8 @@ const {addQuoteLineItem} = require('./handleQuotes');
 const {getOpportunity} = require('./handleOpportunities');
 const {updateOpportunity} = require('./handleOpportunities');
 
+const {getPriceBookEntry} = require('./handlePriceBookEntry');
+
 //Send Quote
 var sendQuote = (contact, productID, quantity) => {
 
