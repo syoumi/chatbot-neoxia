@@ -1,5 +1,5 @@
 
-const {getOpportunity} = require('./handleOpportunites');
+const {getOpportunity} = require('./handleOpportunities');
 
 const {addQuote} = require('./handleQuotes');
 const {getQuote} = require('./handleQuotes');
