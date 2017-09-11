@@ -16,7 +16,20 @@ var getOpportunity = (accountId, callback) => {
   });
 }
 
+//Update Price Book ID
+var updateOpportunity = (opportunity, pricebookID, callback) => {
+  doLogin((conn) => {
+    var query = "SELECT Id, Pricebook2Id FROM Quote WHERE Id= '" + opportunity.Id + "'";
+    conn.query(query)
+        .update({ Pricebook2Id: pricebookID }, 'Opportunity', function(err, rets) {
+          if (err) { return console.error(err); }
+          console.log(rets);
+          callback();
+        });
+  });
+}
+
 
 module.exports = {
-  getOpportunity
+  getOpportunity, updateOpportunity
 }

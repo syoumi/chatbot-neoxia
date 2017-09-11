@@ -5,6 +5,7 @@ const {getContact} = require('./handleContacts');
 
 const {sendQuote} = require('./sendQuote');
 
+
 const {sendTextMessageWithDelay} = require('./../../send/fbApi/sendTextMessage');
 
 const {getText} = require('./../../utils/getPredefinedAnswers');

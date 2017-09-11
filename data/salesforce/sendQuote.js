@@ -1,25 +1,44 @@
 
-const {getOpportunity} = require('./handleOpportunities');
-
 const {addQuote} = require('./handleQuotes');
 const {getQuote} = require('./handleQuotes');
 const {updateQuote} = require('./handleQuotes');
 const {addQuoteLineItem} = require('./handleQuotes');
 
+const {getOpportunity} = require('./handleOpportunities');
+const {updateOpportunity} = require('./handleOpportunities');
+
 //Send Quote
 var sendQuote = (contact, productID, quantity) => {
+
+    //Get opportunity First
     getOpportunity(contact.AccountId, (opportunity)  => {
 
-      addQuote(contact, opportunity, () => {
+      //Then, Look for PriceBookEntryId
+      getPriceBookEntry(product.Id, (pricebookEntry) => {
 
-        getQuote(opportunity, (quote) => {
-          if(quote){
-            addQuoteLineItem(quote, productID, quantity);
-            updateQuote(quote);
-          }
-        });
+        if(pricebookEntry){
+          //Update Opportunity
+          updateOpportunity(opportunity, () => {
+            //Then, Add Quote
+            addQuote(contact, opportunity, () => {
+                
+              getQuote(opportunity, (quote) => {
+                if(quote){
 
+                  //Add Quote Line Item and send Quote by Email
+                  addQuoteLineItem(quote, productID, quantity);
+                  updateQuote(quote);
+                }
+              });
+
+            });
+
+
+
+          });
+        }
       });
+
     });
 }
 

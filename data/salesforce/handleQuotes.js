@@ -11,7 +11,8 @@ var addQuote = (contact, opportunity, callback) => {
     var name = 'Devis initial ' + contact.FacebookId__c;
     conn.sobject("Quote").create({Name: name, ContactId: contact.Id, OpportunityId: opportunity.Id, Email : contact.Email,  Phone: contact.MobilePhone, BillingName: opportunity.Name, ShippingName: opportunity.Name,  BillingCity: contact.City, BillingCountry: contact.Country, ShippingCity: contact.City, ShippingCountry: contact.Country}, function(err, res) {
       if (err) { return console.error(err); }
-      callback();
+      console.log('RES: ', res);
+      callback(res);
     });
   });
 }
@@ -19,21 +20,14 @@ var addQuote = (contact, opportunity, callback) => {
 //Create new Quote Line Item related to quote
 var addQuoteLineItem= (quote, productID, quantity) => {
   getProduct(productID, (product) => {
-
-    //Check if product exist
+    //Check if product exists
     if(product){
-
-      //Look for PriceBookEntryId
-      getPriceBookEntry(product.Id, (pricebookEntry) => {
         doLogin((conn) => {
           conn.sobject("QuoteLineItem").create({Product2Id: productID, QuoteId: quote.Id, Quantity: quantity, UnitPrice: product.Amount__c, PriceBookEntryId : pricebookEntry.Id}, function(err, res) {
             if (err) { return console.error(err); }
           });
         });
-      });
-
     }
-
   });
 
 }
