@@ -11,27 +11,28 @@ const {getPriceBookEntry} = require('./handlePriceBookEntry');
 
 //Send Quote
 var sendQuote = (contact, productID, quantity) => {
+  //Look for PriceBookEntryId First
+  getPriceBookEntry(productID, (pricebookEntry) => {
 
-    //Get opportunity First
-    getOpportunity(contact.AccountId, (opportunity)  => {
-      console.log("Opp: ", opportunity);
-      //Then, Look for PriceBookEntryId
-      getPriceBookEntry(productID, (pricebookEntry) => {
-        if(pricebookEntry){
-          //Update Opportunity
-          updateOpportunity(opportunity, pricebookEntry.Id, (opportunity) => {
-            //Then, Add Quote
-            addQuote(contact, opportunity, (quote) => {
-                if(quote){
-                  //Add Quote Line Item and send Quote by Email
-                  addQuoteLineItem(quote, productID, quantity);
-                  updateQuote(quote);
-                }
-            });
-          });
-        }
+    if(pricebookEntry){
+      //Then, Get opportunity
+      getOpportunity(contact.AccountId, (opportunity)  => {
+        //Update Opportunity
+        updateOpportunity(opportunity, pricebookEntry.Id);
+        //Then, Add Quote
+        addQuote(contact, opportunity, (quote) => {
+            if(quote){
+              //Add Quote Line Item and send Quote by Email
+              addQuoteLineItem(quote, productID, quantity);
+              updateQuote(quote);
+            }
+        });
+
       });
-    });
+    }
+
+  });
+
 }
 
 module.exports = {
