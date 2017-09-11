@@ -19,11 +19,11 @@ var getOpportunity = (accountId, callback) => {
 }
 
 //Update Price Book ID
-var updateOpportunity = (accountId, pricebook, callback) => {
+var updateOpportunity = (accountId, pricebookEntry, callback) => {
   doLogin((conn) => {
     var query = "SELECT Id, Name, AccountId, Pricebook2Id FROM Quote WHERE AccountId= '" + accountId + "'";
     conn.query(query)
-        .update({ Pricebook2Id: pricebook }, 'Opportunity', function(err, res) {
+        .update({ Pricebook2Id: pricebookEntry.Pricebook2Id }, 'Opportunity', function(err, res) {
           if (err) { return console.error(err); }
           callback();
     });

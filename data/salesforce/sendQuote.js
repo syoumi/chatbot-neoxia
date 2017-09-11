@@ -8,6 +8,7 @@ const {getOpportunity} = require('./handleOpportunities');
 const {updateOpportunity} = require('./handleOpportunities');
 
 const {addPriceBookEntry} = require('./handlePriceBookEntries');
+const {getPriceBookEntry} = require('./handlePriceBookEntries');
 
 const {getProduct} = require('./handleProducts');
 
@@ -20,21 +21,25 @@ var sendQuote = (contact, productID, quantity) => {
 
     //Then, create a new Price Book Entry
     addPriceBookEntry(product, 'Standard Price Book', (priceBookEntryId) => {
+      //Get Price Book Entry
+      getPriceBookEntry(priceBookEntryId, (priceBookEntry) => {
 
-      //Update Opportunity
-      updateOpportunity(contact.AccountId, priceBookEntryId, () => {
+        //Update Opportunity
+        updateOpportunity(contact.AccountId, priceBookEntry, () => {
 
-        //Get Opportunity
-        getOpportunity(contact.AccountId, (opportunity) => {
-          //Then, Add Quote
-          addQuote(contact, opportunity, (quoteID) => {
-            console.log('QUOTE ID: ', quoteID);
-            if(quoteID && quoteID != ''){
-              //Add Quote Line Item and send Quote by Email
-              addQuoteLineItem(quoteID, priceBookEntryId, product, quantity);
-              updateQuote(quoteID);
-            }
+          //Get Opportunity
+          getOpportunity(contact.AccountId, (opportunity) => {
+            //Then, Add Quote
+            addQuote(contact, opportunity, (quoteID) => {
+              console.log('QUOTE ID: ', quoteID);
+              if(quoteID && quoteID != ''){
+                //Add Quote Line Item and send Quote by Email
+                addQuoteLineItem(quoteID, priceBookEntry, product, quantity);
+                updateQuote(quoteID);
+              }
+            });
           });
+
         });
 
       });
