@@ -4,17 +4,17 @@ const {doLogin} = require('./login');
 
 
 //Create new Price Book Entry for a product
-var addPriceBookEntry = (product, name, callback) => {
-  getPriceBook(name, (pricebook) => {
-    doLogin((conn) => {
-      conn.sobject("PricebookEntry").create({Product2Id: product.Id, PriceBook2Id: pricebook.Id, UnitPrice: product.Amount__c, isActive: true}, function(err, res) {
-        if (err) { return console.error(err); }
-       callback(res.id);
-      });
-    });
-  });
-
-}
+// var addPriceBookEntry = (product, name, callback) => {
+//   getPriceBook(name, (pricebook) => {
+//     doLogin((conn) => {
+//       conn.sobject("PricebookEntry").create({Product2Id: product.Id, PriceBook2Id: pricebook.Id, UnitPrice: product.Amount__c, isActive: true}, function(err, res) {
+//         if (err) { return console.error(err); }
+//        callback(res.id);
+//       });
+//     });
+//   });
+//
+// }
 
 //Get Price Book by it's name
 var getPriceBook = (name, callback) => {
@@ -32,20 +32,22 @@ var getPriceBook = (name, callback) => {
 }
 
 //Get Price Book Entry by it's ID
-var getPriceBookEntry = (PriceBookEntryId, callback) => {
-  doLogin((conn) => {
-    var pricebookEntry = undefined;
-    var query = "SELECT Id, Pricebook2Id, Product2Id, UnitPrice FROM PricebookEntry WHERE Id='" + PriceBookEntryId + "' LIMIT 1";
-    conn.query(query, (err, res) => {
-      if (err) { return console.error(err); }
-      if(res.records.length > 0){
-       pricebookEntry = res.records[0];
-      }
-      callback(pricebookEntry);
+var getPriceBookEntry = (productID, name, callback) => {
+  getPriceBook(name, (pricebook) => {
+    doLogin((conn) => {
+      var pricebookEntry = undefined;
+      var query = "SELECT Id, Pricebook2Id, Product2Id, UnitPrice FROM PricebookEntry WHERE Product2Id ='" + productID + "' AND Pricebook2Id = '" + pricebook.Id + "' LIMIT 1";
+      conn.query(query, (err, res) => {
+        if (err) { return console.error(err); }
+        if(res.records.length > 0){
+         pricebookEntry = res.records[0];
+        }
+        callback(pricebookEntry);
+      });
     });
   });
 }
 
 module.exports = {
-  addPriceBookEntry, getPriceBookEntry, getPriceBook
+  getPriceBookEntry, getPriceBook
 }

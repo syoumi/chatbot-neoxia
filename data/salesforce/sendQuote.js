@@ -7,7 +7,6 @@ const {addQuoteLineItem} = require('./handleQuotes');
 const {getOpportunity} = require('./handleOpportunities');
 const {updateOpportunity} = require('./handleOpportunities');
 
-const {addPriceBookEntry} = require('./handlePriceBookEntries');
 const {getPriceBookEntry} = require('./handlePriceBookEntries');
 
 const {getProduct} = require('./handleProducts');
@@ -18,13 +17,10 @@ var sendQuote = (contact, productID, quantity) => {
   //Look for product first
   getProduct(productID, (product) => {
 
-    //Then, create a new Price Book Entry for product
-    addPriceBookEntry(product, 'Standard Price Book', (priceBookEntryId) => {
-
       //Get Price Book Entry
-      getPriceBookEntry(priceBookEntryId, (priceBookEntry) => {
+      getPriceBookEntry(priceBookEntryId, 'Standard Price Book', (priceBookEntry) => {
         console.log('PRICE BOOK ENTRY : ', pricebookEntry);
-        
+
         //Update Opportunity
         updateOpportunity(contact.AccountId, priceBookEntry, () => {
 
@@ -44,8 +40,6 @@ var sendQuote = (contact, productID, quantity) => {
         });
 
       });
-
-    });
 
   });
 
