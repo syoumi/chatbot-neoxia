@@ -15,21 +15,20 @@ var sendQuote = (contact, productID, quantity) => {
   getPriceBookEntry(productID, (pricebookEntry) => {
 
     if(pricebookEntry){
-      //Then, Get opportunity
-      getOpportunity(contact.AccountId, (opportunity)  => {
+
         //Update Opportunity
-        updateOpportunity(opportunity, pricebookEntry.Id);
-        //Then, Add Quote
-        addQuote(contact, opportunity, (quoteID) => {
-          console.log('QUOTE ID: ', quoteID);
-          if(quoteID !=''){
-            //Add Quote Line Item and send Quote by Email
-            addQuoteLineItem(quoteID, pricebookEntry, quantity);
-            updateQuote(quoteID);
-          }
+        updateOpportunity(contact.AccountId, pricebookEntry.Id, (opportunity) => {
+          //Then, Add Quote
+          addQuote(contact, opportunity, (quoteID) => {
+            console.log('QUOTE ID: ', quoteID);
+            if(quoteID !=''){
+              //Add Quote Line Item and send Quote by Email
+              addQuoteLineItem(quoteID, pricebookEntry, quantity);
+              updateQuote(quoteID);
+            }
+          });
         });
 
-      });
     }
 
   });

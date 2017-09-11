@@ -17,13 +17,14 @@ var getOpportunity = (accountId, callback) => {
 }
 
 //Update Price Book ID
-var updateOpportunity = (opportunity, pricebookID) => {
+var updateOpportunity = (accountId, pricebookID, callback) => {
   doLogin((conn) => {
-    var query = "SELECT Id, Pricebook2Id FROM Quote WHERE Id= '" + opportunity.Id + "'";
+    var query = "SELECT Id, Name, AccountId, Pricebook2Id FROM Quote WHERE AccountId= '" + accountId + "'";
     conn.query(query)
-        .update({ Pricebook2Id: pricebookID }, 'Opportunity', function(err, rets) {
+        .update({ Pricebook2Id: pricebookID }, 'Opportunity', function(err, res) {
           if (err) { return console.error(err); }
-        });
+          callback(res);
+    });
   });
 }
 
