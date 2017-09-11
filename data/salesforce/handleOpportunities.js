@@ -22,12 +22,12 @@ var getOpportunity = (accountId, callback) => {
 var updateOpportunity = (accountId, pricebookEntry, callback) => {
   console.log('----->PricebookEntry: ', pricebookEntry);
   doLogin((conn) => {
-    var query = "SELECT Id, Name, AccountId, Pricebook2Id FROM Quote WHERE AccountId= '" + accountId + "'";
+    var query = "SELECT Id, Name, AccountId, Pricebook2Id FROM Opportunity WHERE AccountId= '" + accountId + "'";
     conn.query(query)
         .update({ Pricebook2Id: pricebookEntry.Pricebook2Id }, 'Opportunity', function(err, res) {
           if (err) { return console.error(err); }
           console.log('OPP UPDATED: ', res);
-          callback();
+          callback(res);
     });
   });
 }
