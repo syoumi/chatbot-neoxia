@@ -14,9 +14,9 @@ var addQuote = (contact, opportunity, callback) => {
 }
 
 //Create new Quote Line Item related to quote
-var addQuoteLineItem= (quote, product, quantity) => {
+var addQuoteLineItem= (quote, productID, quantity) => {
   doLogin((conn) => {
-    conn.sobject("QuoteLineItem").create({Product2Id: product.Id, QuoteId: quote.Id, Quantity: quantity }, function(err, res) {
+    conn.sobject("QuoteLineItem").create({Product2Id: productID,  QuoteId: quote.Id, Quantity: quantity }, function(err, res) {
       if (err) { return console.error(err); }
     });
   });

@@ -53,7 +53,7 @@ var addTask = (senderID) => {
                 console.log('TASK DELETED');
 
                 //Send Quote
-                sendQuote(contact);
+                sendQuote(contact, task.productID, 1);
 
                 //Message to send
                 var salutation = contact.Salutation;

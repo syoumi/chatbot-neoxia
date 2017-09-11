@@ -7,14 +7,14 @@ const {updateQuote} = require('./handleQuotes');
 const {addQuoteLineItem} = require('./handleQuotes');
 
 //Send Quote
-var sendQuote = (contact, product, quantity) => {
+var sendQuote = (contact, productID, quantity) => {
     getOpportunity(contact.AccountId, (opportunity)  => {
 
       addQuote(contact, opportunity, () => {
 
         getQuote(opportunity, (quote) => {
           if(quote){
-            addQuoteLineItem(quote, product, quantity);
+            addQuoteLineItem(quote, productID, quantity);
             updateQuote(quote);
           }
         });
