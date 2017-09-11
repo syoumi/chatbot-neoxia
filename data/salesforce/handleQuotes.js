@@ -12,18 +12,18 @@ var addQuote = (contact, opportunity, callback) => {
     conn.sobject("Quote").create({Name: name, ContactId: contact.Id, OpportunityId: opportunity.Id, Email : contact.Email,  Phone: contact.MobilePhone, BillingName: opportunity.Name, ShippingName: opportunity.Name,  BillingCity: contact.City, BillingCountry: contact.Country, ShippingCity: contact.City, ShippingCountry: contact.Country}, function(err, res) {
       if (err) { return console.error(err); }
       console.log('RES: ', res);
-      callback(res);
+      callback(res.Id);
     });
   });
 }
 
 //Create new Quote Line Item related to quote
-var addQuoteLineItem= (quote, pricebookEntry, quantity) => {
+var addQuoteLineItem= (quoteID, pricebookEntry, quantity) => {
   getProduct(pricebookEntry.Product2Id, (product) => {
     //Check if product exists
     if(product){
         doLogin((conn) => {
-          conn.sobject("QuoteLineItem").create({Product2Id: productID, QuoteId: quote.Id, Quantity: quantity, UnitPrice: product.Amount__c, PriceBookEntryId : pricebookEntry.Id}, function(err, res) {
+          conn.sobject("QuoteLineItem").create({Product2Id: productID, QuoteId: quoteID, Quantity: quantity, UnitPrice: product.Amount__c, PriceBookEntryId : pricebookEntry.Id}, function(err, res) {
             if (err) { return console.error(err); }
           });
         });
@@ -49,9 +49,9 @@ var getQuote = (opportunity, callback) => {
 }
 
 //Update ToSend__c
-var updateQuote = (quote) => {
+var updateQuote = (quoteID) => {
   doLogin((conn) => {
-    var query = "SELECT Id, ToSend__c FROM Quote WHERE Id= '" + quote.Id + "'";
+    var query = "SELECT Id, ToSend__c FROM Quote WHERE Id= '" + quoteID + "'";
     conn.query(query)
         .update({ ToSend__c: true }, 'Quote', function(err, rets) {
           if (err) { return console.error(err); }

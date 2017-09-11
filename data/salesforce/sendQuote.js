@@ -20,12 +20,12 @@ var sendQuote = (contact, productID, quantity) => {
         //Update Opportunity
         updateOpportunity(opportunity, pricebookEntry.Id);
         //Then, Add Quote
-        addQuote(contact, opportunity, (quote) => {
-            if(quote){
-              //Add Quote Line Item and send Quote by Email
-              addQuoteLineItem(quote, productID, quantity);
-              updateQuote(quote);
-            }
+        addQuote(contact, opportunity, (quoteID)=> {
+          if(quoteID !=''){
+            //Add Quote Line Item and send Quote by Email
+            addQuoteLineItem(quoteID, productID, quantity);
+            updateQuote(quoteID);
+          }
         });
 
       });
