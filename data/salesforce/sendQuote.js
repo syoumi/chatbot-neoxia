@@ -14,6 +14,7 @@ var sendQuote = (contact, productID, quantity) => {
 
     //Get opportunity First
     getOpportunity(contact.AccountId, (opportunity)  => {
+      console.log("Opp: ", opportunity);
       //Then, Look for PriceBookEntryId
       getPriceBookEntry(productID, (pricebookEntry) => {
         if(pricebookEntry){

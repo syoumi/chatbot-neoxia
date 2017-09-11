@@ -23,7 +23,7 @@ var updateOpportunity = (opportunity, pricebookID, callback) => {
     conn.query(query)
         .update({ Pricebook2Id: pricebookID }, 'Opportunity', function(err, rets) {
           if (err) { return console.error(err); }
-          console.log(rets);
+          console.log("Opp updated: ", rets);
           callback(rets);
         });
   });
