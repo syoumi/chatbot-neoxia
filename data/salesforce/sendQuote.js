@@ -18,10 +18,10 @@ var sendQuote = (contact, productID, quantity) => {
 
         if(pricebookEntry){
           //Update Opportunity
-          updateOpportunity(opportunity, () => {
+          updateOpportunity(opportunity, pricebookEntry.Id, () => {
             //Then, Add Quote
             addQuote(contact, opportunity, () => {
-                
+
               getQuote(opportunity, (quote) => {
                 if(quote){
 
