@@ -17,13 +17,21 @@ var addQuote = (contact, opportunity, callback) => {
 //Create new Quote Line Item related to quote
 var addQuoteLineItem= (quote, productID, quantity) => {
   getProduct(productID, (product) => {
+
+    //Check if product exist
     if(product){
-      doLogin((conn) => {
-        conn.sobject("QuoteLineItem").create({Product2Id: productID, QuoteId: quote.Id, Quantity: quantity, UnitPrice: product.Amount__c, PriceBookEntryId : 'PBEI'}, function(err, res) {
-          if (err) { return console.error(err); }
+
+      //Look for PriceBookEntryId
+      getPriceBookEntry(product.Id, (pricebookEntry) => {
+        doLogin((conn) => {
+          conn.sobject("QuoteLineItem").create({Product2Id: productID, QuoteId: quote.Id, Quantity: quantity, UnitPrice: product.Amount__c, PriceBookEntryId : pricebookEntry.Id}, function(err, res) {
+            if (err) { return console.error(err); }
+          });
         });
       });
+
     }
+
   });
 
 }
@@ -36,7 +44,9 @@ var getQuote = (opportunity, callback) => {
       var query = "SELECT Id, Name, OpportunityId, ContactId, Email, Phone, ToSend__c FROM Quote ORDER BY CreatedDate DESC LIMIT 1";
       conn.query(query, (err, res) => {
         if (err) { return console.error(err); }
-        quote = res.records[0];
+        if(res.records.length > 0){
+          quote = res.records[0];
+        }
         callback(quote);
       });
     });

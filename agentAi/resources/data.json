@@ -1157,6 +1157,21 @@
       "hasParam": "0"
     },
 
+    {
+      "action": "rendez-vous-action",
+      "keywords": [
+        "rendez vous pour visite sur place",
+        "visiter logement",
+        "puis je visiter ce logement",
+        "il y a une possibilité pour visiter le logement"
+      ],
+      "answers": [
+        "Veuillez contacter l'agent commercial."
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "0"
+    },
 
     {
       "action": "unknown-action",

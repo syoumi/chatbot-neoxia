@@ -18,7 +18,9 @@ var getRequest = (senderID, callback) => {
       var query = "SELECT Name, FacebookId__c, isTreated__c FROM Request__c ORDER BY CreatedDate DESC LIMIT 1 ";
       conn.query(query, (err, res) => {
         if (err) { return console.error(err); }
-        request = res.records[0];
+        if(res.records.length > 0){
+          request = res.records[0];
+        }
         callback(request);
       });
     });
