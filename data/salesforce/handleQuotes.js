@@ -11,7 +11,7 @@ var addQuote = (contact, opportunity, callback) => {
     var name = 'Devis initial ' + contact.FacebookId__c;
     conn.sobject("Quote").create({Name: name, ContactId: contact.Id, OpportunityId: opportunity.Id, Email : contact.Email,  Phone: contact.MobilePhone, BillingName: opportunity.Name, ShippingName: opportunity.Name,  BillingCity: contact.City, BillingCountry: contact.Country, ShippingCity: contact.City, ShippingCountry: contact.Country}, function(err, res) {
       if (err) { return console.error(err); }
-      console.log('RES ID: ', res.Id);
+      console.log('RES: ', res);
      callback(res.Id);
     });
   });
