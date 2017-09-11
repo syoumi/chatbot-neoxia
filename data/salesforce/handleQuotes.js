@@ -19,7 +19,7 @@ var addQuoteLineItem= (quote, productID, quantity) => {
   getProduct(productID, (product) => {
     if(product){
       doLogin((conn) => {
-        conn.sobject("QuoteLineItem").create({Product2Id: productID, QuoteId: quote.Id, Quantity: quantity, UnitPrice: product.Amount__c}, function(err, res) {
+        conn.sobject("QuoteLineItem").create({Product2Id: productID, QuoteId: quote.Id, Quantity: quantity, UnitPrice: product.Amount__c, PriceBookEntryId : 1}, function(err, res) {
           if (err) { return console.error(err); }
         });
       });
@@ -33,7 +33,7 @@ var addQuoteLineItem= (quote, productID, quantity) => {
 var getQuote = (opportunity, callback) => {
     doLogin((conn) => {
       var quote = undefined;
-      var query = "SELECT Id, Name, OpportunityId, ContactId, Email, Phone, ToSend__c FROM Quote LIMIT 1";
+      var query = "SELECT Id, Name, OpportunityId, ContactId, Email, Phone, ToSend__c FROM Quote LIMIT 1 ORDER BY CreatedDate DESC";
       conn.query(query, (err, res) => {
         if (err) { return console.error(err); }
         quote = res.records[0];
