@@ -33,7 +33,7 @@ var addQuoteLineItem= (quote, productID, quantity) => {
 var getQuote = (opportunity, callback) => {
     doLogin((conn) => {
       var quote = undefined;
-      var query = "SELECT Id, Name, OpportunityId, ContactId, Email, Phone, ToSend__c FROM Quote LIMIT 1 ORDER BY CreatedDate DESC";
+      var query = "SELECT Id, Name, OpportunityId, ContactId, Email, Phone, ToSend__c FROM Quote ORDER BY CreatedDate DESC LIMIT 1";
       conn.query(query, (err, res) => {
         if (err) { return console.error(err); }
         quote = res.records[0];
