@@ -17,16 +17,14 @@ var addQuote = (contact, opportunity, callback) => {
 }
 
 //Create new Quote Line Item related to quote
-var addQuoteLineItem= (quoteID, pricebookEntry, quantity) => {
-  getProduct(pricebookEntry.Product2Id, (product) => {
-    //Check if product exists
-    if(product){
-        doLogin((conn) => {
-          conn.sobject("QuoteLineItem").create({Product2Id: product.Id, QuoteId: quoteID, Quantity: quantity, UnitPrice: product.Amount__c, PriceBookEntryId : pricebookEntry.Id}, function(err, res) {
-            if (err) { return console.error(err); }
+var addQuoteLineItem= (quoteID, pricebookEntryID, product, quantity) => {
+  //Get Price Book Entry
+  getPriceBookEntry(pricebookEntryID, (pricebookEntry) => {
+      //Create new Quote Line Item
+      doLogin((conn) => {
+        conn.sobject("QuoteLineItem").create({Product2Id: product.Id, QuoteId: quoteID, Quantity: quantity, UnitPrice: product.Amount__c, PriceBookEntryId : pricebookEntry.Id}, function(err, res) {
           });
-        });
-    }
+      });
   });
 
 }

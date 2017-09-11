@@ -7,36 +7,43 @@ const {addQuoteLineItem} = require('./handleQuotes');
 const {getOpportunity} = require('./handleOpportunities');
 const {updateOpportunity} = require('./handleOpportunities');
 
-const {getPriceBookEntry} = require('./handlePriceBookEntry');
+const {addPriceBookEntry} = require('./handlePriceBookEntry');
+
+const {getProduct} = require('./handleProducts');
 
 //Send Quote
 var sendQuote = (contact, productID, quantity) => {
-  //Look for PriceBookEntryId First
-  getPriceBookEntry(productID, (pricebookEntry) => {
 
-    if(pricebookEntry){
-      console.log("PRICE BOOK ENTRY: ", pricebookEntry);
-        //Update Opportunity
-        updateOpportunity(contact.AccountId, pricebookEntry.Id, () => {
-          //Get Opportunity
-          getOpportunity(contact.AccountId, (opportunity) => {
-            console.log('OPP UPD: ', opportunity);
-            //Then, Add Quote
-            addQuote(contact, opportunity, (quoteID) => {
-              console.log('QUOTE ID: ', quoteID);
-              if(quoteID && quoteID != ''){
-                //Add Quote Line Item and send Quote by Email
-                addQuoteLineItem(quoteID, pricebookEntry, quantity);
-                updateQuote(quoteID);
-              }
-            });
+
+  //Look for product first
+  getProduct(productID, (product) => {
+
+    //Then, create a new Price Book Entry
+    addPriceBookEntry(product, name, (priceBookEntryId) => {
+
+      //Update Opportunity
+      updateOpportunity(contact.AccountId, priceBookEntryId, () => {
+
+        //Get Opportunity
+        getOpportunity(contact.AccountId, (opportunity) => {
+          //Then, Add Quote
+          addQuote(contact, opportunity, (quoteID) => {
+            console.log('QUOTE ID: ', quoteID);
+            if(quoteID && quoteID != ''){
+              //Add Quote Line Item and send Quote by Email
+              addQuoteLineItem(quoteID, priceBookEntryId, product, quantity);
+              updateQuote(quoteID);
+            }
           });
-
         });
 
-    }
+      });
+
+    });
 
   });
+
+
 
 }
 
