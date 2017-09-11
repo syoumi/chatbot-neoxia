@@ -33,7 +33,7 @@ var getPriceBook = (name, callback) => {
 
 //Get Price Book Entry by it's ID
 var getPriceBookEntry = (pricebookEntryId, callback) => {
-  getPriceBook(name, (pricebook) => {
+
     doLogin((conn) => {
       var pricebookEntry = undefined;
       var query = "SELECT Id, Pricebook2Id, Product2Id, UnitPrice FROM PricebookEntry WHERE Id ='" + pricebookEntryId + "'  LIMIT 1";
@@ -45,7 +45,7 @@ var getPriceBookEntry = (pricebookEntryId, callback) => {
         callback(pricebookEntry);
       });
     });
-  });
+
 }
 
 module.exports = {
