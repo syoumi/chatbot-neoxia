@@ -15,12 +15,12 @@ var sendQuote = (contact, productID, quantity) => {
   getPriceBookEntry(productID, (pricebookEntry) => {
 
     if(pricebookEntry){
-
+      console.log("PRICE BOOK ENTRY: ", pricebookEntry);
         //Update Opportunity
         updateOpportunity(contact.AccountId, pricebookEntry.Id, () => {
           //Get Opportunity
           getOpportunity(contact.AccountId, (opportunity) => {
-            console.log('OPP : ', opportunity);
+            console.log('OPP UPD: ', opportunity);
             //Then, Add Quote
             addQuote(contact, opportunity, (quoteID) => {
               console.log('QUOTE ID: ', quoteID);
