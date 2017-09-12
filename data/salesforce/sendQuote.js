@@ -30,7 +30,6 @@ var sendQuote = (contact, productID, quantity) => {
 
           //Get Opportunity
           getOpportunity(contact.AccountId, (opportunity) => {
-            console.log('---> Opportunity: ', opportunity);
             //Then, Add Quote
             addQuote(contact, opportunity, (quoteID) => {
               console.log('QUOTE ID: ', quoteID);
