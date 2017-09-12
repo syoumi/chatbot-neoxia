@@ -15,39 +15,40 @@ const {getProduct} = require('./handleProducts');
 //Send Quote
 var sendQuote = (contact, productID, quantity) => {
 
-  //Look for product first
+  //1- Look for product first
   getProduct(productID, (product) => {
 
-    //Then, create a new Price Book Entry for product
+    //2- Then, create a new Price Book Entry for product
     addPriceBookEntry(product, 'Standard Price Book', (pricebookEntryId) => {
 
-      //Get Price Book Entry
+      //3- Get Price Book Entry
       getPriceBookEntry(pricebookEntryId, (pricebookEntry) => {
         console.log('PRICE BOOK ENTRY : ', pricebookEntry);
 
-        //Update Opportunity
+        //4- Update Opportunity
         updateOpportunity(contact.AccountId, pricebookEntry, () => {
 
-          //Get Opportunity
+          //5- Get Opportunity
           getOpportunity(contact.AccountId, (opportunity) => {
-            //Then, Add Quote
+            //6- Then, Add Quote
             addQuote(contact, opportunity, (quoteID) => {
               console.log('QUOTE ID: ', quoteID);
               if(quoteID && quoteID != ''){
-                //Add Quote Line Item and send Quote by Email
-                addQuoteLineItem(quoteID, pricebookEntry, product, quantity);
-                updateQuote(quoteID);
+                //7- Add Quote Line Item
+                addQuoteLineItem(quoteID, pricebookEntry, product, quantity, () => {
+                    //8- Create and Send Quote PDF using Trigger 
+                    updateQuote(quoteID);
+                });//7
               }
-            });
-          });
+            });//6
+          });//5
 
-        });
+        });//4
 
-      });
+      });//3
+    });//2
 
-    });
-
-  });
+  });//1
 
 
 

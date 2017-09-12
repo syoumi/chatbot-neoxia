@@ -18,11 +18,12 @@ var addQuote = (contact, opportunity, callback) => {
 
 
 //Create new Quote Line Item related to quote
-var addQuoteLineItem= (quoteID, pricebookEntry, product, quantity) => {
+var addQuoteLineItem= (quoteID, pricebookEntry, product, quantity, callback) => {
     //Create new Quote Line Item
     doLogin((conn) => {
       conn.sobject("QuoteLineItem").create({Product2Id: product.Id, QuoteId: quoteID, Quantity: quantity, UnitPrice: product.Amount__c, PriceBookEntryId : pricebookEntry.Id}, function(err, res) {
         if (err) { return console.error(err); }
+        callback;
       });
     });
 }
