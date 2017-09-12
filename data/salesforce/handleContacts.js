@@ -19,7 +19,7 @@ var getContact = (senderID, callback) => {
 
 
 
-var updateContact = (senderID) => {
+var updateContact = (senderID, fname, lname, company, city, country, email, phone) => {
 
 }
 

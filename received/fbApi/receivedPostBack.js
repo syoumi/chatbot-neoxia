@@ -75,7 +75,7 @@ var receivedPostBack = (event) => {
                   "messenger_extensions": true
         }
       ];
-      //Check if user is not a contac if so send the form else save task and insert it directly
+      //Check if user is not a contact if so send the form else save task and insert it directly
       getContact(senderID, (contact) => {
         console.log('CONTACT POSTBACK FOUND: ', contact);
         saveTask(senderID, postback[2], postback[5], 'Contacter client');

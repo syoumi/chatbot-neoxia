@@ -48,13 +48,20 @@ var handleParameters = (senderID, text, params, action) => {
         maxPrice= tmp;
       }
 
-    //sendCatalogue
-    sendCatalogue(senderID, text, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, 3);
+      //sendCatalogue
+      sendCatalogue(senderID, text, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, 3);
+      //Add request
+      addRequest(senderID, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, false);
 
-    //Add request
-    addRequest(senderID, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, false);
+      break;
 
-    break;
+    case "edit email":
+      
+      break;
+
+    case "edit phone":
+
+      break;
 
   }
 }

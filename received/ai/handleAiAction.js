@@ -97,20 +97,36 @@ var handleAiAction= (senderID, answer) => {
       }
       break;
 
-    case "test-action":
+    //Edit form
+    case "form-action":
+      sendTextMessageWithDelay(senderID, text);
       var buttons = [
         {
                   "type":"web_url",
-                  "url":"https://desolate-dusk-64146.herokuapp.com/formWTL/"+senderID,
+                  "url":"https://desolate-dusk-64146.herokuapp.com/formToEdit/"+senderID,
                   "title":"Formulaire",
                   "webview_height_ratio": "full",
-                  "messenger_extensions": true,
-                  "fallback_url": "https://desolate-dusk-64146.herokuapp.com/formWTL/"+senderID
+                  "messenger_extensions": true
         }
       ];
-      var text = getText('fr', 'Ask to complete form', undefined);
-      sendButtonMessage(senderID, text, buttons);
+      sendButtonMessage(senderID, '', buttons);
       break;
+
+    //Edit Email
+    case "email-action":
+        if(params){
+          handleParameters(senderID, text, params, "edit email");
+        }
+        break;
+
+    //Edit Email
+    case "phone-action":
+        if(params){
+          handleParameters(senderID, text, params, "edit phone");
+        }
+        break;
+
+
 
 
 		default:
