@@ -15,6 +15,8 @@ var handleMessage = (request) => {
 
   var lang  = request.lang;
 
+  console.log('FILE NAME: ', './agentAi/resources/'+ lang + '/data.json');
+
   var jsonData = fs.readFileSync('./agentAi/resources/'+ lang + '/data.json');
   var ignorable = fs.readFileSync('./agentAi/resources/'+ lang + '/ignorable.json');
 
