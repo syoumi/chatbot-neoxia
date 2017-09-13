@@ -17,7 +17,7 @@ var receiveMessage = (request) => {
   var specificActions = lookForSpecificActions(request.senderID);
   if (specificActions && specificActions.length != 0) {
     var result = findSpecificMatch(request, specificActions);
-    answer = (result) ? getAnswer(result) : undefined;
+    answer = (result) ? getAnswer(result, request.lang) : undefined;
   }
 
   if (!answer) {
