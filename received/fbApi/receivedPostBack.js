@@ -69,13 +69,13 @@ var receivedPostBack = (event) => {
       var buttons = [
         {
                   "type":"web_url",
-                  "url":"https://desolate-dusk-64146.herokuapp.com/formWTL/"+senderID,
+                  "url":"https://desolate-dusk-64146.herokuapp.com/form/"+senderID,
                   "title":"Formulaire",
                   "webview_height_ratio": "full",
                   "messenger_extensions": true
         }
       ];
-      //Check if user is not a contact if so send the form else save task and insert it directly
+      //Check if user is not a contact:  IF so send the form, ELSE save task and insert it directly
       getContact(senderID, (contact) => {
         console.log('CONTACT POSTBACK FOUND: ', contact);
         saveTask(senderID, postback[2], postback[5], 'Contacter client');
@@ -96,12 +96,13 @@ var receivedPostBack = (event) => {
       var buttons = [
         {
                   "type":"web_url",
-                  "url":"https://desolate-dusk-64146.herokuapp.com/formWTL/"+senderID,
+                  "url":"https://desolate-dusk-64146.herokuapp.com/form/"+senderID,
                   "title":"Formulaire",
                   "webview_height_ratio": "full",
                   "messenger_extensions": true
         }
       ];
+      //Check if user is not a contact:  IF so send the form, ELSE save task and insert it directly
       getContact(senderID, (contact) => {
         saveTask(senderID, postback[2], postback[5], 'Envoyer devis');
         if(!contact){

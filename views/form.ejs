@@ -26,7 +26,7 @@
     }(document, 'script', 'Messenger'));
   </script>
 
-  <form action="https://desolate-dusk-64146.herokuapp.com/completeFormToEdit" method="POST">
+  <form action="https://desolate-dusk-64146.herokuapp.com/completeForm" method="POST">
 
 
 <center>
@@ -34,36 +34,36 @@
 
     <tr>
         <th><label for="last_name">Nom</label></th>
-        <th><input  id="last_name" maxlength="80" name="last_name" size="20" type="text" required/></th>
+        <th><input  id="last_name"  name="last_name"  type="text" required/></th>
     </tr>
      <tr>
         <th><label for="first_name">Prénom</label></th>
-        <th><input  id="first_name" maxlength="40" name="first_name" size="20" type="text" required/></th>
+        <th><input  id="first_name"  name="first_name"  type="text" required/></th>
     </tr>
     <tr>
         <th><label for="email">Email</label></th>
-        <th><input  id="email" maxlength="80" name="email" size="20" type="email" required/></th>
+        <th><input  id="email"  name="email" type="email" required/></th>
     </tr>
     <tr>
         <th><label for="phone">N° téléphone</label></th>
-        <th><input  id="phone" maxlength="40" name="phone" size="20" type="tel" required/></th>
+        <th><input  id="phone" name="phone" type="tel" required/></th>
     </tr>
     <tr>
         <th><label for="company">Compagnie</label></th>
-        <th><input  id="company" maxlength="40" name="company" size="20" type="text" required/></th>
+        <th><input  id="company"  name="company"  type="text" required/></th>
     </tr>
     <tr>
         <th><label for="city">Ville</label></th>
-        <th><input  id="city" maxlength="40" name="city" size="20" type="text" /></th>
+        <th><input  id="city"  name="city" type="text" /></th>
     </tr>
     <tr>
         <th><label for="country">Pays</label></th>
-        <th><input  id="country" maxlength="40" name="country" size="20" type="text" /></th>
+        <th><input  id="country"  name="country"  type="text" /></th>
     </tr>
 
     <tr>
         <th></th>
-        <th><input  id="senderID" maxlength="40" name="senderID" size="20" type="hidden" value=<%= senderID %> required/></th>
+        <th><input  id="senderID"  name="senderID"  type="hidden" value=<%= senderID %> required/></th>
     </tr>
     <tr>
         <th></th>

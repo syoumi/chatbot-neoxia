@@ -15,7 +15,8 @@ const {receivedPostBack} = require('./received/fbApi/receivedPostBack');
 const {receivedSeen} = require('./received/fbApi/receivedSeen');
 const {receivedDelivery} = require('./received/fbApi/receivedDelivery');
 
-const {getFormLead} = require('./utils/getForm');
+const {getForm} = require('./utils/getForm');
+
 
 var app = express();
 
@@ -82,25 +83,33 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 //app.use(express.static(__dirname + '/views'));
 
-app.get("/formWTL/:senderID", function(req, res){
+
+//Convert lead --> Contact
+app.get("/form/:senderID", function(req, res){
   //var senderID = req.param("senderID");
-  //res.sendfile('./views/formWTL.html');
-  res.render('formWTL',  {senderID: req.params.senderID});
+  //res.sendfile('./views/form.html');
+  res.render('form',  {senderID: req.params.senderID});
 });
 
 
-app.post("/completeFormWTL", function(req, res){
-  //res.sendfile('./views/completeFormWTL.html');
-  res.render('completeFormWTL');
-  console.log("REQ BODY Complete form: ", req.body);
-  getFormLead(req.body, (lead) => {
-    if(!lead){
-      //res.redirect('errorFormWTL');
-    }
-  });
+app.post("/completeForm", function(req, res){
+  //res.sendfile('./views/completeForm.html');
+  res.render('completeForm');
+  //console.log("REQ BODY Complete form: ", req.body);
+  getForm(req.body);
 });
 
 
+// //Edit Contact's infomartions
+// app.get("/formToEdit/:senderID", function(req, res){
+//   res.render('formToEdit',  {senderID: req.params.senderID});
+// });
+//
+//
+// app.post("/completeFormToEdit", function(req, res){
+//   res.render('completeFormToEdit');
+//   getFormContact(req.body);
+// });
 
 
 // Let the server listening to incoming connections

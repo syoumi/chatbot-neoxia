@@ -56,11 +56,23 @@ var handleParameters = (senderID, text, params, action) => {
       break;
 
     case "edit email":
-      
+      var email = undefined;
+      params.forEach((param) => {
+        if(param.name == 'email'){
+          email = param.value;
+        }
+      });
+      updateContact(senderID, undefined, undefined, undefined, undefined, undefined, email, undefined);
       break;
 
     case "edit phone":
-
+      var phone = undefined;
+      params.forEach((param) => {
+        if(param.name == 'phone'){
+          phone = param.value;
+        }
+      });
+      updateContact(senderID, undefined, undefined, undefined, undefined, undefined, undefined, phone);
       break;
 
   }

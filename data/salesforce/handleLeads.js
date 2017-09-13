@@ -55,7 +55,7 @@ var addLead = (senderID) => {
 
 //update lead
 var updateLead = (senderID, fname, lname, company, city, country, email, phone, callback) => {
-    //TODO Search if there's a contact with the same email if so update contact's facebookId__c and delete lead else update lead
+    //TODO Search if there's a contact with the same email: IF so update contact's facebookId__c and delete lead,  Else update lead
     doLogin((conn) => {
       var query = "SELECT Id, firstName, lastName, facebookId__c, company,  city, country, email, Phone, ToConvert__c FROM lead WHERE FacebookID__c= '" + senderID + "'";
       conn.query(query)
@@ -71,22 +71,13 @@ var updateLead = (senderID, fname, lname, company, city, country, email, phone, 
 //Convert lead to Contact, account and opportunity
 var convertLead = (senderID, callback) => {
   console.log('TRYING TO CONVERT LEAD');
-  getLead(senderID, (lead) => {
-    if(lead){
-
-      doLogin((conn) => {
-        var query = "SELECT Id, ToConvert__c FROM lead WHERE FacebookID__c= '" + senderID + "' AND ToConvert__c = false";
-        conn.query(query)
-            .update({ ToConvert__c : true }, 'Lead', function(err, rets) {
-              if (err) { return console.error(err); }
-              callback();
-            });
-      });
-    }
-
-
+  doLogin((conn) => {
+    var query = "SELECT Id, ToConvert__c FROM lead WHERE FacebookID__c= '" + senderID + "' AND ToConvert__c = false";
+          .update({ ToConvert__c : true }, 'Lead', function(err, rets) {
+          if (err) { return console.error(err); }
+          callback();
+        });
   });
-
 }
 
 

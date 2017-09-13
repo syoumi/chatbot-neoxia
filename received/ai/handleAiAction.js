@@ -103,13 +103,13 @@ var handleAiAction= (senderID, answer) => {
       var buttons = [
         {
                   "type":"web_url",
-                  "url":"https://desolate-dusk-64146.herokuapp.com/formToEdit/"+senderID,
+                  "url":"https://desolate-dusk-64146.herokuapp.com/form/"+senderID,
                   "title":"Formulaire",
                   "webview_height_ratio": "full",
                   "messenger_extensions": true
         }
       ];
-      sendButtonMessage(senderID, '', buttons);
+      sendButtonMessage(senderID, ':D', buttons);
       break;
 
     //Edit Email

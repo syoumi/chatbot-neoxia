@@ -18,8 +18,16 @@ var getContact = (senderID, callback) => {
 }
 
 
-
+//Update Contact
 var updateContact = (senderID, fname, lname, company, city, country, email, phone) => {
+  //TODO if there's quote ---> update Quote's Email
+  doLogin((conn) => {
+    var query = "SELECT Id, firstName, lastName, facebookId__c, company,  city, country, email, Phone FROM Contact WHERE FacebookID__c= '" + senderID + "'";
+    conn.query(query)
+        .update({ firstName : fname, lastName : lname, company : company, city : city, country: country, email : email, Phone : phone }, 'Contact', function(err, rets) {
+          if (err) { return console.error(err); }
+        });
+  });
 
 }
 
