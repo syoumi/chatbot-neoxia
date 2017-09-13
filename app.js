@@ -96,7 +96,7 @@ app.get("/form/:senderID", function(req, res){
 app.post("/completeForm", function(req, res){
   //TODO Check if there's no error, then send a message
   res.send('Merci :) !');
-  res.render('completeForm');
+  //res.render('completeForm');
   //console.log("REQ BODY Complete form: ", req.body);
   getFormLead(req.body);
 });
@@ -111,7 +111,7 @@ app.get("/formToEdit/:senderID", function(req, res){
 app.post("/completeFormToEdit", function(req, res){
   //TODO Check if there's no error, then send a message
   res.send('Merci :) !');
-  res.render('completeFormToEdit');
+  //res.render('completeFormToEdit');
   getFormContact(req.body);
 });
 
