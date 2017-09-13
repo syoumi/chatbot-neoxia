@@ -1,0 +1,66 @@
+{
+  "lang": "ar",
+  "data": [
+    {
+      "title": "Ask to wait",
+      "text": "Attendez, s'il vous plaît. "
+    },
+
+    {
+      "title": "Buildig not found",
+      "text": "Nous sommes désolés. Des #building# avec les critères mentionnés ci-dessus ne sont pas disponible pour l'instant.\nSi vous n'êtes pas pressé, vous pouvez nous envoyer vos coordonnées afin de vous contacter une fois votre demande est disponible.\nSinon, nous vous proposons des #building# qui pourront vous intéresser."
+    },
+
+    {
+      "title": "Send contact",
+      "text": "Vous pouvez contacter notre agent commercial #name# associé à ce logement soit en l'appelant ou en lui envoyant une demande afin qu'il vous appelle.\nComme vous pouvez recevoir le devis directement sur votre boîte mail, si vous le souhaitez."
+    },
+
+    {
+      "title": "Task call salesman",
+      "text": "#name# votre demande est bien enregistrée.\nL'agent commercial vous appelera le plutôt possible.\n\nNous sommes toujours à votre disposition si vous avez de nouvelles demandes :D."
+    },
+
+    {
+      "title": "Task send quote",
+      "text": "#name# le devis est envoyé. Vous pouvez vérifier votre boîte mail.\nAu cas où vous n'avez pas bien reçu le devis, veuillez contacter l'agent commercial."
+    },
+
+    {
+      "title": "Send form call",
+      "text": "Nous avons besoin de récupérer vos coordonnées telles que votre nom, votre prénom votre email et votre numéro de téléphone pour que l'agent commercial puisse vous appeler le plus tôt possible."
+    },
+
+    {
+      "title": "Send form quote",
+      "text": "Nous avons besoin de récupérer vos coordonnées telles que votre nom, votre prénom votre email et votre numéro de téléphone pour vous envoyer le devis."
+    },
+
+    {
+      "title": "Ask to complete form",
+      "text": "Veuillez remplir le formulaire."
+    },
+
+    {
+      "title": "Ask about email",
+      "text": "Votre adresse email enregistrée est:\n #email#"
+    },
+
+    {
+      "title": "Ask about phone",
+      "text": "Votre numéro de téléphone enregistré est:\n #phone#"
+    },
+
+    {
+      "title": "Contact does not exist",
+      "text": "Vous n'êtes pas encore saisi vos coordonnées.\nVoici le formulaire à remplir."
+    },
+
+    {
+      "title": "Waiting for call",
+      "text": "L'agent commercial va vous appeler le plutôt possible au numéro de téléphone que vous aviez saisi: #phone#."
+    }
+
+
+  ]
+}

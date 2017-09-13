@@ -1,0 +1,148 @@
+{
+  "lang": "ar",
+  "list": [
+    {
+      "city": "أكادير",
+      "neighborhoods": [
+
+      ],
+      "region": "سوس ماسة درعة"
+    },
+
+    {
+      "city": "بني ملال",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+    {
+      "city": "الدار البيضاء",
+      "neighborhoods": [
+        "عين الشق",
+        "عين الذئاب",
+        "عين السبع",
+        "بلفدير",
+        "بوركون",
+        "كاليفورنيا",
+        "حي الحسني",
+        "المعاريف",
+        "وازيس",
+        "الصخور السوداء",
+        "سيدي معروف"
+      ],
+      "region": "الدار البيضاء الكبرى"
+    },
+
+    {
+      "city": "الداخلة",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+    {
+      "city": "الجديدة",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+    {
+      "city": "فاس",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+    {
+      "city": "كلميم",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+    {
+      "city": "افران",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+    {
+      "city": "القنطيرة",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+    {
+      "city": "العيون",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+    {
+      "city": "مراكش",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+    {
+      "city": "آسفي",
+      "neighborhoods": [
+        "عزيب الدرعي",
+        "السعادة",
+        "مفتاح الخير",
+        "حي السلام",
+        "حي أناس"
+      ],
+      "region": "دكالة عبدة"
+    },
+
+    {
+      "city": "سلا",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+
+    {
+      "city": "سيدي رحال",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+    {
+      "city": "طنجة",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+    {
+      "city": "الرباط",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    }
+
+  ]
+}
