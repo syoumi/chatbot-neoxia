@@ -14,7 +14,7 @@ var receiveMessage = (request) => {
 
   console.log(`Received message from ${request.senderID}, content ${request.text}`);
   var answer = undefined;
-  var specificActions = lookForSpecificActions(request.senderID);
+  var specificActions = lookForSpecificActions(request.senderID, request.lang);
   if (specificActions && specificActions.length != 0) {
     var result = findSpecificMatch(request, specificActions);
     answer = (result) ? getAnswer(result, request.lang) : undefined;

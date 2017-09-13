@@ -37,7 +37,7 @@ var getPercent= (text, keywords, hasParam, lang)=> {
   // });
 
 
-  var words = splitMessage(text);
+  var words = splitMessage(text, lang);
 
   words.forEach((word) => {
     keywords.forEach((keyword) => {

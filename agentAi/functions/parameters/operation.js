@@ -26,7 +26,7 @@ var extractOperation = (text, lang) => {
 
   //If still there's no city, check if there's a synonym or user did a mistake while writing city
   if(!operationFound){
-    var words = splitMessage(text);
+    var words = splitMessage(text, lang);
     words.forEach((word)=> {
       for(var i = 0 ; i<list.length ; i++ ){
         var op = list[i];

@@ -9,10 +9,9 @@ const {getAnswer} = require('./../answer/handleAnswer');
 // handling input, returning action + possible answers + parameters
 var handleMessage = (request) => {
 
-  var lang  = request.lang;
 
-  var jsonData = fs.readFileSync('./agentAi/resources/'+ lang + '/data.json');
-  var ignorable = fs.readFileSync('./agentAi/resources/'+ lang + '/ignorable.json');
+  var jsonData = fs.readFileSync('./agentAi/resources/'+ request.lang + '/data.json');
+  var ignorable = fs.readFileSync('./agentAi/resources/'+ request.lang + '/ignorable.json');
 
   var data = JSON.parse(jsonData).data;
 

@@ -17,10 +17,8 @@ const {MIN_STEP_THREE_PERCENT} = require('./../../include/config');
 //Find match context: looking for intent that matchs text
 var findSpecificMatch = (request, actions) => {
 
-  var lang = request.lang;
-
-  var jsonData = fs.readFileSync('./agentAi/resources/' + lang + '/data.json');
-  var ignorable = fs.readFileSync('./agentAi/resources/' + lang +'/ignorable.json');
+  var jsonData = fs.readFileSync('./agentAi/resources/' + request.lang + '/data.json');
+  var ignorable = fs.readFileSync('./agentAi/resources/' + request.lang +'/ignorable.json');
 
   var data = JSON.parse(jsonData).data;
 
@@ -30,7 +28,7 @@ var findSpecificMatch = (request, actions) => {
   var intents = [];
   // getting all the specific intents to look in
   for(var i = 0; i < actions.length; i++){
-    intents.push(getAction(actions[i]));
+    intents.push(getAction(actions[i], request.lang));
   };
 
   var maxActionPercent = 0;

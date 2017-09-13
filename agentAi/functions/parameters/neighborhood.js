@@ -31,7 +31,7 @@ var extractNeighborhood = (text, lang) => {
 
   //If still there's no neighborhood, check if there's a synonym or user did a mistake while writing neighborhood
   if(!neighborhoodFound){
-    var words = splitMessage(text);
+    var words = splitMessage(text, lang);
     words.forEach((word)=> {
       for(var i = 0 ; i<neighborhoods.length ; i++ ){
         var neighborhood = neighborhoods[i].toLowerCase();
@@ -66,7 +66,7 @@ var isNeighborhood = (word, lang) => {
 }
 
 var getNeighborhood = (word, lang) => {
-  
+
   var jsonCities = fs.readFileSync('./agentAi/resources/' + lang + '/cities.json');
   var list = JSON.parse(jsonCities).list;
 
@@ -79,7 +79,7 @@ var getNeighborhood = (word, lang) => {
 
   for(var i = 0 ; i<neighborhoods.length ; i++ ){
     var neighborhood = neighborhoods[i].toLowerCase();
-    if(checkEquality(word, neighborhood)){
+    if(checkEquality(word, neighborhood, lang)){
       neighborhoodFound = neighborhood;
       break;
     }

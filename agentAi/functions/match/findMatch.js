@@ -14,9 +14,7 @@ const {MIN_STEP_THREE_PERCENT} = require('./../../include/config');
 
 var findMatch = (request) => {
 
-  var lang = request.lang;
-
-  var jsonData = fs.readFileSync('./agentAi/resources/' + lang + '/data.json');
+  var jsonData = fs.readFileSync('./agentAi/resources/' + request.lang + '/data.json');
 
   var data = JSON.parse(jsonData).data;
 

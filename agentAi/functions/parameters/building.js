@@ -26,7 +26,7 @@ var extractBuilding = (text, lang) => {
 
   //If still there's no city, check if there's a synonym or user did a mistake while writing city
   if(!buildingFound){
-    var words = splitMessage(text);
+    var words = splitMessage(text, lang);
     words.forEach((word)=> {
       for(var i = 0 ; i<list.length ; i++ ){
         var building = list[i];
@@ -54,7 +54,7 @@ var isBuilding = (word, lang) => {
 }
 
 var getBuilding = (word, lang) => {
-  
+
   var jsonBuildings = fs.readFileSync('./agentAi/resources/' + lang + '/buildings.json');
   var list = JSON.parse(jsonBuildings).list;
 

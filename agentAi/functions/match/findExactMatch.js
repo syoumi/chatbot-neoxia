@@ -12,10 +12,7 @@ const {splitMessage} = require('./../treatment/splitMessage');
 
 var findExactMatch = (request) => {
 
-  //Language
-  var lang = request.lang;
-
-  var jsonData = fs.readFileSync('./agentAi/resources/' + lang + '/data.json');
+  var jsonData = fs.readFileSync('./agentAi/resources/' + request.lang + '/data.json');
 
   var data = JSON.parse(jsonData).data;
 
