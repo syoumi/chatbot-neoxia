@@ -4,6 +4,8 @@ const {addRequest} = require('./../../data/salesforce/handleRequests');
 
 const {updateContact} = require('./../../data/salesforce/handleContacts');
 
+const {sendTextMessageWithDelay} = require('./../../send/fbApi/sendTextMessage');
+
 
 var handleParameters = (senderID, text, params, action) => {
   switch(action){
@@ -65,6 +67,7 @@ var handleParameters = (senderID, text, params, action) => {
         }
       });
       updateContact(senderID, undefined, undefined, undefined, undefined, email, undefined);
+      sendTextMessageWithDelay(senderID, text);
       break;
 
     case "edit phone":
@@ -75,6 +78,7 @@ var handleParameters = (senderID, text, params, action) => {
         }
       });
       updateContact(senderID, undefined, undefined, undefined, undefined, undefined, phone);
+      sendTextMessageWithDelay(senderID, text);
       break;
 
   }
