@@ -1,10 +1,11 @@
 const fs = require('fs');
 
-var jsonData = fs.readFileSync('./agentAi/resources/data.json');
+var getAnswer = (result, lang) => {
 
-var data = JSON.parse(jsonData).data;
+  var jsonData = fs.readFileSync('./agentAi/resources/' + lang + '/data.json');
 
-var getAnswer = (result) => {
+  var data = JSON.parse(jsonData).data;
+
   // generating random index
   var index = parseInt(Math.random() * result.entry.answers.length);
   return {

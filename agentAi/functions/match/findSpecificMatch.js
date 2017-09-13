@@ -12,16 +12,19 @@ const {getAction} = require('./../action/handleAction');
 const {MIN_STEP_TWO_PERCENT} = require('./../../include/config');
 const {MIN_STEP_THREE_PERCENT} = require('./../../include/config');
 
-var jsonData = fs.readFileSync('./agentAi/resources/data.json');
-var ignorable = fs.readFileSync('./agentAi/resources/ignorable.json');
-
-var data = JSON.parse(jsonData).data;
 
 
 //Find match context: looking for intent that matchs text
-var findSpecificMatch = (message, actions) => {
+var findSpecificMatch = (request, actions) => {
 
-  var user = getUser(message.senderID);
+  var lang = request.lang;
+
+  var jsonData = fs.readFileSync('./agentAi/resources/' + lang + '/data.json');
+  var ignorable = fs.readFileSync('./agentAi/resources/' + lang +'/ignorable.json');
+
+  var data = JSON.parse(jsonData).data;
+
+  var user = getUser(request.senderID);
   console.log('COUNTER ' , user.counter);
 
   var intents = [];
@@ -38,7 +41,7 @@ var findSpecificMatch = (message, actions) => {
     var maxEntryPercent = 0;
     var intent = intents[i];
     for (var j = 0; j < intent.keywords.length; j++) {
-      var result = wordsFound(message.text.toLowerCase(), intent.keywords[j], intent.hasParam);
+      var result = wordsFound(request.text.toLowerCase(), intent.keywords[j], intent.hasParam, request.lang);
       var percent = result.percent;
       if (percent > maxEntryPercent) {
         maxEntryPercent = percent;
@@ -67,8 +70,8 @@ var findSpecificMatch = (message, actions) => {
 
     for (var i = 0; i < intents.length; i++) {
       var intent = intents[i];
-      var distincts = getDistinct(intent.keywords);
-      var result = getPercent(message.text, distincts, intent.hasParam);
+      var distincts = getDistinct(intent.keywords, request.lang);
+      var result = getPercent(request.text, distincts, intent.hasParam, request.lang);
       console.log('RESULT: ', result);
       var percent = result.percent;
       if (percent > maxPercent) {

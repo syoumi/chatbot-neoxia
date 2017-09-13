@@ -5,7 +5,7 @@ const {similarity} = require('./similarity');
 const {MIN_SIMILARITY_PERCENT} = require('./../../include/config');
 
 
-var checkEquality = (s1, s2) => {
+var checkEquality = (s1, s2, lang) => {
   s1 = s1.toLowerCase();
   s2 = s2.toLowerCase();
   var areEquals = false;
@@ -21,15 +21,15 @@ var checkEquality = (s1, s2) => {
     }
     //check if both strings are similar
     else {
-      var similarityPercent = similarity(s1, s2) * 100;
+      var similarityPercent = similarity(s1, s2, lang) * 100;
       areEquals = (similarityPercent >= MIN_SIMILARITY_PERCENT);
     }
   }
   return areEquals;
 };
 
-var areSynonyms = (s1, s2) => {
-  var dico = fs.readFileSync('./agentAi/resources/synonyms.json');
+var areSynonyms = (s1, s2, lang) => {
+  var dico = fs.readFileSync('./agentAi/resources/' + lang + '/synonyms.json');
   var dicoObj = JSON.parse(dico);
   var data = dicoObj.data;
   var synonyms = false;

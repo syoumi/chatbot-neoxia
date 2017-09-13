@@ -1,14 +1,14 @@
 const fs = require('fs');
 
-var jsonOperations = fs.readFileSync('./agentAi/resources/operations.json');
-var list = JSON.parse(jsonOperations).list;
-
-
 const {splitMessage} = require('./../treatment/splitMessage');
 const {checkEquality} = require('./../match/checkEquality');
 
 
-var extractOperation = (text) => {
+var extractOperation = (text, lang) => {
+
+  var jsonOperations = fs.readFileSync('./agentAi/resources/' + lang + '/operations.json');
+  var list = JSON.parse(jsonOperations).list;
+
   var operationFound = undefined;
 
   text = text.toLowerCase();
@@ -30,7 +30,7 @@ var extractOperation = (text) => {
     words.forEach((word)=> {
       for(var i = 0 ; i<list.length ; i++ ){
         var op = list[i];
-        if(checkEquality(word, op)){
+        if(checkEquality(word, op, lang)){
           operationFound = op;
           break;
         }
@@ -41,7 +41,10 @@ var extractOperation = (text) => {
   return operationFound;
 }
 
-var isOperation = (word) => {
+var isOperation = (word, lang) => {
+
+  var jsonOperations = fs.readFileSync('./agentAi/resources/' + lang + '/operations.json');
+  var list = JSON.parse(jsonOperations).list;
 
   if(list.indexOf(word)!=-1){
     return true;
@@ -50,13 +53,16 @@ var isOperation = (word) => {
   return false;
 }
 
-var getOperation= (word) => {
+var getOperation= (word, lang) => {
+  var jsonOperations = fs.readFileSync('./agentAi/resources/' + lang + '/operations.json');
+  var list = JSON.parse(jsonOperations).list;
+
   var operationFound = undefined;
 
 
   for(var i = 0 ; i<list.length ; i++ ){
     var op = list[i];
-    if(checkEquality(word, op)){
+    if(checkEquality(word, op, lang)){
       operationFound = op;
       break;
     }

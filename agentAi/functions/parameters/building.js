@@ -1,14 +1,14 @@
 const fs = require('fs');
 
-var jsonBuildings = fs.readFileSync('./agentAi/resources/buildings.json');
-var list = JSON.parse(jsonBuildings).list;
-
-
 const {splitMessage} = require('./../treatment/splitMessage');
 const {checkEquality} = require('./../match/checkEquality');
 
 
-var extractBuilding = (text) => {
+var extractBuilding = (text, lang) => {
+
+  var jsonBuildings = fs.readFileSync('./agentAi/resources/' + lang + '/buildings.json');
+  var list = JSON.parse(jsonBuildings).list;
+
   var buildingFound = undefined;
 
   text = text.toLowerCase();
@@ -30,7 +30,7 @@ var extractBuilding = (text) => {
     words.forEach((word)=> {
       for(var i = 0 ; i<list.length ; i++ ){
         var building = list[i];
-        if(checkEquality(word, building)){
+        if(checkEquality(word, building, lang)){
           buildingFound = building;
           break;
         }
@@ -41,7 +41,10 @@ var extractBuilding = (text) => {
   return buildingFound;
 }
 
-var isBuilding = (word) => {
+var isBuilding = (word, lang) => {
+
+  var jsonBuildings = fs.readFileSync('./agentAi/resources/' + lang + '/buildings.json');
+  var list = JSON.parse(jsonBuildings).list;
 
   if(list.indexOf(word)!=-1){
     return true;
@@ -50,12 +53,16 @@ var isBuilding = (word) => {
   return false;
 }
 
-var getBuilding = (word) => {
+var getBuilding = (word, lang) => {
+  
+  var jsonBuildings = fs.readFileSync('./agentAi/resources/' + lang + '/buildings.json');
+  var list = JSON.parse(jsonBuildings).list;
+
   var buildingFound = undefined;
 
   for(var i = 0 ; i<list.length ; i++ ){
     var building = list[i];
-    if(checkEquality(word, building)){
+    if(checkEquality(word, building, lang)){
       buildingFound = building;
       break;
     }

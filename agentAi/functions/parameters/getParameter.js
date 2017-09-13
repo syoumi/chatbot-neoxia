@@ -8,7 +8,7 @@ const {getBuilding} = require('./building');
 const {isCurrency} = require('./currency');
 const {isNumber} = require('./number');
 
-var getParameter = (userWord, keywordParam) => {
+var getParameter = (userWord, keywordParam, lang) => {
 
   var name = keywordParam.split('|')[0].replace('#', '');
   var type = keywordParam.split('|')[1].replace('#', '');
@@ -23,16 +23,16 @@ var getParameter = (userWord, keywordParam) => {
       param.value = isMobilePhone(userWord)? userWord : undefined;
       break;
     case 'city':
-      param.value = getCity(userWord);
+      param.value = getCity(userWord, lang);
       break;
     case 'neighborhood':
-      param.value = getNeighborhood(userWord);
+      param.value = getNeighborhood(userWord, lang);
       break;
     case 'operation':
-      param.value = getOperation(userWord);
+      param.value = getOperation(userWord, lang);
       break;
     case 'building':
-      param.value = getBuilding(userWord);
+      param.value = getBuilding(userWord, lang);
       break;
     case 'currency':
       param.value = isCurrency(userWord)? userWord : undefined;

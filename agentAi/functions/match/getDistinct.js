@@ -1,6 +1,6 @@
 const {isIgnorable} = require('./../treatment/ignoreWords');
 
-var getDistinct= (keywords) => {
+var getDistinct= (keywords, lang) => {
   var distincts= [];
 
 
@@ -12,7 +12,7 @@ var getDistinct= (keywords) => {
   });
 
   distincts = distincts.filter((item) => {
-    return item != '' && !(isIgnorable(item));
+    return item != '' && !(isIgnorable(item, lang));
   });
 
   return distincts;

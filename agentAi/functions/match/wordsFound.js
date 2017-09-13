@@ -5,7 +5,7 @@ const {splitMessage} = require('./../treatment/splitMessage');
 
 const {extractParameters} = require('./../parameters/extractParameters');
 
-var wordsFound = (text, keyword, hasParam) => {
+var wordsFound = (text, keyword, hasParam, lang) => {
 
   var counter = 0;
   var params = [];
@@ -17,7 +17,7 @@ var wordsFound = (text, keyword, hasParam) => {
       var fstSharp = keyword.indexOf('#');
       var scdSharp = keyword.indexOf('#', fstSharp + 1);
       var paramKeyword = keyword.substr(fstSharp, scdSharp - fstSharp + 1);
-      var param = extractParameters(text, paramKeyword);
+      var param = extractParameters(text, paramKeyword, lang);
       if (param.value) {
         params.push(param);
         text = text.replace(param.value, '');
@@ -30,15 +30,15 @@ var wordsFound = (text, keyword, hasParam) => {
   }
 
   var keywordArray = keyword.split(' ').filter((item) => {
-    return item != '' && !(isIgnorable(item));
+    return item != '' && !(isIgnorable(item, lang));
   });
 
 
-  var words = splitMessage(text);
+  var words = splitMessage(text, lang);
 
   words.forEach((word) => {
     keywordArray.forEach((item) => {
-      if (checkEquality(word, item)) {
+      if (checkEquality(word, item, lang)) {
         counter++;
       }
     });

@@ -25,7 +25,7 @@ var findExactMatch = (request) => {
 
   //message text
 
-  var words = splitMessage(request.text);
+  var words = splitMessage(request.text, request.lang);
 
   var foundEntry = undefined;
 
@@ -45,7 +45,7 @@ var findExactMatch = (request) => {
 
         //Foreach word in one keyword
         var keywordsArray = keyword.split(' ').filter((item) => {
-          return item != '' && !(isIgnorable(item));
+          return item != '' && !(isIgnorable(item, request.lang));
         });
 
         if (keywordsArray.length === words.length) {
@@ -55,7 +55,7 @@ var findExactMatch = (request) => {
           for (var i = 0; i < words.length; i++) {
             //Check if this word in keyword should be a param
             if (keywordsArray[i][0] == '#' && keywordsArray[i][keywordsArray.length - 1] == '#') {
-                var param = getParameter(words[i], keywordsArray[i]);
+                var param = getParameter(words[i], keywordsArray[i], request.lang);
                 if(param.value){
                   params.push(param);
                   //console.log("Param: ", param);
@@ -65,7 +65,7 @@ var findExactMatch = (request) => {
                   break;
                 }
             }
-            else if (!checkEquality(words[i], keywordsArray[i])){
+            else if (!checkEquality(words[i], keywordsArray[i], request.lang)){
               areEquals = false;
             }
           }

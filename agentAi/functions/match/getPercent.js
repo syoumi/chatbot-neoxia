@@ -4,7 +4,7 @@ const {extractParameters} = require('./../parameters/extractParameters');
 
 const {splitMessage} = require('./../treatment/splitMessage');
 
-var getPercent= (text, keywords, hasParam)=> {
+var getPercent= (text, keywords, hasParam, lang)=> {
   //keywords ===> array of distincts words in intent.keywords
 
   var counter = 0;
@@ -19,7 +19,7 @@ var getPercent= (text, keywords, hasParam)=> {
         var fstSharp = keyword.indexOf('#');
         var scdSharp = keyword.indexOf('#', fstSharp + 1);
         var paramKeyword = keyword.substr(fstSharp, scdSharp - fstSharp + 1);
-        var param = extractParameters(text, paramKeyword);
+        var param = extractParameters(text, paramKeyword, lang);
         if (param.value) {
           params.push(param);
           text = text.replace(param.value, '');
@@ -41,7 +41,7 @@ var getPercent= (text, keywords, hasParam)=> {
 
   words.forEach((word) => {
     keywords.forEach((keyword) => {
-      if (checkEquality(word, keyword)) {
+      if (checkEquality(word, keyword, lang)) {
         counter++;
         console.log(`found ${word}`);
       }

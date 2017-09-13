@@ -1,14 +1,15 @@
 const fs = require('fs');
 
-var jsonCities = fs.readFileSync('./agentAi/resources/cities.json');
-var list = JSON.parse(jsonCities).list;
-
-
 const {splitMessage} = require('./../treatment/splitMessage');
 const {checkEquality} = require('./../match/checkEquality');
 
 
-var extractCity = (text) => {
+var extractCity = (text, lang) => {
+
+  var jsonCities = fs.readFileSync('./agentAi/resources/' + lang + '/cities.json');
+  var list = JSON.parse(jsonCities).list;
+
+
   var cityFound = undefined;
   var cities = [];
 
@@ -35,7 +36,7 @@ var extractCity = (text) => {
     words.forEach((word)=> {
       for(var i = 0 ; i<cities.length ; i++ ){
         var city = cities[i];
-        if(checkEquality(word, city)){
+        if(checkEquality(word, city, lang)){
           cityFound = city;
           break;
         }
@@ -46,7 +47,11 @@ var extractCity = (text) => {
   return cityFound;
 }
 
-var isCity = (word) => {
+var isCity = (word, lang) => {
+
+  var jsonCities = fs.readFileSync('./agentAi/resources/' + lang + '/cities.json');
+  var list = JSON.parse(jsonCities).list;
+
   var cities = [];
   list.forEach((element) => {
     cities.push(element.city.toLowerCase());
@@ -59,7 +64,11 @@ var isCity = (word) => {
   return false;
 }
 
-var getCity = (word) => {
+var getCity = (word, lang) => {
+
+  var jsonCities = fs.readFileSync('./agentAi/resources/' + lang + '/cities.json');
+  var list = JSON.parse(jsonCities).list;
+
   var cityFound = undefined;
   var cities = [];
 
@@ -69,7 +78,7 @@ var getCity = (word) => {
 
   for(var i = 0 ; i<cities.length ; i++ ){
     var city = cities[i];
-    if(checkEquality(word, city)){
+    if(checkEquality(word, city, lang)){
       cityFound = city;
       break;
     }
