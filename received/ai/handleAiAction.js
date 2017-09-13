@@ -11,13 +11,19 @@ const {sendBulkTextMessages} = require('./../../send/fbApi/sendBulkTextMessages'
 
 const {handleParameters} = require('./handleAiParameters');
 
+const {getContact} = require('./../../data/salesforce/handleContacts');
+
 const {getText} = require('./../../utils/getPredefinedAnswers');
 
-const {getContact} = require('./../../data/salesforce/handleContacts');
+const {getYesNo} = require('./../../utils/getResources');
+const {getBuildings} = require('./../../utils/getResources');
+const {getOperations} = require('./../../utils/getResources');
+const {getFilterSkip} = require('./../../utils/getResources');
+
 
 
 //By action
-var handleAiAction= (senderID, answer) => {
+var handleAiAction= (senderID, answer, lang) => {
   var action = answer.action;
   var text = answer.answer;
   var context = answer.context;
@@ -38,7 +44,8 @@ var handleAiAction= (senderID, answer) => {
     case "catalogue-neighborhood-action":
     case "catalogue-city-neighborhood-action":
     case "don't-know-action":
-      var options= ['Studio', 'Appartement', 'Maison', 'Villa'];
+      //var options= ['Studio', 'Appartement', 'Maison', 'Villa'];
+      var options = getBuildings(lang);
       sendQuickReplies(senderID, text, options);
       break;
 
@@ -47,7 +54,8 @@ var handleAiAction= (senderID, answer) => {
     case "type-building-v2-action":
     case "catalogue-building-action":
     case "catalogue-building-city-neighborhood-action":
-      var replies = ["Acheter", "Louer"];
+      //var replies = ["Acheter", "Louer"];
+      var replies = getOperations(lang);
       sendQuickReplies(senderID, text, replies);
   		break;
 
@@ -55,7 +63,8 @@ var handleAiAction= (senderID, answer) => {
     //Opération, fixer fourchette, refuser fourchette, fixer nbr chambres, refuser nbr chambres, fixer nom-ville
     case "refuse-neighborhood-action":
     case "fixing-neighborhood-action" :
-      var replies = ["Oui", "Non"];
+      //var replies = ["Oui", "Non"];
+      var replies = getYesNo(lang);
       sendQuickReplies(senderID, text, replies);
       break;
 
@@ -66,7 +75,7 @@ var handleAiAction= (senderID, answer) => {
     case "accept-neighborhood-action":
     case "accept-fixing-price-action":
     case "fixing-price-action":
-      var replies = ["Non"];
+      var replies = getYesNo(lang)[1]; //No
       sendQuickReplies(senderID, text, replies);
       break;
 
@@ -79,7 +88,8 @@ var handleAiAction= (senderID, answer) => {
     case "operation-action":
     case "operation-v2-action":
     case "operation-v3-action":
-      var replies = ["Filtrer", "Sauter"];
+      //var replies = ["Filtrer", "Sauter"];
+      var replies = getFilterSkip(lang);
       sendQuickReplies(senderID, text, replies);
       break;
 
@@ -142,7 +152,7 @@ var handleAiAction= (senderID, answer) => {
           }
         }
         else{
-          text = getText('fr', 'Contact does not exist', undefined);
+          text = getText(lang, 'Contact does not exist', undefined);
           var buttons = [
             {
                       "type":"web_url",
@@ -162,11 +172,11 @@ var handleAiAction= (senderID, answer) => {
       sendTextMessageWithDelay(senderID, text);
       getContact(senderID, (contact) => {
         if(contact){
-          text = getText('fr', 'Ask about email', contact.Email);
+          text = getText(lang, 'Ask about email', contact.Email);
           sendTextMessageWithDelay(senderID, text);
         }
         else{
-          text = getText('fr', 'Contact does not exist', undefined);
+          text = getText(lang, 'Contact does not exist', undefined);
           var buttons = [
             {
                       "type":"web_url",
@@ -186,11 +196,11 @@ var handleAiAction= (senderID, answer) => {
     sendTextMessageWithDelay(senderID, text);
     getContact(senderID, (contact) => {
       if(contact){
-        text = getText('fr', 'Ask about phone', contact.phone);
+        text = getText(lang, 'Ask about phone', contact.phone);
         sendTextMessageWithDelay(senderID, text);
       }
       else{
-        text = getText('fr', 'Contact does not exist', undefined);
+        text = getText(lang, 'Contact does not exist', undefined);
         var buttons = [
           {
                     "type":"web_url",
@@ -210,11 +220,11 @@ var handleAiAction= (senderID, answer) => {
     case "call-information-action":
       getContact(senderID, (contact) => {
         if(contact){
-          text = text + ' ' + getText('fr', 'Waiting for call', contact.Phone);
+          text = text + ' ' + getText(lang, 'Waiting for call', contact.Phone);
           sendTextMessageWithDelay(senderID, text);
         }
         else{
-          text = getText('fr', 'Contact does not exist', undefined);
+          text = getText(lang, 'Contact does not exist', undefined);
           var buttons = [
             {
                       "type":"web_url",
@@ -234,11 +244,11 @@ var handleAiAction= (senderID, answer) => {
       sendTextMessageWithDelay(senderID, text);
       getContact(senderID, (contact) => {
         if(contact){
-          text =  getText('fr', 'Ask about email', contact.Email);
+          text =  getText(lang, 'Ask about email', contact.Email);
           sendTextMessageWithDelay(senderID, text);
         }
         else{
-          text = getText('fr', 'Contact does not exist', undefined);
+          text = getText(lang, 'Contact does not exist', undefined);
           var buttons = [
             {
                       "type":"web_url",

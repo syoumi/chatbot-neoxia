@@ -1,7 +1,6 @@
 const fs = require('fs');
 
 
-
 var getText = (lang, title, param) => {
   var jsonData = fs.readFileSync('./agentAi/resources/' + lang + '/predefinedAnswers.json');
 

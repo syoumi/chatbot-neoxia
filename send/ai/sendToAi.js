@@ -29,7 +29,7 @@ var sendToAi = (senderID, messageText) => {
 		console.log('Answer is ' , answer);
 
 
-		handleAiResponse(answer.recipientID, answer);
+		handleAiResponse(answer.recipientID, answer, lang);
 
 	});
 

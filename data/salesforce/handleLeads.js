@@ -68,13 +68,11 @@ var updateLead = (senderID, fname, lname, company, city, country, email, phone, 
 
 //Update lead's language
 var updateLeadLanguage = (senderID, language, callback) => {
-    //TODO Search if there's a contact with the same email: IF so update contact's facebookId__c and delete lead,  Else update lead
     doLogin((conn) => {
       var query = "SELECT Id, Language__c FROM lead WHERE FacebookID__c= '" + senderID + "'";
       conn.query(query)
           .update({ Language__c: language }, 'Lead', function(err, rets) {
             if (err) { return console.error(err); }
-            console.log('LEAD UPDATED');
             callback();
           });
     });

@@ -14,7 +14,7 @@ var extractBuilding = (text, lang) => {
   text = text.toLowerCase();
 
   for(var i = 0 ; i<list.length ; i++ ){
-    var building = list[i];
+    var building = list[i].toLowerCase();
 
     //Check if city exists on user's text
     if(text.indexOf(building)!=-1){
@@ -29,7 +29,7 @@ var extractBuilding = (text, lang) => {
     var words = splitMessage(text, lang);
     words.forEach((word)=> {
       for(var i = 0 ; i<list.length ; i++ ){
-        var building = list[i];
+        var building = list[i].toLowerCase();
         if(checkEquality(word, building, lang)){
           buildingFound = building;
           break;
@@ -61,7 +61,7 @@ var getBuilding = (word, lang) => {
   var buildingFound = undefined;
 
   for(var i = 0 ; i<list.length ; i++ ){
-    var building = list[i];
+    var building = list[i].toLowerCase();
     if(checkEquality(word, building, lang)){
       buildingFound = building;
       break;

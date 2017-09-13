@@ -14,7 +14,7 @@ var extractOperation = (text, lang) => {
   text = text.toLowerCase();
 
   for(var i = 0 ; i<list.length ; i++ ){
-    var op = list[i];
+    var op = list[i].toLowerCase();
 
     //Check if city exists on user's text
     if(text.indexOf(op)!=-1){
@@ -29,7 +29,7 @@ var extractOperation = (text, lang) => {
     var words = splitMessage(text, lang);
     words.forEach((word)=> {
       for(var i = 0 ; i<list.length ; i++ ){
-        var op = list[i];
+        var op = list[i].toLowerCase();
         if(checkEquality(word, op, lang)){
           operationFound = op;
           break;
@@ -61,7 +61,7 @@ var getOperation= (word, lang) => {
 
 
   for(var i = 0 ; i<list.length ; i++ ){
-    var op = list[i];
+    var op = list[i].toLowerCase();
     if(checkEquality(word, op, lang)){
       operationFound = op;
       break;

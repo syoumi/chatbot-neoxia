@@ -7,7 +7,7 @@ const {sendTypingOff} = require('./../../send/fbApi/sendTypingOnOff');
 const {addLead} = require('./../../data/salesforce/handleLeads');
 
 
-var handleAiResponse = (senderID, answer) => {
+var handleAiResponse = (senderID, answer, lang) => {
 
   sendTypingOff(senderID);
 
@@ -18,7 +18,7 @@ var handleAiResponse = (senderID, answer) => {
 		sendTextMessage(senderID, answer.answer);
 	}
 	else {
-    handleAiAction(senderID, answer);
+    handleAiAction(senderID, answer, lang);
   }
 
 }

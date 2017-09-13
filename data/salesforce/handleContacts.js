@@ -18,6 +18,7 @@ var getContact = (senderID, callback) => {
 }
 
 
+
 //Update Contact
 var updateContact = (senderID, fname, lname, city, country, email, phone) => {
   //TODO if there's quote ---> update Quote's Email
@@ -31,6 +32,20 @@ var updateContact = (senderID, fname, lname, city, country, email, phone) => {
 
 }
 
+
+//Update Contact's language
+var updateContactLanguage = (senderID, language) => {
+  doLogin((conn) => {
+    var query = "SELECT Id, Language__c FROM Contact WHERE FacebookID__c= '" + senderID + "'";
+    conn.query(query)
+        .update({ Language__c: language }, 'Contact', function(err, rets) {
+          if (err) { return console.error(err); }
+        });
+  });
+}
+
+
+
 module.exports = {
-  getContact, updateContact
+  getContact, updateContact, updateContactLanguage
 }
