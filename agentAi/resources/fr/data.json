@@ -1363,7 +1363,7 @@
         "Vous avez choisi la langue française."
       ],
       "nextActions": [],
-      "previousActions" : ["language-action"],
+      "previousActions" : [],
       "hasParam": "0"
     },
 
@@ -1378,7 +1378,7 @@
         "لقد اخترتم اللغة العربية"
       ],
       "nextActions": [],
-      "previousActions" : ["language-action"],
+      "previousActions" : [],
       "hasParam": "0"
     },
 
@@ -1392,7 +1392,7 @@
         "Khtariti Darija-Français."
       ],
       "nextActions": [],
-      "previousActions" : ["language-action"],
+      "previousActions" : [],
       "hasParam": "0"
     },
 

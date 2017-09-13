@@ -115,6 +115,11 @@ app.post("/completeFormToEdit", function(req, res){
   getFormContact(req.body);
 });
 
+//Details
+app.get("/details/:name/:operation/:city/:neighborhood/:country/:nbrRooms/:nbrBR/:area/:closeBy/:options/:price", function(req, res){
+  res.render('details',  {name: req.params.name, operation: req.params.operation, city: req.params.city, neighborhood: req.params.neighborhood, country: req.params.country, nbrRooms: req.params.nbrRooms, nbrBR: req.params.nbrBR, area: req.params.area, closeBy: req.params.closeBy, options: req.params.options, price: req.params.price});
+});
+
 
 // Let the server listening to incoming connections
 app.listen(PORT, () => {

@@ -101,7 +101,7 @@ var handleAiAction= (senderID, answer, lang) => {
     case "skip-neighborhood-action":
     case "skip-fixing-price-action":
       if(params){
-        handleParameters(senderID, text, params, "send catalogue");
+        handleParameters(senderID, text, params, "send catalogue", lang);
       }
       break;
 
@@ -124,7 +124,7 @@ var handleAiAction= (senderID, answer, lang) => {
       getContact(senderID, (contact) => {
         if(contact){
           if(params){
-            handleParameters(senderID, text, params, "edit email");
+            handleParameters(senderID, text, params, "edit email", lang);
           }
         }
         else{
@@ -148,7 +148,7 @@ var handleAiAction= (senderID, answer, lang) => {
       getContact(senderID, (contact) => {
         if(contact){
           if(params){
-            handleParameters(senderID, text, params, "edit phone");
+            handleParameters(senderID, text, params, "edit phone", lang);
           }
         }
         else{
@@ -279,7 +279,7 @@ var handleAiAction= (senderID, answer, lang) => {
         type: 'language',
         value : language
       }
-      handleParameters(senderID, text, params, "edit language");
+      handleParameters(senderID, text, params, "edit language", lang);
       break;
 
 
