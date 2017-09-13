@@ -2,161 +2,103 @@
   "lang": "ar",
   "data": [
     {
-      "name": "hello",
+      "name": "سلام",
       "synonyms": [
-        "hello",
-        "hi",
-        "hey"
-      ]
-    },
-
-    {
-      "name": "salam",
-      "synonyms": [
-        "salam",
-        "slm",
-        "salamo alaykom",
-        "assalamu alaykum"
-      ]
-    },
-
-    {
-      "name": "beaucoup",
-      "synonyms": [
-        "beaucoup",
-        "bcp",
-        "énormément",
-        "infiniment",
-        "vachement",
-        "tellement",
-        "trop",
-        "très"
-      ]
-    },
-
-    {
-      "name": "logement",
-      "synonyms": [
-        "logement",
-        "loyer",
-        "loge",
-        "habitation",
-        "logis",
-        "résidence",
-        "domicile",
-        "foyer",
-        "propriété"
+        "سلام",
+        "السلام عليكم"
       ]
     },
 
 
     {
-      "name": "appartement",
+      "name": "كثيرا",
       "synonyms": [
-        "appartement",
-        "appart"
+        "كثيرا",
+        "جدا"
       ]
     },
 
     {
-      "name": "studio",
+      "name": "بناء",
       "synonyms": [
-        "studio",
-        "garçonnière"
+        "بناء",
+        "مبنى",
+        "سكن",
+        "مسكن"
+      ]
+    },
+
+
+    {
+      "name": "شقة",
+      "synonyms": [
+        "شقة",
+        "شقق"
+      ]
+    },
+
+
+    {
+      "name": "منزل",
+      "synonyms": [
+        "منزل",
+        "دار"
       ]
     },
 
     {
-      "name": "maison",
+      "name": "كراء",
       "synonyms": [
-        "maison",
-        "demeure"
+        "أكتري",
+        "كراء"
       ]
     },
 
     {
-      "name": "location",
+      "name": "شراء",
       "synonyms": [
-        "location",
-        "louer"
+        "شراء",
+        "أشتري"
       ]
     },
 
     {
-      "name": "achat",
+      "name": "بيع",
       "synonyms": [
-        "achat",
-        "acheter"
+        "بيع"
+      ]
+    },
+
+
+    {
+      "name": "مسؤول",
+      "synonyms": [
+        "مسؤول",
+        "مدير"
       ]
     },
 
     {
-      "name": "vente",
-      "synonyms": [
-        "vente",
-        "vendre"
-      ]
-    },
-
-    {
-      "name": "solde",
-      "synonyms": [
-        "solde",
-        "remise"
-      ]
-    },
-
-    {
-      "name": "responsable",
-      "synonyms": [
-        "responsable",
-        "contact",
-        "propriétaire",
-        "administrateur",
-        "agent",
-        "représentant"
-      ]
-    },
-
-    {
-        "name": "bien vide",
+        "name": "منتوج",
         "synonyms": [
-          "bien vide",
-          "non meublé",
-          "sans meubles"
+          "منتوج",
+          "منتجات",
+          "اقتراح",
+          "اقتراحات",
+          "خدمة",
+          "خدمات",
+          "عرض",
+          "عروض"
         ]
     },
 
     {
-        "name": "bien meublé",
+        "name": "بحث",
         "synonyms": [
-          "bien meublé",
-          "meublé",
-          "avec meubles"
-        ]
-    },
-
-    {
-        "name": "produit",
-        "synonyms": [
-          "produit",
-          "bien",
-          "proposition",
-          "service",
-          "option",
-          "projet",
-          "offre"
-        ]
-    },
-
-    {
-        "name": "cherche",
-        "synonyms": [
-          "cherche",
-          "veux",
-          "souhaite",
-          "espère",
-          "rêve"
+          "بحث",
+          "تنقيب",
+          "أبحث",
+          "أنقب"
         ]
     },
 
