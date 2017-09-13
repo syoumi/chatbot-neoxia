@@ -8,18 +8,24 @@ const {setUser} = require('./../user/handleUser');
 const {getParameter} = require('./../parameters/getParameter');
 const {splitMessage} = require('./../treatment/splitMessage');
 
-var jsonData = fs.readFileSync('./agentAi/resources/data.json');
 
-var data = JSON.parse(jsonData).data;
 
-var findExactMatch = (message) => {
+var findExactMatch = (request) => {
+
+  //Language
+  var lang = request.lang;
+
+  var jsonData = fs.readFileSync('./agentAi/resources/' + lang + '/data.json');
+
+  var data = JSON.parse(jsonData).data;
+
 
   //user
-  var user = getUser(message.senderID);
+  var user = getUser(request.senderID);
 
   //message text
 
-  var words = splitMessage(message.text);
+  var words = splitMessage(request.text);
 
   var foundEntry = undefined;
 
