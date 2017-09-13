@@ -30,9 +30,11 @@ var findExactMatch = (request) => {
       if (user && entry.previousActions.indexOf(user.previousAction) != -1) {
         go = true;
       }
-    } else {
+    }
+    else {
       go = true;
     }
+
     if (go) {
       //Foreach keyword in keywords (Sentence in keywords)
       entry.keywords.forEach((keyword) => {
@@ -40,6 +42,7 @@ var findExactMatch = (request) => {
 
         //Foreach word in one keyword
         var keywordsArray = keyword.split(' ').filter((item) => {
+          console.log('LANGAGE 1: ', request.lang);
           return item != '' && !(isIgnorable(item, request.lang));
         });
 
