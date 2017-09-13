@@ -11,9 +11,11 @@ var sendToAi = (senderID, messageText) => {
 
 	getLead(senderID, (lead) => {
 
-		if(lead && lead.Language__c != '') {
+		if(lead && lead.Language__c) {
 			lang = lead.Language__c;
 		}
+
+		console.log('LANGUAGE: ', lang);
 
 		var request = {
 			senderID: senderID,
