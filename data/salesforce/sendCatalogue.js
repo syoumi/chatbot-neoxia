@@ -21,7 +21,7 @@ const {getText} = require('./../../utils/getPredefinedAnswers');
 var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, count, lang) => {
 
     //Search for building
-    var query = "SELECT Id, Name, amount__c, image__c, link__c, Description__c, Salesman__r.Id, Salesman__r.Name, Salesman__r.MobilePhone, Operation__c, Area__c, City__c, Close_by__c, Country__c, Details__c, Furnished__c, Neighborhood__c, Number_of_bathrooms__c, Number_of_rooms__c  FROM product2 WHERE type__c='"+ building +"' AND operation__c = '"+ operation +"'";
+    var query = "SELECT Id, Name, amount__c, image__c, link__c, Description__c, Salesman__r.Id, Salesman__r.Name, Salesman__r.MobilePhone FROM product2 WHERE type__c='"+ building +"' AND Operation__c = '"+ operation +"'";
 
     if(minPrice && maxPrice) {
       query += " AND amount__c >=" + minPrice + " AND amount__c <= " + maxPrice;

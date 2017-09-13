@@ -18,8 +18,8 @@ var getProductRecords = (query, callback) => {
              var price= record.Amount__c +"DH";
              var photo= record.Image__c;
              //details/:name/:operation/:city/:neighborhood/:country/:nbrRooms/:nbrBR/:area/:closeBy/:options/:price
-             var description= "DESCRIPTION_PAYLOAD|" + title + "/" + records.Operation__c + "/" + records.City__c + "/" + records.Neighborhood__c + "/" + records.Number_of_rooms__c  + "/" + records.Number_of_bathrooms__c + "/" + records.Area__c + "/" + records.Close_by__c + "/" + records.Details__c + "/" + price;
-             //var link= record.Link__c;
+             var description= "DESCRIPTION_PAYLOAD|" + record.Description__c;
+            //var link= record.Link__c;
              var contact = "CONTACT_PAYLOAD|" + record.Salesman__r.Id + "|" + record.Salesman__r.Name + "|" + record.Salesman__r.MobilePhone + "|" + id;
 
              //Create element
@@ -58,7 +58,7 @@ var getProductRecords = (query, callback) => {
 var getProduct = (productID, callback) => {
   doLogin((conn) => {
     var product = undefined;
-    var query = "SELECT Id, Name, Amount__c, Operation__c, Area__c, City__c, Close_by__c, Country__c, Details__c, Furnished__c, Neighborhood__c, Number_of_bathrooms__c, Number_of_rooms__c FROM Product2 WHERE Id= '" + productID + "' LIMIT 1";
+    var query = "SELECT Id, Name, Amount__c, Type__c, Operation__c FROM Product2 WHERE Id= '" + productID + "' LIMIT 1";
     conn.query(query, (err, res) => {
       if (err) { return console.error(err); }
       if(res.records.length > 0){
