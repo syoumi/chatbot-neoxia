@@ -1325,6 +1325,20 @@
     },
 
     {
+       "action": "problem-action",
+        "keywords": [
+        "j ai un probleme"
+      ],
+      "answers": [
+        "C'est quoi votre problème?",
+        "Comment puis-je vous aider?"
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "0"
+    },
+
+    {
       "action": "unknown-action",
       "keywords": [],
       "answers": [

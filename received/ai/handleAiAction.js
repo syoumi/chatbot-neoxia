@@ -204,7 +204,7 @@ var handleAiAction= (senderID, answer) => {
       sendTextMessageWithDelay(senderID, text);
       getContact(senderID, (contact) => {
         if(contact){
-          text = text + ' ' + getText('fr', 'Ask about email', contact.Email);
+          text =  getText('fr', 'Ask about email', contact.Email);
           sendTextMessageWithDelay(senderID, text);
         }
         else{

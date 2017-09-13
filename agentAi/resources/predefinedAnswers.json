@@ -43,12 +43,12 @@
 
     {
       "title": "Ask about email",
-      "text": "Votre adresse email enregistrée est:\n#email#"
+      "text": "Votre adresse email enregistrée est:\n #email#"
     },
 
     {
       "title": "Ask about phone",
-      "text": "Votre numéro de téléphone enregistré est:\n#phone#"
+      "text": "Votre numéro de téléphone enregistré est:\n #phone#"
     },
 
     {
