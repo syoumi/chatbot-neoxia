@@ -18,7 +18,7 @@ var getProductRecords = (query, callback) => {
              var price= record.Amount__c +"DH";
              var photo= record.Image__c;
              //details/:name/:operation/:city/:neighborhood/:country/:nbrRooms/:nbrBR/:area/:closeBy/:options/:price
-             var description= "DESCRIPTION_PAYLOAD|" + title + "/" + records.Operation__c + "/" + records.City__c + "/" + records.Neighborhood__c + "/" + records.Number_of_rooms__c  + "/" + records.Number_of_bathrooms__c + "/" + records.Area__c + "/" + records.Close_by__c + "/" + records.Details__c "/" + price;
+             var description= "DESCRIPTION_PAYLOAD|" + title + "/" + records.Operation__c + "/" + records.City__c + "/" + records.Neighborhood__c + "/" + records.Number_of_rooms__c  + "/" + records.Number_of_bathrooms__c + "/" + records.Area__c + "/" + records.Close_by__c + "/" + records.Details__c + "/" + price;
              //var link= record.Link__c;
              var contact = "CONTACT_PAYLOAD|" + record.Salesman__r.Id + "|" + record.Salesman__r.Name + "|" + record.Salesman__r.MobilePhone + "|" + id;
 
