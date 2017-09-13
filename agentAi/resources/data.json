@@ -1185,7 +1185,7 @@
         "puis je modifier mes coordonnées"
       ],
       "answers": [
-        "Vous pouvez modifier vos coordonnées à tout moment."
+        "Vous pouvez modifier vos coordonnées à tout moment. Il suffit de le demander."
       ],
       "nextActions": [],
       "previousActions" : [],
@@ -1252,6 +1252,52 @@
       "nextActions": [],
       "previousActions" : ["phone-email-action"],
       "hasParam": "1"
+    },
+
+    {
+       "action": "ask-email-action",
+        "keywords": [
+        "mon email actuel c est quoi",
+        "vous avez envoyé le devis à quelle adresse email",
+        "l email que vous avez utilisé pour m envoyer le devis",
+        "c est quoi mon adresse email"
+      ],
+      "answers": [
+        "Attendez, s'il vous plaît. Je vais vérifier. "
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "0"
+    },
+
+    {
+       "action": "call-information-action",
+        "keywords": [
+        "quand est ce que vous allez m appeler",
+        "qui va m appeler",
+        "vous allez vous tarder à m appeler"
+      ],
+      "answers": [
+        "L'agent commercial va vous appeler le plutôt possible. Ne vous n'inquiétez pas."
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "0"
+    },
+
+    {
+       "action": "quote-error-action",
+        "keywords": [
+        "je n ai pas reçu le devis",
+        "où est le devis",
+        "renvoyez le devis"
+      ],
+      "answers": [
+        "Veuillez nous excuser.\nSi vous n'avez pas bien reçu le devis, vous devez contacter l'agent commercial.\nVérifiez, également, que l'adresse email que vous aviez saisi est correcte."
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "0"
     },
 
     {
