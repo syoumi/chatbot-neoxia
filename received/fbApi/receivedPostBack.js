@@ -120,10 +120,11 @@ var receivedPostBack = (event) => {
 
    case "DESCRIPTION_PAYLOAD":
       //sendTextMessage(senderID, postback[1]);
+      console.log('DETAILS: ', postback[1]);
       var buttons = [
         {
                   "type":"web_url",
-                  "url":"https://desolate-dusk-64146.herokuapp.com/details/"+senderID+"/"+postback[1],
+                  "url":"https://desolate-dusk-64146.herokuapp.com/details/"+postback[1],
                   "title":"Formulaire",
                   "webview_height_ratio": "full",
                   "messenger_extensions": true
