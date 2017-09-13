@@ -16,8 +16,7 @@ var getYesNo = (lang) => {
   var yesno = [];
   switch(lang) {
     case "fr":
-      yesno[0] = 'Oui';
-      yesno[1] = 'Non';
+      yesno = ['Oui', 'Non' ];
       break;
 
     case "ar":
@@ -26,8 +25,7 @@ var getYesNo = (lang) => {
       break;
 
     case "ma":
-      yesno[0] ='Ah';
-      yesno[1] = 'La';
+      yesno = [ 'Ah',  'La' ];
       break;
   }
 
@@ -38,8 +36,7 @@ var getFilterSkip = (lang) => {
   var filterskip = [];
   switch(lang) {
     case "fr":
-      filterskip[0] = 'Filtrer';
-      filterskip[1] = 'Sauter';
+      filterskip = ['Filtrer', 'Sauter' ];
       break;
 
     case "ar":
@@ -48,14 +45,54 @@ var getFilterSkip = (lang) => {
       break;
 
     case "ma":
-      filterskip[0] ='';
-      filterskip[1] = '';
+      filterskip = ['', ''];
       break;
   }
 
   return filterskip;
 }
 
+var getActionsContact = (lang) => {
+  var actionsContact = [];
+  switch(lang) {
+    case "fr":
+      actionsContact = ["Appeler", "Envoyer demande", "Envoyer devis"];
+      break;
+
+    case "ar":
+      actionsContact[0] = 'أتصل '
+      actionsContact[1] = 'اتصلوا بي';
+      actionsContact[3] = 'أرسلوا الفاتورة';
+      break;
+
+    case "ma":
+      actionsContact = ["Ana n3ayt lih", "Huwa y3ayt liya", "Sifto liya le devis"];
+      break;
+  }
+
+  return actionsContact;
+}
+
+
+var getFormTitle = (lang) => {
+  var title = 'Formulaire';
+  switch(lang) {
+    case "fr":
+      title = 'Formulaire';
+      break;
+
+    case "ar":
+      title = 'الاستمارة';
+      break;
+
+    case "ma":
+      title = 'Formulaire';
+      break;
+  }
+
+  return actionsContact;
+}
+
 module.exports =  {
-  getOperations, getBuildings, getYesNo, getFilterSkip
+  getOperations, getBuildings, getYesNo, getFilterSkip, getActionsContact, getFormTitle
 }
