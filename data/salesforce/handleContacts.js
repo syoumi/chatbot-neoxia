@@ -22,9 +22,9 @@ var getContact = (senderID, callback) => {
 var updateContact = (senderID, fname, lname, city, country, email, phone) => {
   //TODO if there's quote ---> update Quote's Email
   doLogin((conn) => {
-    var query = "SELECT Id, firstName, lastName, facebookId__c, company,  city, country, email, Phone FROM Contact WHERE FacebookID__c= '" + senderID + "'";
+    var query = "SELECT Id, firstName, lastName, facebookId__c, city, country, email, MobilePhone FROM Contact WHERE FacebookID__c= '" + senderID + "'";
     conn.query(query)
-        .update({ firstName : fname, lastName : lname, city : city, country: country, email : email, Phone : phone }, 'Contact', function(err, rets) {
+        .update({ firstName : fname, lastName : lname, city : city, country: country, email : email, MobilePhone : phone }, 'Contact', function(err, rets) {
           if (err) { return console.error(err); }
         });
   });
