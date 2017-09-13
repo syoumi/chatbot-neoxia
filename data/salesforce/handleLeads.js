@@ -11,7 +11,7 @@ const {getContact} = require("./handleContacts");
 var getLead = (senderID, callback) => {
   doLogin((conn) => {
       var lead = undefined;
-      var query = "SELECT Name, company, MobilePhone, LeadSource, FacebookId__c, Email FROM Lead WHERE FacebookId__c='" + senderID + "' LIMIT 1";
+      var query = "SELECT Name, company, MobilePhone, LeadSource, FacebookId__c, Email, Language__c FROM Lead WHERE FacebookId__c='" + senderID + "' LIMIT 1";
       conn.query(query, (err, res) => {
         if (err) { return console.error(err); }
         if(res.records.length > 0){
@@ -31,10 +31,10 @@ var addLead = (senderID) => {
   //Verify if lead  doesn't exist and wasn't converted
   getLead(senderID, (lead) => {
     if(!lead){
-
-          getUserInfos(senderID, (fname, lname, ppicture, locale, timezone, gender) => {
-          	var salutation= 'Mr.';
-          	if(gender=='female') salutation= 'Mrs.';
+      //Extract user's informations from Facebook
+      getUserInfos(senderID, (fname, lname, ppicture, locale, timezone, gender) => {
+          var salutation= 'Mr.';
+          if(gender=='female') salutation= 'Mrs.';
             var status = "Working - Contacted";
             var leadSource = "Facebook";
             var company  = "UNKOWN";
@@ -45,8 +45,7 @@ var addLead = (senderID) => {
               });
             });
 
-          });
-
+      });
     }
   });
 
@@ -65,7 +64,20 @@ var updateLead = (senderID, fname, lname, company, city, country, email, phone, 
             callback(rets);
           });
     });
+}
 
+//Update lead's language
+var updateLeadLanguage = (senderID, language, callback) => {
+    //TODO Search if there's a contact with the same email: IF so update contact's facebookId__c and delete lead,  Else update lead
+    doLogin((conn) => {
+      var query = "SELECT Id, Language__c FROM lead WHERE FacebookID__c= '" + senderID + "'";
+      conn.query(query)
+          .update({ Language__c: language }, 'Lead', function(err, rets) {
+            if (err) { return console.error(err); }
+            console.log('LEAD UPDATED');
+            callback();
+          });
+    });
 }
 
 //Convert lead to Contact, account and opportunity
@@ -84,5 +96,5 @@ var convertLead = (senderID, callback) => {
 
 
 module.exports = {
-  getLead, addLead, updateLead, convertLead
+  getLead, addLead, updateLead, convertLead, updateLeadLanguage
 }

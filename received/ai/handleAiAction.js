@@ -11,8 +11,6 @@ const {sendBulkTextMessages} = require('./../../send/fbApi/sendBulkTextMessages'
 
 const {handleParameters} = require('./handleAiParameters');
 
-const {addLead} = require('./../../data/salesforce/handleLeads');
-
 const {getText} = require('./../../utils/getPredefinedAnswers');
 
 const {getContact} = require('./../../data/salesforce/handleContacts');
@@ -28,8 +26,6 @@ var handleAiAction= (senderID, answer) => {
   console.log('**SENDER ID: ', senderID);
   console.log('**PARAMS: ', params);
 
-  //Add User as lead if he doesn't exist or he isn't a contact
-  addLead(senderID);
 
 	switch (action) {
 
@@ -115,16 +111,50 @@ var handleAiAction= (senderID, answer) => {
 
     //Edit Email
     case "email-action":
-        if(params){
-          handleParameters(senderID, text, params, "edit email");
+      getContact(senderID, (contact) => {
+        if(contact){
+          if(params){
+            handleParameters(senderID, text, params, "edit email");
+          }
         }
-        break;
+        else{
+          text = getText('fr', 'Contact does not exist', undefined);
+          var buttons = [
+            {
+                      "type":"web_url",
+                      "url":"https://desolate-dusk-64146.herokuapp.com/form/"+senderID,
+                      "title":"Formulaire",
+                      "webview_height_ratio": "full",
+                      "messenger_extensions": true
+            }
+          ];
+          sendButtonMessage(senderID, text , buttons);
+        }
+      });
+      break;
 
     //Edit Email
     case "phone-action":
-        if(params){
-          handleParameters(senderID, text, params, "edit phone");
+      getContact(senderID, (contact) => {
+        if(contact){
+          if(params){
+            handleParameters(senderID, text, params, "edit phone");
+          }
         }
+        else{
+          text = getText('fr', 'Contact does not exist', undefined);
+          var buttons = [
+            {
+                      "type":"web_url",
+                      "url":"https://desolate-dusk-64146.herokuapp.com/form/"+senderID,
+                      "title":"Formulaire",
+                      "webview_height_ratio": "full",
+                      "messenger_extensions": true
+            }
+          ];
+          sendButtonMessage(senderID, text , buttons);
+        }
+        });
         break;
 
     //Ask about email
