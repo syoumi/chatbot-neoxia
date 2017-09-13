@@ -67,13 +67,12 @@ var updateLead = (senderID, fname, lname, company, city, country, email, phone, 
 }
 
 //Update lead's language
-var updateLeadLanguage = (senderID, language, callback) => {
+var updateLeadLanguage = (senderID, language) => {
     doLogin((conn) => {
       var query = "SELECT Id, Language__c FROM lead WHERE FacebookID__c= '" + senderID + "'  AND ToConvert__c = false";
       conn.query(query)
           .update({ Language__c: language }, 'Lead', function(err, rets) {
             if (err) { return console.error(err); }
-            callback();
           });
     });
 }
