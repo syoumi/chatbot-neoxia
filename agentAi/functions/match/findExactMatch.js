@@ -13,9 +13,7 @@ const {splitMessage} = require('./../treatment/splitMessage');
 var findExactMatch = (request) => {
 
   var jsonData = fs.readFileSync('./agentAi/resources/' + request.lang + '/data.json');
-    console.log('./agentAi/resources/' + request.lang + '/data.json');
   var data = JSON.parse(jsonData).data;
-
 
   //user
   var user = getUser(request.senderID);
@@ -23,7 +21,6 @@ var findExactMatch = (request) => {
   //message text
 
   var words = splitMessage(request.text, request.lang);
-  console.log('WORDS SPLIT: ', words);
 
   var foundEntry = undefined;
 
