@@ -1,11 +1,12 @@
 const fs = require('fs');
 
-var jsonData = fs.readFileSync('./agentAi/resources/predefinedAnswers.json');
-
-var predefinedAnswers = JSON.parse(jsonData).data;
 
 
 var getText = (lang, title, param) => {
+  var jsonData = fs.readFileSync('./agentAi/resources/' + lang + '/predefinedAnswers.json');
+
+  var predefinedAnswers = JSON.parse(jsonData).data;
+
   var text = undefined;
 
   predefinedAnswers.forEach((answer) => {
