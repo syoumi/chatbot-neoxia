@@ -22,17 +22,17 @@ var handleMessage = (request) => {
 
     if (result) {
       // generating random answer
-      return getAnswer(result, lang);
+      return getAnswer(result, request.lang);
 
     } else {
       result = findMatch(request);
       if (result) {
         // generating random answer
-        return getAnswer(result, lang);
+        return getAnswer(result, request.lang);
 
       } else {
         var unknownaction = {entry: data.find((entry) => entry.action === 'unknown-action'), params: undefined};
-        return getAnswer(unknownaction, lang);
+        return getAnswer(unknownaction, request.lang);
       }
     }
   } else {

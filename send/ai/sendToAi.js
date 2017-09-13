@@ -18,12 +18,11 @@ var sendToAi = (senderID, messageText) => {
 		console.log('LANGUAGE: ', lang);
 
 		var request = {
-			senderID: senderID,
+			senderID,
 			text : messageText,
 			lang
 		}
 
-		console.log("REQUEST: ", request);
 		var answer = receiveMessage(request);
 
 		console.log('Request is ' , request);
