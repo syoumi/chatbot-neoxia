@@ -12,7 +12,7 @@ const {getAnswer} = require('./functions/answer/handleAnswer');
 
 var receiveMessage = (request) => {
 
-  console.log(`Received message from ${request.senderID}, content ${request.text}`);
+  console.log(`Received message from ${request.senderID}, content ${request.text}, language ${request.lang}`);
   var answer = undefined;
   var specificActions = lookForSpecificActions(request.senderID, request.lang);
   if (specificActions && specificActions.length != 0) {

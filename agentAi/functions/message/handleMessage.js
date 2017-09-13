@@ -20,6 +20,8 @@ var handleMessage = (request) => {
     //Exact Match
     var result = findExactMatch(request);
 
+    console.log("RESULT FIND EXACT MATCH: ", result);
+    
     if (result) {
       // generating random answer
       return getAnswer(result, request.lang);
