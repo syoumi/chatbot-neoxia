@@ -5,24 +5,32 @@ const {findMatch} = require('./../match/findMatch');
 const {findExactMatch} = require('./../match/findExactMatch');
 const {getAnswer} = require('./../answer/handleAnswer');
 
-var jsonData = fs.readFileSync('./agentAi/resources/data.json');
-var ignorable = fs.readFileSync('./agentAi/resources/ignorable.json');
-
-var data = JSON.parse(jsonData).data;
+// var jsonData = fs.readFileSync('./agentAi/resources/data.json');
+// var ignorable = fs.readFileSync('./agentAi/resources/ignorable.json');
+//
+// var data = JSON.parse(jsonData).data;
 
 // handling input, returning action + possible answers + parameters
-var handleMessage = (message) => {
-  if (message.text) {
+var handleMessage = (request) => {
+
+  var lang  = request.lang;
+
+  var jsonData = fs.readFileSync('./agentAi/resources/'+ lang + '/data.json');
+  var ignorable = fs.readFileSync('./agentAi/resources/'+ lang + '/ignorable.json');
+
+  var data = JSON.parse(jsonData).data;
+
+  if (request.text) {
 
     //Exact Match
-    var result = findExactMatch(message);
+    var result = findExactMatch(request);
 
     if (result) {
       // generating random answer
       return getAnswer(result);
 
     } else {
-      result = findMatch(message);
+      result = findMatch(request);
       if (result) {
         // generating random answer
         return getAnswer(result);

@@ -1,0 +1,148 @@
+{
+  "lang": "fr",
+  "list": [
+    {
+      "city": "Agadir",
+      "neighborhoods": [
+
+      ],
+      "region": "Souss-Massa-Draa"
+    },
+
+    {
+      "city": "Beni Mellal",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+    {
+      "city": "Casablanca",
+      "neighborhoods": [
+        "Aïn chock",
+        "Aïn Diab",
+        "Aïn Sbai",
+        "Belvédère",
+        "Bourgogne",
+        "California",
+        "Hay El Hassani",
+        "Maarif",
+        "Oasis",
+        "Les Roches Noires",
+        "Sidi Maarouf"
+      ],
+      "region": "Grand Casablanca"
+    },
+
+    {
+      "city": "Dakhla",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+    {
+      "city": "El Jadida",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+    {
+      "city": "Fès",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+    {
+      "city": "Guelmim",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+    {
+      "city": "Ifrane",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+    {
+      "city": "Kenitra",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+    {
+      "city": "Laayoune",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+    {
+      "city": "Marrakech",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+    {
+      "city": "Safi",
+      "neighborhoods": [
+        "Azib Derai",
+        "Saada",
+        "Miftah Lkhir",
+        "Hay Essalam",
+        "Hay Anas"
+      ],
+      "region": "Doukkala-Abda"
+    },
+
+    {
+      "city": "Salé",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+
+    {
+      "city": "Sidi Rahhal",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+    {
+      "city": "Tanger",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    },
+
+    {
+      "city": "Rabat",
+      "neighborhoods": [
+
+      ],
+      "region": ""
+    }
+
+  ]
+}
