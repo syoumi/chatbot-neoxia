@@ -274,13 +274,13 @@ var handleAiAction= (senderID, answer, lang) => {
     case "ar-language-action":
     case "ma-language-action":
       var language = action.split('-')[0];
-      console.log('Lang: ', language);
-      console.log('TEXT: ', text);
-      params = {
-        name : 'language',
-        type: 'language',
-        value : language
-      }
+      params = [
+        {
+          name : 'language',
+          type: 'language',
+          value : language
+        }
+      ];
       handleParameters(senderID, text, params, "edit language", lang);
       break;
 
