@@ -2,6 +2,8 @@ const {sendCatalogue} = require('./../../data/salesforce/sendCatalogue');
 
 const {addRequest} = require('./../../data/salesforce/handleRequests');
 
+const {updateContact} = require('./../../data/salesforce/handleContacts');
+
 
 var handleParameters = (senderID, text, params, action) => {
   switch(action){
