@@ -42,7 +42,6 @@ var findExactMatch = (request) => {
 
         //Foreach word in one keyword
         var keywordsArray = keyword.split(' ').filter((item) => {
-          console.log('LANGAGE 1: ', request.lang);
           return item != '' && !(isIgnorable(item, request.lang));
         });
 
