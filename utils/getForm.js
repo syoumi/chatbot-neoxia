@@ -8,6 +8,7 @@ const {updateContact} = require('./../data/salesforce/handleContacts');
 const {addTask} = require('./../data/salesforce/handleTasks');
 
 
+
 //Get Form Lead
 var getFormLead = (req) => {
 
@@ -21,7 +22,7 @@ var getFormLead = (req) => {
   var email = req.email;
   var phone = req.phone ;
 
-  //TODO Verify Company doesn't exist; Verify email and phone
+  //TODO Verify Company doesn't exist
 
   updateLead(senderID, fname, lname, company, city, country, email, phone, (lead) => {
 

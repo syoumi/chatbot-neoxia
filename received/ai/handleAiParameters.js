@@ -62,7 +62,7 @@ var handleParameters = (senderID, text, params, action) => {
           email = param.value;
         }
       });
-      updateContact(senderID, undefined, undefined, undefined, undefined, undefined, email, undefined);
+      updateContact(senderID, undefined, undefined, undefined, undefined, email, undefined);
       break;
 
     case "edit phone":
@@ -72,7 +72,7 @@ var handleParameters = (senderID, text, params, action) => {
           phone = param.value;
         }
       });
-      updateContact(senderID, undefined, undefined, undefined, undefined, undefined, undefined, phone);
+      updateContact(senderID, undefined, undefined, undefined, undefined, undefined, phone);
       break;
 
   }

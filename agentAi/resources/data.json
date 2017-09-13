@@ -1199,10 +1199,13 @@
         "je souhaite changer mon email",
         "modifier mon email",
         "éditer mon email",
-        "puis je modifier mon email"
+        "puis je modifier mon email",
+        "j ai changé d adresse email",
+        "je n ai plus la même adresse email",
+        "je n utilise plus l ancienne adresse email"
       ],
       "answers": [
-        "Vous pouvez modifier votre email à tout moment.\nVeuillez taper votre nouveau email."
+        "Vous pouvez modifier votre email à tout moment.\nVeuillez taper votre nouvelle adresse email."
       ],
       "nextActions": ["email-action"],
       "previousActions" : [],
@@ -1212,8 +1215,9 @@
     {
        "action": "email-action",
         "keywords": [
-        "#email|email",
-        "mon nouveau email #email|email#"
+        "#email|email#",
+        "mon nouveau email #email|email#",
+        "voici ma nouvelle adresse email #email|email#"
       ],
       "answers": [
         "Email modifié (y)."
@@ -1230,7 +1234,10 @@
         "je souhaite changer mon numéro de téléphone",
         "modifier mon numéro de téléphone",
         "éditer mon numéro de téléphone",
-        "puis je modifier mon numéro de téléphone"
+        "puis je modifier mon numéro de téléphone",
+        "j ai changé de numéro de téléphone",
+        "je n ai plus le même numéro de téléphone",
+        "je n utilise plus l ancien numéro de téléphone"
       ],
       "answers": [
         "Vous pouvez modifier votre  numéro de téléphone à tout moment.\nVeuillez taper votre nouveau numéro de téléphone."
@@ -1243,8 +1250,9 @@
     {
        "action": "phone-action",
         "keywords": [
-        "#email|email",
-        "mon nouveau email #email|email#"
+        "#phone|phone#",
+        "mon numéro de téléphone est #phpne|phone#",
+        "voici mon nouveau numéro de téléphone #phone|phone#"
       ],
       "answers": [
         "Numéro de téléphone modifié (y)."
