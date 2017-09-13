@@ -15,7 +15,8 @@ const {receivedPostBack} = require('./received/fbApi/receivedPostBack');
 const {receivedSeen} = require('./received/fbApi/receivedSeen');
 const {receivedDelivery} = require('./received/fbApi/receivedDelivery');
 
-const {getForm} = require('./utils/getForm');
+const {getFormLead} = require('./utils/getForm');
+const {getFormContact} = require('./utils/getForm');
 
 
 var app = express();
@@ -95,21 +96,25 @@ app.get("/form/:senderID", function(req, res){
 app.post("/completeForm", function(req, res){
   //res.sendfile('./views/completeForm.html');
   res.render('completeForm');
+  //TODO Check if there's no error, then send a message
+  res.send('Merci :) !');
   //console.log("REQ BODY Complete form: ", req.body);
-  getForm(req.body);
+  getFormLead(req.body);
 });
 
 
-// //Edit Contact's infomartions
-// app.get("/formToEdit/:senderID", function(req, res){
-//   res.render('formToEdit',  {senderID: req.params.senderID});
-// });
-//
-//
-// app.post("/completeFormToEdit", function(req, res){
-//   res.render('completeFormToEdit');
-//   getFormContact(req.body);
-// });
+//Edit Contact's infomartions
+app.get("/formToEdit/:senderID", function(req, res){
+  res.render('formToEdit',  {senderID: req.params.senderID});
+});
+
+
+app.post("/completeFormToEdit", function(req, res){
+  res.render('completeFormToEdit');
+  //TODO Check if there's no error, then send a message
+  res.send('Merci :) !');
+  getFormContact(req.body);
+});
 
 
 // Let the server listening to incoming connections

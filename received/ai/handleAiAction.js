@@ -99,17 +99,16 @@ var handleAiAction= (senderID, answer) => {
 
     //Edit form
     case "form-action":
-      sendTextMessageWithDelay(senderID, text);
       var buttons = [
         {
                   "type":"web_url",
-                  "url":"https://desolate-dusk-64146.herokuapp.com/form/"+senderID,
+                  "url":"https://desolate-dusk-64146.herokuapp.com/formToEdit/"+senderID,
                   "title":"Formulaire",
                   "webview_height_ratio": "full",
                   "messenger_extensions": true
         }
       ];
-      sendButtonMessage(senderID, ':D', buttons);
+      sendButtonMessage(senderID, text , buttons);
       break;
 
     //Edit Email

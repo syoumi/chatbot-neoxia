@@ -9,7 +9,7 @@ const {addTask} = require('./../data/salesforce/handleTasks');
 
 
 //Get Form Lead
-var getForm = (req) => {
+var getFormLead = (req) => {
 
   //Fields
   var senderID = req.senderID;
@@ -48,8 +48,31 @@ var getForm = (req) => {
 
 }
 
+//Get Form Lead
+var getFormContact = (req) => {
+
+  //Fields
+  var senderID = req.senderID;
+  var fname = req.first_name;
+  var lname = req.last_name;
+  var city = req.city;
+  var country = req.country;
+  var email = req.email;
+  var phone = req.phone ;
+
+  //Update Lead (Hidden Lead) and Contact
+  getContact(senderID, (contact) => {
+        updateLead(senderID, fname, lname, contact.company, city, country, email, phone, (lead) => {
+          if(contact){
+            updateContact(senderID, fname, lname, city, country, email, phone);
+          }
+        });
+  });
+
+}
+
 
 
 module.exports  = {
-  getForm
+  getFormLead, getFormContact
 }
