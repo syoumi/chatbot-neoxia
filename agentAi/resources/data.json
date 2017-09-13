@@ -1279,6 +1279,22 @@
     },
 
     {
+       "action": "ask-phone-action",
+        "keywords": [
+        "mon numéro de téléphone actuel c est quoi",
+        "vous allez m appeler en utilisant quel numéro de téléphone",
+        "le numéro de téléphone que vous avez utilisé pour m appeler",
+        "c est quoi mon numéro de téléphone"
+      ],
+      "answers": [
+        "Attendez, s'il vous plaît. Je vais vérifier. "
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "0"
+    },
+
+    {
        "action": "call-information-action",
         "keywords": [
         "quand est ce que vous allez m appeler",
@@ -1286,7 +1302,7 @@
         "vous allez vous tarder à m appeler"
       ],
       "answers": [
-        "L'agent commercial va vous appeler le plutôt possible. Ne vous n'inquiétez pas."
+        "Ne vous n'inquiétez pas."
       ],
       "nextActions": [],
       "previousActions" : [],

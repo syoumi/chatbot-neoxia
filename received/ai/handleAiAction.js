@@ -15,6 +15,8 @@ const {addLead} = require('./../../data/salesforce/handleLeads');
 
 const {getText} = require('./../../utils/getPredefinedAnswers');
 
+const {getContact} = require('./../../data/salesforce/handleContacts');
+
 
 //By action
 var handleAiAction= (senderID, answer) => {
@@ -124,6 +126,102 @@ var handleAiAction= (senderID, answer) => {
           handleParameters(senderID, text, params, "edit phone");
         }
         break;
+
+    //Ask about email
+    case "ask-email-action":
+      sendTextMessageWithDelay(senderID, text);
+      getContact(senderID, (contact) => {
+        if(contact){
+          text = getText('fr', 'Ask about email', contact.Email);
+          sendTextMessageWithDelay(senderID, text);
+        }
+        else{
+          text = getText('fr', 'Contact does not exist', undefined);
+          var buttons = [
+            {
+                      "type":"web_url",
+                      "url":"https://desolate-dusk-64146.herokuapp.com/form/"+senderID,
+                      "title":"Formulaire",
+                      "webview_height_ratio": "full",
+                      "messenger_extensions": true
+            }
+          ];
+          sendButtonMessage(senderID, text , buttons);
+        }
+      });
+      break;
+
+    //Ask about number phone
+    case "ask-phone-action":
+    sendTextMessageWithDelay(senderID, text);
+    getContact(senderID, (contact) => {
+      if(contact){
+        text = getText('fr', 'Ask about phone', contact.phone);
+        sendTextMessageWithDelay(senderID, text);
+      }
+      else{
+        text = getText('fr', 'Contact does not exist', undefined);
+        var buttons = [
+          {
+                    "type":"web_url",
+                    "url":"https://desolate-dusk-64146.herokuapp.com/form/"+senderID,
+                    "title":"Formulaire",
+                    "webview_height_ratio": "full",
+                    "messenger_extensions": true
+          }
+        ];
+        sendButtonMessage(senderID, text , buttons);
+      }
+      });
+      break;
+
+
+    //Waiting for call
+    case "call-information-action":
+      getContact(senderID, (contact) => {
+        if(contact){
+          text = text + ' ' + getText('fr', 'Waiting for call', contact.Phone);
+          sendTextMessageWithDelay(senderID, text);
+        }
+        else{
+          text = getText('fr', 'Contact does not exist', undefined);
+          var buttons = [
+            {
+                      "type":"web_url",
+                      "url":"https://desolate-dusk-64146.herokuapp.com/form/"+senderID,
+                      "title":"Formulaire",
+                      "webview_height_ratio": "full",
+                      "messenger_extensions": true
+            }
+          ];
+          sendButtonMessage(senderID, text , buttons);
+        }
+      });
+      break;
+
+    //Check if there's no error while sending quote
+    case "quote-error-action":
+      sendTextMessageWithDelay(senderID, text);
+      getContact(senderID, (contact) => {
+        if(contact){
+          text = text + ' ' + getText('fr', 'Ask about email', contact.Email);
+          sendTextMessageWithDelay(senderID, text);
+        }
+        else{
+          text = getText('fr', 'Contact does not exist', undefined);
+          var buttons = [
+            {
+                      "type":"web_url",
+                      "url":"https://desolate-dusk-64146.herokuapp.com/form/"+senderID,
+                      "title":"Formulaire",
+                      "webview_height_ratio": "full",
+                      "messenger_extensions": true
+            }
+          ];
+          sendButtonMessage(senderID, text , buttons);
+        }
+      });
+      break;
 
 
 
