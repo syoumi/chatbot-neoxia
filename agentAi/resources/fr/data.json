@@ -1325,6 +1325,19 @@
     },
 
     {
+       "action": "when-action",
+        "keywords": [
+        "quand"
+      ],
+      "answers": [
+        "Veuillez spécifier s'il vous plaît. Quand quoi?"
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "0"
+    },
+
+    {
        "action": "problem-action",
         "keywords": [
         "j ai un probleme"

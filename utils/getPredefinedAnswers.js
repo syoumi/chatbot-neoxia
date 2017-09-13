@@ -25,7 +25,7 @@ var getText = (lang, title, param) => {
 var replaceParam = (textArray, param) => {
   var text = '';
   textArray.forEach((word) => {
-    if(word[0]=='#' && word[word.length-1]=='#'){
+    if(word[0]=='#' && (word[word.length-1]=='#' || word[word.length-2]=='#') ){
       word = word.replace(word, param);
     }
     text += ' ' + word;
