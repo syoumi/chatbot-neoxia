@@ -263,6 +263,24 @@ var handleAiAction= (senderID, answer, lang) => {
       });
       break;
 
+    case "language-action":
+      var languages = ['Français', 'العربية', 'Darija-Français'];
+      sendQuickReplies(senderID, text, languages);
+      break;
+
+    //TODO Add languages as parameters in agent
+
+    case "fr-language-action":
+    case "ar-language-action":
+    case "ma-language-action":
+      var language = action.split('-')[0];
+      params = {
+        name : 'language',
+        type: 'language',
+        value : language
+      }
+      handleParameters(senderID, text, params, "edit language");
+      break;
 
 
 

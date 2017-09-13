@@ -1338,16 +1338,61 @@
     },
 
     {
-       "action": "problem-action",
+       "action": "language-action",
         "keywords": [
-        "j ai un probleme"
+        "je veux changer de langue",
+        "puis je changer de langue",
+        "langue",
+        "quelles langues parlez vous"
       ],
       "answers": [
-        "C'est quoi votre problème?",
-        "Comment puis-je vous aider?"
+        "Quelle langue?"
+      ],
+      "nextActions": ["fr-language-action", "ar-language-action", "ma-language-action"],
+      "previousActions" : [],
+      "hasParam": "0"
+    },
+
+    {
+       "action": "fr-language-action",
+        "keywords": [
+        "français",
+        "fr"
+      ],
+      "answers": [
+        "Vous avez choisi la langue française."
       ],
       "nextActions": [],
-      "previousActions" : [],
+      "previousActions" : ["language-action"],
+      "hasParam": "0"
+    },
+
+    {
+       "action": "ar-language-action",
+        "keywords": [
+        "arabe",
+        "ar",
+        " العربية"
+      ],
+      "answers": [
+        "لقد اخترتم اللغة العربية"
+      ],
+      "nextActions": [],
+      "previousActions" : ["language-action"],
+      "hasParam": "0"
+    },
+
+    {
+       "action": "ma-language-action",
+        "keywords": [
+        "darija",
+        "darija français"
+      ],
+      "answers": [
+        "Khtariti Darija-Français."
+      ],
+      "nextActions": [],
+      "previousActions" : ["language-action"],
       "hasParam": "0"
     },
 

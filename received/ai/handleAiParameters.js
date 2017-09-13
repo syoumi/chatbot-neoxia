@@ -3,6 +3,9 @@ const {sendCatalogue} = require('./../../data/salesforce/sendCatalogue');
 const {addRequest} = require('./../../data/salesforce/handleRequests');
 
 const {updateContact} = require('./../../data/salesforce/handleContacts');
+const {updateContactLanguage} = require('./../../data/salesforce/handleContacts');
+
+const {updateLeadLanguage} = require('./../../data/salesforce/handleLeads');
 
 const {sendTextMessageWithDelay} = require('./../../send/fbApi/sendTextMessage');
 
@@ -80,6 +83,18 @@ var handleParameters = (senderID, text, params, action) => {
       updateContact(senderID, undefined, undefined, undefined, undefined, undefined, phone);
       sendTextMessageWithDelay(senderID, text);
       break;
+
+   case "edit language":
+     var language = undefined;
+     params.forEach((param) => {
+      if(param.name == 'language'){
+        phone = param.value;
+      }
+     });
+    updateLeadLanguage(senderID, language);
+    updateContactLanguage(senderID, language);
+    sendTextMessageWithDelay(senderID, text);
+    break;
 
   }
 }
