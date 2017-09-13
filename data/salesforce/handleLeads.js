@@ -73,7 +73,8 @@ var convertLead = (senderID, callback) => {
   console.log('TRYING TO CONVERT LEAD');
   doLogin((conn) => {
     var query = "SELECT Id, ToConvert__c FROM lead WHERE FacebookID__c= '" + senderID + "' AND ToConvert__c = false";
-          .update({ ToConvert__c : true }, 'Lead', function(err, rets) {
+    conn.query(query)
+        .update({ ToConvert__c : true }, 'Lead', function(err, rets) {
           if (err) { return console.error(err); }
           callback();
         });
