@@ -88,7 +88,7 @@ var handleParameters = (senderID, text, params, action, lang) => {
      var language = undefined;
      params.forEach((param) => {
       if(param.name == 'language'){
-        phone = param.value;
+        language = param.value;
       }
      });
     updateLeadLanguage(senderID, language);

@@ -274,6 +274,7 @@ var handleAiAction= (senderID, answer, lang) => {
     case "ar-language-action":
     case "ma-language-action":
       var language = action.split('-')[0];
+      console.log('Lang: ', language);
       params = {
         name : 'language',
         type: 'language',
