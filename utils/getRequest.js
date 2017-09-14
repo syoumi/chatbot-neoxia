@@ -22,9 +22,9 @@ var getRequestSF = (req) => {
 
 var getRequestFB = (req) => {
   var productID =  req.productID;
-  console.log(productID);
   //SHARE Product on FB
   getProduct(productID, (product) => {
+    console.log("POST PRODUCT");
     request({
       uri: 'https://graph.facebook.com/'+ FB_PAGE_ID + '/feed',
       qs: {
@@ -37,6 +37,7 @@ var getRequestFB = (req) => {
         console.log('ERROR');
         return console.error('Error occured while posting to facebook page.');
       }
+      console.log('GOOD');
       console.log('Posted to facebook with status ' , response.statusCode);
     });
 
