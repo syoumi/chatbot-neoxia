@@ -119,6 +119,7 @@ app.post("/completeFormToEdit", function(req, res){
 
 app.post("/salesforce", function(req, res){
   console.log('---> RECEIVE HTTP REQUEST FROM SF : ', res);
+  res.sendStatus(200);
 });
 
 
