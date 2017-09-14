@@ -22,7 +22,7 @@ var getProductRecords = (query, callback) => {
 var getProduct = (productID, callback) => {
   doLogin((conn) => {
     var product = undefined;
-    var query = "SELECT Id, Name, amount__c, image__c, link__c, Description__c, Salesman__r.Id, Salesman__r.Name, Salesman__r.MobilePhone FROM product2 WHERE Id= '" + productID + "' LIMIT 1";
+    var query = "SELECT Id, Name, Amount__c, Image__c, link__c, Description__c, Salesman__r.Id, Salesman__r.Name, Salesman__r.MobilePhone FROM product2 WHERE Id= '" + productID + "' LIMIT 1";
     conn.query(query, (err, res) => {
       if (err) { return console.error(err); }
       if(res.records.length > 0){

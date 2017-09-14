@@ -86,7 +86,6 @@ var sendProduct = (senderID, productID, lang) => {
 
       if(elements.length!=0){
         var text = getText(lang, 'Building request found' , product.Type__c);
-        console.log('ELEMENTS: ', elements);
         sendTextMessageWithDelay(senderID, text);
         sendGenericMessageWithDelay(senderID, elements, 15000);
         //update request
