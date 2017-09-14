@@ -4,7 +4,7 @@ const {doLogin} = require('./login');
 //Create new request
 var addRequest = (senderID, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, isTreated) => {
   getRequest(senderID, (request) => {
-    if(request && !checkRequest(building, operation, city, neighborhood, request)) {
+    if(!checkRequest(building, operation, city, neighborhood, request)) {
       doLogin((conn) => {
         var reqName = operation + '_' + building + '_' + senderID;
         conn.sobject("Request__c").create({Name: reqName, type__c: building, operation__c: operation, Minimum_price__c: minPrice, Maximum_price__c: maxPrice, Number_of_rooms__c: nbrRooms, City__c: city, Neighborhood__c: neighborhood, isTreated__c: isTreated, FacebookID__c: senderID}, function(err, res) {
@@ -62,22 +62,25 @@ var updateRequest = (senderID, isTreated) => {
 
 //Check if request already exists or not
 var checkRequest = (building, operation, city, neighborhood, request) => {
+  console.log(request);
+  if(request){
+    if(request.Type__c == building && request.Operation__c == operation) {
+      if(city && neighborhood){
+        return ( (request.City__c.toLowerCase() == city.toLowerCase()) && (request.Neighborhood__c.toLowerCase() == Neighborhood__c.toLowerCase()) );
+      }
 
-  if(request.Type__c == building && request.Operation__c == operation) {
-    if(city && neighborhood){
-      return ( (request.City__c.toLowerCase() == city.toLowerCase()) && (request.Neighborhood__c.toLowerCase() == Neighborhood__c.toLowerCase()) );
-    }
+      else if(city) {
+        return (request.City__c.toLowerCase() == city.toLowerCase());
+      }
 
-    else if(city) {
-      return (request.City__c.toLowerCase() == city.toLowerCase());
+      else if(neighborhood){
+          return (request.neighborhood__c.toLowerCase() == neighborhood.toLowerCase());
+      }
+      else {
+        return true;
+      }
     }
-
-    else if(neighborhood){
-        return (request.neighborhood__c.toLowerCase() == neighborhood.toLowerCase());
-    }
-    else {
-      return true;
-    }
+    return false;
   }
 
   return false;
