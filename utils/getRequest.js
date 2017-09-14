@@ -26,7 +26,7 @@ var getRequestFB = (req) => {
   getProduct(productID, (product) => {
     FB.setAccessToken(FB_PAGE_TOKEN);
     if(product){
-      FB.api('https://graph.facebook.com/' + FB_PAGE_ID + '/feed', 'post', {
+      FB.api('https://graph.facebook.com/' + FB_PAGE_ID + '/photos', 'post', {
       message: product.Name,
       url: product.Image__c
       }, function(response){
