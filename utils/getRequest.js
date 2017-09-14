@@ -19,7 +19,7 @@ var getRequestSF = (req) => {
 }
 
 var getRequestFB = (req) => {
-  var productID =  req.ProductID;
+  var productID =  req.productID;
   console.log(productID);
   //SHARE Product on FB
   getProduct(productID, (product) => {
