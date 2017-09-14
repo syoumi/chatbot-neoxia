@@ -12,7 +12,7 @@ const {FB_PAGE_TOKEN} = require('./../include/config');
 const {FB_PAGE_ID} = require('./../include/config');
 const {FB_ADMIN_TOKEN} = require('./../include/config');
 
-var FB = require('fb');
+const request = require('request');
 
 
 var getRequestSF = (req) => {
