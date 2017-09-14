@@ -67,18 +67,14 @@ var checkRequest = (building, operation, city, neighborhood, request) => {
   if(request){
     if(request.Type__c.toLowerCase() == building.toLowerCase() && request.Operation__c.toLowerCase() == operation.toLowerCase()) {
       if(city && neighborhood){
-        console.log('City found');
-        console.log('Neighborhood found');
         return ( (request.City__c.toLowerCase() == city.toLowerCase()) && (request.Neighborhood__c.toLowerCase() == Neighborhood__c.toLowerCase()) );
       }
 
       else if(city) {
-        console.log('Only City found');
         return (request.City__c.toLowerCase() == city.toLowerCase());
       }
 
       else if(neighborhood){
-          console.log('Only Neighborhood found');
           return (request.neighborhood__c.toLowerCase() == neighborhood.toLowerCase());
       }
       else {

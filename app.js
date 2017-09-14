@@ -124,6 +124,11 @@ app.post("/salesforce", function(req, res){
   res.sendStatus(200);
 });
 
+app.post("/facebook", function(req, res){
+  console.log('---> RECEIVE HTTP REQUEST FROM SF : ', req.body);
+  res.sendStatus(200);
+});
+
 
 // Let the server listening to incoming connections
 app.listen(PORT, () => {
