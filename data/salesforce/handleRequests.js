@@ -62,7 +62,7 @@ var updateRequest = (senderID, isTreated) => {
 
 //Check if request already exists or not
 var checkRequest = (building, operation, city, neighborhood, request) => {
-  console.log(request);
+
   if(request){
     if(request.Type__c == building && request.Operation__c == operation) {
       if(city && neighborhood){
