@@ -64,15 +64,15 @@ var updateRequest = (senderID, isTreated) => {
 var checkRequest = (building, operation, city, neighborhood, request) => {
 
   if(request.Type__c == building && request.Operation__c == operation) {
-    if(request.City__c && request.Neighborhood__c && city && neighborhood){
-      return (request.City__c.toLowerCase() == city.toLowerCase() && request.Neighborhood__c.toLowerCase() == Neighborhood__c.toLowerCase() ){
+    if(city && neighborhood){
+      return (request.City__c.toLowerCase() == city.toLowerCase() && request.Neighborhood__c.toLowerCase() == Neighborhood__c.toLowerCase() );
     }
 
-    else if(request.City__c && city) {
+    else if(city) {
       return (request.City__c.toLowerCase() == city.toLowerCase());
     }
 
-    else if(request.Neighborhood__c  &&neighborhood){
+    else if(neighborhood){
         return (request.neighborhood__c.toLowerCase() == neighborhood.toLowerCase());
     }
     else {
