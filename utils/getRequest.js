@@ -20,22 +20,25 @@ var getRequestSF = (req) => {
 
 var getRequestFB = (req) => {
   var productID =  req.ProductID;
-
+  console.log(productID);
   //SHARE Product on FB
   getProduct(productID, (product) => {
     FB.setAccessToken(VERIFY_TOKEN);
-    FB.api('me/photos', 'post', {
-    message: product.Name,
-    url: product.Image__c
-    }, function(response){
+    if(product){
+      FB.api('me/photos', 'post', {
+      message: product.Name,
+      url: product.Image__c
+      }, function(response){
 
-        if (!response || response.error) {
-          console.log('ERROR: ', response);
-        } else {
-          console.log('Post ID: ' + response.id);
-        }
+          if (!response || response.error) {
+            console.log('ERROR: ', response);
+          } else {
+            console.log('Post ID: ' + response.id);
+          }
 
-    });
+      });
+    }
+
   });
 }
 
