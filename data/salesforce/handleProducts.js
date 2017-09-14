@@ -70,12 +70,7 @@ var getElements = (products, callback) => {
     };
 
     console.log("TITLE: ", title );
-    console.log("ID: ", id);
-    console.log("PRICE: ", price);
-    console.log("IMAGE: ", photo);
-    console.log("DESCRIPTION: ", description);
-    console.log("CONTACT: ", contact);
-
+  
     elements.push(element);
 
   }

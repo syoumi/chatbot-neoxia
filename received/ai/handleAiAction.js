@@ -75,7 +75,8 @@ var handleAiAction= (senderID, answer, lang) => {
     case "accept-neighborhood-action":
     case "accept-fixing-price-action":
     case "fixing-price-action":
-      var replies = getYesNo(lang)[1]; //No
+      console.log('YES NO: ', getYesNo(lang));
+      var replies = [getYesNo(lang)[1]]; //No
       sendQuickReplies(senderID, text, replies);
       break;
 
