@@ -23,7 +23,7 @@ var sendButtonMessage= (recipientId, text, buttons) => {
 		}
 	};
 
-	callSendAPI(messageData);
+	 setTimeout(() => {callSendAPI(messageData);}, 6000);
 }
 
 

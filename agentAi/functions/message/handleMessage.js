@@ -5,31 +5,35 @@ const {findMatch} = require('./../match/findMatch');
 const {findExactMatch} = require('./../match/findExactMatch');
 const {getAnswer} = require('./../answer/handleAnswer');
 
-var jsonData = fs.readFileSync('./agentAi/resources/data.json');
-var ignorable = fs.readFileSync('./agentAi/resources/ignorable.json');
-
-var data = JSON.parse(jsonData).data;
 
 // handling input, returning action + possible answers + parameters
-var handleMessage = (message) => {
-  if (message.text) {
+var handleMessage = (request) => {
+
+  var jsonData = fs.readFileSync('./agentAi/resources/'+ request.lang + '/data.json');
+  var ignorable = fs.readFileSync('./agentAi/resources/'+ request.lang + '/ignorable.json');
+
+  var data = JSON.parse(jsonData).data;
+
+  if (request.text) {
 
     //Exact Match
-    var result = findExactMatch(message);
+    var result = findExactMatch(request);
+
+    console.log("RESULT FIND EXACT MATCH: ", result);
 
     if (result) {
       // generating random answer
-      return getAnswer(result);
+      return getAnswer(result, request.lang);
 
     } else {
-      result = findMatch(message);
+      result = findMatch(request);
       if (result) {
         // generating random answer
-        return getAnswer(result);
+        return getAnswer(result, request.lang);
 
       } else {
         var unknownaction = {entry: data.find((entry) => entry.action === 'unknown-action'), params: undefined};
-        return getAnswer(unknownaction);
+        return getAnswer(unknownaction, request.lang);
       }
     }
   } else {

@@ -1,7 +1,16 @@
 const {sendCatalogue} = require('./../../data/salesforce/sendCatalogue');
 
+const {addRequest} = require('./../../data/salesforce/handleRequests');
 
-var handleParameters = (senderID, text, params, action) => {
+const {updateContact} = require('./../../data/salesforce/handleContacts');
+const {updateContactLanguage} = require('./../../data/salesforce/handleContacts');
+
+const {updateLeadLanguage} = require('./../../data/salesforce/handleLeads');
+
+const {sendTextMessageWithDelay} = require('./../../send/fbApi/sendTextMessage');
+
+
+var handleParameters = (senderID, text, params, action, lang) => {
   switch(action){
 
     case 'send catalogue':
@@ -46,8 +55,45 @@ var handleParameters = (senderID, text, params, action) => {
         maxPrice= tmp;
       }
 
-    //sendCatalogue
-    sendCatalogue(senderID, text, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, 3);
+      //sendCatalogue
+      sendCatalogue(senderID, text, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, 3, lang);
+      //Add request
+      addRequest(senderID, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, false);
+
+      break;
+
+    case "edit email":
+      var email = undefined;
+      params.forEach((param) => {
+        if(param.name == 'email'){
+          email = param.value;
+        }
+      });
+      updateContact(senderID, undefined, undefined, undefined, undefined, email, undefined);
+      sendTextMessageWithDelay(senderID, text);
+      break;
+
+    case "edit phone":
+      var phone = undefined;
+      params.forEach((param) => {
+        if(param.name == 'phone'){
+          phone = param.value;
+        }
+      });
+      updateContact(senderID, undefined, undefined, undefined, undefined, undefined, phone);
+      sendTextMessageWithDelay(senderID, text);
+      break;
+
+   case "edit language":
+     var language = undefined;
+     params.forEach((param) => {
+      if(param.name == 'language'){
+        language = param.value;
+      }
+     });
+    updateLeadLanguage(senderID, language);
+    updateContactLanguage(senderID, language);
+    sendTextMessageWithDelay(senderID, text);
     break;
 
   }

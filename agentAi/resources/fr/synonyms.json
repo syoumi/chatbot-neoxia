@@ -208,6 +208,16 @@
     },
 
     {
+        "name": "numéro de téléphone",
+        "synonyms": [
+          "numéro de téléphone",
+          "num",
+          "tel",
+          "mobile"
+        ]
+    },
+
+    {
         "name": "casablanca",
         "synonyms": [
           "casablanca",

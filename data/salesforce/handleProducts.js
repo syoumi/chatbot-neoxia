@@ -17,8 +17,9 @@ var getProductRecords = (query, callback) => {
              var title= record.Name;
              var price= record.Amount__c +"DH";
              var photo= record.Image__c;
+             //details/:name/:operation/:city/:neighborhood/:country/:nbrRooms/:nbrBR/:area/:closeBy/:options/:price
              var description= "DESCRIPTION_PAYLOAD|" + record.Description__c;
-             //var link= record.Link__c;
+            //var link= record.Link__c;
              var contact = "CONTACT_PAYLOAD|" + record.Salesman__r.Id + "|" + record.Salesman__r.Name + "|" + record.Salesman__r.MobilePhone + "|" + id;
 
              //Create element
@@ -53,6 +54,22 @@ var getProductRecords = (query, callback) => {
 }
 
 
+//Get product by Id
+var getProduct = (productID, callback) => {
+  doLogin((conn) => {
+    var product = undefined;
+    var query = "SELECT Id, Name, Amount__c, Type__c, Operation__c FROM Product2 WHERE Id= '" + productID + "' LIMIT 1";
+    conn.query(query, (err, res) => {
+      if (err) { return console.error(err); }
+      if(res.records.length > 0){
+        product = res.records[0];
+      }
+      callback(product);
+    });
+  });
+}
+
+
 module.exports = {
-  getProductRecords
+  getProductRecords, getProduct
 }

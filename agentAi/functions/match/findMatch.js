@@ -11,13 +11,14 @@ const {getUser} = require('./../user/handleUser');
 const {MIN_STEP_TWO_PERCENT} = require('./../../include/config');
 const {MIN_STEP_THREE_PERCENT} = require('./../../include/config');
 
-var jsonData = fs.readFileSync('./agentAi/resources/data.json');
 
-var data = JSON.parse(jsonData).data;
+var findMatch = (request) => {
 
-var findMatch = (message) => {
+  var jsonData = fs.readFileSync('./agentAi/resources/' + request.lang + '/data.json');
 
-  var user = getUser(message.senderID);
+  var data = JSON.parse(jsonData).data;
+
+  var user = getUser(request.senderID);
 
   var maxActionPercent = 0;
   var maxActionIndex = 0;
@@ -36,7 +37,7 @@ var findMatch = (message) => {
     if (go) {
       var maxEntryPercent = 0;
       for (var j = 0; j < entry.keywords.length; j++) {
-        var result = wordsFound(message.text, entry.keywords[j], entry.hasParam);
+        var result = wordsFound(request.text, entry.keywords[j], entry.hasParam, request.lang);
         var percent = result.percent;
         if (percent > maxEntryPercent) {
           maxEntryPercent = percent;
@@ -75,8 +76,8 @@ var findMatch = (message) => {
         go = true;
       }
       if (go) {
-        var distincts = getDistinct(entry.keywords);
-        var result =  getPercent(message.text, distincts, entry.hasParam);
+        var distincts = getDistinct(entry.keywords, request.lang);
+        var result =  getPercent(request.text, distincts, entry.hasParam, request.lang);
         var percent = result.percent;
         //console.log('Percent found ' , percent);
         if (percent > maxPercent) {

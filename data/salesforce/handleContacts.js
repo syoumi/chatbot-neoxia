@@ -1,47 +1,51 @@
 const {doLogin} = require('./login');
 
+//Get Contact by his FacebookId
+var getContact = (senderID, callback) => {
 
-var isContact = (senderID, email) => {
-  var res = false;
-  var query = "SELECT FacebookId__c, email FROM Contact";
-  conn.query(query, (err, res) => {
-    if (err) { return console.error(err); }
-
-      for (var i=0; i<res.records.length; i++) {
-        var record = res.records[i];
-        if( (senderID == record.FacebookId__c) || (email && email == record.email) ){
-          res = true;
-        }
+  doLogin((conn) => {
+    var contact = undefined;
+    var query = "SELECT Id, Salutation, Name, AccountId, MobilePhone, LeadSource, FacebookId__c, email, Language__c FROM Contact WHERE FacebookId__c='" + senderID + "' LIMIT 1";
+    conn.query(query, (err, res) => {
+      if (err) { return console.error(err); }
+      if(res.records.length > 0){
+        contact = res.records[0];
       }
+      callback(contact);
+    });
   });
-  return res;
+
 }
 
-var getContact = (senderID, email) => {
-  var contact = undefined;
-  var query = "SELECT Name, AccountId, Description, Languages, MobilePhone, DoNotCall, LeadSource, FacebookId__c, email FROM Contact";
-  conn.query(query, (err, res) => {
-    if (err) { return console.error(err); }
 
-      for (var i=0; i<res.records.length; i++) {
-        var record = res.records[i];
-        if( (senderID == record.FacebookId__c) || (email && email == record.email) ){
-          contact = record;
-        }
-      }
+
+//Update Contact
+var updateContact = (senderID, fname, lname, city, country, email, phone) => {
+  //TODO if there's quote ---> update Quote's Email
+  doLogin((conn) => {
+    var query = "SELECT Id, FirstName, LastName, FacebookId__c, MailingCity, MailingCountry, Email, Phone, Language__c FROM Contact WHERE FacebookID__c= '" + senderID + "'";
+    conn.query(query)
+        .update({ FirstName : fname, LastName : lname, MailingCity : city, MailingCountry: country, Email : email, Phone : phone }, 'Contact', function(err, rets) {
+          if (err) { return console.error(err); }
+        });
   });
-  return contact;
-}
-
-var addContact = (senderID) => {
 
 }
 
 
-var updateContact = (senderID) => {
-
+//Update Contact's language
+var updateContactLanguage = (senderID, language) => {
+  doLogin((conn) => {
+    var query = "SELECT Id, Language__c FROM Contact WHERE FacebookID__c= '" + senderID + "'";
+    conn.query(query)
+        .update({ Language__c: language }, 'Contact', function(err, rets) {
+          if (err) { return console.error(err); }
+        });
+  });
 }
+
+
 
 module.exports = {
-  isContact, getContact, addContact, updateContact
+  getContact, updateContact, updateContactLanguage
 }

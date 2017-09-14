@@ -12,12 +12,12 @@ const {getAnswer} = require('./functions/answer/handleAnswer');
 
 var receiveMessage = (request) => {
 
-  console.log(`Received message from ${request.senderID}, content ${request.text}`);
+  console.log(`Received message from ${request.senderID}, content ${request.text}, language ${request.lang}`);
   var answer = undefined;
-  var specificActions = lookForSpecificActions(request.senderID);
+  var specificActions = lookForSpecificActions(request.senderID, request.lang);
   if (specificActions && specificActions.length != 0) {
     var result = findSpecificMatch(request, specificActions);
-    answer = (result) ? getAnswer(result) : undefined;
+    answer = (result) ? getAnswer(result, request.lang) : undefined;
   }
 
   if (!answer) {
@@ -66,61 +66,3 @@ var sendAnswer = (recipientID, answer) => {
 module.exports = {
   receiveMessage
 }
-
-// var msg = {
-//   senderID: 123,
-//   text: "je veux acheter un appartement"
-// };
-//
-// console.log("BOT SAYS: ", receiveMessage(msg).answer);
-
-// var msg = {
-//   senderID: 123,
-//   text: 'Voici mon email: mita.oumaima@gmail.com'
-// };
-//
-// console.log("BOT SAYS: ", receiveMessage(msg).answer);
-//
-// var msg = {
-//   senderID: 123,
-//   text: 'mon numéro de téléphone est 0661896654'
-// };
-//
-// console.log("BOT SAYS: ", receiveMessage(msg).answer);
-//
-// var msg = {
-//   senderID: 123,
-//   text: 'Salut'
-// };
-//
-// console.log("BOT SAYS: ", receiveMessage(msg).answer);
-//
-// var msg = {
-//   senderID: 123,
-//   text: 'Voici mon email: chatbot.neoxia@gmail.com'
-// };
-//
-// console.log("BOT SAYS: ", receiveMessage(msg).answer);
-
-
-
-// var msg = {
-//   senderID: 123,
-//   text: 'consulter catalogue'
-// };
-//
-// console.log("BOT SAYS: ", receiveMessage(msg).answer);
-//
-// var msg = {
-//   senderID: 123,
-//   text: 'rien'
-// };
-//
-// console.log("BOT SAYS: ", receiveMessage(msg).answer);
-//
-// var msg = {
-//   senderID: 123,
-//   text: 'appartement'
-// };
-//
-// console.log("BOT SAYS: ", receiveMessage(msg).answer);

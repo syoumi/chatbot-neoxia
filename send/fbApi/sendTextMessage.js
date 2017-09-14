@@ -30,18 +30,21 @@ var sendTextMessage = (recipientID, textMessage) => {
 
   sendTypingOn(recipientID);
 
-  callSendAPI(messageData);
+  setTimeout(() => {
+    callSendAPI(messageData);
+  }, 5000);
+
 };
 
 /**
- * Sends a text message to recipient with a typing random delai
+ * Sends a text message to recipient with a typing random delay
  */
-var sendTextMessageWithDelai = (recipientID, textMessage) => {
-  // We will pick up a random delai between 50 and 500 Milliseconds / character
+var sendTextMessageWithDelay = (recipientID, textMessage) => {
+  // We will pick up a random delay between 50 and 500 Milliseconds / character
   // to simulate bot is typing on
-  var delai = parseInt(Math.random() * ( 100 - 50 ) + 50) * textMessage.length;
+  var delay = parseInt(Math.random() * ( 100 - 50 ) + 50) * textMessage.length;
 
-  console.log("MESSAGE WILL BE SENT IN: ", delai);
+  console.log("MESSAGE WILL BE SENT IN: ", delay);
 
   setTimeout(() => {
     sendTypingOn(recipientID);
@@ -52,10 +55,10 @@ var sendTextMessageWithDelai = (recipientID, textMessage) => {
 
    sendTextMessage(recipientID, textMessage);
 
-  }, delai);
+ }, delay);
 };
 
 module.exports = {
-  sendTextMessageWithDelai,
+  sendTextMessageWithDelay,
   sendTextMessage
 };

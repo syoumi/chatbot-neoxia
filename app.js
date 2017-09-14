@@ -15,6 +15,9 @@ const {receivedPostBack} = require('./received/fbApi/receivedPostBack');
 const {receivedSeen} = require('./received/fbApi/receivedSeen');
 const {receivedDelivery} = require('./received/fbApi/receivedDelivery');
 
+const {getFormLead} = require('./utils/getForm');
+const {getFormContact} = require('./utils/getForm');
+
 
 var app = express();
 
@@ -79,14 +82,46 @@ app.post('/webhook', (req, res) => {
 //Form : Web to Lead
 app.set('view engine', 'ejs');
 app.set('views', './views');
+//app.use(express.static(__dirname + '/views'));
 
-app.get("/formWTL", function(req, res){
-  res.render("formWTL");
+
+//Convert lead --> Contact
+app.get("/form/:senderID", function(req, res){
+  //var senderID = req.param("senderID");
+  //res.sendfile('./views/form.html');
+  res.render('form',  {senderID: req.params.senderID});
 });
 
-app.get("/thanks", function(req, res){
-  res.render("thanks");
+
+app.post("/completeForm", function(req, res){
+  //TODO Check if there's no error, then send a message
+  res.send('Merci :) !');
+  //res.render('completeForm');
+  //console.log("REQ BODY Complete form: ", req.body);
+  getFormLead(req.body);
 });
+
+
+//Edit Contact's infomartions
+app.get("/formToEdit/:senderID", function(req, res){
+  res.render('formToEdit',  {senderID: req.params.senderID});
+});
+
+
+app.post("/completeFormToEdit", function(req, res){
+  //TODO Check if there's no error, then send a message
+  res.send('Merci :) !');
+  //res.render('completeFormToEdit');
+  getFormContact(req.body);
+});
+
+//TODO Add Details Form
+
+app.post("/salesforce", function(req, res){
+  console.log('---> RECEIVE HTTP REQUEST FROM SF : ', res.body);
+  res.sendStatus(200);
+});
+
 
 // Let the server listening to incoming connections
 app.listen(PORT, () => {

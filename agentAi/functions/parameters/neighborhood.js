@@ -1,14 +1,14 @@
 const fs = require('fs');
 
-var jsonCities = fs.readFileSync('./agentAi/resources/cities.json');
-var list = JSON.parse(jsonCities).list;
-
-
 const {splitMessage} = require('./../treatment/splitMessage');
 const {checkEquality} = require('./../match/checkEquality');
 
 
-var extractNeighborhood = (text) => {
+var extractNeighborhood = (text, lang) => {
+
+  var jsonCities = fs.readFileSync('./agentAi/resources/' + lang + '/cities.json');
+  var list = JSON.parse(jsonCities).list;
+
   var neighborhoodFound = undefined;
   var neighborhoods = [];
 
@@ -31,11 +31,11 @@ var extractNeighborhood = (text) => {
 
   //If still there's no neighborhood, check if there's a synonym or user did a mistake while writing neighborhood
   if(!neighborhoodFound){
-    var words = splitMessage(text);
+    var words = splitMessage(text, lang);
     words.forEach((word)=> {
       for(var i = 0 ; i<neighborhoods.length ; i++ ){
         var neighborhood = neighborhoods[i].toLowerCase();
-        if(checkEquality(word, neighborhood)){
+        if(checkEquality(word, neighborhood, lang)){
           neighborhoodFound = neighborhood;
           break;
         }
@@ -46,7 +46,11 @@ var extractNeighborhood = (text) => {
   return neighborhoodFound;
 }
 
-var isNeighborhood = (word) => {
+var isNeighborhood = (word, lang) => {
+
+  var jsonCities = fs.readFileSync('./agentAi/resources/' + lang + '/cities.json');
+  var list = JSON.parse(jsonCities).list;
+
   var neighborhoods = [];
 
   list.forEach((element) => {
@@ -61,7 +65,11 @@ var isNeighborhood = (word) => {
   return false;
 }
 
-var getNeighborhood = (word) => {
+var getNeighborhood = (word, lang) => {
+
+  var jsonCities = fs.readFileSync('./agentAi/resources/' + lang + '/cities.json');
+  var list = JSON.parse(jsonCities).list;
+
   var neighborhoodFound = undefined;
   var neighborhoods = [];
 
@@ -71,7 +79,7 @@ var getNeighborhood = (word) => {
 
   for(var i = 0 ; i<neighborhoods.length ; i++ ){
     var neighborhood = neighborhoods[i].toLowerCase();
-    if(checkEquality(word, neighborhood)){
+    if(checkEquality(word, neighborhood, lang)){
       neighborhoodFound = neighborhood;
       break;
     }

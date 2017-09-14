@@ -1,10 +1,11 @@
 const fs = require('fs');
 
-var jsonData = fs.readFileSync('./agentAi/resources/data.json');
+var getAction = (actionName, lang) => {
 
-var data = JSON.parse(jsonData).data;
+  var jsonData = fs.readFileSync('./agentAi/resources/' + lang + '/data.json');
 
-var getAction = (actionName) => {
+  var data = JSON.parse(jsonData).data;
+
   var toReturn = data.find((item) => {
     if (item.action == actionName) return true;
     return false;

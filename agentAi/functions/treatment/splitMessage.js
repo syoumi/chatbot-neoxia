@@ -1,7 +1,7 @@
 const {removePunctuation} = require('./removePunctuation');
 const {isIgnorable} = require('./ignoreWords');
 
-var splitMessage = (str) => {
+var splitMessage = (str, lang) => {
   var text = str.toLowerCase().trim();
   var wordsTab = text.split(/[ ,;.+:]+/);
 
@@ -10,7 +10,7 @@ var splitMessage = (str) => {
   }
 
   var words = wordsTab.filter((element) => {
-    return element != '' && !(isIgnorable(element));
+    return element != '' && !(isIgnorable(element, lang));
   });
 
   return words;

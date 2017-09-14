@@ -4,13 +4,21 @@
  */
 
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
-const {sendTextMessageWithDelai} = require('./../../send/fbApi/sendTextMessage');
+const {sendTextMessageWithDelay} = require('./../../send/fbApi/sendTextMessage');
 
 const {sendQuickReplies} = require('./../../send/fbApi/sendQuickReplies');
 
 const {sendButtonMessage} = require('./../../send/fbApi/sendButtonMessage');
 
+const {saveTask} = require('./../../data/salesforce/handleTasks');
 const {addTask} = require('./../../data/salesforce/handleTasks');
+
+const {getContact} = require('./../../data/salesforce/handleContacts');
+const {getLead} = require('./../../data/salesforce/handleLeads');
+
+const {getText} = require('./../../utils/getPredefinedAnswers');
+const {getActionsContact} = require('./../../utils/getResources');
+const {getFormTitle} = require('./../../utils/getResources');
 
 
 /**
@@ -30,53 +38,109 @@ var receivedPostBack = (event) => {
   // console.log(`| recipientID ${recipientID}`);
   // console.log(`| timeOfPostBack ${timeOfPostBack}`);
   // console.log('#################END PRI##############');
+  //console.log("POSTBACK: ", postback);
 
-  console.log("PAYLOAAD: ", payload);
-  //by payload
-  switch(payload){
-    case "CONTACT_PAYLOAD":
-    //postback = "CONTACT_PAYLOAD"  + Salesman.Id + Salesman.Name + Salesman.MobilePhone + Product.Id
-      var buttons = [
-      {
-        "type":"phone_number",
-        "title":"Appeler",
-        "payload": postback[3]
-      }
-      ];
-      sendButtonMessage(senderID, 'Vous pouvez contacter notre agent commercial ' + postback[2]  + ' associé à ce logement' , buttons);
-      var buttons = [
-      {
-        "type":"postback",
-        "title":"Envoyer devis",
-        "payload": "SEND_QUOTE|" + postback[4]
-      }
-      ];
-      sendButtonMessage(senderID, 'Comme vous pouvez recevoir le devis sur votre boîte mail, si vous le souhaitez.', buttons);
-      break;
+  getLead(senderID, (lead) => {
 
+    var lang = 'fr';
+    if(lead && lead.Language__c) {
+       lang = lead.Language__c;
+    }
+    //by payload
+    switch(payload){
 
-    case "CONTACT_SALESMAN":
-      //postback = "CONTACT_SALESMAN" + "CONTACT_PAYLOAD"  + Salesman.Id + Salesman.Name + Salesman.MobilePhone + Product.Id
-
-        sendTextMessage(senderID, "Nous avons besoin de récupérer certaines coordonnées telles que votre email, votre vrai nom, prénom et votre numéro de téléphone.\nVoulez-vous remplir un formulaire ou répondre ici?");
-        //envoyer quickreplies
-        //addTask(senderID, postback[2], postback[5], 'Contacter client');
+      case "CONTACT_PAYLOAD":
+        //Appeler, Envoyer demande, Envoyer devis
+        var titles = getActionsContact(lang);
+        //postback = "CONTACT_PAYLOAD"  + Salesman.Id + Salesman.Name + Salesman.MobilePhone + Product.Id
+        var buttons = [
+          {
+            "type":"phone_number",
+            "title":titles[0],
+            "payload": postback[3]
+          },
+          {
+            "type":"postback",
+            "title":titles[1],
+            "payload": "CONTACT_SALESMAN|" + event.postback.payload
+          },
+          {
+            "type":"postback",
+            "title":titles[2],
+            "payload": "SEND_QUOTE|" + event.postback.payload
+          }
+        ];
+        var text = getText(lang, 'Send contact', postback[2]);
+        sendButtonMessage(senderID, text , buttons);
         break;
 
-    case "SEND_QUOTE":
-        sendTextMessage(senderID, "Nous avons besoin de récupérer certaines coordonnées telles que votre email, votre vrai nom, prénom et votre numéro de téléphone.\nVoulez-vous remplir un formulaire ou répondre ici?");
-        //envoyer quickreplies
-        //addTask(senderID, postback[2], postback[5], 'Envoyer devis');
+
+      case "CONTACT_SALESMAN":
+        //postback = "CONTACT_SALESMAN" + "CONTACT_PAYLOAD"  + Salesman.Id + Salesman.Name + Salesman.MobilePhone + Product.Id
+        var title = getFormTitle(lang);
+        var buttons = [
+          {
+                    "type":"web_url",
+                    "url":"https://desolate-dusk-64146.herokuapp.com/form/"+senderID,
+                    "title":title,
+                    "webview_height_ratio": "full",
+                    "messenger_extensions": true
+          }
+        ];
+        //Check if user is not a contact:  IF so send the form, ELSE save task and insert it directly
+        getContact(senderID, (contact) => {
+          console.log('CONTACT POSTBACK FOUND: ', contact);
+          saveTask(senderID, postback[2], postback[5], 'Contacter client');
+          if(!contact){
+            var text = getText(lang, 'Send form call', undefined);
+            sendTextMessage(senderID, text);
+            text = getText(lang, 'Ask to complete form', undefined);
+            sendButtonMessage(senderID, text, buttons);
+          }
+          else{
+            addTask(senderID);
+          }
+        });
         break;
 
-   case "DESCRIPTION_PAYLOAD":
-      sendTextMessage(senderID, postback[1]);
-      //sendTextMessageWithDelai(senderID, postback[1]);
-      break;
+      case "SEND_QUOTE":
+        //postback = "SEND_QUOTE" + "CONTACT_PAYLOAD"  + Salesman.Id + Salesman.Name + Salesman.MobilePhone + Product.Id
+        var title = getFormTitle(lang);
+        var buttons = [
+          {
+                    "type":"web_url",
+                    "url":"https://desolate-dusk-64146.herokuapp.com/form/"+senderID,
+                    "title": title,
+                    "webview_height_ratio": "full",
+                    "messenger_extensions": true
+          }
+        ];
+        //Check if user is not a contact:  IF so send the form, ELSE save task and insert it directly
+        getContact(senderID, (contact) => {
+          saveTask(senderID, postback[2], postback[5], 'Envoyer devis');
+          if(!contact){
+            var text = getText(lang, 'Send form quote', undefined);
+            sendTextMessage(senderID, text);
+            text = getText(lang, 'Ask to complete form', undefined);
+            sendButtonMessage(senderID, text, buttons);
+          }
+          else{
+            addTask(senderID);
+          }
 
-    default:
-        sendTextMessage(senderID, `Postback ${payload} reçu :D`);
-  }
+        });
+        break;
+
+     case "DESCRIPTION_PAYLOAD":
+        sendTextMessage(senderID, postback[1]);
+        break;
+
+
+      default:
+          sendTextMessage(senderID, ':D');
+    }
+  });
+
 
 };
 

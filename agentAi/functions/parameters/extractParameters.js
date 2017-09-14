@@ -9,7 +9,7 @@ const {extractNumber} =  require('./number');
 
 
 
-var extractParameters = (messageText, keywordParam) => {
+var extractParameters = (messageText, keywordParam, lang) => {
   var name = keywordParam.split('|')[0].replace('#', '');
   var type = keywordParam.split('|')[1].replace('#', '');
   var param = {
@@ -26,16 +26,16 @@ var extractParameters = (messageText, keywordParam) => {
       param.value = extractPhoneNumber(messageText);
       break;
     case 'city':
-      param.value = extractCity(messageText);
+      param.value = extractCity(messageText, lang);
       break;
     case 'neighborhood':
-      param.value = extractNeighborhood(messageText);
+      param.value = extractNeighborhood(messageText, lang);
       break;
     case 'operation':
-      param.value = extractOperation(messageText);
+      param.value = extractOperation(messageText, lang);
       break;
     case 'building':
-      param.value = extractBuilding(messageText);
+      param.value = extractBuilding(messageText, lang);
       break;
     case 'currency':
       param.value = extractCurrency(messageText);

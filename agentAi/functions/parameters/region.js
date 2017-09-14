@@ -1,14 +1,14 @@
 const fs = require('fs');
 
-var jsonCities = fs.readFileSync('./agentAi/resources/cities.json');
-var list = JSON.parse(jsonCities).list;
-
 
 const {splitMessage} = require('./../treatment/splitMessage');
 const {checkEquality} = require('./../match/checkEquality');
 
 
-var extractRegion = (text) => {
+var extractRegion = (text, lang) => {
+  var jsonCities = fs.readFileSync('./agentAi/resources/' + lang + '/cities.json');
+  var list = JSON.parse(jsonCities).list;
+
   var regionFound = undefined;
   var regions = [];
 
@@ -31,11 +31,11 @@ var extractRegion = (text) => {
 
   //If still there's no region, check if there's a synonym or user did a mistake while writing region
   if(!regionFound){
-    var words = splitMessage(text);
+    var words = splitMessage(text, lang);
     words.forEach((word)=> {
       for(var i = 0 ; i<regions.length ; i++ ){
         var region = regions[i];
-        if(checkEquality(word, region)){
+        if(checkEquality(word, region, lang)){
           regionFound = region;
           break;
         }
@@ -46,7 +46,10 @@ var extractRegion = (text) => {
   return regionFound;
 }
 
-var isRegion = (word) => {
+var isRegion = (word, lang) => {
+  var jsonCities = fs.readFileSync('./agentAi/resources/' + lang + '/cities.json');
+  var list = JSON.parse(jsonCities).list;
+
   var regions = [];
   list.forEach((element) => {
     regions.push(element.region.toLowerCase());
@@ -59,7 +62,10 @@ var isRegion = (word) => {
   return false;
 }
 
-var getRegion= (word) => {
+var getRegion= (word, lang) => {
+  var jsonCities = fs.readFileSync('./agentAi/resources/' + lang + '/cities.json');
+  var list = JSON.parse(jsonCities).list;
+
   var regionFound = undefined;
   var regions = [];
 
@@ -69,7 +75,7 @@ var getRegion= (word) => {
 
   for(var i = 0 ; i<regions.length ; i++ ){
     var region = regions[i];
-    if(checkEquality(word, region)){
+    if(checkEquality(word, region, lang)){
       regionFound = region;
       break;
     }
