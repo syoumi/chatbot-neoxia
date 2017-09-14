@@ -10,6 +10,7 @@ const {shareAlbum} = require('./shareOnFB');
 
 const {FB_PAGE_TOKEN} = require('./../include/config');
 const {FB_PAGE_ID} = require('./../include/config');
+const {FB_ADMIN_TOKEN} = require('./../include/config');
 
 var FB = require('fb');
 
@@ -26,7 +27,7 @@ var getRequestFB = (req) => {
   getProduct(productID, (product) => {
     console.log(FB_PAGE_TOKEN);
     FB.setAccessToken(FB_PAGE_TOKEN);
-    console.log(FB_PAGE_ID);
+    /*console.log(FB_PAGE_ID);
     if(product){
       FB.api('/' + FB_PAGE_ID + '/feed', 'post', { message: 'NOUVEAUTE'}, function (res) {
 					if(!res || res.error) {
@@ -35,7 +36,22 @@ var getRequestFB = (req) => {
 					}
 					console.log('Post Id: ' + res.id);
 		   });
-     }
+     }*/
+
+    request({
+      uri: 'https://graph.facebook.com/'+ FB_PAGE_ID + '/feed',
+      qs: {
+        access_token: FB_ADMIN_TOKEN,
+        message: 'NOUVEAUTE'
+      },
+      method: 'POST'
+    }, (error, response, body) => {
+      if (error) {
+        return console.error('Error occured while posting to facebook page.');
+      }
+      console.log('Posted to facebook with status ' , response.statusCode);
+    });
+
 
   });
 }

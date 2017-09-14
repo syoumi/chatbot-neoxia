@@ -22,6 +22,8 @@ const WAITING_BEFORE_PROMPT = 5000;
 const URL_APP = 'https://desolate-dusk-64146.herokuapp.com/';
 //FB PAGE ID
 const FB_PAGE_ID = '2027653890797502';
+//FB ADMIN token
+const FB_ADMIN_TOKEN = 'EAACPEJjwnWwBALkcZBjIrWaKauLFbr5PeXb3XbWfepeEdxaX7a2sdK6u3Kgwgqp2lW5eBlV4kzq9JyZAY32ZAkc4VtBKcHNoQRBPVJkxJgBNpegFkM9XyZAwN2Wa7ha67enfZBCgvElQXH73ESoYJCEoRXjAozZB7b80z6WKeOZANeeKZCbO2HIEe600cJRSr8JdHJqbh1ZBqCQZDZD';
 
 
 module.exports = {
@@ -33,5 +35,6 @@ module.exports = {
   API_AI_CLIENT_ACCESS_TOKEN,
   FB_SECRET,
   WAITING_BEFORE_PROMPT,
-  FB_PAGE_ID
+  FB_PAGE_ID,
+  FB_ADMIN_TOKEN
 }
