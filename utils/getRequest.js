@@ -26,7 +26,7 @@ var getRequestFB = (req) => {
   getProduct(productID, (product) => {
     console.log("POST PRODUCT");
     request({
-      uri: 'https://graph.facebook.com/'+ FB_PAGE_ID + '/feed',
+      uri: 'https://graph.facebook.com/2027653890797502/feed',
       qs: {
         access_token: FB_ADMIN_TOKEN,
         message: 'NOUVEAUTE'
