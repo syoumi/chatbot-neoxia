@@ -79,13 +79,14 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 var sendProduct = (senderID, productID, lang) => {
   console.log("SENDING PRODUCT TO USER");
   getProduct(productID, (product) => {
-    console.log("PRODUCT: ", product);
     var products = [];
     products.push(product);
+    console.log('PRODUCT: ', product.Name);
     getElements(products, (elements) => {
-
+      console.log('ELEMENTS');
       if(elements.length!=0){
         var text = getText(lang, 'Building request found' , product.Type__c);
+        console.log('TEXT TO SEND: ', text);
         sendTextMessageWithDelay(senderID, text);
         sendGenericMessageWithDelay(senderID, elements, 15000);
         //update request
