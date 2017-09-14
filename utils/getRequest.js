@@ -33,6 +33,7 @@ var getRequestFB = (req) => {
 					}
 					console.log('Post Id: ' + res.id);
 		   });
+     }
 
   });
 }
