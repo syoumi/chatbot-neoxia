@@ -25,19 +25,6 @@ var getRequestFB = (req) => {
   console.log(productID);
   //SHARE Product on FB
   getProduct(productID, (product) => {
-    console.log(FB_PAGE_TOKEN);
-    FB.setAccessToken(FB_PAGE_TOKEN);
-    /*console.log(FB_PAGE_ID);
-    if(product){
-      FB.api('/' + FB_PAGE_ID + '/feed', 'post', { message: 'NOUVEAUTE'}, function (res) {
-					if(!res || res.error) {
-						console.log(!res ? 'error occurred' : res.error);
-						return;
-					}
-					console.log('Post Id: ' + res.id);
-		   });
-     }*/
-
     request({
       uri: 'https://graph.facebook.com/'+ FB_PAGE_ID + '/feed',
       qs: {
@@ -47,6 +34,7 @@ var getRequestFB = (req) => {
       method: 'POST'
     }, (error, response, body) => {
       if (error) {
+        console.log('ERROR');
         return console.error('Error occured while posting to facebook page.');
       }
       console.log('Posted to facebook with status ' , response.statusCode);
