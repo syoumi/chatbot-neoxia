@@ -8,7 +8,7 @@ const {sharePhoto} = require('./shareOnFB');
 const {shareStatus} = require('./shareOnFB');
 const {shareAlbum} = require('./shareOnFB');
 
-const {VERIFY_TOKEN} = require('./../include/config');
+const {FB_PAGE_TOKEN} = require('./../include/config');
 
 var FB = require('fb');
 
@@ -23,7 +23,7 @@ var getRequestFB = (req) => {
   console.log(productID);
   //SHARE Product on FB
   getProduct(productID, (product) => {
-    FB.setAccessToken(VERIFY_TOKEN);
+    FB.setAccessToken(FB_PAGE_TOKEN);
     if(product){
       FB.api('me/feed', 'post', {
       message: product.Name,
