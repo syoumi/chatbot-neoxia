@@ -4,6 +4,7 @@ const {doLogin} = require('./login');
 //Create new request
 var addRequest = (senderID, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, isTreated) => {
   getRequest(senderID, (request) => {
+    console.log('REQUEST__C FOUND: ', request);
     if(!checkRequest(building, operation, city, neighborhood, request)) {
       doLogin((conn) => {
         var reqName = operation + '_' + building + '_' + senderID;
