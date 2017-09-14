@@ -73,8 +73,28 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
     });
 };
 
+//Send Product to User
+var sendProduct = (senderID, product, lang) => {
+  getProduct(productID, (product) => {
+    var products = [];
+    products.push(product);
+    getElements(products, (elements) => {
+
+      if(elements.length!=0){
+        var text = getText(lang, 'Building request found' , product.Type__c);
+        sendTextMessageWithDelay(senderID, text);
+        sendGenericMessageWithDelay(senderID, elements, 15000);
+        //update request
+        updateRequest(senderID, true);
+      }
+
+    });
+
+  });
+}
+
 
 
 module.exports = {
-  sendCatalogue
+  sendCatalogue, sendProduct
 }

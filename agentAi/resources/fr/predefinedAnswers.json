@@ -59,6 +59,11 @@
     {
       "title": "Waiting for call",
       "text": "L'agent commercial va vous appeler le plutôt possible au numéro de téléphone que vous aviez saisi: #phone#."
+    },
+
+    {
+      "title": "Building request found",
+      "text": "Nous sommes heureux de vous annoncer que des nouveaux #name# sont disponibles.\nPour toute information supplémentaire, veuillez contacter l'agent commercial."
     }
 
 
