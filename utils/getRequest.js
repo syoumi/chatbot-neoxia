@@ -26,7 +26,7 @@ var getRequestFB = (req) => {
   getProduct(productID, (product) => {
     FB.setAccessToken(FB_PAGE_TOKEN);
     if(product){
-      FB.api('/' + FB_PAGE_TOKEN + '/feed', 'post', { message: product.Name }, function (res) {
+      FB.api('/' + FB_PAGE_ID + '/feed', 'post', { message: product.Name }, function (res) {
 					if(!res || res.error) {
 						console.log(!res ? 'error occurred' : res.error);
 						return;
