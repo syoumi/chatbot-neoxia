@@ -8,7 +8,7 @@ const {sharePhoto} = require('./shareOnFB');
 const {shareStatus} = require('./shareOnFB');
 const {shareAlbum} = require('./shareOnFB');
 
-const {VERIFY_TOKEN} = require('./include/config');
+const {VERIFY_TOKEN} = require('./../include/config');
 
 var FB = require('fb');
 
