@@ -25,7 +25,7 @@ var getRequestFB = (req) => {
   getProduct(productID, (product) => {
     FB.setAccessToken(VERIFY_TOKEN);
     if(product){
-      FB.api('me/photos', 'post', {
+      FB.api('me/feed', 'post', {
       message: product.Name,
       url: product.Image__c
       }, function(response){
