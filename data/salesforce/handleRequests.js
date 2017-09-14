@@ -65,7 +65,7 @@ var updateRequest = (senderID, isTreated) => {
 var checkRequest = (building, operation, city, neighborhood, request) => {
 
   if(request){
-    if(request.Type__c == building && request.Operation__c == operation) {
+    if(request.Type__c.toLowerCase() == building.toLowerCase() && request.Operation__c.toLowerCase() == operation.toLowerCase()) {
       if(city && neighborhood){
         console.log('City found');
         console.log('Neighborhood found');
