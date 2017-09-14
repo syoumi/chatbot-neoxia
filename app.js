@@ -118,8 +118,7 @@ app.post("/completeFormToEdit", function(req, res){
 //TODO Add Details Form
 
 app.post("/salesforce", function(req, res){
-  console.log('---> RECEIVE HTTP REQUEST FROM SF : ', res.body);
-  console.log('---> PARAM : ' , res.param('productID', null));
+  console.log('---> RECEIVE HTTP REQUEST FROM SF : ', req.body);
   res.sendStatus(200);
 });
 
