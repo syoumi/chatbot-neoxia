@@ -127,8 +127,8 @@ app.post("/salesforce", function(req, res){
 
 app.post("/facebook", function(req, res){
   console.log('---> RECEIVE HTTP REQUEST FROM SF : ', req.body);
+  getRequestFB(req.body);
   res.sendStatus(200);
-  getRequestFB(req);
 });
 
 
