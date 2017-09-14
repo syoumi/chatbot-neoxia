@@ -24,6 +24,7 @@ var getRequestFB = (req) => {
   console.log(productID);
   //SHARE Product on FB
   getProduct(productID, (product) => {
+    console.log(FB_PAGE_TOKEN);
     FB.setAccessToken(FB_PAGE_TOKEN);
     console.log(FB_PAGE_ID);
     if(product){
