@@ -20,6 +20,8 @@ const FB_SECRET = '##';
 const WAITING_BEFORE_PROMPT = 5000;
 //URL application
 const URL_APP = 'https://desolate-dusk-64146.herokuapp.com/';
+//FB PAGE ID
+const FB_PAGE_ID = '2027653890797502';
 
 
 module.exports = {
