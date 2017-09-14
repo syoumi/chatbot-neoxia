@@ -25,21 +25,25 @@ var getRequestFB = (req) => {
   //SHARE Product on FB
   getProduct(productID, (product) => {
     console.log("POST PRODUCT");
-    request({
-      uri: 'https://graph.facebook.com/2027653890797502/feed',
-      qs: {
-        access_token: FB_ADMIN_TOKEN,
-        message: 'NOUVEAUTE'
-      },
-      method: 'POST'
-    }, (error, response, body) => {
-      if (error) {
-        console.log('ERROR');
-        return console.error('Error occured while posting to facebook page.');
-      }
-      console.log('GOOD');
-      console.log('Posted to facebook with status ' , response.statusCode);
-    });
+    if(product){
+      var text = '**NOUVEAUTE**\n' + product.Name + '\n' + product.Description__c;
+      request({
+        uri: 'https://graph.facebook.com/2027653890797502/feed',
+        qs: {
+          access_token: FB_ADMIN_TOKEN,
+          message: text
+        },
+        method: 'POST'
+      }, (error, response, body) => {
+        if (error) {
+          console.log('Error occured while posting to facebook page.');
+          return console.error('Error occured while posting to facebook page.');
+        }
+
+        console.log('Posted to facebook with status ' , response.statusCode);
+      });
+
+    }
 
 
   });
