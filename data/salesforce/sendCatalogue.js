@@ -81,7 +81,6 @@ var sendProduct = (senderID, productID, lang) => {
   getProduct(productID, (product) => {
     var products = [];
     products.push(product);
-
     getElements(products, (elements) => {
       console.log('ELEMENTS');
       if(elements.length!=0){
