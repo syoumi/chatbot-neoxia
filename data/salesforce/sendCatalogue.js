@@ -1,5 +1,7 @@
 
 const {getProductRecords} = require('./handleProducts');
+const {getProduct} = require('./handleProducts');
+const {getElements} = require('./handleProducts');
 
 const {updateRequest} = require('./handleRequests');
 
