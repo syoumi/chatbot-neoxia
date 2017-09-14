@@ -18,7 +18,8 @@ const {receivedDelivery} = require('./received/fbApi/receivedDelivery');
 const {getFormLead} = require('./utils/getForm');
 const {getFormContact} = require('./utils/getForm');
 
-const {getRequestSF} = require('./utils/getRequestSF');
+const {getRequestSF} = require('./utils/getRequest');
+const {getRequestFB} = require('./utils/getRequest');
 
 var app = express();
 
@@ -127,6 +128,7 @@ app.post("/salesforce", function(req, res){
 app.post("/facebook", function(req, res){
   console.log('---> RECEIVE HTTP REQUEST FROM SF : ', req.body);
   res.sendStatus(200);
+  getRequestFB(req);
 });
 
 
