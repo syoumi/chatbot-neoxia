@@ -119,6 +119,7 @@ app.post("/completeFormToEdit", function(req, res){
 
 app.post("/salesforce", function(req, res){
   console.log('---> RECEIVE HTTP REQUEST FROM SF : ', res.body);
+  console.log('---> PARAM : ' , res.param('productID', null));
   res.sendStatus(200);
 });
 
