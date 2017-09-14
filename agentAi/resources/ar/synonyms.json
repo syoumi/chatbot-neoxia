@@ -103,86 +103,32 @@
     },
 
     {
-        "name": "paiement",
+        "name": "دفع",
         "synonyms": [
-          "paiement",
-          "payer"
+          "دفع",
+          "الدفع",
+          "أدفع"
         ]
     },
 
     {
-        "name": "chambre",
+        "name": "غرفة",
         "synonyms": [
-          "chambre",
-          "pièce",
-          "salle",
-          "chambrette"
+          "غرفة",
+          "غرف",
+          "قاعة",
+          "قطعة"
         ]
     },
 
     {
-        "name": "toilette",
+        "name": "مرحاض",
         "synonyms": [
-          "toilette",
-          "salle de bain",
-          "wc",
-          "douche"
-        ]
-    },
-
-    {
-        "name": "garage",
-        "synonyms": [
-          "garage",
-          "dépôt",
-          "parking",
-          "stationnement"
-        ]
-    },
-
-    {
-        "name": "nouveauté",
-        "synonyms": [
-          "nouveauté",
-          "nouveau",
-          "neuf"
-        ]
-    },
-
-    {
-        "name": "numéro de téléphone",
-        "synonyms": [
-          "numéro de téléphone",
-          "num",
-          "tel",
-          "mobile"
-        ]
-    },
-
-    {
-        "name": "casablanca",
-        "synonyms": [
-          "casablanca",
-          "casa"
-        ]
-    },
-
-    {
-        "name": "marrakech",
-        "synonyms": [
-          "marrakech",
-          "kech"
-        ]
-    },
-
-    {
-        "name": "safi",
-        "synonyms": [
-          "safi",
-          "asfi"
+          "مرحاض",
+          "حمام"
         ]
     }
 
-
+    
   ]
 }

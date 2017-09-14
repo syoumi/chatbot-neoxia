@@ -4,21 +4,18 @@
     {
       "action": "salutations-action",
       "keywords": [
-        "salut",
-        "bonjour",
-        "bjr",
-        "bonsoir",
-        "bsr",
-        "salutations",
-        "hello",
-        "salam",
-        "lu",
-        "coucou",
-        "cc"
+        "السلام عليكم",
+        "مرحبا",
+        "صباح الخير",
+        "صباح النور",
+        "مساء الخير",
+        "مساء النور",
+        "تحياتي",
+        "أهلا",
+        "أهلا وسهلا"
       ],
       "answers": [
-        "Salut à vous !\nComment puis-je vous aider ?",
-        "Salutations !\nComment puis-je vous aider ?"
+        "السلام عليكم. كيف يمكنني مساعدتكم؟"
       ],
       "nextActions": [],
       "previousActions" : [],
@@ -28,25 +25,15 @@
     {
       "action": "yes-action",
       "keywords": [
-        "oui",
-        "ouai",
-        "wéé",
-        "yes",
-        "yeah",
-        "d accord",
-        "d acc",
-        "ok",
-        "okay",
-        "okey",
-        "c est bon",
-        "pourquoi pas",
-        "prq pas"
+        "نعم",
+        "أجل",
+        "حاضر",
+        "حسن"
       ],
       "answers": [
-        "Génial !",
-        "Super !",
-        "C'est bon.",
-        "Bien entendu."
+        "جيد",
+        "ممتاز",
+        "حسنا"
       ],
       "nextActions": [],
       "previousActions" : [],
@@ -56,16 +43,12 @@
     {
       "action": "no-action",
       "keywords": [
-        "non",
-        "pas d accord",
-        "pas du tout",
-        "du tout",
-        "non merci"
+        "لا",
+        "كلا"
       ],
       "answers": [
-        "D'accord.",
-        "C'est noté.",
-        "Comme vous voulez."
+        "حسنا",
+        "كما تريدون"
       ],
       "nextActions": [],
       "previousActions" : [],
@@ -75,24 +58,18 @@
     {
       "action": "thanks-action",
       "keywords": [
-        "merci",
-        "merci beaucoup",
-        "je vous remercie",
-        "thanks",
-        "thank you",
-        "thx",
-        "grand merci",
-        "je suis reconnaissant",
-        "remerciement",
-        "merci bien"
+        "شكرا",
+        "شكرا جزيلا",
+        "أشكرك",
+        "نشكرك",
+        "شكرا لكم"
+        "أنا ممتن لكم"
       ],
       "answers": [
-        "À votre service.",
-        "Je vous en prie.",
-        "Mais de rien.",
-        "C'est un plaisir.",
-        "C'est toujours un plaisir de vous rendre service.",
-        "Aucun problème, je suis là pour ça."
+        "في خدمتكم",
+        "العفو",
+        "لا شكر على واجب",
+        "على الرحب والسعة"
       ],
       "nextActions": [],
       "previousActions" : [],
@@ -102,23 +79,11 @@
     {
      "action": "goodbye-action",
      "keywords": [
-       "au revoir",
-       "bye",
-       "à plus",
-       "à toute",
-       "à plus tard",
-       "à tout à l heure",
-       "ciao",
-       "à bientôt",
-       "je dois y aller",
-       "je quitte",
-       "goodbye"
+       "الى اللقاء"
      ],
      "answers": [
-       "À bientôt !",
-       "Au revoir.",
-       "Dans l'espoir de vous revoir bientôt.",
-       "Salut, à plus !"
+       "الى اللقاء",
+       "السلام عليكم"
      ],
      "nextActions": [],
      "previousActions" : [],
@@ -128,16 +93,12 @@
    {
     "action": "salamalec-action",
     "keywords": [
-      "ça va",
-      "sa va",
-      "cv",
-      "comment vas tu",
-      "comment allez vous",
-      "est ce que vous allez bien"
+      "كيف الحال",
+      "كيف حالكم",
+      "هل أنتم بخير"
     ],
     "answers": [
-      "Très bien, merci et vous?",
-      "Super, merci. Vous?"
+      "بخير، شكرا. وأنتم؟"
     ],
     "nextActions": ["salamalec-answer-action"],
     "previousActions" : [],
@@ -147,17 +108,15 @@
   {
    "action": "salamalec-answer-action",
    "keywords": [
-     "bien merci",
-     "très bien",
-     "cv",
-     "ça va",
-     "aussi",
-     "de même",
-     "également",
-     "cv hmd"
+     "بخير شكرا",
+     "جيد ",
+     "الحمد لله",
+     "أيضا",
+     "بصحة جيدة",
+     "في أفضل حال"
    ],
    "answers": [
-     "Bien.\nComment puis-je vous aider ?"
+     "جيد. كيف يمكننا مساعدتكم؟"
    ],
    "nextActions": [],
    "previousActions" : ["salamalec-action"],

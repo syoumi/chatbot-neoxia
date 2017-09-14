@@ -117,6 +117,10 @@ app.post("/completeFormToEdit", function(req, res){
 
 //TODO Add Details Form
 
+app.post("/salesforce", function(req, res){
+  console.log('---> RECEIVE HTTP REQUEST FROM SF : ', res);
+});
+
 
 // Let the server listening to incoming connections
 app.listen(PORT, () => {
