@@ -26,19 +26,13 @@ var getRequestFB = (req) => {
   getProduct(productID, (product) => {
     FB.setAccessToken(FB_PAGE_TOKEN);
     if(product){
-      FB.api('https://graph.facebook.com/' + FB_PAGE_ID + '/photos', 'post', {
-      message: product.Name,
-      url: product.Image__c
-      }, function(response){
-
-          if (!response || response.error) {
-            console.log('ERROR: ', response);
-          } else {
-            console.log('Post ID: ' + response.id);
-          }
-
-      });
-    }
+      FB.api('/' + FB_PAGE_TOKEN + '/feed', 'post', { message: product.Name }, function (res) {
+					if(!res || res.error) {
+						console.log(!res ? 'error occurred' : res.error);
+						return;
+					}
+					console.log('Post Id: ' + res.id);
+		   });
 
   });
 }
