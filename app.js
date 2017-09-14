@@ -18,6 +18,7 @@ const {receivedDelivery} = require('./received/fbApi/receivedDelivery');
 const {getFormLead} = require('./utils/getForm');
 const {getFormContact} = require('./utils/getForm');
 
+const {getRequestSF} = require('./utils/getRequestSF');
 
 var app = express();
 
@@ -119,6 +120,7 @@ app.post("/completeFormToEdit", function(req, res){
 
 app.post("/salesforce", function(req, res){
   console.log('---> RECEIVE HTTP REQUEST FROM SF : ', req.body);
+  getRequestSF(req.body);
   res.sendStatus(200);
 });
 
