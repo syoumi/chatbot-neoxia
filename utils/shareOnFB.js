@@ -28,8 +28,9 @@ var sharePhoto = (text, image) => {
 
 //Post status on FB page
 var shareStatus = (text) => {
+  var link = 'https://graph.facebook.com/' + FB_PAGE_ID + '/feed';
   request({
-    uri: 'https://graph.facebook.com/' + FB_PAGE_ID + '/feed',
+    uri: link,
     qs: {
       access_token: FB_ADMIN_TOKEN,
       message: text
