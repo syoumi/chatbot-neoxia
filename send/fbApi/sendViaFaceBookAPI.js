@@ -28,10 +28,8 @@
       //  console.log(`| messageID ${messageID}`);
       //  console.log(`################END MSI############`);
      } else {
-
        console.error(`#### Message sent errors ####`);
-      //  console.error(error);
-      //  console.error(`################END MSE######`);
+       console.error(error);
      }
 
    });
@@ -53,7 +51,7 @@
 
      // We call callback to give the green light for the next asynchronous operation
      callback();
-     
+
      console.log("***********APPEL: syncCallSendAPI********");
 
      console.log('Response recieved');
