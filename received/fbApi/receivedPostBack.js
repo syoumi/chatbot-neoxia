@@ -20,6 +20,8 @@ const {getText} = require('./../../utils/getPredefinedAnswers');
 const {getActionsContact} = require('./../../utils/getResources');
 const {getFormTitle} = require('./../../utils/getResources');
 
+const {URL_APP} = require('./../../include/config');
+
 
 /**
  * Postback event handler
@@ -81,7 +83,7 @@ var receivedPostBack = (event) => {
         var buttons = [
           {
                     "type":"web_url",
-                    "url":"https://desolate-dusk-64146.herokuapp.com/form/"+senderID,
+                    "url": URL_APP + "form/" + senderID,
                     "title":title,
                     "webview_height_ratio": "full",
                     "messenger_extensions": true
@@ -109,7 +111,7 @@ var receivedPostBack = (event) => {
         var buttons = [
           {
                     "type":"web_url",
-                    "url":"https://desolate-dusk-64146.herokuapp.com/form/"+senderID,
+                    "url": URL_APP + "form/" + senderID,
                     "title": title,
                     "webview_height_ratio": "full",
                     "messenger_extensions": true

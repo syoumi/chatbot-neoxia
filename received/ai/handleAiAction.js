@@ -20,6 +20,8 @@ const {getBuildings} = require('./../../utils/getResources');
 const {getOperations} = require('./../../utils/getResources');
 const {getFilterSkip} = require('./../../utils/getResources');
 
+const {URL_APP} = require('./../../include/config');
+
 
 
 //By action
@@ -110,7 +112,7 @@ var handleAiAction= (senderID, answer, lang) => {
       var buttons = [
         {
                   "type":"web_url",
-                  "url":"https://desolate-dusk-64146.herokuapp.com/formToEdit/"+senderID,
+                  "url": URL_APP + "formToEdit/" + senderID,
                   "title":"Formulaire",
                   "webview_height_ratio": "full",
                   "messenger_extensions": true
@@ -132,7 +134,7 @@ var handleAiAction= (senderID, answer, lang) => {
           var buttons = [
             {
                       "type":"web_url",
-                      "url":"https://desolate-dusk-64146.herokuapp.com/form/"+senderID,
+                      "url": URL_APP + "form/" + senderID,
                       "title":"Formulaire",
                       "webview_height_ratio": "full",
                       "messenger_extensions": true
@@ -156,7 +158,7 @@ var handleAiAction= (senderID, answer, lang) => {
           var buttons = [
             {
                       "type":"web_url",
-                      "url":"https://desolate-dusk-64146.herokuapp.com/form/"+senderID,
+                      "url": URL_APP + "form/" + senderID,
                       "title":"Formulaire",
                       "webview_height_ratio": "full",
                       "messenger_extensions": true
@@ -180,7 +182,7 @@ var handleAiAction= (senderID, answer, lang) => {
           var buttons = [
             {
                       "type":"web_url",
-                      "url":"https://desolate-dusk-64146.herokuapp.com/form/"+senderID,
+                      "url": URL_APP + "form/" + senderID,
                       "title":"Formulaire",
                       "webview_height_ratio": "full",
                       "messenger_extensions": true
@@ -204,7 +206,7 @@ var handleAiAction= (senderID, answer, lang) => {
         var buttons = [
           {
                     "type":"web_url",
-                    "url":"https://desolate-dusk-64146.herokuapp.com/form/"+senderID,
+                    "url": URL_APP + "form/" + senderID,
                     "title":"Formulaire",
                     "webview_height_ratio": "full",
                     "messenger_extensions": true
@@ -228,7 +230,7 @@ var handleAiAction= (senderID, answer, lang) => {
           var buttons = [
             {
                       "type":"web_url",
-                      "url":"https://desolate-dusk-64146.herokuapp.com/form/"+senderID,
+                      "url": URL_APP + "form/" + senderID,
                       "title":"Formulaire",
                       "webview_height_ratio": "full",
                       "messenger_extensions": true
@@ -252,7 +254,7 @@ var handleAiAction= (senderID, answer, lang) => {
           var buttons = [
             {
                       "type":"web_url",
-                      "url":"https://desolate-dusk-64146.herokuapp.com/form/"+senderID,
+                      "url": URL_APP + "form/" + senderID,
                       "title":"Formulaire",
                       "webview_height_ratio": "full",
                       "messenger_extensions": true
