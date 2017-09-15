@@ -1,3 +1,5 @@
+
+
 const {sendProduct} = require('./../data/salesforce/sendCatalogue');
 
 const {getProduct} = require('./../data/salesforce/handleProducts');
@@ -12,7 +14,7 @@ var getRequestSF = (req) => {
 }
 
 
-//Get request from SF and share product on FB
+//Get request from SF and share product on Facebook 
 var getRequestFB = (req) => {
   var productID =  req.productID;
   getProduct(productID, (product) => {
