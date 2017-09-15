@@ -5,7 +5,7 @@
 // Port that the express server will be listening at
 const PORT = process.env.PORT || 9191;
 // Facebook Page Access Token
-const FB_PAGE_TOKEN = 'EAAEkoZBTgjzIBAH2nAilInhXo8vH34ab0F7HGI61QSusVnCMoh6Q9EJ3wxTxcDxHa0gWPAyYrZCKG8WBXHOfRjG1fwHhiuIZBwDCnGBWBrOXchbM97JzNhNfAFexoXSSMAEZBxdrMCr7YIJcXB5Y0OvW0qqvvfkNmuE9uIqFKgZDZD';
+const FB_PAGE_TOKEN = 'EAAEkoZBTgjzIBANcGch34Vllwvm9zWsZC0uxRjoc94fJ7iMVUCGqZB809grtrHgmiZANm1Tz51WcGrRGOKYgTgfbMIvvU2S4thKCEd9b2f2jksp7gvxnzEhCeSRViwHn6LWIThwET0ow1MlzZCZCKPuO0jU2p7Hw71bouU5FGWOPVnZC1JdFmZCB';
 // Facebook authentification verify token
 const VERIFY_TOKEN = 'SIMPLE_VERIFY_TOKEN';
 // Salesforce login (Ex. test@example.com
