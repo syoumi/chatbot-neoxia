@@ -8,8 +8,9 @@ const {FB_ADMIN_TOKEN} = require('./../include/config');
 
 //Share photo on FB page
 var sharePhoto = (text, image) => {
+  var link = 'https://graph.facebook.com/' + FB_PAGE_ID + '/photos';
   request({
-    uri: 'https://graph.facebook.com/2027653890797502/photos',
+    uri: link,
     qs: {
       access_token: FB_ADMIN_TOKEN,
       message: text,

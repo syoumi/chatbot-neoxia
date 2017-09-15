@@ -1,5 +1,3 @@
-
-
 const {sendProduct} = require('./../data/salesforce/sendCatalogue');
 
 const {getProduct} = require('./../data/salesforce/handleProducts');
@@ -22,7 +20,7 @@ var getRequestFB = (req) => {
     if(product){
       var text = '**NOUVEAUTE**\n' + product.Name + '\n' + product.Description__c;
       var image = product.Image__c;
-      shareStatus(text);
+      //shareStatus(text);
       sharePhoto(text, image);
     }
   });
