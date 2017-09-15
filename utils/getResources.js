@@ -90,7 +90,7 @@ var getFormTitle = (lang) => {
       break;
   }
 
-  return actionsContact;
+  return title;
 }
 
 module.exports =  {
