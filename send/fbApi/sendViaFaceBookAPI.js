@@ -18,7 +18,6 @@
      method: 'POST',
      json: messageData
    }, (error, response, body) => {
-     console.log(FB_PAGE_TOKEN);
      if (!error && response.statusCode === 200) {
 
        var recipientID = body.recipient_id;

@@ -80,11 +80,12 @@ var receivedPostBack = (event) => {
       case "CONTACT_SALESMAN":
         //postback = "CONTACT_SALESMAN" + "CONTACT_PAYLOAD"  + Salesman.Id + Salesman.Name + Salesman.MobilePhone + Product.Id
         var title = getFormTitle(lang);
+        console.log('CONTACT SALESMAN POSTBACK');
         var buttons = [
           {
-                    "type":"web_url",
-                    "url": URL_APP + "form/" + senderID,
-                    "title":title,
+                    "type": "web_url",
+                    "url": URL_APP + 'form/' + senderID,
+                    "title": title,
                     "webview_height_ratio": "full",
                     "messenger_extensions": true
           }
