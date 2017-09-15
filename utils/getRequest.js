@@ -8,26 +8,23 @@ const {sharePhoto} = require('./shareOnFB');
 const {shareStatus} = require('./shareOnFB');
 
 
-
 var getRequestSF = (req) => {
     //TODO Get lead/contact's language
     sendProduct(req.senderID, req.productID, 'fr');
 }
 
+
+//Get request from SF and share product on FB
 var getRequestFB = (req) => {
   var productID =  req.productID;
-  //SHARE Product on FB
   getProduct(productID, (product) => {
     console.log("POST PRODUCT");
     if(product){
       var text = '**NOUVEAUTE**\n' + product.Name + '\n' + product.Description__c;
       var image = product.Image__c;
-      console.log('IMAGE: ', image);
-      //shareStatus(text);
+      shareStatus(text);
       sharePhoto(text, image);
     }
-
-
   });
 }
 

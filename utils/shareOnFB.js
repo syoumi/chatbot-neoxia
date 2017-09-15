@@ -5,6 +5,8 @@ const {FB_PAGE_TOKEN} = require('./../include/config');
 const {FB_PAGE_ID} = require('./../include/config');
 const {FB_ADMIN_TOKEN} = require('./../include/config');
 
+
+//Share photo on FB page
 var sharePhoto = (text, image) => {
   request({
     uri: 'https://graph.facebook.com/2027653890797502/photos',
@@ -24,9 +26,10 @@ var sharePhoto = (text, image) => {
   });
 }
 
+//Post status on FB page
 var shareStatus = (text) => {
   request({
-    uri: 'https://graph.facebook.com/2027653890797502/feed',
+    uri: 'https://graph.facebook.com/' + FB_PAGE_ID + '/feed',
     qs: {
       access_token: FB_ADMIN_TOKEN,
       message: text
@@ -37,7 +40,6 @@ var shareStatus = (text) => {
       console.log('Error occured while posting to facebook page.');
       return console.error('Error occured while posting to facebook page.');
     }
-
     console.log('Posted to facebook with status ' , response.statusCode);
   });
 }
