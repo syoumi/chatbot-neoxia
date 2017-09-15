@@ -7,10 +7,11 @@ const {FB_ADMIN_TOKEN} = require('./../include/config');
 
 var sharePhoto = (text, image) => {
   request({
-    uri: 'https://graph.facebook.com/2027653890797502/feed',
+    uri: 'https://graph.facebook.com/2027653890797502/photos',
     qs: {
       access_token: FB_ADMIN_TOKEN,
-      message: text
+      message: text,
+      url: image
     },
     method: 'POST'
   }, (error, response, body) => {

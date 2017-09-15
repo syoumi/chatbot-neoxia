@@ -22,8 +22,8 @@ var getRequestFB = (req) => {
     if(product){
       var text = '**NOUVEAUTE**\n' + product.Name + '\n' + product.Description__c;
       var image = product.Image__c;
-      shareStatus(text);
-      //sharePhoto(text, image);
+      //shareStatus(text);
+      sharePhoto(text, image);
     }
 
 
