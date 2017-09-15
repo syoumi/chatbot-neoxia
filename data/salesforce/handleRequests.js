@@ -22,7 +22,7 @@ var addRequest = (senderID, building, operation, minPrice, maxPrice, nbrRooms, c
 var getRequest = (senderID, callback) => {
     doLogin((conn) => {
       var request = undefined;
-      var query = "SELECT Name, FacebookId__c, isTreated__c, City__c, Neighborhood__c, Type__c, Operation__c FROM Request__c WHERE FacebookId__c = '" senderID + "' ORDER BY CreatedDate DESC LIMIT 1 ";
+      var query = "SELECT Name, FacebookID__c, isTreated__c, City__c, Neighborhood__c, Type__c, Operation__c FROM Request__c WHERE FacebookID__c = '" senderID + "' ORDER BY CreatedDate DESC LIMIT 1 ";
       conn.query(query, (err, res) => {
         if (err) { return console.error(err); }
         if(res.records.length > 0){
