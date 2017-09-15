@@ -43,7 +43,8 @@ var receivedPostBack = (event) => {
   //console.log("POSTBACK: ", postback);
 
   getLead(senderID, (lead) => {
-
+    console.log('LEAD FOUND: ', lead);
+    console.log('PAYLOAD: ', payload);
     var lang = 'fr';
     if(lead && lead.Language__c) {
        lang = lead.Language__c;

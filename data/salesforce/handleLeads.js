@@ -11,7 +11,7 @@ const {getContact} = require("./handleContacts");
 var getLead = (senderID, callback) => {
   doLogin((conn) => {
       var lead = undefined;
-      var query = "SELECT Name, company, MobilePhone, LeadSource, FacebookId__c, Email, Language__c FROM Lead WHERE FacebookId__c='" + senderID + "' LIMIT 1";
+      var query = "SELECT Id, Name, company, MobilePhone, LeadSource, FacebookId__c, Email, Language__c FROM Lead WHERE FacebookId__c='" + senderID + "' LIMIT 1";
       conn.query(query, (err, res) => {
         if (err) { return console.error(err); }
         if(res.records.length > 0){
