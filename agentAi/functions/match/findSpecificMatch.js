@@ -1,3 +1,8 @@
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Find specific match between user's text and action's keywords with different methods when there's a parameters
+  */
 const fs = require('fs');
 
 const {checkEquality} = require('./checkEquality');
@@ -12,18 +17,19 @@ const {getAction} = require('./../action/handleAction');
 const {MIN_STEP_TWO_PERCENT} = require('./../../include/config');
 const {MIN_STEP_THREE_PERCENT} = require('./../../include/config');
 
-
-
-//Find match context: looking for intent that matchs text
+/*
+  * @desc      Get entry contains a keyword that matchs exactly user's text
+  * @param     request : Contains senderID, text and lang
+  * @return    Entry
+  */
 var findSpecificMatch = (request, actions) => {
 
   var jsonData = fs.readFileSync('./agentAi/resources/' + request.lang + '/data.json');
   var ignorable = fs.readFileSync('./agentAi/resources/' + request.lang +'/ignorable.json');
-
   var data = JSON.parse(jsonData).data;
 
+  //user
   var user = getUser(request.senderID);
-  console.log('COUNTER ' , user.counter);
 
   var intents = [];
   // getting all the specific intents to look in
@@ -95,8 +101,8 @@ var findSpecificMatch = (request, actions) => {
       }
     }
   }
-}
+};
 
 module.exports = {
   findSpecificMatch
-}
+};

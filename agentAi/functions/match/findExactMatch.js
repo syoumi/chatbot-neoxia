@@ -1,3 +1,8 @@
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Find exact match between user's text and action's keywords
+  */
 const fs = require('fs');
 
 const {checkEquality} = require('./checkEquality');
@@ -8,10 +13,12 @@ const {setUser} = require('./../user/handleUser');
 const {getParameter} = require('./../parameters/getParameter');
 const {splitMessage} = require('./../treatment/splitMessage');
 
-
-
+/*
+  * @desc      Get entry contains a keyword that matchs exactly user's text
+  * @param     request : Contains senderID, text and lang
+  * @return    Entry
+  */
 var findExactMatch = (request) => {
-
   var jsonData = fs.readFileSync('./agentAi/resources/' + request.lang + '/data.json');
   var data = JSON.parse(jsonData).data;
 
@@ -19,13 +26,13 @@ var findExactMatch = (request) => {
   var user = getUser(request.senderID);
 
   //message text
-
   var words = splitMessage(request.text, request.lang);
 
   var foundEntry = undefined;
 
   data.forEach((entry) => {
     var go = false;
+    //IF (entry has previousActions) --> [ then look, IF it's the same as user.previousAction, then search match on this entry, ELSE give up ], ELSE search match on this entry
     if (entry.previousActions && entry.previousActions.length != 0) {
       if (user && entry.previousActions.indexOf(user.previousAction) != -1) {
         go = true;
@@ -55,7 +62,6 @@ var findExactMatch = (request) => {
                 var param = getParameter(words[i], keywordsArray[i], request.lang);
                 if(param.value){
                   params.push(param);
-                  //console.log("Param: ", param);
                 } else {
                   areEquals = false;
                   params = [];

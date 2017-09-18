@@ -1,8 +1,16 @@
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Handle Contacts
+  */
 const {doLogin} = require('./login');
 
-//Get Contact by his FacebookId
+/*
+  * @desc      Get Contact by his FacebookId
+  * @param     senderID : contact's facebookId
+  * @return    Contact
+  */
 var getContact = (senderID, callback) => {
-
   doLogin((conn) => {
     var contact = undefined;
     var query = "SELECT Id, Salutation, Name, AccountId, MobilePhone, LeadSource, FacebookId__c, email, Language__c FROM Contact WHERE FacebookId__c='" + senderID + "' LIMIT 1";
@@ -14,12 +22,19 @@ var getContact = (senderID, callback) => {
       callback(contact);
     });
   });
+};
 
-}
-
-
-
-//Update Contact
+/*
+  * @desc      Update contact
+  * @param     senderID : contact's facebookId
+  * @param     fname : first name
+  * @param     lname : last name
+  * @param     city : city
+  * @param     country : country
+  * @param     email : email
+  * @param     phone : phone
+  * @return    void
+  */
 var updateContact = (senderID, fname, lname, city, country, email, phone) => {
   //TODO if there's quote ---> update Quote's Email
   doLogin((conn) => {
@@ -29,11 +44,14 @@ var updateContact = (senderID, fname, lname, city, country, email, phone) => {
           if (err) { return console.error(err); }
         });
   });
+};
 
-}
-
-
-//Update Contact's language
+/*
+  * @desc      Update contact's language
+  * @param     senderID : contact's facebookId
+  * @param     language : language
+  * @return    void
+  */
 var updateContactLanguage = (senderID, language) => {
   doLogin((conn) => {
     var query = "SELECT Id, Language__c FROM Contact WHERE FacebookID__c= '" + senderID + "'";
@@ -42,10 +60,9 @@ var updateContactLanguage = (senderID, language) => {
           if (err) { return console.error(err); }
         });
   });
-}
-
+};
 
 
 module.exports = {
   getContact, updateContact, updateContactLanguage
-}
+};

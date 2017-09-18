@@ -2,221 +2,251 @@
   "lang": "ma",
   "data": [
     {
-      "action": "salutations-action",
-      "keywords": [
-        "salut",
-        "bonjour",
-        "bjr",
-        "bonsoir",
-        "bsr",
-        "salutations",
-        "hello",
-        "salam",
-        "lu",
-        "coucou",
-        "cc"
-      ],
-      "answers": [
-        "Salut à vous !\nComment puis-je vous aider ?",
-        "Salutations !\nComment puis-je vous aider ?"
-      ],
-      "nextActions": [],
-      "previousActions" : [],
-      "hasParam": "0"
-    },
-
-    {
-      "action": "yes-action",
-      "keywords": [
-        "oui",
-        "ouai",
-        "wéé",
-        "yes",
-        "yeah",
-        "d accord",
-        "d acc",
-        "ok",
-        "okay",
-        "okey",
-        "c est bon",
-        "pourquoi pas",
-        "prq pas"
-      ],
-      "answers": [
-        "Génial !",
-        "Super !",
-        "C'est bon.",
-        "Bien entendu."
-      ],
-      "nextActions": [],
-      "previousActions" : [],
-      "hasParam": "0"
-    },
-
-    {
-      "action": "no-action",
-      "keywords": [
-        "non",
-        "pas d accord",
-        "pas du tout",
-        "du tout",
-        "non merci"
-      ],
-      "answers": [
-        "D'accord.",
-        "C'est noté.",
-        "Comme vous voulez."
-      ],
-      "nextActions": [],
-      "previousActions" : [],
-      "hasParam": "0"
-    },
-
-    {
-      "action": "thanks-action",
-      "keywords": [
-        "merci",
-        "merci beaucoup",
-        "je vous remercie",
-        "thanks",
-        "thank you",
-        "thx",
-        "grand merci",
-        "je suis reconnaissant",
-        "remerciement",
-        "merci bien"
-      ],
-      "answers": [
-        "À votre service.",
-        "Je vous en prie.",
-        "Mais de rien.",
-        "C'est un plaisir.",
-        "C'est toujours un plaisir de vous rendre service.",
-        "Aucun problème, je suis là pour ça."
-      ],
-      "nextActions": [],
-      "previousActions" : [],
-      "hasParam": "0"
-    },
-
-    {
-     "action": "goodbye-action",
-     "keywords": [
-       "au revoir",
-       "bye",
-       "à plus",
-       "à toute",
-       "à plus tard",
-       "à tout à l heure",
-       "ciao",
-       "à bientôt",
-       "je dois y aller",
-       "je quitte",
-       "goodbye"
-     ],
-     "answers": [
-       "À bientôt !",
-       "Au revoir.",
-       "Dans l'espoir de vous revoir bientôt.",
-       "Salut, à plus !"
-     ],
-     "nextActions": [],
-     "previousActions" : [],
-     "hasParam" : "0"
-   },
-
-   {
-    "action": "salamalec-action",
+    "action": "salutations-action",
     "keywords": [
-      "ça va",
-      "sa va",
-      "cv",
-      "comment vas tu",
-      "comment allez vous",
-      "est ce que vous allez bien"
+      "salut",
+      "bonjour",
+      "bjr",
+      "bonsoir",
+      "bsr",
+      "salutations",
+      "hello",
+      "salam",
+      "lu",
+      "coucou",
+      "cc",
+      "assalamu alaykum"
     ],
     "answers": [
-      "Très bien, merci et vous?",
-      "Super, merci. Vous?"
+      "Salam !\nKifach n9dero n3awnuk?"
     ],
-    "nextActions": ["salamalec-answer-action"],
+    "nextActions": [],
     "previousActions" : [],
-    "hasParam" : "0"
+    "hasParam": "0"
   },
 
   {
-   "action": "salamalec-answer-action",
+    "action": "yes-action",
+    "keywords": [
+      "oui",
+      "ouai",
+      "wéé",
+      "yes",
+      "yeah",
+      "d accord",
+      "d acc",
+      "ok",
+      "okay",
+      "okey",
+      "c est bon",
+      "pourquoi pas",
+      "prq pas",
+      "ah",
+      "wah",
+      "3lach la",
+      "wakha",
+      "mzyan",
+      "mazian",
+      "iyeh"
+    ],
+    "answers": [
+      "Mzyan !",
+      "C'est bon."
+    ],
+    "nextActions": [],
+    "previousActions" : [],
+    "hasParam": "0"
+  },
+
+  {
+    "action": "no-action",
+    "keywords": [
+      "non",
+      "pas d accord",
+      "pas du tout",
+      "du tout",
+      "non merci",
+      "la chokran",
+      "la",
+      "mabghitch"
+    ],
+    "answers": [
+      "D'accord.",
+      "Wakha.",
+      "Kifma bghiti."
+    ],
+    "nextActions": [],
+    "previousActions" : [],
+    "hasParam": "0"
+  },
+
+  {
+    "action": "thanks-action",
+    "keywords": [
+      "merci",
+      "merci beaucoup",
+      "chokran",
+      "thanks",
+      "thank you",
+      "thx",
+      "grand merci",
+      "je suis reconnaissant",
+      "remerciement",
+      "merci bien"
+    ],
+    "answers": [
+      "La chokra 3ala wajib."
+      "3la rass ol3in.",
+      "C'est un plaisir wlh.",
+      "Makayn 7ta mochkil. 7na dima hna bach n3awnuk."
+    ],
+    "nextActions": [],
+    "previousActions" : [],
+    "hasParam": "0"
+  },
+
+  {
+   "action": "goodbye-action",
    "keywords": [
-     "bien merci",
-     "très bien",
-     "cv",
-     "ça va",
-     "aussi",
-     "de même",
-     "également",
-     "cv hmd"
+     "au revoir",
+     "bye",
+     "à plus",
+     "à toute",
+     "à plus tard",
+     "à tout à l heure",
+     "ciao",
+     "à bientôt",
+     "je dois y aller",
+     "je quitte",
+     "goodbye",
+     "bslama",
+     "ana mchit",
+     "llah y3awn"
    ],
    "answers": [
-     "Bien.\nComment puis-je vous aider ?"
+     "Bslama :D.",
+     "Assalamu alaykum."
    ],
    "nextActions": [],
-   "previousActions" : ["salamalec-action"],
+   "previousActions" : [],
    "hasParam" : "0"
+ },
+
+ {
+  "action": "salamalec-action",
+  "keywords": [
+    "ça va",
+    "sa va",
+    "cv",
+    "comment vas tu",
+    "comment allez vous",
+    "est ce que vous allez bien",
+    "labas",
+    "bikhir",
+    "labas bikhir",
+    "kif dayr",
+    "kif 3amel"
+  ],
+  "answers": [
+    "Bikhir chokran.\no nta ola nti ?",
+    "Labas, chokran.\no nta ola nti?"
+  ],
+  "nextActions": ["salamalec-answer-action"],
+  "previousActions" : [],
+  "hasParam" : "0"
+},
+
+{
+ "action": "salamalec-answer-action",
+ "keywords": [
+   "bien merci",
+   "très bien",
+   "cv",
+   "ça va",
+   "aussi",
+   "de même",
+   "également",
+   "cv hmd",
+   "labas",
+   "hmd",
+   "hamdolillah",
+   "labas bikhir",
+   "labas chokran"
+ ],
+ "answers": [
+   "Mzyan.\nKifach n9dero n3awnuk ?"
+ ],
+ "nextActions": [],
+ "previousActions" : ["salamalec-action"],
+ "hasParam" : "0"
+},
+
+{
+  "action": "catalogue-action",
+  "keywords": [
+      "consulter catalogue",
+      "voir catalogue",
+      "veux catalogue",
+      "quelles sont vos propositions",
+      "je cherche un logement",
+      "qu est ce que vous proposez",
+      "quels sont vos biens",
+      "qu est ce que vous vendez",
+      "propositions",
+      "suggestions",
+      "bghit nchuf catalogue",
+      "warini catalogue",
+      "3tini chi 9tira7",
+      "3tini chi 9tira7at",
+      "achnu katbi3o",
+      "achnu kadiro",
+      "9tare7 3liya",
+      "9tare7 3liya chi 7aja"
+  ],
+  "answers": [
+      "3la ina type dyal dar kat9alab ?",
+      "Ina type dyal dar kayhamak?"
+    ],
+    "nextActions": ["type-building-action"],
+    "previousActions" : [],
+    "hasParam": "0"
   },
 
   {
-    "action": "catalogue-action",
+    "action": "catalogue-city-action",
     "keywords": [
-        "consulter catalogue",
-        "voir catalogue",
-        "veux catalogue",
-        "quelles sont vos propositions",
-        "je cherche un logement",
-        "qu est ce que vous proposez",
-        "quels sont vos biens",
-        "qu est ce que vous vendez",
-        "propositions",
-        "suggestions"
+        "quelles sont vos propositions à #city|city#",
+        "quels sont vos biens à #city|city#",
+        "je cherche un logement à #city|city#",
+        "achnu les propositions dawylkum f #city|city#",
+        "kan9alab f #city|city#"
     ],
     "answers": [
-        "Quel type de logement voulez-vous consulter?",
-        "Veuillez préciser, s'il vous plaît, le type de logement que vous souhaitez consulter."
-      ],
-      "nextActions": ["type-building-action"],
-      "previousActions" : [],
-      "hasParam": "0"
-    },
+        "Achnu type dyal dar kayhamak?",
+        "3la ina type dyal dar kat9alab?"
+    ],
+    "nextActions": ["type-building-v2-action"],
+    "previousActions" : [],
+    "hasParam": "1"
+  },
 
-    {
-      "action": "catalogue-city-action",
-      "keywords": [
-          "quelles sont vos propositions à #city|city#",
-          "quels sont vos biens à #city|city#",
-          "je cherche un logement à #city|city#"
-      ],
-      "answers": [
-          "Quel type de logement voulez-vous consulter ?",
-          "Par quel type de logement êtes-vous intéressé ?"
-      ],
-      "nextActions": ["type-building-v2-action"],
-      "previousActions" : [],
-      "hasParam": "1"
-    },
-
-    {
-      "action": "catalogue-building-action",
-      "keywords": [
-          "quelles sont vos propositions de #building|building#",
-          "est-ce vous avez des #building|building#",
-          "je cherche un #building|building#"
-      ],
-      "answers": [
-          "Voulez-vous acheter ou louer ?"
-      ],
-      "nextActions": ["operation-v3-action"],
-      "previousActions" : [],
-      "hasParam": "1"
-    },
+  {
+    "action": "catalogue-building-action",
+    "keywords": [
+        "quelles sont vos propositions de #building|building#",
+        "est-ce vous avez des #building|building#",
+        "je cherche un #building|building#",
+        "kana9alab 3la #building|building#",
+        "bghit #building|building#",
+        "wach 3andkum #building|building#"
+    ],
+    "answers": [
+        "Bghiti tchri ola tkri ?"
+    ],
+    "nextActions": ["operation-v3-action"],
+    "previousActions" : [],
+    "hasParam": "1"
+  },
 
     {
       "action": "catalogue-neighborhood-action",
@@ -900,7 +930,9 @@
         "je parle à une personne ou un robot",
         "es tu une personne réelle",
         "es tu une personne physique",
-        "tu existes vraiment"
+        "tu existes vraiment",
+        "vous êtes un robot",
+        "vous n'êtes pas humain"
       ],
       "answers": [
         "Hmmm. Je suis là pour rendre votre expérience interactive plus performante.",
@@ -1331,6 +1363,27 @@
       ],
       "answers": [
         "Veuillez spécifier s'il vous plaît. Quand quoi?"
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "0"
+    },
+
+    {
+      "action": "pay-action",
+      "keywords": [
+        "paiement",
+        "comment on paie",
+        "comment vais je payer",
+        "la procédure du paiement",
+        "puis je payer en ligne",
+        "payer en espèces ou chèque",
+        "puis je bénéficier d un crédit",
+        "carnet de chèque",
+        "payer cash"
+      ],
+      "answers": [
+        "Tout ce qui concerne la procédure de paiement sera détaillé par l'agent commercial associé au logement choisi.\nSi vous n'avez pas encore fais le choix, demandez de consulter le catalogue."
       ],
       "nextActions": [],
       "previousActions" : [],

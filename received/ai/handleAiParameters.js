@@ -1,3 +1,8 @@
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc       Handle AgentAI's Parameterss
+  */
 const {sendCatalogue} = require('./../../data/salesforce/sendCatalogue');
 
 const {addRequest} = require('./../../data/salesforce/handleRequests');
@@ -9,10 +14,19 @@ const {updateLeadLanguage} = require('./../../data/salesforce/handleLeads');
 
 const {sendTextMessageWithDelay} = require('./../../send/fbApi/sendTextMessage');
 
-
+/*
+  * @desc      Handle AgentAI's parameters
+  * @param     senderID : user's facebookId
+  * @param     text: Text to send to user as an answer
+  * @param     params: user's params
+  * @param     action: action found 's name
+  * @param     lang : language
+  * @return    void
+  */
 var handleParameters = (senderID, text, params, action, lang) => {
   switch(action){
 
+    //Catalogue
     case 'send catalogue':
       var building = undefined;
       var operation = undefined;
@@ -62,6 +76,7 @@ var handleParameters = (senderID, text, params, action, lang) => {
 
       break;
 
+    //Edit Email
     case "edit email":
       var email = undefined;
       params.forEach((param) => {
@@ -73,6 +88,7 @@ var handleParameters = (senderID, text, params, action, lang) => {
       sendTextMessageWithDelay(senderID, text);
       break;
 
+    //Edit Number phone
     case "edit phone":
       var phone = undefined;
       params.forEach((param) => {
@@ -84,6 +100,7 @@ var handleParameters = (senderID, text, params, action, lang) => {
       sendTextMessageWithDelay(senderID, text);
       break;
 
+  //Edit Language
    case "edit language":
      var language = undefined;
      params.forEach((param) => {
@@ -97,8 +114,8 @@ var handleParameters = (senderID, text, params, action, lang) => {
     break;
 
   }
-}
+};
 
 module.exports = {
   handleParameters
-}
+};

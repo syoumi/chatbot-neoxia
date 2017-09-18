@@ -1,17 +1,35 @@
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc       Handle resources
+  */
 const fs = require('fs');
 
+/*
+  * @desc      Get operations by language
+  * @param     lang : language
+  * @return    Operations (Array of strings)
+  */
 var getOperations = (lang) => {
   var jsonOperations = fs.readFileSync('./agentAi/resources/' + lang + '/operations.json');
   return JSON.parse(jsonOperations).list;
-}
+};
 
+/*
+  * @desc      Get types of buildings by language
+  * @param     lang : language
+  * @return    Buildings  (Array of strings)
+  */
 var getBuildings = (lang) => {
   var jsonOperations = fs.readFileSync('./agentAi/resources/' + lang + '/buildings.json');
   return JSON.parse(jsonOperations).list;
-}
+};
 
-
-
+/*
+  * @desc      Get yes/no by language
+  * @param     lang : language
+  * @return    Yes, no (Array of strings)
+  */
 var getYesNo = (lang) => {
   var yesno = [];
   switch(lang) {
@@ -30,8 +48,13 @@ var getYesNo = (lang) => {
   }
 
   return yesno;
-}
+};
 
+/*
+  * @desc      Get filter/skip by language
+  * @param     lang : language
+  * @return    Filter, skip (Array of strings)
+  */
 var getFilterSkip = (lang) => {
   var filterskip = [];
   switch(lang) {
@@ -50,8 +73,13 @@ var getFilterSkip = (lang) => {
   }
 
   return filterskip;
-}
+};
 
+/*
+  * @desc      Get actions for contact by language
+  * @param     lang : language
+  * @return    Call, send request, send quote (Array of strings)
+  */
 var getActionsContact = (lang) => {
   var actionsContact = [];
   switch(lang) {
@@ -71,9 +99,13 @@ var getActionsContact = (lang) => {
   }
 
   return actionsContact;
-}
+};
 
-
+/*
+  * @desc      Get form's title by language
+  * @param     lang : language
+  * @return    Form's title (String)
+  */
 var getFormTitle = (lang) => {
   var title = 'Formulaire';
   switch(lang) {
@@ -90,9 +122,10 @@ var getFormTitle = (lang) => {
       break;
   }
 
-  return actionsContact;
-}
+  return title;
+};
+
 
 module.exports =  {
   getOperations, getBuildings, getYesNo, getFilterSkip, getActionsContact, getFormTitle
-}
+};

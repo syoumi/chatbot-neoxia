@@ -1,9 +1,8 @@
-/**
- * Chatbot for facebook messenger
- * Created by : Neoxia
- * Version 1.0 beta - August 2017
- */
-
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc       Start application - Orchestre of chatbot that receives and handles requests from Facebook and Salesforce 
+  */
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -18,6 +17,8 @@ const {receivedDelivery} = require('./received/fbApi/receivedDelivery');
 const {getFormLead} = require('./utils/getForm');
 const {getFormContact} = require('./utils/getForm');
 
+const {getRequestSF} = require('./utils/getRequest');
+const {getRequestFB} = require('./utils/getRequest');
 
 var app = express();
 
@@ -119,6 +120,13 @@ app.post("/completeFormToEdit", function(req, res){
 
 app.post("/salesforce", function(req, res){
   console.log('---> RECEIVE HTTP REQUEST FROM SF : ', req.body);
+  getRequestSF(req.body);
+  res.sendStatus(200);
+});
+
+app.post("/facebook", function(req, res){
+  console.log('---> RECEIVE HTTP REQUEST FROM SF : ', req.body);
+  getRequestFB(req.body);
   res.sendStatus(200);
 });
 

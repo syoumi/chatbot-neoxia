@@ -1,10 +1,18 @@
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Save undefined answer
+  */
 const fs = require('fs');
 
 var unsaved = fs.readFileSync('./agentAi/resources/unsaved.json');
-
 var messages= JSON.parse(unsaved);
 
-//save undefined answer only once
+/*
+  * @desc      Save undefined answer only once
+  * @param     message : user's text (Request.text)
+  * @return    void
+  */
 var saveUndefinedAnswer= (message)=> {
   var index= -1;
   for (var i= 0; i< messages.length; i++) {
@@ -19,8 +27,8 @@ var saveUndefinedAnswer= (message)=> {
    fs.writeFile('./agentAi/resources/unsaved.json', JSON.stringify(messages), 'utf8');
  }
 
-}
+};
 
 module.exports= {
   saveUndefinedAnswer
-}
+};

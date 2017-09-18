@@ -1,3 +1,8 @@
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Extract parameters from user's text
+  */
 const {extractEmail} = require('./email');
 const {extractPhoneNumber} = require('./phone');
 const {extractCity} = require('./city');
@@ -7,8 +12,13 @@ const {extractBuilding} = require('./building');
 const {extractCurrency} = require('./currency');
 const {extractNumber} =  require('./number');
 
-
-
+/*
+  * @desc      Extract parameters from user's text
+  * @param     messageText : user's text (Request.text)
+  * @param     keywordParam: Parameter extract from keyword
+  * @param     lang : language
+  * @return    Parameter
+  */
 var extractParameters = (messageText, keywordParam, lang) => {
   var name = keywordParam.split('|')[0].replace('#', '');
   var type = keywordParam.split('|')[1].replace('#', '');

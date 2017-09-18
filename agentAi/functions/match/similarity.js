@@ -1,4 +1,16 @@
-//Levenshtein 
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Check similarity between two words
+  */
+
+
+/*
+  * @desc      Check similarity between two strings using Levenshtein algorithm
+  * @param     s1: String 1
+  * @param     s2: String 2
+  * @return    Boolean
+  */
 var similarity = (s1, s2) => {
   var longer = s1;
   var shorter = s2;
@@ -13,6 +25,13 @@ var similarity = (s1, s2) => {
   return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
 };
 
+
+/*
+  * @desc      Get distance between two strings
+  * @param     s1: String 1
+  * @param     s2: String 2
+  * @return    Distance (Double)
+  */
 var editDistance = (s1, s2) => {
   s1 = s1.toLowerCase();
   s2 = s2.toLowerCase();

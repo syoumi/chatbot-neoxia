@@ -900,7 +900,9 @@
         "je parle à une personne ou un robot",
         "es tu une personne réelle",
         "es tu une personne physique",
-        "tu existes vraiment"
+        "tu existes vraiment",
+        "vous êtes un robot",
+        "vous n'êtes pas humain"
       ],
       "answers": [
         "Hmmm. Je suis là pour rendre votre expérience interactive plus performante.",

@@ -1,7 +1,8 @@
-/**
- * All the logic for sending Bulk text messages
- */
-
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc       All the logic for sending Bulk text messages
+  */
 const async = require('async');
 
 const {setWaiting} = require('./../../utils/waiting');
@@ -10,9 +11,12 @@ const {sendTypingOn} = require('./sendTypingOnOff');
 const {sendTextMessage} = require('./sendTextMessage');
 const {syncCallSendAPI} = require('./sendViaFaceBookAPI');
 
-/**
- * Immediatly sends list of text messages to recipient
- */
+/*
+  * @desc      Immediatly sends list of text messages to recipient
+  * @param     recipientID : user's facebookId
+  * @param     messages: messages to send
+  * @return    void
+  */
 var sendBulkTextMessages = (recipientID, messages) => {
   async.eachSeries(messages, (message, callback) => {
     var messageData = {
@@ -33,14 +37,15 @@ var sendBulkTextMessages = (recipientID, messages) => {
   });
 };
 
-/**
- * Sends list of text messages to recipient one by one
- * this function will make a random delai before sending each text message
- */
+/*
+  * @desc      Sends list of text messages to recipient one by one, this function will make a random delai before sending each text message
+  * @param     recipientID : user's facebookId
+  * @param     messages: messages to send
+  * @return    void
+  */
 var sendBulkTextMessagesWithDelay = (recipientID, messages) => {
   async.eachSeries(messages, (message, callback) => {
-    // Assuming thet the bot will be typing 3 characters per second
-    // the delay will be
+    // Assuming thet the bot will be typing 3 characters per second, the delay will be:
     var delay = ( message.length / 3 ) * 1000; // in Milliseconds
     sendTypingOn(recipientID);
     setTimeout(() => {
@@ -57,13 +62,13 @@ var sendBulkTextMessagesWithDelay = (recipientID, messages) => {
     // if (message === 'Test?') {
     //  setWaiting();
     // }
-
     syncCallSendAPI(messageData, callback);
   }, delay);
   });
 };
 
+
 module.exports = {
   sendBulkTextMessages,
   sendBulkTextMessagesWithDelay
-}
+};

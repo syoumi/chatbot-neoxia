@@ -1,4 +1,8 @@
-
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Handle Quotes
+  */
 const {addQuote} = require('./handleQuotes');
 const {getQuote} = require('./handleQuotes');
 const {updateQuote} = require('./handleQuotes');
@@ -12,22 +16,23 @@ const {getPriceBookEntry} = require('./handlePriceBookEntries');
 
 const {getProduct} = require('./handleProducts');
 
-//Send Quote
+/*
+  * @desc      Send Quote to contact
+  * @param     contact : contact
+  * @param     productID : product's Id
+  * @param     quantity : quantity of product
+  * @return    void
+  */
 var sendQuote = (contact, productID, quantity) => {
-
   //1- Look for product first
   getProduct(productID, (product) => {
-
     //2- Then, create a new Price Book Entry for product
     addPriceBookEntry(product, 'Standard Price Book', (pricebookEntryId) => {
-
       //3- Get Price Book Entry
       getPriceBookEntry(pricebookEntryId, (pricebookEntry) => {
         console.log('PRICE BOOK ENTRY : ', pricebookEntry);
-
         //4- Update Opportunity
         updateOpportunity(contact.AccountId, pricebookEntry, () => {
-
           //5- Get Opportunity
           getOpportunity(contact.AccountId, (opportunity) => {
             //6- Then, Add Quote
@@ -36,24 +41,18 @@ var sendQuote = (contact, productID, quantity) => {
               if(quoteID && quoteID != ''){
                 //7- Add Quote Line Item
                 addQuoteLineItem(quoteID, pricebookEntry, product, quantity, () => {
-                    //8- Create and Send Quote PDF using Trigger 
+                    //8- Create and Send Quote PDF using Trigger
                     updateQuote(quoteID);
                 });//7
               }
             });//6
           });//5
-
         });//4
-
       });//3
     });//2
-
   });//1
-
-
-
-}
+};
 
 module.exports = {
   sendQuote
-}
+};

@@ -1,9 +1,19 @@
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc       Handle predefined answers from Agent AI
+  */
 const fs = require('fs');
 
-
+/*
+  * @desc      Get predefined answer
+  * @param     lang : language
+  * @param     title : Answer's title
+  * @param     param : parameter's value
+  * @return    predefined answer's text
+  */
 var getText = (lang, title, param) => {
   var jsonData = fs.readFileSync('./agentAi/resources/' + lang + '/predefinedAnswers.json');
-
   var predefinedAnswers = JSON.parse(jsonData).data;
 
   var text = undefined;
@@ -19,8 +29,14 @@ var getText = (lang, title, param) => {
   });
 
   return text;
-}
+};
 
+/*
+  * @desc      Replace parameter in answer's text with its value
+  * @param     textArray : Array of Answer's text (split)
+  * @param     param : parameter's value
+  * @return    predefined answer's text with param
+  */
 var replaceParam = (textArray, param) => {
   var text = '';
   textArray.forEach((word) => {
@@ -30,8 +46,9 @@ var replaceParam = (textArray, param) => {
     text += ' ' + word;
   });
   return text;
-}
+};
+
 
 module.exports = {
   getText
-}
+};

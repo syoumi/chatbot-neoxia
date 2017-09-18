@@ -1,14 +1,16 @@
-/**
- * When the user sees any message sent by the application
- * the function in this file is called
- */
-
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        When the user sees any message sent by the application, the function in this file is called
+  */
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 const {getWaiting} = require('./../../utils/waiting');
 
-/**
- * Read event handler
- */
+/*
+  * @desc      Seen event handler
+  * @param     event : event from Facebook
+  * @return    void
+  */
 var receivedSeen = (event) => {
   var senderID = event.sender.id;
   // The timestamp is the time of the event reception
@@ -40,6 +42,7 @@ var receivedSeen = (event) => {
     console.log(`Nothing to do because waiting is ${getWaiting()}`);
   }
 };
+
 
 module.exports = {
   receivedSeen

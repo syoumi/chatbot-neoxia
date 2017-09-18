@@ -1,14 +1,22 @@
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Extract parameter city from user's text
+  */
 const fs = require('fs');
 
 const {splitMessage} = require('./../treatment/splitMessage');
 const {checkEquality} = require('./../match/checkEquality');
 
-
+/*
+  * @desc      Extract city from user's text
+  * @param     text : user's text (Request.text)
+  * @param     lang : language
+  * @return    City
+  */
 var extractCity = (text, lang) => {
-
   var jsonCities = fs.readFileSync('./agentAi/resources/' + lang + '/cities.json');
   var list = JSON.parse(jsonCities).list;
-
 
   var cityFound = undefined;
   var cities = [];
@@ -45,8 +53,14 @@ var extractCity = (text, lang) => {
   }
 
   return cityFound;
-}
+};
 
+/*
+  * @desc     Check if a word is city
+  * @param     word : word from user's text
+  * @param     lang : language
+  * @return    Boolean
+  */
 var isCity = (word, lang) => {
 
   var jsonCities = fs.readFileSync('./agentAi/resources/' + lang + '/cities.json');
@@ -62,10 +76,15 @@ var isCity = (word, lang) => {
   }
 
   return false;
-}
+};
 
+/*
+  * @desc      Get city from word
+  * @param     word : word from user's text
+  * @param     lang : language
+  * @return    City
+  */
 var getCity = (word, lang) => {
-
   var jsonCities = fs.readFileSync('./agentAi/resources/' + lang + '/cities.json');
   var list = JSON.parse(jsonCities).list;
 
@@ -85,9 +104,9 @@ var getCity = (word, lang) => {
   }
 
   return cityFound;
-}
+};
 
 
 module.exports = {
   extractCity, getCity, isCity
-}
+};

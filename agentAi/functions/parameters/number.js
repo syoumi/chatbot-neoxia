@@ -1,4 +1,14 @@
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Extract parameter numberfrom user's text
+  */
 
+/*
+  * @desc      Extract number from user's text
+  * @param     text : user's text (Request.text)
+  * @return    Number
+  */
 var extractNumber = (text) => {
   var possibleNumbers = [];
   var digits = '0123456789';
@@ -30,6 +40,11 @@ var extractNumber = (text) => {
   return foundNumber ? maxNumber : undefined;
 };
 
+/*
+  * @desc     Check if a word is number
+  * @param     word : word from user's text
+  * @return    Boolean
+  */
 var isNumber = (str) => {
   return !isNaN(parseInt(str));
 };

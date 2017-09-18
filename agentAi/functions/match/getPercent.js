@@ -1,12 +1,23 @@
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Get percent of matching and params (if there's params on Entry)
+  */
 const {checkEquality} = require('./checkEquality');
 
 const {extractParameters} = require('./../parameters/extractParameters');
 
 const {splitMessage} = require('./../treatment/splitMessage');
 
+/*
+  * @desc      Get percent of matching user's text and words
+  * @param     text: user's text
+  * @param     keywords: array of disctincts words in Entry.keywords
+  * @param     hasParam: if Entry has params == 1 , else == 0
+  * @param     lang: Language
+  * @return    Percent and Params
+  */
 var getPercent= (text, keywords, hasParam, lang)=> {
-  //keywords ===> array of distincts words in intent.keywords
-
   var counter = 0;
   var params = [];
 
@@ -35,7 +46,6 @@ var getPercent= (text, keywords, hasParam, lang)=> {
   // var keywordArray = keyword.split(' ').filter((item) => {
   //   return item != '' && !(isIgnorable(item));
   // });
-
 
   var words = splitMessage(text, lang);
 

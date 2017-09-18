@@ -1,9 +1,19 @@
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Extract parameter neighborhood from user's text
+  */
 const fs = require('fs');
 
 const {splitMessage} = require('./../treatment/splitMessage');
 const {checkEquality} = require('./../match/checkEquality');
 
-
+/*
+  * @desc      Extract neighborhood from user's text
+  * @param     text : user's text (Request.text)
+  * @param     lang : language
+  * @return    Neighborhood
+  */
 var extractNeighborhood = (text, lang) => {
 
   var jsonCities = fs.readFileSync('./agentAi/resources/' + lang + '/cities.json');
@@ -44,8 +54,15 @@ var extractNeighborhood = (text, lang) => {
   }
 
   return neighborhoodFound;
-}
+};
 
+
+/*
+  * @desc     Check if a word is neighborhood
+  * @param     word : word from user's text
+  * @param     lang : language
+  * @return    Boolean
+  */
 var isNeighborhood = (word, lang) => {
 
   var jsonCities = fs.readFileSync('./agentAi/resources/' + lang + '/cities.json');
@@ -63,8 +80,14 @@ var isNeighborhood = (word, lang) => {
   }
 
   return false;
-}
+};
 
+/*
+  * @desc      Get neighborhood from word
+  * @param     word : word from user's text
+  * @param     lang : language
+  * @return    Neighborhood
+  */
 var getNeighborhood = (word, lang) => {
 
   var jsonCities = fs.readFileSync('./agentAi/resources/' + lang + '/cities.json');
@@ -86,9 +109,9 @@ var getNeighborhood = (word, lang) => {
   }
 
   return neighborhoodFound;
-}
+};
 
 
 module.exports = {
   extractNeighborhood, getNeighborhood, isNeighborhood
-}
+};
