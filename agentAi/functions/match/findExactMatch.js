@@ -22,7 +22,6 @@ var findExactMatch = (request) => {
   var jsonData = fs.readFileSync('./agentAi/resources/' + request.lang + '/data.json');
   var data = JSON.parse(jsonData).data;
 
-  console.log('REQUEST: ', request);
   //user
   var user = getUser(request.senderID);
 

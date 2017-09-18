@@ -14,10 +14,6 @@ const VERIFY_TOKEN = 'SIMPLE_VERIFY_TOKEN';
 const SF_LOGIN = 'sfchatbot@neoxia.ma';
 // Salesforce password + security token
 const SF_PASSWORD = '25072017fkmoCTPTRp4guwybpqgmCKsB5D5mM';
-// API.ai client access token
-const API_AI_CLIENT_ACCESS_TOKEN = '47370c9dd09c4ef9bf8dfa664aa86e39';
-// Facebook app secret code
-const FB_SECRET = '##';
 // Maximum time to wait before re-prompt user for answer
 const WAITING_BEFORE_PROMPT = 5000;
 //URL application
@@ -34,8 +30,6 @@ module.exports = {
   VERIFY_TOKEN,
   SF_LOGIN,
   SF_PASSWORD,
-  API_AI_CLIENT_ACCESS_TOKEN,
-  FB_SECRET,
   URL_APP,
   WAITING_BEFORE_PROMPT,
   FB_PAGE_ID,
