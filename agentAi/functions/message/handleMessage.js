@@ -20,7 +20,6 @@ var handleMessage = (request) => {
   var data = JSON.parse(jsonData).data;
 
   if (request.text) {
-
     //Exact Match
     var result = findExactMatch(request);
 
