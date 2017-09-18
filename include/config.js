@@ -1,6 +1,8 @@
-/**
- * Configuration file
- */
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Configuration file
+  */
 
 // Port that the express server will be listening at
 const PORT = process.env.PORT || 9191;
@@ -38,4 +40,4 @@ module.exports = {
   WAITING_BEFORE_PROMPT,
   FB_PAGE_ID,
   FB_ADMIN_TOKEN
-}
+};

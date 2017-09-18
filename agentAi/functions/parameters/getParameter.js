@@ -1,5 +1,8 @@
-
-
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Get parameter from word
+  */
 const {isMobilePhone} = require('./phone');
 const {getCity} = require('./city');
 const {getNeighborhood} = require('./neighborhood');
@@ -8,8 +11,14 @@ const {getBuilding} = require('./building');
 const {isCurrency} = require('./currency');
 const {isNumber} = require('./number');
 
+/*
+  * @desc      Get parameter from word
+  * @param     userWord : one word on user's text
+  * @param     keywordParam: Parameter extract from keyword
+  * @param     lang : language
+  * @return    Parameter
+  */
 var getParameter = (userWord, keywordParam, lang) => {
-
   var name = keywordParam.split('|')[0].replace('#', '');
   var type = keywordParam.split('|')[1].replace('#', '');
   var param = {
@@ -45,9 +54,9 @@ var getParameter = (userWord, keywordParam, lang) => {
   }
 
   return param;
-}
+};
 
 
 module.exports = {
   getParameter
-}
+};

@@ -1,4 +1,8 @@
-
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc       Handle Form
+  */
 const {updateLead} = require('./../data/salesforce/handleLeads');
 const {convertLead} = require('./../data/salesforce/handleLeads');
 
@@ -7,11 +11,12 @@ const {updateContact} = require('./../data/salesforce/handleContacts');
 
 const {addTask} = require('./../data/salesforce/handleTasks');
 
-
-
-//Get Form Lead
+/*
+  * @desc      Get Form for new Lead or lead not converted yet
+  * @param     req : Http request
+  * @return    void
+  */
 var getFormLead = (req) => {
-
   //Fields
   var senderID = req.senderID;
   var fname = req.first_name;
@@ -25,7 +30,6 @@ var getFormLead = (req) => {
   //TODO Verify Company doesn't exist
 
   updateLead(senderID, fname, lname, company, city, country, email, phone, (lead) => {
-
     if(lead){
       //Check if lead's alrealy converted
       getContact(senderID, (contact) => {
@@ -43,15 +47,15 @@ var getFormLead = (req) => {
         }
       });
     }
-
   });
+};
 
-
-}
-
-//Get Form Lead
+/*
+  * @desc      Get Form for contact, when he wants to edit his informations
+  * @param     req : Http request
+  * @return    void
+  */
 var getFormContact = (req) => {
-
   //Fields
   var senderID = req.senderID;
   var fname = req.first_name;
@@ -69,11 +73,9 @@ var getFormContact = (req) => {
           }
         });
   });
-
 }
-
 
 
 module.exports  = {
   getFormLead, getFormContact
-}
+};

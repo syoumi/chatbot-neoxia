@@ -1,7 +1,16 @@
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc       Handle user's request saved on Salesforce
+  */
 const {FB_PAGE_TOKEN} = require('./../include/config');
 const request = require('request');
 
-
+/*
+  * @desc      Get user's informations such as his facebook's name, his gender, his photo profil, timezone and local by his id using graph API
+  * @param     userID: user's facebook ID
+  * @return    user's informations
+  */
 var getUserInfos = (userID, callback) => {
   request({
     uri: `https://graph.facebook.com/v2.6/${userID}`,

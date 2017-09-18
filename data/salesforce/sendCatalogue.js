@@ -1,4 +1,8 @@
-
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Send Catalogue of products to user
+  */
 const {getProductRecords} = require('./handleProducts');
 const {getProduct} = require('./handleProducts');
 const {getElements} = require('./handleProducts');
@@ -18,8 +22,21 @@ const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 
 const {getText} = require('./../../utils/getPredefinedAnswers');
 
-
-
+/*
+  * @desc      Send catalogue of products
+  * @param     senderID : contact's facebookId
+  * @param     text : text to send with catalogue
+  * @param     building : Building choose by user
+  * @param     operation : Operation choose by user
+  * @param     minPrice : minimum price choose by user
+  * @param     maxPrice : maximum price choose by user
+  * @param     nbrRooms : number of rooms choose by user
+  * @param     city : city choose by user
+  * @param     neighborhood : neighborhood choose by user
+  * @param     count : counter, how many time that method was called
+  * @param     lang : language
+  * @return    void
+  */
 var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, count, lang) => {
 
     //Search for building
@@ -45,7 +62,6 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
 
     //First research
     getProductRecords(query, (elements) => {
-
       if(elements.length!=0){
         sendTextMessageWithDelay(senderID, text);
         sendGenericMessageWithDelay(senderID, elements, delay);
@@ -55,7 +71,6 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
         }
       }
       else{
-
         //Try to find something may be interested to send to the client
         //text = `Nous sommes désolés. Des ${building}s avec les critères mentionnés ci-dessus ne sont pas disponible pour l'instant.\nSi vous n'êtes pas pressé, vous pouvez nous envoyer vos coordonnées afin de vous contacter une fois votre demande est disponible.\nSinon, nous vous proposons des ${building}s qui pourront vous intéresser.`;
         text = getText(lang, "Buildig not found", building + "s");
@@ -70,35 +85,35 @@ var sendCatalogue = (senderID, text, building, operation, minPrice, maxPrice, nb
         else if(count == 0){
           sendCatalogue(senderID, text, building, operation, undefined, undefined, undefined, undefined, undefined, count, lang);
         }
-
       }
     });
 };
 
-//Send Product to User
+/*
+  * @desc      Send Product to User
+  * @param     senderID : contact's facebookId
+  * @param     productID : product's Id
+  * @param     lang : language
+  * @return    void
+  */
 var sendProduct = (senderID, productID, lang) => {
   console.log("SENDING PRODUCT TO USER");
   getProduct(productID, (product) => {
     var products = [];
     products.push(product);
     getElements(products, (elements) => {
-      console.log('ELEMENTS');
       if(elements.length!=0){
         var text = getText(lang, 'Building request found' , product.Type__c +'s');
-        console.log('TEXT TO SEND: ', text);
         sendTextMessageWithDelay(senderID, text);
         sendGenericMessageWithDelay(senderID, elements, 15000);
         //update request
         updateRequest(senderID, true);
       }
-
     });
-
   });
-}
-
+};
 
 
 module.exports = {
   sendCatalogue, sendProduct
-}
+};

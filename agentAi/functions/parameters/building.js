@@ -1,11 +1,20 @@
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Extract parameter building from user's text
+  */
 const fs = require('fs');
 
 const {splitMessage} = require('./../treatment/splitMessage');
 const {checkEquality} = require('./../match/checkEquality');
 
-
+/*
+  * @desc      Extract building from user's text
+  * @param     text : user's text (Request.text)
+  * @param     lang : language
+  * @return    Building
+  */
 var extractBuilding = (text, lang) => {
-
   var jsonBuildings = fs.readFileSync('./agentAi/resources/' + lang + '/buildings.json');
   var list = JSON.parse(jsonBuildings).list;
 
@@ -39,10 +48,16 @@ var extractBuilding = (text, lang) => {
   }
 
   return buildingFound;
-}
+};
 
+
+/*
+  * @desc     Check if a word is building
+  * @param     word : word from user's text
+  * @param     lang : language
+  * @return    Boolean
+  */
 var isBuilding = (word, lang) => {
-
   var jsonBuildings = fs.readFileSync('./agentAi/resources/' + lang + '/buildings.json');
   var list = JSON.parse(jsonBuildings).list;
 
@@ -51,8 +66,14 @@ var isBuilding = (word, lang) => {
   }
 
   return false;
-}
+};
 
+/*
+  * @desc      Get building from word
+  * @param     word : word from user's text
+  * @param     lang : language
+  * @return    Building
+  */
 var getBuilding = (word, lang) => {
 
   var jsonBuildings = fs.readFileSync('./agentAi/resources/' + lang + '/buildings.json');
@@ -69,9 +90,9 @@ var getBuilding = (word, lang) => {
   }
 
   return buildingFound;
-}
+};
 
 
 module.exports = {
   extractBuilding, getBuilding, isBuilding
-}
+};

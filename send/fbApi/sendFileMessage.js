@@ -1,8 +1,17 @@
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc      All the logic for sending file 
+  */
 const {callSendAPI} = require('./sendViaFaceBookAPI');
 
-
-var sendFileMessage= (recipientId, fileName) => {
-  
+/*
+  * @desc      Send file to user
+  * @param     recipientID : user's facebookId
+  * @param     fileUrl : file's url
+  * @return    void
+  */
+var sendFileMessage= (recipientId, fileUrl) => {
 	var messageData = {
 		recipient: {
 			id: recipientId
@@ -11,14 +20,13 @@ var sendFileMessage= (recipientId, fileName) => {
 			attachment: {
 				type: "file",
 				payload: {
-					url: fileName
+					url: fileUrl
 				}
 			}
 		}
 	};
-
 	setTimeout(() => {callSendAPI(messageData);}, 3000);
-}
+};
 
 
 module.exports = {

@@ -1,7 +1,23 @@
-
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Handle Requests
+  */
 const {doLogin} = require('./login');
 
-//Create new request
+/*
+  * @desc      Create new request
+  * @param     senderID : user's facebookId
+  * @param     building : Building choose by user
+  * @param     operation : Operation choose by user
+  * @param     minPrice : minimum price choose by user
+  * @param     maxPrice : maximum price choose by user
+  * @param     nbrRooms : number of rooms choose by user
+  * @param     city : city choose by user
+  * @param     neighborhood : neighborhood choose by user
+  * @param     isTreated : isTreated
+  * @return    void
+  */
 var addRequest = (senderID, building, operation, minPrice, maxPrice, nbrRooms, city, neighborhood, isTreated) => {
   getRequest(senderID, (request) => {
     console.log('REQUEST__C FOUND: ', request);
@@ -13,12 +29,14 @@ var addRequest = (senderID, building, operation, minPrice, maxPrice, nbrRooms, c
         });
       });
     }
-
   });
+};
 
-}
-
-//Get user's last request
+/*
+  * @desc      Get user's last request
+  * @param     senderID : user's facebookId
+  * @return    Request
+  */
 var getRequest = (senderID, callback) => {
     doLogin((conn) => {
       var request = undefined;
@@ -31,13 +49,17 @@ var getRequest = (senderID, callback) => {
         callback(request);
       });
     });
-}
+};
 
-//Get all user's requests
+/*
+  * @desc      Get all user's requests
+  * @param     senderID : user's facebookId
+  * @return    Request
+  */
 var getAllRequests = (senderID, callback) => {
     doLogin((conn) => {
       var requests = [];
-      var query = "SELECT Name, FacebookId__c, isTreated__c FROM Request__c ORDER BY CreatedDate DESC ";
+      var query = "SELECT Name, FacebookId__c, isTreated__c FROM Request__c WHERE FacebookId__c = '" + senderID + "' ORDER BY CreatedDate DESC ";
       conn.query(query, (err, res) => {
         if (err) { return console.error(err); }
         res.records.forEach( (record) => {
@@ -46,9 +68,14 @@ var getAllRequests = (senderID, callback) => {
         callback(requests);
       });
     });
-}
+};
 
-//Update request is Treated or not
+/*
+  * @desc      Update request is Treated or not
+  * @param     senderID : user's facebookId
+  * @param     isTreated : isTreated
+  * @return    void
+  */
 var updateRequest = (senderID, isTreated) => {
       doLogin((conn) => {
         var query = "SELECT Id, isTreated__c, FacebookId__c FROM Request__c WHERE FacebookId__c= '" + senderID + "' ORDER BY CreatedDate DESC LIMIT 1";
@@ -56,24 +83,28 @@ var updateRequest = (senderID, isTreated) => {
             .update({ isTreated__c : isTreated }, 'Request__c', function(err, rets) {
               if (err) { return console.error(err); }
               console.log(rets);
-
             });
       });
-}
+};
 
-//Check if request already exists or not
+/*
+  * @desc      Check if request already exists or not
+  * @param     building : building
+  * @param     operation : operation
+  * @param     city : city
+  * @param     neighborhood : neighborhood
+  * @param     request : user's last request
+  * @return    Boolean
+  */
 var checkRequest = (building, operation, city, neighborhood, request) => {
-
   if(request){
     if(request.Type__c.toLowerCase() == building.toLowerCase() && request.Operation__c.toLowerCase() == operation.toLowerCase()) {
       if(city && neighborhood){
         return ( (request.City__c.toLowerCase() == city.toLowerCase()) && (request.Neighborhood__c.toLowerCase() == Neighborhood__c.toLowerCase()) );
       }
-
       else if(city) {
         return (request.City__c.toLowerCase() == city.toLowerCase());
       }
-
       else if(neighborhood){
           return (request.neighborhood__c.toLowerCase() == neighborhood.toLowerCase());
       }
@@ -83,10 +114,10 @@ var checkRequest = (building, operation, city, neighborhood, request) => {
     }
     return false;
   }
-
   return false;
-}
+};
+
 
 module.exports = {
   addRequest, updateRequest, getRequest, getAllRequests
-}
+};

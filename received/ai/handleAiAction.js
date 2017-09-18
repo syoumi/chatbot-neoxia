@@ -1,4 +1,8 @@
-
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Handle AgentAI's Action
+  */
 const {sendButtonMessage} = require('./../../send/fbApi/sendButtonMessage');
 const {sendFileMessage} = require('./../../send/fbApi/sendFileMessage');
 const {sendGenericMessage} = require('./../../send/fbApi/sendGenericMessage');
@@ -22,9 +26,13 @@ const {getFilterSkip} = require('./../../utils/getResources');
 
 const {URL_APP} = require('./../../include/config');
 
-
-
-//By action
+/*
+  * @desc      Handle AgentAI's Action
+  * @param     senderID : facebookId
+  * @param     answer : answer from the agentAI
+  * @param     lang : language
+  * @return    void
+  */
 var handleAiAction= (senderID, answer, lang) => {
   var action = answer.action;
   var text = answer.answer;
@@ -34,12 +42,10 @@ var handleAiAction= (senderID, answer, lang) => {
   console.log('**SENDER ID: ', senderID);
   console.log('**PARAMS: ', params);
 
-
+  //By action
 	switch (action) {
 
-    /**
-      * Démarrage
-      */
+    //Catalogue
     case "catalogue-action":
     case "price-action":
     case "catalogue-city-action":
@@ -51,7 +57,7 @@ var handleAiAction= (senderID, answer, lang) => {
       sendQuickReplies(senderID, text, options);
       break;
 
-    //Type logement ---> Demander opération
+    //Operation
     case "type-building-action":
     case "type-building-v2-action":
     case "catalogue-building-action":
@@ -61,8 +67,7 @@ var handleAiAction= (senderID, answer, lang) => {
       sendQuickReplies(senderID, text, replies);
   		break;
 
-
-    //Opération, fixer fourchette, refuser fourchette, fixer nbr chambres, refuser nbr chambres, fixer nom-ville
+    //Neighborhood
     case "refuse-neighborhood-action":
     case "fixing-neighborhood-action" :
       //var replies = ["Oui", "Non"];
@@ -95,7 +100,6 @@ var handleAiAction= (senderID, answer, lang) => {
       sendQuickReplies(senderID, text, replies);
       break;
 
-
     //Send catalogue
     case "refuse-nbr-rooms-action":
     case "fixing-nbr-rooms-action":
@@ -112,7 +116,7 @@ var handleAiAction= (senderID, answer, lang) => {
       var buttons = [
         {
                   "type":"web_url",
-                  "url": URL_APP + "formToEdit/" + senderID,
+                  "url": URL_APP + 'formToEdit/' + senderID,
                   "title":"Formulaire",
                   "webview_height_ratio": "full",
                   "messenger_extensions": true
@@ -134,7 +138,7 @@ var handleAiAction= (senderID, answer, lang) => {
           var buttons = [
             {
                       "type":"web_url",
-                      "url": URL_APP + "form/" + senderID,
+                      "url": URL_APP + 'form/' + senderID,
                       "title":"Formulaire",
                       "webview_height_ratio": "full",
                       "messenger_extensions": true
@@ -145,7 +149,7 @@ var handleAiAction= (senderID, answer, lang) => {
       });
       break;
 
-    //Edit Email
+    //Edit Number phone
     case "phone-action":
       getContact(senderID, (contact) => {
         if(contact){
@@ -158,7 +162,7 @@ var handleAiAction= (senderID, answer, lang) => {
           var buttons = [
             {
                       "type":"web_url",
-                      "url": URL_APP + "form/" + senderID,
+                      "url": URL_APP + 'form/' + senderID,
                       "title":"Formulaire",
                       "webview_height_ratio": "full",
                       "messenger_extensions": true
@@ -182,7 +186,7 @@ var handleAiAction= (senderID, answer, lang) => {
           var buttons = [
             {
                       "type":"web_url",
-                      "url": URL_APP + "form/" + senderID,
+                      "url": URL_APP + 'form/' + senderID,
                       "title":"Formulaire",
                       "webview_height_ratio": "full",
                       "messenger_extensions": true
@@ -206,7 +210,7 @@ var handleAiAction= (senderID, answer, lang) => {
         var buttons = [
           {
                     "type":"web_url",
-                    "url": URL_APP + "form/" + senderID,
+                    "url": URL_APP + 'form/' + senderID,
                     "title":"Formulaire",
                     "webview_height_ratio": "full",
                     "messenger_extensions": true
@@ -216,7 +220,6 @@ var handleAiAction= (senderID, answer, lang) => {
       }
       });
       break;
-
 
     //Waiting for call
     case "call-information-action":
@@ -230,7 +233,7 @@ var handleAiAction= (senderID, answer, lang) => {
           var buttons = [
             {
                       "type":"web_url",
-                      "url": URL_APP + "form/" + senderID,
+                      "url": URL_APP + 'form/' + senderID,
                       "title":"Formulaire",
                       "webview_height_ratio": "full",
                       "messenger_extensions": true
@@ -254,7 +257,7 @@ var handleAiAction= (senderID, answer, lang) => {
           var buttons = [
             {
                       "type":"web_url",
-                      "url": URL_APP + "form/" + senderID,
+                      "url": URL_APP + 'form/' + senderID,
                       "title":"Formulaire",
                       "webview_height_ratio": "full",
                       "messenger_extensions": true
@@ -265,6 +268,7 @@ var handleAiAction= (senderID, answer, lang) => {
       });
       break;
 
+    //Language
     case "language-action":
       var languages = ['Français', 'العربية', 'Darija-Français'];
       sendQuickReplies(senderID, text, languages);
@@ -286,16 +290,13 @@ var handleAiAction= (senderID, answer, lang) => {
       handleParameters(senderID, text, params, "edit language", lang);
       break;
 
-
-
+    //unhandled action, just send back the text
 		default:
-			//unhandled action, just send back the text
 			sendTextMessageWithDelay(senderID, text);
-
 	}
-}
+};
 
 
 module.exports={
     handleAiAction
-}
+};

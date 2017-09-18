@@ -1,8 +1,8 @@
-/**
- * In this file, we put all the logic to execute whenever an event
- * of type message is sent to the backend app
- */
-
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc      In this file, we put all the logic to execute whenever an event of type message is sent to the backend app
+  */
 const {sendTextMessage} = require('./../../send/fbApi/sendTextMessage');
 const {sendTextMessageWithDelay} = require('./../../send/fbApi/sendTextMessage');
 
@@ -11,13 +11,11 @@ const {sendToAi} = require('./../../send/ai/sendToAi');
 const {getWaiting} = require('./../../utils/waiting');
 const {setNotWaiting} = require('./../../utils/waiting');
 
-
-
-
-
-/**
- * Message event handler
- */
+/*
+  * @desc      Message event handler
+  * @param     event : event from Facebook
+  * @return    void
+  */
 var receivedMessage = (event) => {
   // Extracting event informations
   // sender PID (page scooped ID)
@@ -48,7 +46,6 @@ var receivedMessage = (event) => {
 
 
   if (messageText) {
-    // sendToApiAi(senderID, messageText);
     sendToAi(senderID, messageText);
 
   } else if (messageAttachments) {
@@ -57,6 +54,7 @@ var receivedMessage = (event) => {
 
 };
 
+
 module.exports = {
   receivedMessage
-}
+};

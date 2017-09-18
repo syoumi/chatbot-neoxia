@@ -1,24 +1,31 @@
-
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Handle Products
+  */
 const {doLogin} = require('./login');
 
-
-//Get product records for catalogue
+/*
+  * @desc      Get product records as generic message for catalogue using query
+  * @param     query: SOQL query
+  * @return    Generic message with product records
+  */
 var getProductRecords = (query, callback) => {
   doLogin((conn) => {
-
     conn.query(query, (err, res) => {
          if (err) { return console.error(err); }
          getElements(res.records, (elements) =>{
            callback(elements);
           });
     });
-
   });
+};
 
-}
-
-
-//Get product by Id
+/*
+  * @desc      Get product by Id
+  * @param     productID: product's Id
+  * @return    Product
+  */
 var getProduct = (productID, callback) => {
   doLogin((conn) => {
     var product = undefined;
@@ -31,13 +38,16 @@ var getProduct = (productID, callback) => {
       callback(product);
     });
   });
-}
+};
 
 
-//Get Elements
+/*
+  * @desc      Get Elements as generic message
+  * @param     products:product records
+  * @return    Generic message
+  */
 var getElements = (products, callback) => {
   var elements = [];
-
   for (var i=0; i<products.length; i++) {
     var product = products[i];
 
@@ -70,16 +80,13 @@ var getElements = (products, callback) => {
     };
 
     console.log("TITLE: ", title );
-
     elements.push(element);
 
   }
-
   callback(elements);
-
-}
+};
 
 
 module.exports = {
   getProductRecords, getProduct, getElements
-}
+};

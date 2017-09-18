@@ -1,9 +1,16 @@
-
-
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Handle Price Book Entries
+  */
 const {doLogin} = require('./login');
 
-
-//Create new Price Book Entry for a product
+/*
+  * @desc     Create new Price Book Entry for a product
+  * @param     product : product
+  * @param     name : PriceBook's name
+  * @return    Price Book Entry's Id
+  */
 var addPriceBookEntry = (product, name, callback) => {
   //Check if Price Book Entry for that product doesn't already exist
   checkPriceBookEntry(product.Id, (pricebookEntry) => {
@@ -21,9 +28,13 @@ var addPriceBookEntry = (product, name, callback) => {
       callback(pricebookEntry.Id);
     }
   });
-}
+};
 
-//Get Price Book by it's name
+/*
+  * @desc     Get Price Book by it's name
+  * @param     name : PriceBook's name
+  * @return    Price Book
+  */
 var getPriceBook = (name, callback) => {
   doLogin((conn) => {
     var pricebook = undefined;
@@ -36,11 +47,14 @@ var getPriceBook = (name, callback) => {
       callback(pricebook);
     });
   });
-}
+};
 
-//Get Price Book Entry by it's ID
+/*
+  * @desc    Get Price Book Entry by it's ID
+  * @param     pricebookEntryId : PriceBookEntry's Id
+  * @return    Price Book Entry
+  */
 var getPriceBookEntry = (pricebookEntryId, callback) => {
-
     doLogin((conn) => {
       var pricebookEntry = undefined;
       var query = "SELECT Id, Pricebook2Id, Product2Id, UnitPrice FROM PricebookEntry WHERE Id ='" + pricebookEntryId + "'  LIMIT 1";
@@ -52,10 +66,13 @@ var getPriceBookEntry = (pricebookEntryId, callback) => {
         callback(pricebookEntry);
       });
     });
+};
 
-}
-
-//Check existing of Price Book Entry
+/*
+  * @desc    Check existing of Price Book Entry
+  * @param     productID : product's Id
+  * @return    Price Book Entry
+  */
 var checkPriceBookEntry = (productID, callback) => {
   doLogin((conn) => {
     var pricebookEntry = undefined;
@@ -68,8 +85,8 @@ var checkPriceBookEntry = (productID, callback) => {
       callback(pricebookEntry);
     });
   });
-}
+};
 
 module.exports = {
   addPriceBookEntry, getPriceBookEntry, getPriceBook, checkPriceBookEntry
-}
+};

@@ -1,9 +1,15 @@
-
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Handle Opportunities
+  */
 const {doLogin} = require('./login');
 
-
-
-//Look for opportunity by account's Id
+/*
+  * @desc      Look for opportunity by account's Id
+  * @param     accountId : account's id
+  * @return    Opportunity
+  */
 var getOpportunity = (accountId, callback) => {
   doLogin((conn) => {
     var opportunity= undefined;
@@ -16,9 +22,14 @@ var getOpportunity = (accountId, callback) => {
       callback(opportunity);
     });
   });
-}
+};
 
-//Update Price Book ID
+/*
+  * @desc      Update Opportunity's Pricebook2Id
+  * @param     accountId : account's id
+  * @param     pricebookEntry : Price Book Entry associeted to product
+  * @return    Callback
+  */
 var updateOpportunity = (accountId, pricebookEntry, callback) => {
   console.log('----->PricebookEntry: ', pricebookEntry);
   doLogin((conn) => {
@@ -30,9 +41,9 @@ var updateOpportunity = (accountId, pricebookEntry, callback) => {
           callback();
     });
   });
-}
+};
 
 
 module.exports = {
   getOpportunity, updateOpportunity
-}
+};

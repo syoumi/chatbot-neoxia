@@ -1,5 +1,8 @@
-//TODO ./functions/findExactMatch integrating parameters
-
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Agent (orchestre) that receives user's message and returns an answer
+  */
 const {saveUndefinedAnswer} = require('./functions/message/saveUndefinedAnswer');
 const {handleMessage} = require('./functions/message/handleMessage');
 const {findSpecificMatch} = require('./functions/match/findSpecificMatch');
@@ -9,11 +12,16 @@ const {getUser} = require('./functions/user/handleUser');
 const {removeParams} = require('./functions/user/handleUser');
 const {getAnswer} = require('./functions/answer/handleAnswer');
 
-
+/*
+  * @desc      Receive user's message
+  * @param     request :contains SenderID, text and language
+  * @return    Answer :   contains recipientID, action, answer and parameters
+  */
 var receiveMessage = (request) => {
-
   console.log(`Received message from ${request.senderID}, content ${request.text}, language ${request.lang}`);
+
   var answer = undefined;
+
   var specificActions = lookForSpecificActions(request.senderID, request.lang);
   if (specificActions && specificActions.length != 0) {
     var result = findSpecificMatch(request, specificActions);
@@ -26,13 +34,11 @@ var receiveMessage = (request) => {
     //if (answer.answer) {}
   }
 
-
   // if this is unknown message, save the message in json file
   if(answer.action === 'unknown-action') {
     saveUndefinedAnswer(request.text);
   } else {
     //console.log(`SET USER; Answer: ${answer.answer}`);
-
     var user = getUser(request.senderID);
     if(user && specificActions.indexOf(answer.action)<0){
       removeParams(user);
@@ -45,7 +51,6 @@ var receiveMessage = (request) => {
     }
   }
 
-
   // Update answer's parameters
   // answer.parameters = getParameters(request.senderID);
   console.log('USER OBJECT: ' , getUser(request.senderID));
@@ -53,6 +58,12 @@ var receiveMessage = (request) => {
   return response;
 };
 
+/*
+  * @desc      Send custom answer
+  * @param     recipientID : recipientID
+  * @param     answer: result of matching
+  * @return    Answer :   contains recipientID, action, answer and parameters
+  */
 var sendAnswer = (recipientID, answer) => {
   var toSend = {
     recipientID,
@@ -61,8 +72,8 @@ var sendAnswer = (recipientID, answer) => {
     parameters: answer.parameters
   };
   return toSend;
-}
+};
 
 module.exports = {
   receiveMessage
-}
+};

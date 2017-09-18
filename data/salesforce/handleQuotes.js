@@ -1,11 +1,20 @@
-
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Handle Quotes
+  */
 const {doLogin} = require('./login');
 
 const {getProduct} = require('./handleProducts');
 
 const {getPriceBookEntry} = require('./handlePriceBookEntries');
 
-//Create new quote
+/*
+  * @desc      Create new quote
+  * @param     contact : contact
+  * @param     opportunity : opportunity
+  * @return    Quote's Id
+  */
 var addQuote = (contact, opportunity, callback) => {
   doLogin((conn) => {
     var name = 'Devis initial ' + contact.FacebookId__c;
@@ -14,10 +23,16 @@ var addQuote = (contact, opportunity, callback) => {
      callback(res.id);
     });
   });
-}
+};
 
-
-//Create new Quote Line Item related to quote
+/*
+  * @desc      Create new Quote Line Item related to quote
+  * @param     quoteID : quote's Id
+  * @param     pricebookEntry : Price Book Entry
+  * @param     product : product choose by contact
+  * @param     quantity : Quantity of product
+  * @return    Quote's Id
+  */
 var addQuoteLineItem= (quoteID, pricebookEntry, product, quantity, callback) => {
     //Create new Quote Line Item
     doLogin((conn) => {
@@ -26,10 +41,13 @@ var addQuoteLineItem= (quoteID, pricebookEntry, product, quantity, callback) => 
         callback();
       });
     });
-}
+};
 
-
-//Look for quote by opportunity
+/*
+  * @desc      Look for quote by opportunity
+  * @param     opportunity : opportunity
+  * @return    Quote
+  */
 var getQuote = (opportunity, callback) => {
     doLogin((conn) => {
       var quote = undefined;
@@ -42,9 +60,13 @@ var getQuote = (opportunity, callback) => {
         callback(quote);
       });
     });
-}
+};
 
-//Update ToSend__c
+/*
+  * @desc      Update Quote's ToSend__c so that quote pdf will be generated and sent to contact's email
+  * @param     quoteID : quote's Id
+  * @return    void
+  */
 var updateQuote = (quoteID) => {
   doLogin((conn) => {
     var query = "SELECT Id, ToSend__c FROM Quote WHERE Id= '" + quoteID + "'";
@@ -54,8 +76,9 @@ var updateQuote = (quoteID) => {
           console.log("Quote updated: ", rets);
         });
   });
-}
+};
+
 
 module.exports = {
   addQuote, addQuoteLineItem, getQuote, updateQuote
-}
+};

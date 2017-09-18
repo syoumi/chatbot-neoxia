@@ -1,12 +1,20 @@
-
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc       Handle sharing on Facebook page
+  */
 const request = require('request');
 
 const {FB_PAGE_TOKEN} = require('./../include/config');
 const {FB_PAGE_ID} = require('./../include/config');
 const {FB_ADMIN_TOKEN} = require('./../include/config');
 
-
-//Share photo on FB page
+/*
+  * @desc      Share photo on Facebook page
+  * @param     text : Text to post with image as description
+  * @param     image : image to share
+  * @return    void
+  */
 var sharePhoto = (text, image) => {
   var link = 'https://graph.facebook.com/' + FB_PAGE_ID + '/photos';
   request({
@@ -25,9 +33,13 @@ var sharePhoto = (text, image) => {
 
     console.log('Posted to facebook with status ' , response.statusCode);
   });
-}
+};
 
-//Post status on FB page
+/*
+  * @desc      Post status on Facebook page
+  * @param     text : Text to post / status
+  * @return    void
+  */
 var shareStatus = (text) => {
   var link = 'https://graph.facebook.com/' + FB_PAGE_ID + '/feed';
   request({
@@ -44,10 +56,9 @@ var shareStatus = (text) => {
     }
     console.log('Posted to facebook with status ' , response.statusCode);
   });
-}
-
+};
 
 
 module.exports = {
   sharePhoto, shareStatus
-}
+};

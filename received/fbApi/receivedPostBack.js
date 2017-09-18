@@ -110,7 +110,7 @@ var receivedPostBack = (event) => {
         var buttons = [
           {
                     "type":"web_url",
-                    "url": URL_APP + "form/" + senderID,
+                    "url": URL_APP + 'form/' + senderID,
                     "title": title,
                     "webview_height_ratio": "full",
                     "messenger_extensions": true

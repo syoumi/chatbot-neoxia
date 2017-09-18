@@ -1,4 +1,14 @@
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Extract parameter currency from user's text
+  */
 
+/*
+  * @desc      Extract currency from user's text
+  * @param     text : user's text (Request.text)
+  * @return    Building
+  */
 var extractCurrency = (text) => {
   var possibleCurrencies = [];
   var digits = '0123456789';
@@ -36,6 +46,11 @@ var extractCurrency = (text) => {
   return currencyFound ? maxCurrency : undefined;
 };
 
+/*
+  * @desc     Check if a word is currency
+  * @param     word : word from user's text
+  * @return    Boolean
+  */
 var isCurrency = (curr) => {
   return !isNaN(parseFloat(curr));
 };

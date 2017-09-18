@@ -1,5 +1,5 @@
 {
-  "lang": "ma",
+  "lang": "fr",
   "data": [
     {
       "action": "salutations-action",
@@ -900,7 +900,9 @@
         "je parle à une personne ou un robot",
         "es tu une personne réelle",
         "es tu une personne physique",
-        "tu existes vraiment"
+        "tu existes vraiment",
+        "vous êtes un robot",
+        "vous n'êtes pas humain"
       ],
       "answers": [
         "Hmmm. Je suis là pour rendre votre expérience interactive plus performante.",
@@ -1331,6 +1333,27 @@
       ],
       "answers": [
         "Veuillez spécifier s'il vous plaît. Quand quoi?"
+      ],
+      "nextActions": [],
+      "previousActions" : [],
+      "hasParam": "0"
+    },
+
+    {
+      "action": "pay-action",
+      "keywords": [
+        "paiement",
+        "comment on paie",
+        "comment vais je payer",
+        "la procédure du paiement",
+        "puis je payer en ligne",
+        "payer en espèces ou chèque",
+        "puis je bénéficier d un crédit",
+        "carnet de chèque",
+        "payer cash"
+      ],
+      "answers": [
+        "Tout ce qui concerne la procédure de paiement sera détaillé par l'agent commercial associé au logement choisi.\nSi vous n'avez pas encore fais le choix, demandez de consulter le catalogue."
       ],
       "nextActions": [],
       "previousActions" : [],

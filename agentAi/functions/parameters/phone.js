@@ -1,8 +1,15 @@
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Extract parameter phone from user's text
+  */
 
-//const phone = require('phone');
 
-
-//Extract phone number from a text
+/*
+  * @desc      Extract phone from user's text
+  * @param     text : user's text (Request.text)
+  * @return    Phone
+  */
 var extractPhoneNumber = (text) => {
   var possibleNumbers = [];
   var digits = '1234567890';
@@ -32,6 +39,11 @@ var extractPhoneNumber = (text) => {
 };
 
 
+/*
+  * @desc     Check if a word is phone number
+  * @param     word : word from user's text
+  * @return    Boolean
+  */
 var isMobilePhone = (phone) => {
   var isValid = (phone.length >= 8) ? true : false;
   if (!(phone[0] == '+' || phone[0] == '0')) {

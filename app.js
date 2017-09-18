@@ -1,9 +1,8 @@
-/**
- * Chatbot for facebook messenger
- * Created by : Neoxia
- * Version 1.0 beta - August 2017
- */
-
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc       Start application - Orchestre of chatbot that receives and handles requests from Facebook and Salesforce 
+  */
 const express = require('express');
 const bodyParser = require('body-parser');
 

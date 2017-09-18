@@ -1,9 +1,19 @@
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Extract parameter operation from user's text
+  */
 const fs = require('fs');
 
 const {splitMessage} = require('./../treatment/splitMessage');
 const {checkEquality} = require('./../match/checkEquality');
 
-
+/*
+  * @desc      Extract operation from user's text
+  * @param     text : user's text (Request.text)
+  * @param     lang : language
+  * @return    Operation
+  */
 var extractOperation = (text, lang) => {
 
   var jsonOperations = fs.readFileSync('./agentAi/resources/' + lang + '/operations.json');
@@ -39,8 +49,14 @@ var extractOperation = (text, lang) => {
   }
 
   return operationFound;
-}
+};
 
+/*
+  * @desc     Check if a word is operation
+  * @param     word : word from user's text
+  * @param     lang : language
+  * @return    Boolean
+  */
 var isOperation = (word, lang) => {
 
   var jsonOperations = fs.readFileSync('./agentAi/resources/' + lang + '/operations.json');
@@ -51,8 +67,14 @@ var isOperation = (word, lang) => {
   }
 
   return false;
-}
+};
 
+/*
+  * @desc      Get operation from word
+  * @param     word : word from user's text
+  * @param     lang : language
+  * @return    Operation
+  */
 var getOperation= (word, lang) => {
   var jsonOperations = fs.readFileSync('./agentAi/resources/' + lang + '/operations.json');
   var list = JSON.parse(jsonOperations).list;
@@ -69,9 +91,9 @@ var getOperation= (word, lang) => {
   }
 
   return operationFound;
-}
+};
 
 
 module.exports = {
   extractOperation, getOperation, isOperation
-}
+};

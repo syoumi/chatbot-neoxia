@@ -1,7 +1,8 @@
-/**
- * All the logic for sending one text message
- */
-
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc       All the logic for sending one text message
+  */
 const {callSendAPI} = require('./sendViaFaceBookAPI');
 
 const {setWaiting} = require('./../../utils/waiting');

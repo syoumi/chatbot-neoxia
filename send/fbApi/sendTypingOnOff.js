@@ -1,11 +1,15 @@
-/**
- * This file is responsible for notifying the user that the bot
- * is typing ON / OFF, or has seen the message
- */
-
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc      This file is responsible for notifying the user that the bot, is typing ON / OFF, or has seen the message
+  */
 const {callSendAPI} = require('./sendViaFaceBookAPI');
 
-// Function that sends typing on indicator
+/*
+  * @desc      Function that sends typing on indicator
+  * @param     recipientID : user's facebookId
+  * @return    void
+  */
 var sendTypingOn = (recipientID) => {
  var messageData = {
    recipient: {
@@ -18,7 +22,11 @@ var sendTypingOn = (recipientID) => {
  callSendAPI(messageData);
 };
 
-// Function that sends typing off indicator
+/*
+  * @desc      Function that sends typing off indicator
+  * @param     recipientID : user's facebookId
+  * @return    void
+  */
 var sendTypingOff = (recipientID) => {
  var messageData = {
    recipient: {
@@ -30,7 +38,12 @@ var sendTypingOff = (recipientID) => {
  callSendAPI(messageData);
 };
 
-// Function that sends seen indicator
+
+/*
+  * @desc      Function that sends seen indicator
+  * @param     recipientID : user's facebookId
+  * @return    void
+  */
 var sendSeen = (recipientID) => {
   var messageData = {
    recipient: {
@@ -42,8 +55,9 @@ var sendSeen = (recipientID) => {
   callSendAPI(messageData);
 };
 
+
 module.exports = {
   sendTypingOn,
   sendTypingOff,
   sendSeen
-}
+};

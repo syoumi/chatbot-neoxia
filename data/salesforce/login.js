@@ -1,8 +1,8 @@
-/**
- * This file contains doLogin() function that will be used everytime
- * we want to connect to salesforce database for CRUD operations
- */
-
+/*
+ * @author    MITA Oumaïma, SYOUMI El Mahdi
+ * @since       JULY 10, 2017
+  * @desc        Connect to salesforce database for CRUD operations
+  */
  const jsforce = require('jsforce');
 
  const {SF_LOGIN} = require('./../../include/config');
@@ -11,9 +11,9 @@
  // Connection instance that represents the link/connection to salesforce API
  var link = new jsforce.Connection();
 
- /**
-  * Login to Salesforce plateform and call a callback
-  * the callback is usually an operation to perform while the connection is opened
+/*
+  * @desc      Login to Salesforce plateform and call a callback; the callback is usually an operation to perform while the connection is opened
+  * @return   Connection to Salesforce
   */
  var doLogin = (callback) => {
    // We make a new connection using our salesforce credentials
@@ -42,4 +42,4 @@
 
  module.exports = {
    doLogin
- }
+ };

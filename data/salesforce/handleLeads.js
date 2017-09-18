@@ -1,13 +1,19 @@
-
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Handle Leads
+  */
 const {doLogin} = require('./login');
 
 const {getUserInfos} = require("./../../utils/getUserInfos");
 
 const {getContact} = require("./handleContacts");
 
-
-
-//Extract lead
+/*
+  * @desc      Get lead using his facebookId
+  * @param     senderID : lead's facebookId
+  * @return    Lead
+  */
 var getLead = (senderID, callback) => {
   doLogin((conn) => {
       var lead = undefined;
@@ -19,15 +25,15 @@ var getLead = (senderID, callback) => {
         }
         callback(lead);
       });
-
     });
-
 }
 
-
-//Insert lead
+/*
+  * @desc     Insert new lead
+  * @param     senderID : user's facebookId
+  * @return    void
+  */
 var addLead = (senderID) => {
-
   //Verify if lead  doesn't exist and wasn't converted
   getLead(senderID, (lead) => {
     if(!lead){
@@ -48,11 +54,19 @@ var addLead = (senderID) => {
       });
     }
   });
+};
 
-}
-
-
-//update lead
+/*
+  * @desc      Update lead
+  * @param     senderID : lead's facebookId
+  * @param     fname : first name
+  * @param     lname : last name
+  * @param     city : city
+  * @param     country : country
+  * @param     email : email
+  * @param     phone : phone
+  * @return    lead's Id
+  */
 var updateLead = (senderID, fname, lname, company, city, country, email, phone, callback) => {
     //TODO Search if there's a contact with the same email: IF so update contact's facebookId__c and delete lead,  Else update lead
     doLogin((conn) => {
@@ -64,9 +78,15 @@ var updateLead = (senderID, fname, lname, company, city, country, email, phone, 
             callback(rets);
           });
     });
-}
+};
 
-//Update lead's language
+
+/*
+  * @desc      Update lead's language
+  * @param     senderID : lead's facebookId
+  * @param     language : language
+  * @return    void
+  */
 var updateLeadLanguage = (senderID, language) => {
     doLogin((conn) => {
       var query = "SELECT Id, Language__c FROM lead WHERE FacebookID__c= '" + senderID + "'  AND ToConvert__c = false";
@@ -75,9 +95,15 @@ var updateLeadLanguage = (senderID, language) => {
             if (err) { return console.error(err); }
           });
     });
-}
+};
 
-//Convert lead to Contact, account and opportunity
+
+/*
+  * @desc      Convert lead to contact, account and opportunity
+  * @param     senderID : contact's facebookId
+  * @param     language : language
+  * @return    Callback
+  */
 var convertLead = (senderID, callback) => {
   console.log('TRYING TO CONVERT LEAD');
   doLogin((conn) => {
@@ -88,10 +114,9 @@ var convertLead = (senderID, callback) => {
           callback();
         });
   });
-}
-
+};
 
 
 module.exports = {
   getLead, addLead, updateLead, convertLead, updateLeadLanguage
-}
+};

@@ -1,10 +1,21 @@
+/*
+  * @author    MITA Oumaïma, SYOUMI El Mahdi
+  * @since       JULY 10, 2017
+  * @desc        Check if two words are equals or similar or synonyms
+  */
 const fs = require('fs');
 
 const {similarity} = require('./similarity');
 
 const {MIN_SIMILARITY_PERCENT} = require('./../../include/config');
 
-
+/*
+  * @desc      Check equality of two strings
+  * @param     s1 : String 1 (String)
+  * @param     s2 : String 2 (String)
+  * @param     lang : Language  (String)
+  * @return    Boolean
+  */
 var checkEquality = (s1, s2, lang) => {
   s1 = s1.toLowerCase();
   s2 = s2.toLowerCase();
@@ -28,6 +39,13 @@ var checkEquality = (s1, s2, lang) => {
   return areEquals;
 };
 
+/*
+  * @desc      Check equality of two strings
+  * @param     s1 : String 1 (String)
+  * @param     s2 : String 2 (String)
+  * @param     lang : Language  (String)
+  * @return    Boolean
+  */
 var areSynonyms = (s1, s2, lang) => {
   var dico = fs.readFileSync('./agentAi/resources/' + lang + '/synonyms.json');
   var dicoObj = JSON.parse(dico);
