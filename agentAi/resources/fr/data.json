@@ -14,11 +14,11 @@
         "salam",
         "lu",
         "coucou",
-        "cc",
-        "assalamu alaykum"
+        "cc"
       ],
       "answers": [
-        "Salam !\nKifach n9dero n3awnuk?"
+        "Salut à vous !\nComment puis-je vous aider ?",
+        "Salutations !\nComment puis-je vous aider ?"
       ],
       "nextActions": [],
       "previousActions" : [],
@@ -40,18 +40,13 @@
         "okey",
         "c est bon",
         "pourquoi pas",
-        "prq pas",
-        "ah",
-        "wah",
-        "3lach la",
-        "wakha",
-        "mzyan",
-        "mazian",
-        "iyeh"
+        "prq pas"
       ],
       "answers": [
-        "Mzyan !",
-        "C'est bon."
+        "Génial !",
+        "Super !",
+        "C'est bon.",
+        "Bien entendu."
       ],
       "nextActions": [],
       "previousActions" : [],
@@ -65,15 +60,12 @@
         "pas d accord",
         "pas du tout",
         "du tout",
-        "non merci",
-        "la chokran",
-        "la",
-        "mabghitch"
+        "non merci"
       ],
       "answers": [
         "D'accord.",
-        "Wakha.",
-        "Kifma bghiti."
+        "C'est noté.",
+        "Comme vous voulez."
       ],
       "nextActions": [],
       "previousActions" : [],
@@ -85,7 +77,7 @@
       "keywords": [
         "merci",
         "merci beaucoup",
-        "chokran",
+        "je vous remercie",
         "thanks",
         "thank you",
         "thx",
@@ -95,10 +87,12 @@
         "merci bien"
       ],
       "answers": [
-        "La chokra 3ala wajib."
-        "3la rass ol3in.",
-        "C'est un plaisir wlh.",
-        "Makayn 7ta mochkil. 7na dima hna bach n3awnuk."
+        "À votre service.",
+        "Je vous en prie.",
+        "Mais de rien.",
+        "C'est un plaisir.",
+        "C'est toujours un plaisir de vous rendre service.",
+        "Aucun problème, je suis là pour ça."
       ],
       "nextActions": [],
       "previousActions" : [],
@@ -118,14 +112,13 @@
        "à bientôt",
        "je dois y aller",
        "je quitte",
-       "goodbye",
-       "bslama",
-       "ana mchit",
-       "llah y3awn"
+       "goodbye"
      ],
      "answers": [
-       "Bslama :D.",
-       "Assalamu alaykum."
+       "À bientôt !",
+       "Au revoir.",
+       "Dans l'espoir de vous revoir bientôt.",
+       "Salut, à plus !"
      ],
      "nextActions": [],
      "previousActions" : [],
@@ -140,16 +133,11 @@
       "cv",
       "comment vas tu",
       "comment allez vous",
-      "est ce que vous allez bien",
-      "labas",
-      "bikhir",
-      "labas bikhir",
-      "kif dayr",
-      "kif 3amel"
+      "est ce que vous allez bien"
     ],
     "answers": [
-      "Bikhir chokran.\no nta ola nti ?",
-      "Labas, chokran.\no nta ola nti?"
+      "Très bien, merci et vous?",
+      "Super, merci. Vous?"
     ],
     "nextActions": ["salamalec-answer-action"],
     "previousActions" : [],
@@ -166,15 +154,10 @@
      "aussi",
      "de même",
      "également",
-     "cv hmd",
-     "labas",
-     "hmd",
-     "hamdolillah",
-     "labas bikhir",
-     "labas chokran"
+     "cv hmd"
    ],
    "answers": [
-     "Mzyan.\nKifach n9dero n3awnuk ?"
+     "Bien.\nComment puis-je vous aider ?"
    ],
    "nextActions": [],
    "previousActions" : ["salamalec-action"],
@@ -193,19 +176,11 @@
         "quels sont vos biens",
         "qu est ce que vous vendez",
         "propositions",
-        "suggestions",
-        "bghit nchuf catalogue",
-        "warini catalogue",
-        "3tini chi 9tira7",
-        "3tini chi 9tira7at",
-        "achnu katbi3o",
-        "achnu kadiro",
-        "9tare7 3liya",
-        "9tare7 3liya chi 7aja"
+        "suggestions"
     ],
     "answers": [
-        "3la ina type dyal dar kat9alab ?",
-        "Ina type dyal dar kayhamak?"
+        "Quel type de logement voulez-vous consulter?",
+        "Veuillez préciser, s'il vous plaît, le type de logement que vous souhaitez consulter."
       ],
       "nextActions": ["type-building-action"],
       "previousActions" : [],
@@ -217,13 +192,11 @@
       "keywords": [
           "quelles sont vos propositions à #city|city#",
           "quels sont vos biens à #city|city#",
-          "je cherche un logement à #city|city#",
-          "achnu les propositions dawylkum f #city|city#",
-          "kan9alab f #city|city#"
+          "je cherche un logement à #city|city#"
       ],
       "answers": [
-          "Achnu type dyal dar kayhamak?",
-          "3la ina type dyal dar kat9alab?"
+          "Quel type de logement voulez-vous consulter ?",
+          "Par quel type de logement êtes-vous intéressé ?"
       ],
       "nextActions": ["type-building-v2-action"],
       "previousActions" : [],
@@ -235,13 +208,10 @@
       "keywords": [
           "quelles sont vos propositions de #building|building#",
           "est-ce vous avez des #building|building#",
-          "je cherche un #building|building#",
-          "kana9alab 3la #building|building#",
-          "bghit #building|building#",
-          "wach 3andkum #building|building#"
+          "je cherche un #building|building#"
       ],
       "answers": [
-          "Bghiti tchri ola tkri ?"
+          "Voulez-vous acheter ou louer ?"
       ],
       "nextActions": ["operation-v3-action"],
       "previousActions" : [],
